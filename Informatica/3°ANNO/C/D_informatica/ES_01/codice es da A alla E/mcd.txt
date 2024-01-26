@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+//funzione che trova il MCD di 2 numeri interi messi in input 
+//utilizzando l'algoritmo di Euclide
+int mcd (int, int);
+
+int main()
+{
+	int n1,n2;
+	int ris;
+
+	//sezione del MCD
+	printf("MCD\nInserire il primo numero\n");
+	scanf("%d", &n1);
+	printf("Inserire il secondo numero\n");
+	scanf("%d", &n2);
+      
+	//chiamata della funzione “mcd”
+	ris=mcd(n1,n2);
+
+	printf("Il MCD di %d e %d e' %d\n\n", n1, n2, ris);
+     
+	return 0;
+}
+int mcd (int x, int y)
+{
+	int resto;
+	
+	//algoritmo di euclide
+	while (y!=0)
+	{
+    	resto=x%y;
+    	x=y;
+    	y=resto;
+}
+
+

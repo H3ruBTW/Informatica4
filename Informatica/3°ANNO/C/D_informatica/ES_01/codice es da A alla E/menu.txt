@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//Scrivere la funzione “int menu()” che visualizzi un menù e che chieda all’utente
+//un numero corrispondente all’operazione eseguire, 0 per uscire. Questo valore va restituito.
+int menu(void);
+
+int main()
+{
+	int sce; //variabile "scelta" serve come variabile
+               //di uscita della funzione "menu"
+ 	do
+	{
+    	      //chiamata della funzione "menu"
+    		sce=menu();
+
+    		switch (sce)
+		{
+			case 0:
+            	printf("\nUscita in corso");
+
+            	//funzione sleep: il programma aspetta "x" secondi prima di passare alla prossima istruzione
+            	fflush(stdout);
+            	sleep(1);
+
+            	printf(".");
+
+            	fflush(stdout);
+            	sleep(1);
+
+            	printf(".");
+
+            	fflush(stdout);
+            	sleep(1);
+
+            	printf(".");
+
+            	fflush(stdout);
+            	sleep(1);
+            	break;
+        	      }
+	}
+           while (sce!=0);
+
+	return 0;
+}
+int menu(void)
+{
+	int ris;//variabile per la risposta
+
+	printf("Funzioni\nInserire 1 per effettuare il MCD\nInserire 2 per effettuare la somma fra divisori\n");
+	printf("Inserire 3 per effettuare il calcolo dell'area del rettangolo\nInserire 0 per uscire dal programma\n");
+	scanf("%d", &ris);
+
+	return ris;
+}

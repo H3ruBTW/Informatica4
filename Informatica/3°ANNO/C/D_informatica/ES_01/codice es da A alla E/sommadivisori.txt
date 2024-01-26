@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+//funzione che prende in input un numero intero e restituisce la somma dei
+//suoi divisori
+int somma_divisori (int);
+
+int main()
+{
+	int n1,n2;
+	int ris;//variabile "risultato"
+
+	//sezione della somma di divisori
+	printf("\nSomma di divisori\nInserire un numero\n");
+	scanf("%d", &n1);
+
+	//chiamata della funzione "somma_divisori"
+	ris=somma_divisori(n1);
+
+	printf("La somma dei divisori di %d e' %d\n\n", n1, ris);
+
+	return 0;
+}
+int somma_divisori(int x)
+{
+	int cont;
+	int ris=0;
+
+	//per velocizzare il programma aggiungo subito al risultato
+	//la variabile "x" perchè nel ciclo "for"
+	//successivo verrà effettuato il controllo dal numero
+	//1 fino alla metà di "x"
+	ris+=x;
+
+	for(cont=1;cont<=x/2;cont++)
+	{
+    		if(x%cont==0)
+        	ris+=cont;
+	}
+
+	return ris;
+}

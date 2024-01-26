@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+//funzione che prende in input 2 numeri interi (rispettivamente l'altezza e la base)
+//e trova l'area di un rettangolo
+int area_rettangolo (int,int);
+
+int main()
+{
+	int n1;
+	int ris; //variabile “risultato”
+
+	//sezione dell'area del rettangolo
+	printf("\nArea del rettangolo\nInserire l'altezza\n");
+	scanf("%d", &n1);
+	printf("Inserire la base\n");
+	scanf("%d", &n2);
+
+	//chiamata della funzione "area_rettangolo"
+	ris=area_rettangolo(n1,n2);
+
+	printf("L'area del rettangolo con altezza %d e base %d e' %d\n\n", n1, n2, ris);                         
+
+	return 0;
+}
+int area_rettangolo(int x, int y)
+{
+	int ris;
+
+	ris=x*y;
+
+	return ris;
+}

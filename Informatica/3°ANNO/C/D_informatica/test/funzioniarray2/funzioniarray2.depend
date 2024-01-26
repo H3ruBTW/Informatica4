@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1679489592 source:c:\users\aless\desktop\codice\informatica\c\d_informatica\test\funzioniarray2\funzioniarray2.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

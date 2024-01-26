@@ -1,0 +1,12 @@
+    printf("Triangolo\nScrivere il valore dell'altezza\n");
+    scanf("%f", &alt);
+    printf("Scrivere il valore della base\n");
+    scanf("%f", &bas);
+
+    //assegno il risultato
+    ris=alt*bas/2;
+
+    printf("L'area del triangolo e' uguale a %.10f", ris);
+    
+    //termino il programma
+    return 0;

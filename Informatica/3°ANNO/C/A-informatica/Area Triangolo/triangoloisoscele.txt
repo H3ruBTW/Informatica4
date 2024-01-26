@@ -1,0 +1,16 @@
+printf("Triangolo isoscele\nScrivere il valore del lato lungo\n");
+    		scanf("%f", &l1);
+    		printf("Scrivere il valore della base\n");
+    		scanf("%f", &l2);
+
+
+    		//assegno il teorema di pitagora per trovare il risultato
+    		l1= pow (l1, 2);
+    		l2div2= l2/2;
+    		l2pot2= pow (l2div2, 2);
+    		ris=sqrt(l1+l2pot2)*l2/2;
+
+    		printf("L'area del triangolo e' uguale a %.10f", ris);
+
+    		//termino il programma
+    		break;

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1671625544 source:c:\users\aless\desktop\codice\informatica\c_informatica\test\multiplida1a100\multiplida1a100.c
+	<stdio.h>
+	<unistd.h>
+

@@ -1,0 +1,162 @@
+/** **************************************************************************
+*\mainpage
+*@brief scrivere 8 funzioni
+*
+*@author Buongallino Alessandro
+*@date 15/02/23
+*@version 1.0
+*/
+
+//------------------------------------------------------------------------------------------
+//=== INCLUDES =============================================================================
+//------------------------------------------------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+
+/** ****************************************************************************************
+* @brief Scrivere la funzione “int menu()” che visualizzi un menù e che chieda all’utente
+*        un numero corrispondente all’operazione eseguire, 0 per uscire. Restituendo tale
+*        valore al termine.
+*
+* @param  No parametri
+* @retval Scelta del utente (tipologia di funzione da eseguire)
+*
+*@author Buongallino Alessandro
+*@date 27/01/23
+*@version 1.0
+*/
+int menu(void);
+
+/** ****************************************************************************************
+* @brief Scrivere una funzione che stampa i numeri palindromi a 2 cifre compresi tra 10 e 99
+*
+* @param  No parametri
+* @retval No return
+*
+*@author Buongallino Alessandro
+*@date 03/02/23
+*@version 1.0
+*/
+void palidromi1099 (void);
+
+/** ****************************************************************************************
+* @brief Scrivere una funzione che stampa i numeri palindromi a 2 cifre compresi tra 100 e 999
+*
+* @param  No parametri
+* @retval No return
+*
+*@author Buongallino Alessandro
+*@date 01/03/23
+*@version 1.0
+*/
+void palidromi100999 (void);
+
+
+int main()
+{
+    int ris; //"risultato"
+
+    do
+    {
+        ris=menu();
+
+        switch(ris)
+        {
+        case 0:printf("\nUscita in corso");
+
+               //funzione sleep: il programma aspetta "x" secondi prima di passare alla prossima istruzione
+               fflush(stdout);
+               sleep(1);
+
+               printf(".");
+
+               fflush(stdout);
+               sleep(1);
+
+               printf(".");
+
+               fflush(stdout);
+               sleep(1);
+
+               printf(".");
+
+               fflush(stdout);
+               sleep(1);
+               break;
+
+        case 1:
+
+               palidromi1099();
+
+               system("pause");
+               system("cls");
+
+               break;
+
+        case 2:
+
+               palidromi100999();
+
+               system("pause");
+               system("cls");
+
+               break;
+
+        default:
+
+                printf("\n|**|ERRORE|**|\n\nIl numero inserito non e' nell'elenco\n\n");
+
+                system("pause");
+                system("cls");
+
+                break;
+        }
+    }while(ris!=0);
+
+    return 0;
+}
+int menu(void)
+{
+    int sce; //"scelta"
+
+    printf("Menu' d'interazione\n");
+    printf("Inserire 1 per i numeri palindromi da 10 a 99\n");
+    printf("Inserire 2 per i numeri palindromi da 100 a 999\n");
+    printf("Inserire 0 per uscire dal programma\n");
+
+    scanf("%d", &sce);
+
+    return sce;
+}
+palidromi1099()
+{
+    int num, c1, c2;
+
+    printf("\n");
+
+    for(num=10; num<100; num++)
+    {
+        c1=num/10;
+        c2=num%10;
+
+        if(c1==c2)
+            printf("%d ",num);
+    }
+    printf("\n\n");
+}
+void palidromi100999 (void)
+{
+    int num, c1, c2;
+
+    printf("\n");
+
+    for(num=100; num<1000; num++)
+    {
+        c1=num/100;
+        c2=num%10;
+
+        if(c1==c2)
+            printf("%d ",num);
+    }
+    printf("\n\n");
+}

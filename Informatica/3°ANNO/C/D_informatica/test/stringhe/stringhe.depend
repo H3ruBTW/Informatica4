@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1685346756 source:c:\users\aless\desktop\codice\informatica\c\d_informatica\test\stringhe\stringhe.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+

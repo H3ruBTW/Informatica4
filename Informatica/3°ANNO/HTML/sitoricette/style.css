@@ -1,0 +1,31 @@
+body
+{
+    background-size:cover;
+    font-family:"times new roman";
+    font-size:15px;
+}
+hr
+{
+    height:5px;
+    background-color:black;
+    border-color:black;
+}
+.tit2
+{
+    font-family:Verdana;
+    font-size:25px;
+}
+.ombra
+{
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+.cib
+{
+    font-family:verdana;
+    font-size:50px;
+    color:white;
+}
+.bia
+{
+    color:white;
+}

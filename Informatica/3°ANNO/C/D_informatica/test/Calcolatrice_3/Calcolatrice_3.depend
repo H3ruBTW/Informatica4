@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1678452869 source:c:\users\aless\desktop\codice\informatica\c\d_informatica\test\calcolatrice_3\calcolatrice_3.c
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+

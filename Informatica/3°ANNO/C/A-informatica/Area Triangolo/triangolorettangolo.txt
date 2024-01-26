@@ -1,0 +1,12 @@
+printf("Triangolo rettangolo\nScrivere il valore del primo lato (non ipotenusa)\n");
+    			scanf("%f", &l1);
+    			printf("Scrivere il valore del secondo lato (non ipotenusa)\n");
+    			scanf("%f", &l2);
+
+    			//assegno il risultato dato dai due lati
+    			ris=l1*l2/2;
+
+    			printf("L'area del triangolo e' uguale a %.10f", ris);
+
+    			//termino il programma
+    			break;

@@ -1,0 +1,135 @@
+/** **************************************************************************
+*\mainpage MCD DIVISORI AREA RETTANGOLO
+*@brief scrivere 5 funzione che hanno il compito di creare un menu, scrivere a
+*       schermo x numeri della sequenza di fibonacci, una che trovi se il numero
+*       è pari o dispari,uno che sommi e mostri i divisori di un numero inserito
+*       e uno che trovi le coppie di numeri amicabili da 0 a 1500
+*
+*@author Buongallino Alessandro
+*@date 27/01/23
+*@version 1.0
+*/
+
+//------------------------------------------------------------------------------------------
+//=== INCLUDES =============================================================================
+//------------------------------------------------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+
+/** ****************************************************************************************
+* @brief Scrivere la funzione “int menu()” che visualizzi un menù e che chieda all’utente
+*        un numero corrispondente all’operazione eseguire, 0 per uscire. Restituendo tale
+*        valore al termine.  Aggiungere alla funzione main le chiamate alle quattro funzioni
+*        per testarle. Chiedere all'utente di inserire i valori necessari per ogni funzione
+*        e stampare il risultato ottenuto.
+*
+* @param  No parametri
+* @retval Scelta del utente (tipologia di funzione da eseguire)
+*
+*@author Buongallino Alessandro
+*@date 27/01/23
+*@version 1.0
+*/
+int menu(void);
+
+/** ****************************************************************************************
+* @brief Scrivere una funzione che prende in input un numero intero e restituisce la sua
+*        sequenza di Fibonacci corrispondente stampandola a schermo.
+*
+* @param  La quantità di numeri della sequenza di fibonacci da scrivere
+* @retval No return
+*
+*@author Buongallino Alessandro
+*@date 03/02/23
+*@version 1.0
+*/
+void testfibonacci (void);
+void fibonacci (int);
+
+int main()
+{
+    int ris; //"risultato"
+
+    do
+    {
+        ris=menu();
+
+        switch(ris)
+        {
+        case 0:printf("\nUscita in corso");
+
+               //funzione sleep: il programma aspetta "x" secondi prima di passare alla prossima istruzione
+               fflush(stdout);
+               sleep(1);
+
+               printf(".");
+
+               fflush(stdout);
+               sleep(1);
+
+               printf(".");
+
+               fflush(stdout);
+               sleep(1);
+
+               printf(".");
+
+               fflush(stdout);
+               sleep(1);
+               break;
+
+        case 1:
+
+               testfibonacci();
+
+               system("pause");
+               system("cls");
+
+               break;
+        }
+    }while(ris!=0);
+
+    return 0;
+}
+int menu(void)
+{
+    int sce; //"scelta"
+
+    printf("Menu' d'interazione\n");
+    printf("Inserire 1 per la sequenza di Fibonacci\n");
+    printf("Inserire 2 per vedere se il numero e' pari o dispari\n");
+    printf("Inserire 3 per vedere i divisori e la somma di un numero\n");
+    printf("Inserire 4 per i numeri amici\n");
+    printf("Inserire 0 per uscire dal programma\n");
+
+    scanf("%d", &sce);
+
+    return sce;
+}
+void testfibonacci (void)
+{
+    int qnum; //"quantità numeri"
+
+    printf("\nFibonacci\nScrivere la quantita' di numeri da scrivere\n");
+    scanf("%d", &qnum);
+
+    fibonacci(qnum);
+}
+void fibonacci (int x)
+{
+    int n1=0, n2=1, cont;
+    int ris;
+
+    printf("\n%d ", n1);
+
+    for(cont=1; cont<x; cont++)
+    {
+        ris=n1+n2;
+        n2=n1;
+        n1=ris;
+
+        printf("%d ",ris);
+    }
+
+    printf("\n");
+}
