@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1697021918 source:c:\users\aless\desktop\codice\informatica\4° anno\c\tutto\es per casa\arraydirecord\arraydirecord.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

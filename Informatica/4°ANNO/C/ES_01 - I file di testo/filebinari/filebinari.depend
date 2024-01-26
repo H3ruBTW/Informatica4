@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1700154494 source:c:\users\aless\desktop\codice\informatica\4° anno\c\es_01 - i file di testo\filebinari\filebinari.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+

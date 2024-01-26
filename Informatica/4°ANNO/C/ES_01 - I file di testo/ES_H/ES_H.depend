@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1699445759 source:c:\users\aless\desktop\codice\informatica\4° anno\c\es_01 - i file di testo\es_h\es_h.c
+	<stdio.h>
+	<stdlib.h>
+	<logs.h>
+
