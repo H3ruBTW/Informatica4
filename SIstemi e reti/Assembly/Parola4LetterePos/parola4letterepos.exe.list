@@ -1,0 +1,185 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+parola4letterepos.exe -- emu8086 assembler version: 4.08  
+ 
+[ 14/12/2022  --  09:20:35 ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .model SMALL
+[   2]        :                                       
+[   3]        :                                       .stack 100H
+[   4]        :                                       
+[   5]        :                                       .data
+[   6]        :                                       
+[   7]        :                                       ;variabili
+[   8]    0100: 00                                    car1 db ?
+[   9]    0101: 00                                    car2 db ?
+[  10]    0102: 00                                    car3 db ?
+[  11]    0103: 00                                    car4 db ?
+[  12]        :                                       
+[  13]        :                                       ;stringhe
+[  14]    0104: 53 63 72 69 76 69 20 75 6E 20 63 61   dom db 'Scrivi un carattere: ', '$'
+                72 61 74 74 65 72 65 3A 20 24       
+[  15]    011A: 4C 61 20 70 61 72 6F 6C 61 20 69 6E   ris db 'La parola inserita e: ', '$'
+                73 65 72 69 74 61 20 65 3A 20 24    
+[  16]    0131: 50 6F 73 69 7A 69 6F 6E 65 3A 20 20   ris2 db 'Posizione:            1234','$'
+                20 20 20 20 20 20 20 20 20 20 31 32 
+                33 34 24                            
+[  17]    014C: 0D 0A 24                              acapo db ,13,10, '$'
+[  18]        :                                       
+[  19]        :                                       .code
+[  20]        :                                       
+[  21]        :                                       ;muovere ,data in DS
+[  22]    0150: B8 10 00                              mov ax, @data
+[  23]    0153: 8E D8                                 mov ds, ax
+[  24]        :                                       
+[  25]        :                                       ;stampa della stringa dom
+[  26]    0155: B4 09                                 mov ah, 09h
+[  27]    0157: BA 04 00                              mov dx, offset dom
+[  28]    015A: CD 21                                 int 21H
+[  29]        :                                       
+[  30]        :                                       ;inserimento da tastiera della variabile car1
+[  31]    015C: B4 01                                 mov ah, 01H
+[  32]    015E: CD 21                                 int 21H
+[  33]        :                                       
+[  34]    0160: A2 00 00                              mov car1, al
+[  35]        :                                       
+[  36]        :                                       ;stampa della stringa acapo
+[  37]    0163: B4 09                                 mov ah, 09h
+[  38]    0165: BA 4C 00                              mov dx, offset acapo
+[  39]    0168: CD 21                                 int 21H
+[  40]        :                                       
+[  41]        :                                       ;stampa della stringa dom
+[  42]    016A: B4 09                                 mov ah, 09h
+[  43]    016C: BA 04 00                              mov dx, offset dom
+[  44]    016F: CD 21                                 int 21H
+[  45]        :                                       
+[  46]        :                                       ;inserimento da tastiera della variabile car2
+[  47]    0171: B4 01                                 mov ah, 01H
+[  48]    0173: CD 21                                 int 21H
+[  49]        :                                       
+[  50]    0175: A2 01 00                              mov car2, al
+[  51]        :                                       
+[  52]        :                                       ;stampa della stringa acapo
+[  53]    0178: B4 09                                 mov ah, 09h
+[  54]    017A: BA 4C 00                              mov dx, offset acapo
+[  55]    017D: CD 21                                 int 21H
+[  56]        :                                       
+[  57]        :                                       ;stampa della stringa dom
+[  58]    017F: B4 09                                 mov ah, 09h
+[  59]    0181: BA 04 00                              mov dx, offset dom
+[  60]    0184: CD 21                                 int 21H
+[  61]        :                                       
+[  62]        :                                       ;inserimento da tastiera della variabile car3
+[  63]    0186: B4 01                                 mov ah, 01H
+[  64]    0188: CD 21                                 int 21H
+[  65]        :                                       
+[  66]    018A: A2 02 00                              mov car3, al
+[  67]        :                                       
+[  68]        :                                       ;stampa della stringa acapo
+[  69]    018D: B4 09                                 mov ah, 09h
+[  70]    018F: BA 4C 00                              mov dx, offset acapo
+[  71]    0192: CD 21                                 int 21H
+[  72]        :                                       
+[  73]        :                                       ;stampa della stringa dom
+[  74]    0194: B4 09                                 mov ah, 09h
+[  75]    0196: BA 04 00                              mov dx, offset dom
+[  76]    0199: CD 21                                 int 21H
+[  77]        :                                       
+[  78]        :                                       ;inserimento da tastiera della variabile car4
+[  79]    019B: B4 01                                 mov ah, 01H
+[  80]    019D: CD 21                                 int 21H
+[  81]        :                                       
+[  82]    019F: A2 03 00                              mov car4, al
+[  83]        :                                       
+[  84]        :                                       ;stampa della stringa acapo
+[  85]    01A2: B4 09                                 mov ah, 09h
+[  86]    01A4: BA 4C 00                              mov dx, offset acapo
+[  87]    01A7: CD 21                                 int 21H
+[  88]        :                                       
+[  89]        :                                       ;stampa della stringa ris
+[  90]    01A9: B4 09                                 mov ah, 09h
+[  91]    01AB: BA 1A 00                              mov dx, offset ris
+[  92]    01AE: CD 21                                 int 21H
+[  93]        :                                       
+[  94]        :                                       ;visualizzazione delle variabili
+[  95]    01B0: B4 02                                 mov ah, 02h
+[  96]    01B2: 8A 16 00 00                           mov dl, car1
+[  97]    01B6: CD 21                                 int 21H
+[  98]        :                                       
+[  99]    01B8: B4 02                                 mov ah, 02h
+[ 100]    01BA: 8A 16 01 00                           mov dl, car2
+[ 101]    01BE: CD 21                                 int 21H
+[ 102]        :                                       
+[ 103]    01C0: B4 02                                 mov ah, 02h
+[ 104]    01C2: 8A 16 02 00                           mov dl, car3
+[ 105]    01C6: CD 21                                 int 21H
+[ 106]        :                                       
+[ 107]    01C8: B4 02                                 mov ah, 02h
+[ 108]    01CA: 8A 16 03 00                           mov dl, car4
+[ 109]    01CE: CD 21                                 int 21H
+[ 110]        :                                       
+[ 111]        :                                       ;stampa della stringa acapo
+[ 112]    01D0: B4 09                                 mov ah, 09h
+[ 113]    01D2: BA 4C 00                              mov dx, offset acapo
+[ 114]    01D5: CD 21                                 int 21H
+[ 115]        :                                       
+[ 116]        :                                       ;stampa della stringa ris2
+[ 117]    01D7: B4 09                                 mov ah, 09h
+[ 118]    01D9: BA 31 00                              mov dx, offset ris2
+[ 119]    01DC: CD 21                                 int 21h
+[ 120]        :                                       
+[ 121]        :                                       ;ridare il controllo al sistema operativo
+[ 122]    01DE: B4 4C                                 mov ah, 4ch
+[ 123]    01E0: CD 21                                 int 21h
+[ 124]        :                                       
+[ 125]        :                                       end
+[ 126]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: E2      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: C0      -   check sum (l.byte)
+0013: 3C      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 15      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 15      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

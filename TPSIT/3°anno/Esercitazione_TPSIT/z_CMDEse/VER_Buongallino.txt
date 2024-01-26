@@ -1,0 +1,102 @@
+C:\Users\aless\Desktop>md Verifica
+
+C:\Users\aless\Desktop>cd Verifica
+
+C:\Users\aless\Desktop\Verifica>type nul>file1.txt
+
+C:\Users\aless\Desktop\Verifica>type nul>file2.txt
+
+C:\Users\aless\Desktop\Verifica>type nul>file3.txt
+
+C:\Users\aless\Desktop\Verifica>type nul>file4.txt
+
+C:\Users\aless\Desktop\Verifica>type nul>file1.c
+
+C:\Users\aless\Desktop\Verifica>type nul>file2.c
+
+C:\Users\aless\Desktop\Verifica>type nul>file3.c
+
+C:\Users\aless\Desktop\Verifica>type nul>file4.c
+
+C:\Users\aless\Desktop\Verifica>type nul>file1.xls
+
+C:\Users\aless\Desktop\Verifica>type nul>file2.xls
+
+C:\Users\aless\Desktop\Verifica>type nul>file3.xls
+
+C:\Users\aless\Desktop\Verifica>type nul>file4.xls
+
+C:\Users\aless\Desktop\Verifica>type nul>file1.docx
+
+C:\Users\aless\Desktop\Verifica>type nul>file2.docx
+
+C:\Users\aless\Desktop\Verifica>type nul>file3.docx
+
+C:\Users\aless\Desktop\Verifica>type nul>file4.docx
+
+C:\Users\aless\Desktop\Verifica>md Excel
+
+C:\Users\aless\Desktop\Verifica>md Word
+
+C:\Users\aless\Desktop\Verifica>move C:\Users\aless\Desktop\Verifica\file1.xls C:\Users\aless\Desktop\Verifica\Excel
+
+C:\Users\aless\Desktop\Verifica>move C:\Users\aless\Desktop\Verifica\file2.xls C:\Users\aless\Desktop\Verifica\Excel
+
+C:\Users\aless\Desktop\Verifica>move C:\Users\aless\Desktop\Verifica\file3.xls C:\Users\aless\Desktop\Verifica\Excel
+
+C:\Users\aless\Verifica\Desktop>move C:\Users\aless\Desktop\Verifica\file4.xls C:\Users\aless\Desktop\Verifica\Excel
+
+C:\Users\aless\Desktop\Verifica>move C:\Users\aless\Desktop\Verifica\file1.docx C:\Users\aless\Desktop\Verifica\Word
+
+C:\Users\aless\Desktop\Verifica>move C:\Users\aless\Desktop\Verifica\file2.docx C:\Users\aless\Desktop\Verifica\Word
+
+C:\Users\aless\Desktop\Verifica>move C:\Users\aless\Desktop\Verifica\file3.docx C:\Users\aless\Desktop\Verifica\Word
+
+C:\Users\aless\Desktop\Verifica>move C:\Users\aless\Desktop\Verifica\file4.docx C:\Users\aless\Desktop\Verifica\Word
+
+C:\Users\aless\Desktop\Verifica>md Varie
+
+C:\Users\aless\Desktop\Verifica>move  C:\Users\aless\Desktop\Verifica\file1.c C:\Users\aless\Desktop\Verifica\Varie
+
+C:\Users\aless\Desktop\Verifica>move  C:\Users\aless\Desktop\Verifica\file2.c C:\Users\aless\Desktop\Verifica\Varie
+
+C:\Users\aless\Desktop\Verifica>move  C:\Users\aless\Desktop\Verifica\file3.c C:\Users\aless\Desktop\Verifica\Varie
+
+C:\Users\aless\Desktop\Verifica>move  C:\Users\aless\Desktop\Verifica\file4.c C:\Users\aless\Desktop\Verifica\Varie
+
+C:\Users\aless\Desktop\Verifica>move  C:\Users\aless\Desktop\Verifica\file1.txt C:\Users\aless\Desktop\Verifica\Varie
+
+C:\Users\aless\Desktop\Verifica>move  C:\Users\aless\Desktop\Verifica\file2.txt C:\Users\aless\Desktop\Verifica\Varie
+
+C:\Users\aless\Desktop\Verifica>move  C:\Users\aless\Desktop\Verifica\file3.txt C:\Users\aless\Desktop\Verifica\Varie
+
+C:\Users\aless\Desktop\Verifica>move  C:\Users\aless\Desktop\Verifica\file4.txt C:\Users\aless\Desktop\Verifica\Varie
+
+C:\Users\aless\Desktop\Verifica>dir C:\Users\aless\Desktop\Verifica\Excel
+
+C:\Users\aless\Desktop\Verifica>dir C:\Users\aless\Desktop\Verifica\Excel /N
+
+C:\Users\aless\Desktop\Verifica>find "file" C:\Users\aless\Desktop\Verifica\Varie\*.*
+
+C:\Users\aless\Desktop\Verifica>ren C:\USERS\ALESS\DESKTOP\VERIFICA\VARIE\FILE1.C file11.txt
+
+C:\Users\aless\Desktop\Verifica>ren C:\USERS\ALESS\DESKTOP\VERIFICA\VARIE\FILE2.C file12.txt
+
+C:\Users\aless\Desktop\Verifica>ren C:\USERS\ALESS\DESKTOP\VERIFICA\VARIE\FILE3.C file13.txt
+
+C:\Users\aless\Desktop\Verifica>del C:\USERS\ALESS\DESKTOP\VERIFICA\VARIE\FILE4.c
+
+C:\Users\aless\Desktop\Verifica>ren  C:\USERS\ALESS\DESKTOP\VERIFICA\VARIE Testo
+
+C:\Users\aless\Desktop\Verifica>cd Verifica
+
+C:\Users\aless\Desktop\Verifica>md Tutti
+
+C:\Users\aless\Desktop\Verifica>copy C:\Users\aless\Desktop\Verifica\Excel C:\Users\aless\Desktop\Verifica\Tutti
+
+C:\Users\aless\Desktop\Verifica>copy C:\Users\aless\Desktop\Verifica\Testo C:\Users\aless\Desktop\Verifica\Tutti
+
+C:\Users\aless\Desktop\Verifica>copy C:\Users\aless\Desktop\Verifica\Word C:\Users\aless\Desktop\Verifica\Tutti
+
+
+

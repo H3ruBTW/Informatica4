@@ -1,0 +1,235 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+maiuminu.exe -- emu8086 assembler version: 4.08  
+ 
+[ 24/11/2022  --  20:16:41 ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .model SMALL
+[   2]        :                                       
+[   3]        :                                       .stack 100H
+[   4]        :                                       
+[   5]        :                                       .data
+[   6]        :                                       
+[   7]        :                                       ;variabile dei caratteri
+[   8]    0100: 00                                    car1 db ?
+[   9]    0101: 00                                    car2 db ?
+[  10]        :                                       
+[  11]        :                                       ;variabile per indicare il numero di lettere maiuscole/minuscole
+[  12]    0102: 30                                    nmai db 30h
+[  13]    0103: 30                                    nmin db 30h
+[  14]        :                                       
+[  15]        :                                       ;sezione delle frasi da visualizzare
+[  16]    0104: 49 6E 73 65 72 69 73 63 69 20 75 6E   dom1 db 'Inserisci una lettera dell alfabeto: ','$'
+                61 20 6C 65 74 74 65 72 61 20 64 65 
+                6C 6C 20 61 6C 66 61 62 65 74 6F 3A 
+                20 24                               
+[  17]    012A: 49 6C 20 6E 75 6D 65 72 6F 20 64 69   ris1 db 'Il numero di lettere maiuscole e ','$'
+                20 6C 65 74 74 65 72 65 20 6D 61 69 
+                75 73 63 6F 6C 65 20 65 20 24       
+[  18]    014C: 49 6C 20 6E 75 6D 65 72 6F 20 64 69   ris2 db 'Il numero di lettere minuscole e ', '$'
+                20 6C 65 74 74 65 72 65 20 6D 69 6E 
+                75 73 63 6F 6C 65 20 65 20 24       
+[  19]    016E: 0D 0A 24                              acapo db ,13,10,'$'
+[  20]        :                                       
+[  21]        :                                       .code
+[  22]        :                                       
+[  23]        :                                       ;muovere il .data in DS
+[  24]    0180: B8 10 00                              mov ax, @data
+[  25]    0183: 8E D8                                 mov ds, ax
+[  26]        :                                       
+[  27]        :                                       ;visualizzare dom1
+[  28]    0185: B4 09                                 mov ah, 09H
+[  29]    0187: BA 04 00                              mov DX, offset dom1
+[  30]    018A: CD 21                                 int 21h
+[  31]        :                                       
+[  32]        :                                       ;far scrivere la lettera all utente
+[  33]    018C: B4 01                                 mov ah, 01h
+[  34]    018E: CD 21                                 int 21h
+[  35]        :                                       
+[  36]    0190: A2 00 00                              mov car1, al
+[  37]        :                                       
+[  38]        :                                       ;visualizzare acapo
+[  39]    0193: B4 09                                 mov ah, 09h
+[  40]    0195: BA 6E 00                              mov dx, offset acapo
+[  41]    0198: CD 21                                 int 21h
+[  42]        :                                       
+[  43]        :                                       ;visualizzare dom1
+[  44]    019A: B4 09                                 mov ah, 09H
+[  45]    019C: BA 04 00                              mov DX, offset dom1
+[  46]    019F: CD 21                                 int 21h
+[  47]        :                                       
+[  48]        :                                       ;far scrivere la lettera all utente
+[  49]    01A1: B4 01                                 mov ah, 01h
+[  50]    01A3: CD 21                                 int 21h
+[  51]        :                                       
+[  52]    01A5: A2 01 00                              mov car2, al
+[  53]        :                                       
+[  54]        :                                       ;visualizzare acapo
+[  55]    01A8: B4 09                                 mov ah, 09h
+[  56]    01AA: BA 6E 00                              mov dx, offset acapo
+[  57]    01AD: CD 21                                 int 21h
+[  58]        :                                       
+[  59]        :                                       ;cmp per visuallizare se il carattere inserito e' una lettera
+[  60]    01AF: A0 00 00                              mov al, car1
+[  61]        :                                       
+[  62]    01B2: 3C 41                                 cmp al, 'A'
+[  63]    01B4: 7D 02                                 jge VERO1
+[  64]    01B6: EB 1E                                 jmp FINE1
+[  65]        :                                       
+[  66]        :                                       ;sezione VERO1
+[  67]    01B8:                                       VERO1:
+[  68]    01B8: 3C 5A                                 cmp al, 'Z'
+[  69]    01BA: 7E 02                                 jle VERO2
+[  70]    01BC: EB 06                                 jmp FALSO2
+[  71]        :                                       
+[  72]        :                                       ;sezione VERO2
+[  73]    01BE:                                       VERO2:
+[  74]    01BE: FE 06 02 00                           inc nmai
+[  75]    01C2: EB 12                                 jmp FINE1
+[  76]        :                                       
+[  77]        :                                       ;sezione FALSO2
+[  78]    01C4:                                       FALSO2:
+[  79]    01C4: 3C 61                                 cmp al, 'a'
+[  80]    01C6: 7D 02                                 jge VERO3
+[  81]    01C8: EB 0C                                 jmp FINE1
+[  82]        :                                       
+[  83]        :                                       ;sezione VERO3
+[  84]    01CA:                                       VERO3:
+[  85]    01CA: 3C 7A                                 cmp al, 'z'
+[  86]    01CC: 7E 02                                 jle VERO4
+[  87]    01CE: EB 06                                 jmp FINE1
+[  88]        :                                       
+[  89]        :                                       ;sezione VERO4
+[  90]    01D0:                                       VERO4:
+[  91]    01D0: FE 06 03 00                           inc nmin
+[  92]    01D4: EB 00                                 jmp FINE1
+[  93]        :                                       
+[  94]        :                                       ;sezione per il secondo carattere
+[  95]    01D6:                                       FINE1:
+[  96]        :                                       
+[  97]    01D6: 90                                    nop
+[  98]        :                                       
+[  99]    01D7: A0 01 00                              mov al, car2
+[ 100]        :                                       
+[ 101]    01DA: 3C 41                                 cmp al, 'A'
+[ 102]    01DC: 7D 02                                 jge VERO21
+[ 103]    01DE: EB 1E                                 jmp FINE2
+[ 104]        :                                       
+[ 105]        :                                       ;sezione VERO1
+[ 106]    01E0:                                       VERO21:
+[ 107]    01E0: 3C 5A                                 cmp al, 'Z'
+[ 108]    01E2: 7E 02                                 jle VERO22
+[ 109]    01E4: EB 06                                 jmp FALSO22
+[ 110]        :                                       
+[ 111]        :                                       ;sezione VERO2
+[ 112]    01E6:                                       VERO22:
+[ 113]    01E6: FE 06 02 00                           inc nmai
+[ 114]    01EA: EB 12                                 jmp FINE2
+[ 115]        :                                       
+[ 116]        :                                       ;sezione FALSO2
+[ 117]    01EC:                                       FALSO22:
+[ 118]    01EC: 3C 61                                 cmp al, 'a'
+[ 119]    01EE: 7D 02                                 jge VERO23
+[ 120]    01F0: EB 0C                                 jmp FINE2
+[ 121]        :                                       
+[ 122]        :                                       ;sezione VERO3
+[ 123]    01F2:                                       VERO23:
+[ 124]    01F2: 3C 7A                                 cmp al, 'z'
+[ 125]    01F4: 7E 02                                 jle VERO24
+[ 126]    01F6: EB 06                                 jmp FINE2
+[ 127]        :                                       
+[ 128]        :                                       ;sezione VERO4
+[ 129]    01F8:                                       VERO24:
+[ 130]    01F8: FE 06 03 00                           inc nmin
+[ 131]    01FC: EB 00                                 jmp FINE2
+[ 132]        :                                       
+[ 133]        :                                       
+[ 134]        :                                       ;finale, scrittura a schermo delle variabili
+[ 135]        :                                       
+[ 136]        :                                       ;visualizzare ris1
+[ 137]    01FE:                                       FINE2:
+[ 138]    01FE: B4 09                                 mov ah, 09H
+[ 139]    0200: BA 2A 00                              mov DX, offset ris1
+[ 140]    0203: CD 21                                 int 21h
+[ 141]        :                                       
+[ 142]        :                                       ;visualizzazione della variabile nmai
+[ 143]    0205: B4 02                                 mov ah, 02h
+[ 144]    0207: 8A 16 02 00                           mov dl, nmai
+[ 145]    020B: CD 21                                 int 21h
+[ 146]        :                                       
+[ 147]        :                                       ;visualizzare acapo
+[ 148]    020D: B4 09                                 mov ah, 09h
+[ 149]    020F: BA 6E 00                              mov dx, offset acapo
+[ 150]    0212: CD 21                                 int 21h
+[ 151]        :                                       
+[ 152]        :                                       ;visualizzare ris2
+[ 153]    0214: B4 09                                 mov ah, 09H
+[ 154]    0216: BA 4C 00                              mov DX, offset ris2
+[ 155]    0219: CD 21                                 int 21h
+[ 156]        :                                       
+[ 157]        :                                       ;visualizzazione della variabile nmin
+[ 158]    021B: B4 02                                 mov ah, 02h
+[ 159]    021D: 8A 16 03 00                           mov dl, nmin
+[ 160]    0221: CD 21                                 int 21h
+[ 161]        :                                       
+[ 162]        :                                       ;visualizzare acapo
+[ 163]    0223: B4 09                                 mov ah, 09h
+[ 164]    0225: BA 6E 00                              mov dx, offset acapo
+[ 165]    0228: CD 21                                 int 21h
+[ 166]        :                                       
+[ 167]        :                                       ;ridare il controllo al sistema operativo
+[ 168]    022A: B4 4C                                 mov ah, 4ch
+[ 169]    022C: CD 21                                 int 21h
+[ 170]        :                                       
+[ 171]        :                                       end
+[ 172]        :                                       
+[ 173]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 2E      -   bytes on last page (l.byte)
+0003: 00      -   bytes on last page (h.byte)
+0004: 03      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: 57      -   check sum (l.byte)
+0013: 8F      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 18      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 18      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

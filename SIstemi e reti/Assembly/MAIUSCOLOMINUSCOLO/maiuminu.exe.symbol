@@ -1,0 +1,31 @@
+< THE SYMBOL TABLE >  maiuminu.exe  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+CAR1                     	00000     	1         	VAR       	data      
+CAR2                     	00001     	1         	VAR       	data      
+NMAI                     	00002     	1         	VAR       	data      
+NMIN                     	00003     	1         	VAR       	data      
+DOM1                     	00004     	1         	VAR       	data      
+RIS1                     	0002A     	1         	VAR       	data      
+RIS2                     	0004C     	1         	VAR       	data      
+ACAPO                    	0006E     	1         	VAR       	data      
+CODE                     	00018     	-5        	SEGMENT   	(ITSELF)  
+VERO1                    	00038     	-1        	LABEL     	code      
+VERO2                    	0003E     	-1        	LABEL     	code      
+FALSO2                   	00044     	-1        	LABEL     	code      
+VERO3                    	0004A     	-1        	LABEL     	code      
+VERO4                    	00050     	-1        	LABEL     	code      
+FINE1                    	00056     	-1        	LABEL     	code      
+VERO21                   	00060     	-1        	LABEL     	code      
+VERO22                   	00066     	-1        	LABEL     	code      
+FALSO22                  	0006C     	-1        	LABEL     	code      
+VERO23                   	00072     	-1        	LABEL     	code      
+VERO24                   	00078     	-1        	LABEL     	code      
+FINE2                    	0007E     	-1        	LABEL     	code      
+===================================================================================================
+[ 24/11/2022  --  20:16:41 ] 
+< END >
+ 

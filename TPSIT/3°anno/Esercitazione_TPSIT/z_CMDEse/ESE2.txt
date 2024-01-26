@@ -1,0 +1,25 @@
+C:\Users\aless\Desktop\Esercitazione TPSIT>md X
+
+C:\Users\aless\Desktop\Esercitazione TPSIT>md Y
+
+C:\Users\aless\Desktop\Esercitazione TPSIT>cd C:\Users\aless\Desktop\Esercitazione TPSIT\X
+
+C:\Users\aless\Desktop\Esercitazione TPSIT\X>type nul> file.txt
+
+C:\Users\aless\Desktop\Esercitazione TPSIT\X>type nul> file1.txt
+
+C:\Users\aless\Desktop\Esercitazione TPSIT\X>type nul> file2.txt
+
+C:\Users\aless\Desktop\Esercitazione TPSIT\X>type nul> file.xls
+
+C:\Users\aless\Desktop\Esercitazione TPSIT\X>type nul> file1.xls
+
+C:\Users\aless\Desktop\Esercitazione TPSIT\X>type nul> file2.xls
+
+C:\Users\aless\Desktop\Esercitazione TPSIT\X>type nul> file.doc
+
+C:\Users\aless\Desktop\Esercitazione TPSIT\X>type nul> file1.doc
+
+C:\Users\aless\Desktop\Esercitazione TPSIT\X>type nul> file2.doc
+
+C:\Windows\System32>find "file" C:\Users\aless\Desktop\Esercitazione_TPSIT\X\*.*

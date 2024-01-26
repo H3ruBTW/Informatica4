@@ -1,0 +1,27 @@
+c:\>md casa
+c:\>md esami
+c:\>md varie
+c:\>cd c:\casa
+c:\casa>type nul> ricorda.txt
+c:\casa>md spese
+c:\casa>cd c:\casa\spese
+c:\casa\spese>type nul>luglio.xls
+c:\casa\spese>type nul>giugno.xls
+c:\casa\spese>type nul>agosto.xls
+c:\casa\spese>cd c:\casa
+c:\casa>md Entrate
+c:\casa>cd c:\esami
+c:\esami>type nul> elenco.doc
+c:\esami>type nul> voti.xls
+c:\esami>md analisi
+c:\esami>cd c:\esami\analisi
+c:\esami\analisi>type nul> tesina.doc
+c:\esami\analisi>type nul> testi.doc
+c:\esami\analisi>cd c:\esami
+c:\esami>md fisica
+c:\esami>cd c:\esami\fisica
+c:\esami\fisica>type nul>tesina.doc
+c:\esami\fisica>type nul> testi.doc
+c:\esami\fisica>cd c:\varie
+c:\varie>type nul> telefono.xls
+c:\varie>type nul> amici.txt

@@ -1,0 +1,19 @@
+< THE SYMBOL TABLE >  parola4letterepos.exe  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+CAR1                     	00000     	1         	VAR       	data      
+CAR2                     	00001     	1         	VAR       	data      
+CAR3                     	00002     	1         	VAR       	data      
+CAR4                     	00003     	1         	VAR       	data      
+DOM                      	00004     	1         	VAR       	data      
+RIS                      	0001A     	1         	VAR       	data      
+RIS2                     	00031     	1         	VAR       	data      
+ACAPO                    	0004C     	1         	VAR       	data      
+CODE                     	00015     	-5        	SEGMENT   	(ITSELF)  
+===================================================================================================
+[ 14/12/2022  --  09:20:35 ] 
+< END >
+ 

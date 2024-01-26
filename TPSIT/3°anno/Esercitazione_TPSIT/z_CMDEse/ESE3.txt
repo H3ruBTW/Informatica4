@@ -1,0 +1,31 @@
+C:\Users\aless\Desktop\Esercitazione_TPSIT>compact z_CMDEse /C
+
+ Compressione dei file in C:\Users\aless\Desktop\Esercitazione_TPSIT\ in corso
+
+z_CMDEse                    0 :         0 = 1,0 a 1 [OK]
+
+1 file in 1 directory sono stati compressi.
+0 byte complessivi di dati memorizzati in 0 byte.
+Il rapporto di compressione è 1,0 a 1.
+
+C:\Users\aless\Desktop\Esercitazione_TPSIT>compact z_CMDEse /U
+
+ Decompressione dei file in C:\Users\aless\Desktop\Esercitazione_TPSIT\ in corso
+
+z_CMDEse [OK]
+
+1 file in 1 directory sono stati decompressi.
+
+C:\Users\aless\Desktop\Esercitazione_TPSIT>date /T
+20/04/2023
+
+C:\Users\aless\Desktop\Esercitazione_TPSIT>pause
+Premere un tasto per continuare . . .
+
+C:\Users\aless\Desktop\Esercitazione_TPSIT>tasklist
+
+C:\Users\aless\Desktop\Esercitazione_TPSIT>taskkill /f /IM cmd.exe
+
+C:\Users\aless\Desktop\Esercitazione_TPSIT>time /T
+10:42
+
