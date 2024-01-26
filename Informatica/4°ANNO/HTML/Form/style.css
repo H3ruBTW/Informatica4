@@ -1,0 +1,32 @@
+body
+{
+    font-family:'Courier New';
+    background-color:black;
+    color:rgb(0, 255, 0);
+}
+h1
+{
+    font-size:40px;
+}
+form
+{
+    font-size:15px;
+}
+legend
+{
+    font-size:20px;
+}
+fieldset
+{
+    border-color:rgb(0, 255, 0);
+    width: 750px;
+}
+.lun
+{
+    width: 300px;
+}
+input
+{
+    background:rgba(255, 255, 255, 0.108);
+    color:white;
+}

@@ -1,0 +1,58 @@
+table, tr, th
+{
+    border:5px solid black;
+    border-collapse: collapse;
+    background-color: white;
+    text-align: start;
+    font-size:20px;
+    font-family:monospace;
+}
+
+h1
+{
+    font-size:50px;
+    font-family: monospace;
+}
+
+hr
+{
+    height:5px;
+    background-color:black;
+    border-color:black;
+}
+
+h2
+{
+    font-size:20px;
+    font-family: monospace;
+}
+
+.center
+{
+    text-align: center;
+}
+
+p
+{
+    margin: 60px;
+    font-family: Times;
+    font-size: 25px;
+}
+
+.bottom
+{
+    position:absolute; 
+    bottom: 10px;
+}
+
+h4
+{
+    font-family: monospace;
+    font-size: 30px;
+}
+
+.ombra
+{
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color:white;
+}
