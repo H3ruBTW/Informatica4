@@ -11,5 +11,5 @@ persona.eta = prompt("Scrivi la tua età:");
 console.log("Persona:");
 for(let chiave in persona)
 {
-    console.log (chiave + " : " + persona[chiave]);
+    console.log (chiave + ": " + persona[chiave]);
 }
