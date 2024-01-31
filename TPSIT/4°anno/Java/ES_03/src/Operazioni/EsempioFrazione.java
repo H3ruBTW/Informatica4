@@ -26,19 +26,19 @@ public class EsempioFrazione {
         System.out.println("Frazione 1: " + frazione1);
         System.out.println("Frazione 2: " + frazione2);
 
-        /*Somma delle frazioni*/
+        /* Somma delle frazioni */
         Frazione somma = frazione1.somma(frazione2);
         System.out.println("\nSomma: " + somma + " (semplificata)");
 
-        /*Sottrazione delle frazioni*/
+        /* Sottrazione delle frazioni */
         Frazione sottrazione = frazione1.sottrai(frazione2);
         System.out.println("\nSottrazione: " + sottrazione + " (semplificata)");
-        
-        /*Moltiplicazione delle frazioni */
+
+        /* Moltiplicazione delle frazioni */
         Frazione moltiplica = frazione1.moltiplica(frazione2);
         System.out.println("\nMoltiplica: " + moltiplica + " (semplificata)");
 
-        /*Somma delle frazioni*/
+        /* Somma delle frazioni */
         Frazione dividi = frazione1.dividi(frazione2);
         System.out.println("\nDividi: " + dividi + " (semplificata)");
 

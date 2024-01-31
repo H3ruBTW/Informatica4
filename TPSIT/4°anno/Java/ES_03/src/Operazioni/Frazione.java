@@ -27,20 +27,19 @@ public class Frazione {
         return numeratore + "/" + denominatore;
     }
 
-    // Metodo per semplificare la frazione 
-    private Frazione semplifica(Frazione fraction)
-    {
+    // Metodo per semplificare la frazione
+    private Frazione semplifica(Frazione fraction) {
         int div;
-        
-        do
-        {
-            div=calcolaMCD(fraction.numeratore, fraction.denominatore);
-            fraction.numeratore/=div;
-            fraction.denominatore/=div;
-        }while(div!=1);
+
+        do {
+            div = calcolaMCD(fraction.numeratore, fraction.denominatore);
+            fraction.numeratore /= div;
+            fraction.denominatore /= div;
+        } while (div != 1);
 
         return fraction;
     }
+
     // Metodo per trovare l'MCD fra 2 numeri
     private int calcolaMCD(int x, int y) {
 
@@ -75,6 +74,7 @@ public class Frazione {
 
         return nuovaFrazione;
     }
+
     // Metodo per sottrarre due frazioni
     public Frazione sottrai(Frazione altraFrazione) {
         int nuovoNumeratore = this.numeratore * altraFrazione.denominatore
@@ -85,6 +85,7 @@ public class Frazione {
 
         return nuovaFrazione;
     }
+
     // Metodo per moltiplicare due frazioni
     public Frazione moltiplica(Frazione altraFrazione) {
         int nuovoNumeratore = this.numeratore * altraFrazione.numeratore;
@@ -94,6 +95,7 @@ public class Frazione {
 
         return nuovaFrazione;
     }
+
     // Metodo per dividere due frazioni
     public Frazione dividi(Frazione altraFrazione) {
         int nuovoNumeratore = this.numeratore * altraFrazione.denominatore;
