@@ -45,6 +45,11 @@ public class Frazione {
 
         int r;
 
+        if(x < 0)
+            x*=-1;
+        if(y < 0)
+            y*=-1;
+
         if (x < y) {
             int z = x;
             x = y;
