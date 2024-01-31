@@ -55,5 +55,9 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  "java.project.sourcePaths": [
+    "TPSIT/4°anno/Java/a/src",
+    "TPSIT/4°anno/Java/ES_03/src"
+  ]
 }
