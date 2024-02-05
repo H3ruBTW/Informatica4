@@ -59,5 +59,9 @@
   "java.project.sourcePaths": [
     "TPSIT/4°anno/Java/a/src",
     "TPSIT/4°anno/Java/ES_03/src"
-  ]
+  ],
+  "files.associations": {
+    "ostream": "cpp",
+    "iostream": "cpp"
+  }
 }
