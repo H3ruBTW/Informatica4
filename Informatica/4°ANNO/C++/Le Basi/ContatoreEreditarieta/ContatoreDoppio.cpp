@@ -2,10 +2,7 @@
 #include <iostream>
 using namespace std;
 
-ContatoreDoppio::ContatoreDoppio()
-{
-    Contatore();
-}
+ContatoreDoppio::ContatoreDoppio():Contatore(){};
 
 void ContatoreDoppio::IncrementaDoppio()
 {
