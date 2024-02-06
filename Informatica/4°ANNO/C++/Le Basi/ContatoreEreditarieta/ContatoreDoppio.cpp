@@ -2,10 +2,16 @@
 #include <iostream>
 using namespace std;
 
-ContatoreDoppio::ContatoreDoppio():Contatore(){};
+ContatoreDoppio::ContatoreDoppio() : Contatore(){};
 
-void ContatoreDoppio::IncrementaDoppio()
+void ContatoreDoppio::incrementaDoppio()
 {
     inc();
     inc();
+}
+
+void ContatoreDoppio::decrementaDoppio()
+{
+    dec();
+    dec();
 }

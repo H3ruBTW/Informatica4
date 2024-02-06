@@ -49,19 +49,16 @@ void Contatore::reset()
 
 void Contatore::inc()
 {
-    cout << endl << "Incremento in corso..." << endl;
+    cout << endl
+         << "Incremento in corso..." << endl;
     valore += passo;
-    //cout << endl << valore;
+    // cout << endl << valore;
 }
 
 void Contatore::dec()
 {
-    cout << endl << "Decremento in corso..." << endl;
+    cout << endl
+         << "Decremento in corso..." << endl;
     valore -= passo;
-    //cout << valore;
-}
-
-void Contatore::stampa()
-{
-    cout << "Valore: " << valore << "\nPasso: " << passo << endl;
+    // cout << valore;
 }
