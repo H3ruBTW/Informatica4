@@ -12,8 +12,9 @@ int main()
     cout << "-- Pre Incremento --" << endl
          << "Oggetto C1:" << endl
          << "Valore: " << c1.getValore() << endl
-         << "Passo: " << c1.getPasso();
-    cout << "\n\nOggetto C2:" << endl
+         << "Passo: " << c1.getPasso() << endl
+         << endl
+         << "Oggetto C2:" << endl
          << "Valore: " << c2.getValore() << endl
          << "Passo: " << c2.getPasso() << endl;
 
@@ -29,7 +30,7 @@ int main()
          << "Valore: " << c1.getValore() << endl
          << "Passo: " << c1.getPasso() << endl
          << endl
-         << "\n\nOggetto C2:" << endl
+         << "Oggetto C2:" << endl
          << "Valore: " << c2.getValore() << endl
          << "Passo: " << c2.getPasso() << endl;
 
@@ -47,7 +48,11 @@ int main()
          << endl
          << "Oggetto C2:" << endl
          << "Valore: " << c2.getValore() << endl
-         << "Passo: " << c2.getPasso() << endl;
+         << "Passo: " << c2.getPasso() << endl
+         << endl;
+
+         c1.~Contatore();
+         c2.~Contatore();
 
     return 0;
 }
