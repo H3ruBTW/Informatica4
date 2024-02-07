@@ -6,6 +6,7 @@ public class EsempioFrazione {
 
     public static void main(String[] args) {
         int n1, n2, d1, d2;
+        Frazione frazione1 = new Frazione();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -18,9 +19,24 @@ public class EsempioFrazione {
         System.out.print("Scrivi il denominatore della frazione 2: ");
         d2 = scanner.nextInt();
 
-        // Creazione di due frazioni
-        Frazione frazione1 = new Frazione(n1, d1);
+        // Set della frazione 1
+        frazione1.setNumeratore(n1);
+        frazione1.setDenominatore(d1);
+
+        // Creazione di una frazione con costruttore con due parametri
         Frazione frazione2 = new Frazione(n2, d2);
+
+        // Controllo per vedere se è stato inserito 0 tra le frazioni
+        if(frazione1.getDenominatore()==0 || frazione1.getNumeratore()==0)
+        {
+            System.out.println("\nHai inserito uno 0 nella frazione1, il programma verrà chiuso per evitare eventuali errori.");
+            System.exit(-1);
+        }
+        if(frazione2.getDenominatore()==0 || frazione2.getNumeratore()==0)
+        {
+            System.out.println("\nHai inserito uno 0 nella frazione2, il programma verrà chiuso per evitare eventuali errori.");
+            System.exit(-2);
+        }
 
         // Stampa delle frazioni
         System.out.println("\nFrazione 1: " + frazione1);

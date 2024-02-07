@@ -5,7 +5,11 @@ public class Frazione {
     private int numeratore;
     private int denominatore;
     // Costruttore
-
+    public Frazione()
+    {
+        numeratore=0;
+        denominatore=1;
+    }
     public Frazione(int numeratore, int denominatore) {
         this.numeratore = numeratore;
         this.denominatore = denominatore;
@@ -19,6 +23,18 @@ public class Frazione {
     // Metodo per ottenere il denominatore
     public int getDenominatore() {
         return denominatore;
+    }
+
+    //Metodo per settare il numeratore
+    public void setNumeratore(int numeratore)
+    {
+        this.numeratore=numeratore;
+    }
+
+    //Metodo per settare il denominatore
+    public void setDenominatore(int denominatore)
+    {
+        this.denominatore=denominatore;
     }
 
     // Metodo per ottenere la rappresentazione testuale della frazione
@@ -86,7 +102,7 @@ public class Frazione {
                 - altraFrazione.numeratore * this.denominatore;
         int nuovoDenominatore = this.denominatore * altraFrazione.denominatore;
 
-        if(nuovoDenominatore!=0 && nuovoNumeratore!=0){
+        if(nuovoNumeratore!=0){
 
             Frazione nuovaFrazione = semplifica(new Frazione(nuovoNumeratore, nuovoDenominatore));
             return nuovaFrazione;
