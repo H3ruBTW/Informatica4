@@ -23,7 +23,7 @@ public class EsempioFrazione {
         Frazione frazione2 = new Frazione(n2, d2);
 
         // Stampa delle frazioni
-        System.out.println("Frazione 1: " + frazione1);
+        System.out.println("\nFrazione 1: " + frazione1);
         System.out.println("Frazione 2: " + frazione2);
 
         /* Somma delle frazioni */

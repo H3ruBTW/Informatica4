@@ -86,9 +86,16 @@ public class Frazione {
                 - altraFrazione.numeratore * this.denominatore;
         int nuovoDenominatore = this.denominatore * altraFrazione.denominatore;
 
-        Frazione nuovaFrazione = semplifica(new Frazione(nuovoNumeratore, nuovoDenominatore));
+        if(nuovoDenominatore!=0 && nuovoNumeratore!=0){
 
-        return nuovaFrazione;
+            Frazione nuovaFrazione = semplifica(new Frazione(nuovoNumeratore, nuovoDenominatore));
+            return nuovaFrazione;
+        }
+        else
+        {
+            Frazione nuovaFrazione = new Frazione(nuovoNumeratore, nuovoDenominatore);
+            return nuovaFrazione;
+        }
     }
 
     // Metodo per moltiplicare due frazioni
