@@ -51,8 +51,5 @@ int main()
          << "Passo: " << c2.getPasso() << endl
          << endl;
 
-         c1.~Contatore();
-         c2.~Contatore();
-
     return 0;
 }
