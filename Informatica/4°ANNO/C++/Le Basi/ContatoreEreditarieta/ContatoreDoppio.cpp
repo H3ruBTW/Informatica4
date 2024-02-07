@@ -4,14 +4,14 @@ using namespace std;
 
 ContatoreDoppio::ContatoreDoppio() : Contatore(){};
 
-void ContatoreDoppio::incrementaDoppio()
+void ContatoreDoppio::inc()
 {
-    inc();
-    inc();
+    Contatore::inc();
+    Contatore::inc();
 }
 
-void ContatoreDoppio::decrementaDoppio()
+void ContatoreDoppio::dec()
 {
-    dec();
-    dec();
+    Contatore::dec();
+    Contatore::dec();
 }

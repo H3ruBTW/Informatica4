@@ -35,8 +35,8 @@ class ContatoreDoppio : public Contatore
 {
 public:
     ContatoreDoppio();
-    void incrementaDoppio(); //utilizza due volte il metodo inc() del padre
-    void decrementaDoppio(); //utilizza due volte il metodo dec() del padre
+    void inc(); //utilizza due volte il metodo inc() del padre
+    void dec(); //utilizza due volte il metodo dec() del padre
 };
 
 #endif

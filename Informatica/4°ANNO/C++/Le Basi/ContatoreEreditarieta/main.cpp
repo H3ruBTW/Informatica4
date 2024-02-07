@@ -24,7 +24,7 @@ int main()
 
      cout << endl
           << "C2:";
-     c2.incrementaDoppio();
+     c2.inc();
 
      cout << endl
           << "-- Post Incremento / Pre Decremento -- " << endl
@@ -42,7 +42,7 @@ int main()
 
      cout << endl
           << "C2:";
-     c2.decrementaDoppio();
+     c2.dec();
 
      cout << endl
           << "-- Post Decremento -- " << endl
