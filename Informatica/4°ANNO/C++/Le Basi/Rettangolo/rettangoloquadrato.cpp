@@ -1,6 +1,17 @@
 #include "rettangoloquadrato.h"
 #include <math>
 void Rettangolo::setBase(double base)
+{
+    l1=base;
+    l3=base;
+}
+
+void Rettangolo::setAltezza(double altezza)
+{
+    l2=altezza;
+    l4=altezza;
+}
+
 void Quadrato::setLati(double l)
 {
     l1=l;
