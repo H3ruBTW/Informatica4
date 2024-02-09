@@ -12,6 +12,21 @@ void Rettangolo::setAltezza(double altezza)
     l4=altezza;
 }
 
+double Rettangolo::calcolaPerimetro()
+{
+    return (l1+l2)*2;
+}
+
+double Rettangolo::calcolaArea()
+{
+    return (l1*l2);
+}
+
+double Rettangolo::calcolaDiagonale()
+{
+    return hypot(l1,l2);
+}
+
 void Quadrato::setLati(double l)
 {
     l1=l;
