@@ -4,46 +4,42 @@
 class Rettangolo
 {
 private:
-    int base;
-    int altezza;
+    double l1, l2, l3, l4; //1 e 3 base, 2 e 4 altezza
 
 public:
-    Rettangolo();
-
-    Rettangolo(double, double);
+    
+    Rettangolo(double base=1, double altezza=1)
+    {
+        l1=base;
+        l3=base;
+        l2=altezza;
+        l4=altezza;
+    }
    
-    void setBase(double base)
-    {
-        this->base = base;
-    }
+    void setBase(double);
 
-    void setAltezza(double altezza)
-    {
-        this->altezza = altezza;
-    }
+    void setAltezza(double);
 
-    double calcolaPerimetro()
-    {
-        return (base + altezza) * 2;
-    }
+    double calcolaPerimetro();
 
-    double calcolaArea()
-    {
-        return base * altezza;
-    }
+    double calcolaArea();
 
-    double calcolaDiagonale()
-    {
-        return sqrt(pow(altezza, 2) + pow(base, 2));
-    }
+    double calcolaDiagonale();
 
-    void stampaTutto()
-    {
-        cout << "\nIl rettangolo con base " << base << " e altezza " << altezza << "\n\n";
-        cout << "Perimetro: " << calcolaPerimetro() << "\n";
-        cout << "Area: " << calcolaArea() << "\n";
-        cout << "Diagonale: " << calcolaDiagonale() << "\n\n";
-    }
-}
+};
+
+class Quadrato: public Rettangolo {
+
+public:
+    Quadrato(double lato = 1): Rettangolo(lato, lato);
+
+    void setLati(double);
+
+    double calcolaPerimetro();
+
+    double calcolaArea();
+
+    double calcolaDiagonale();
+};
 
 #endif
