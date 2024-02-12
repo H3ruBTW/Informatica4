@@ -58,7 +58,7 @@ public class EsempioFrazioneARGS {
         }
         catch(Exception e)
         {
-            System.out.println("Hai inserito un numero non valido");
+            System.out.println("Hai inserito un carattere non valido");
         } 
     }
 }
