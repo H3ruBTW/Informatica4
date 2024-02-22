@@ -10,7 +10,6 @@ public class EsempioFrazioneARGS {
             System.out.println("Sintassi: numeratore1 denominatore1 numeratore2 denominatore2");
             System.exit(-3);
         }
-
         try
         {
             int n1 = Integer.parseInt(args[0]), d1 = Integer.parseInt(args[1]), n2 = Integer.parseInt(args[2]), d2 = Integer.parseInt(args[3]);
