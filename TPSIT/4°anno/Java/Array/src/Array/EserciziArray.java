@@ -46,12 +46,12 @@ class Array
 
         System.out.println("\nNumeri negativi trovati:");
 
-        for(int i=0; i<n; i++)
+        for(double num : a)
         {
-            if(a[i]<0)
+            if(num<0)
             {
-                somma+=a[i];
-                System.out.print(a[i] + " ");
+                somma+=num;
+                System.out.print(num + " ");
             }
         }
 
@@ -60,12 +60,12 @@ class Array
 
     public double massimo (double a[])
     {
-        double max=Math.abs(Double.MIN_VALUE);
+        double max=Double.NEGATIVE_INFINITY;
 
-        for(int i=0; i<n; i++)
+        for(double num : a)
         {
-            if(a[i]>max)
-                max=a[i];  
+            if(num>max)
+                max=num;  
         }
 
         return max;
@@ -87,19 +87,16 @@ class Array
     {
         for(int i=0; i<n; i++)
         {
-            if(Math.round(Math.random())==0)
-                a[i]=Math.round(Math.random()*-10);
-            else
-                a[i]=Math.round(Math.random()*10);
+            a[i]=Math.random()*21-10;
         }
     }
 
     public void stampa(double a[])
     {
         System.out.println("\nArray:");
-        for(int i=0; i<n; i++)
+        for(double num : a)
         {
-            System.out.print(a[i] + " ");
+            System.out.print(num + " ");
         }
     }
 }
