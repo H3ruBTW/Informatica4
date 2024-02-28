@@ -47,7 +47,7 @@ int Pila::top()
     if(!ifEmpty())
     {
         cout << "Elemento e' stato preso con successo" << endl;
-        return p[fine--];
+        return p[fine-1];
     }
     else
     {
