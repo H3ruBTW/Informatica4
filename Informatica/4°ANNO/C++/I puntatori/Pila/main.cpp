@@ -58,10 +58,6 @@ int main()
                  << endl;
             system("pause");
             break;
-        case 0:
-            cout << endl 
-                 << "Stai per uscire dal programma";
-            break;
         default:
             cout << endl 
                  << "Hai inserito un numero non esistente nella lista" << endl;
@@ -69,6 +65,9 @@ int main()
             break;
         }
     }
+
+    cout << endl 
+         << "Stai per uscire dal programma";
 }
 
 int menu()
