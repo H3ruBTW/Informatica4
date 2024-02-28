@@ -3,15 +3,16 @@ import java.util.Scanner;
 
 public class EsPila {
 
-    public static void main(String[] args) {
+    static Scanner scanner = new Scanner(System.in);
 
-        Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
 
         try{
             if(args.length!=1)
             {
                 System.err.println("Non hai inserito il numero giusto di parametri da linea di comando");
                 System.err.println("Sintassi: Numero Intero(grandezza del array)");
+                scanner.close();
                 System.exit(-1); 
             }
 
@@ -19,29 +20,34 @@ public class EsPila {
             Pila pila = new Pila(N);
             int array[] = new int[N];
 
-            int d, n;
+            int d, num;
 
             while ((d=menù())!=0) {
                 
                 switch (d) {
                     case 1:
                         System.out.print("Scrivere un numero da inserire nell'array: ");
-                        n=scanner.nextInt();
-                        pila.push(array, n);
+                        num=scanner.nextInt();
+                        System.out.println(" ");
+                        pila.push(array, num);
                         break;
                     case 2:
+                        System.out.println(" ");
                         pila.pop(array);
                         break;
                     case 3:
-                        n=pila.top(array);
-                        System.out.println("L'elemento visualizzato è " + n);
+                        System.out.println(" ");
+                        num=pila.top(array);
+                        System.out.println("L'elemento visualizzato è " + num);
                         break;
                     default:
+                        System.out.println(" ");
                         System.out.println("Hai inserito un numero non esistente nella lista");
                         break;
                 }
             }
 
+            System.out.print("");
             System.out.println("Stai per chiudere il programma");
         
             scanner.close();
@@ -62,17 +68,14 @@ public class EsPila {
     private static int menù(){
 
         int d;
+        System.out.println("");
         System.out.println("Inserire 1 per inserire l'elemento nella Pila");
         System.out.println("Inserire 2 per eliminare l'ultimo elemento nella Pila");
         System.out.println("Inserire 3 per vedere l'ultimo elemento nella Pila");
         System.out.println("Inserire 0 per uscire");
         System.out.print("Inserimento: ");
 
-        Scanner scanner2 = new Scanner(System.in);
-
-        d = scanner2.nextInt();
-
-        scanner2.close();
+        d = scanner.nextInt();
         
         return d;
     }
