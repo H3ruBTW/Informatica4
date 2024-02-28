@@ -45,13 +45,17 @@ int main()
             system("pause");
             break;
         case 5:
-            p1.top();
-            cout << endl;
+            n=p1.top();
+
+            cout << "L'elemento visualizzato e' " << n
+                 << endl;
             system("pause");
             break;
         case 6:
-            p2.top();
-            cout << endl;
+            n=p2.top();
+
+            cout << "L'elemento visualizzato e' " << n
+                 << endl;
             system("pause");
             break;
         case 0:

@@ -33,7 +33,7 @@ void Pila::pop()
     if(!ifEmpty())
     {
         fine--;
-        p[fine] = NULL;        
+        p[fine] = 0;        
         cout << "L'elemento e' stato correttamente eliminato" << endl;
     }
     else
@@ -57,7 +57,7 @@ int Pila::top()
 
 bool Pila::ifEmpty()
 {
-    if(fine=0)
+    if(fine==0)
         return true;
     else
         return false;
