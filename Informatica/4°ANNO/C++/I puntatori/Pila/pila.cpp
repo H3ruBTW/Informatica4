@@ -2,9 +2,15 @@
 #include <iostream>
 using namespace std;
 
+Pila::Pila()
+{
+    N = 10;
+    p = new int[N];
+}
+
 Pila::Pila(int N)
 {
-    this.N = N;
+    this->N = N;
     p = new int[N]; 
 }
 
@@ -12,8 +18,7 @@ void Pila::push(int num)
 {
     if(!ifFull())
     {
-        *p = num;
-        p++;
+        p[fine] = num;
         fine++;
         cout << "L'elemento è stato correttamente inserito" << endl;
     }
@@ -27,9 +32,8 @@ void Pila::pop()
 {
     if(!ifEmpty())
     {
-        *p = NULL;
-        p--;
         fine--;
+        p[fine] = NULL;        
         cout << "L'elemento e' stato correttamente eliminato" << endl;
     }
     else
@@ -38,15 +42,31 @@ void Pila::pop()
     }
 }
 
-void Pila::top()
+int Pila::top()
 {
     if(!ifEmpty())
     {
-
-        return *p[--];
+        cout << "Elemento e' stato preso con successo" << endl;
+        return p[fine--];
     }
     else
     {
         cout << "ERR 03 - L'ARRAY E' VUOTO - IMPOSSIBILE PRENDERE L'ELEMENTO" << endl;
     }
+}
+
+bool Pila::ifEmpty()
+{
+    if(fine=0)
+        return true;
+    else
+        return false;
+}
+
+bool Pila::ifFull()
+{
+    if(fine==N)
+        return true;
+    else
+        return false;
 }

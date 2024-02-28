@@ -5,8 +5,9 @@ class Pila {
 
 private:
     int *p, fine=0;
-    const N;
+    int N;
 public:
+    Pila();
     Pila(int);
     
     void push(int); //inserisce un elemento nell'array
@@ -15,6 +16,6 @@ public:
 
     bool ifFull(); //controlla se l'array è pieno
     bool ifEmpty(); //controlla se l'array è vuoto
-}
+};
 
 #endif
