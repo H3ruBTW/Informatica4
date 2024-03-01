@@ -4,8 +4,7 @@
 class Coda {
 
 private:
-    int *p, N, inizio=0, fine=0, N_elem=0;
-    int d = 0;
+    int *p, N, inizio=0, fine=-1;
 public:
     Coda();
     Coda(int);
@@ -15,7 +14,6 @@ public:
     int top();
     
     bool ifEmpty();
-    bool ifFull();
 }
 
 #endif

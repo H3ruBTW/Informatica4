@@ -16,10 +16,45 @@ Coda::Coda(int N)
 
 void Coda::push(int num)
 {
+    if(ifEmpty())
+    {
+        inizio = 0;
+        fine = 0;
+    }
+    else
+    {
+        fine = (fine + 1) % N;
+
+        if(fine == inizio)
+        {
+            inizio = (inizio+1) % N;
+        }
+    }
+
+    p[fine] = num;
+    cout << "L'elemento è stato correttamente inserito" << endl;
 }
 
 void Coda::pop()
 {
+    if(!ifEmpty())
+    {
+        if(inizio == fine)
+        {
+            inizio = -1;
+            fine = -1;
+        }
+        else
+        {
+            inizio = (inizio + 1) % N;
+        }
+
+        cout << "L'elemento e' stato poppato" << endl;
+    }
+    else
+    {
+        cout << "ERR 01 - L'ARRAY E' VUOTO - IMPOSSIBILE ELIMINARE L'ELEMENTO" << endl;
+    }
 }
 
 int Coda::top()
@@ -30,22 +65,14 @@ int Coda::top()
     }
     else
     {
-        cout << "ERR 03 - L'ARRAY E' VUOTO - IMPOSSIBILE PRENDERE L'ELEMENTO" << endl;
+        cout << "ERR 02 - L'ARRAY E' VUOTO - IMPOSSIBILE PRENDERE L'ELEMENTO" << endl;
     }
 }
 
 
 bool Coda::ifEmpty()
 {
-    if(fine==0)
-        return true;
-    else
-        return false;
-}
-
-bool Coda::ifFull()
-{
-    if(fine==N)
+    if(inizio == -1 && fine == -1)
         return true;
     else
         return false;
