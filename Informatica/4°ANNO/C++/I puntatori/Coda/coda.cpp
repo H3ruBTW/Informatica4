@@ -66,6 +66,7 @@ int Coda::top()
     else
     {
         cout << "ERR 02 - L'ARRAY E' VUOTO - IMPOSSIBILE PRENDERE L'ELEMENTO" << endl;
+        return -1;
     }
 }
 
