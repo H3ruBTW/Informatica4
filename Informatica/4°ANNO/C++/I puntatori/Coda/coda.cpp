@@ -16,27 +16,10 @@ Coda::Coda(int N)
 
 void Coda::push(int num)
 {
-    if(N_elem % N == 0 && N_elem != 0)
-    {
-        fine = 0;
-        inizio = 1;
-        d = 1;
-    }
-
-    if(inizio == N)
-        inizio = 0;
-
-    p[fine] = num;
-    fine++;
-    N_elem++;
-
-    if(d)
-        inizio++;
 }
 
 void Coda::pop()
 {
-
 }
 
 int Coda::top()
