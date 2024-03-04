@@ -46,8 +46,13 @@ void Coda::pop()
         }
         else
         {
-            inizio = (inizio + 1) % N;
+            for(int i = 0; i<N-2; i++)
+            {
+                p[(inizio + i)% N] = p[((inizio + i) % N)+ 1];
+                fine = (fine - 1 + N) % N;
+            }
         }
+        
 
         cout << "L'elemento e' stato poppato" << endl;
     }
