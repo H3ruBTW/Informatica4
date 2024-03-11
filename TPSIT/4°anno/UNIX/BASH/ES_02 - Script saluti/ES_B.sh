@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Funzioni Caricamento
 Caricamento() {
     local pmax=11
     local p=1
@@ -31,6 +32,7 @@ Caricamento() {
 
     echo
 }
+#FINE
 
 Black="\x1b[30m"
 Bg_White="\x1b[47m"
