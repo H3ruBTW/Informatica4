@@ -13,11 +13,14 @@ public class ES_A {
         System.out.print("Inserire una parola: ");
 
         s = scanner.nextLine();
-
+        
+        //1
         System.out.println("\nLa lunghezza è: " + s.length());
 
+        //2
         System.out.println("Il carattere centrale della parola è: " + s.charAt(s.length()/2));
 
+        //3
         String subString1 = s.substring(0, 1);
 
         String subString2 = s.substring(1);
@@ -26,6 +29,7 @@ public class ES_A {
 
         System.out.println("La parola con prima lettera maiuscola: " + subString1 + subString2);
 
+        //4
         int n=0;
 
         char[] string = new char[s.length()];
@@ -40,6 +44,7 @@ public class ES_A {
 
         System.out.println("Il numero di \"A\" trovate è: " + n);
 
+        //5
         if(s.length()>=4)
         {
             subString1 = s.substring(0, 4);
@@ -50,10 +55,13 @@ public class ES_A {
             System.out.println("La stringa è troppo piccola per questa operazione");
         }
 
+        //6
         System.out.println("La stringa maiuscola: " + s.toUpperCase());
 
+        //7
         System.out.println("La stringa minuscola: " + s.toLowerCase());
 
+        //8
         if(s.length() > 1)
         {
             String subString3 = "";
