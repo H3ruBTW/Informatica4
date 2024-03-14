@@ -13,7 +13,7 @@ public class ES_C {
         System.out.print("Inserire una parola: ");
         s = scanner.nextLine();
 
-        s.trim();
+        s=s.replaceAll(" ", "");
 
         //1
         if(s.startsWith("+39"))
@@ -78,6 +78,6 @@ public class ES_C {
         //4
         
         //5
-        
+
     }
 }
