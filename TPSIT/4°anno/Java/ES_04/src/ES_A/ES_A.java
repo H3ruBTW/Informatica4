@@ -14,13 +14,13 @@ public class ES_A {
 
         s = scanner.nextLine();
         
-        //1
+        //1 - LUNGHEZZA
         System.out.println("\nLa lunghezza è: " + s.length());
 
-        //2
+        //2 - CARATTERE CENTRALE
         System.out.println("Il carattere centrale della parola è: " + s.charAt(s.length()/2));
 
-        //3
+        //3 - PRIMA LETTERA MAIUSCOLA
         String subString1 = s.substring(0, 1);
 
         String subString2 = s.substring(1);
@@ -29,7 +29,7 @@ public class ES_A {
 
         System.out.println("La parola con prima lettera maiuscola: " + subString1 + subString2);
 
-        //4
+        //4 - NUMERO DI A
         int n=0;
 
         char[] string = new char[s.length()];
@@ -44,7 +44,7 @@ public class ES_A {
 
         System.out.println("Il numero di \"A\" trovate è: " + n);
 
-        //5
+        //5 - LE PRIME 4 LETTERE
         if(s.length()>=4)
         {
             subString1 = s.substring(0, 4);
@@ -55,18 +55,18 @@ public class ES_A {
             System.out.println("La stringa è troppo piccola per questa operazione");
         }
 
-        //6
+        //6 - LA STRINGA IN MAIUSCOLO
         System.out.println("La stringa maiuscola: " + s.toUpperCase());
 
-        //7
+        //7 - LA STRINGA IN MINUSCOLO
         System.out.println("La stringa minuscola: " + s.toLowerCase());
 
-        //8
+        //8 - STRINGHE PALINDROMA
         if(s.length() > 1)
         {
             String subString3 = "";
 
-            if(s.length() % 2 == 0)
+            if(s.length() % 2 == 0) //caso con numero di lettere pari
             {
                 subString1 = s.substring(0, s.length()/2);
                 subString2 = s.substring((int) Math.floor(s.length()/2), s.length());
@@ -81,7 +81,7 @@ public class ES_A {
                     System.out.println("La parola non è palindroma");
 
             }
-            else
+            else //caso con numero di lettere dispari
             {
                 subString1 = s.substring(0, s.length()/2);
                 subString2 = s.substring((int) Math.floor(s.length()/2)+1, s.length());

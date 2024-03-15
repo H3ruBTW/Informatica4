@@ -17,7 +17,7 @@ public class ES_B {
         System.out.print("Inserire una parola: ");
         s2 = scanner.nextLine();
         
-        //1
+        //1 - STRINGHE UGUALI
         if(s1.compareToIgnoreCase(s2) == 0)
         {
             System.out.println("Le due stringhe sono uguali");
@@ -27,21 +27,21 @@ public class ES_B {
             System.out.println("Le due stringhe sono diverse");
         }
 
-        //2
+        //2 - TRASFORMA LA STRINGA IN NUMERO INTERO
         try {
             System.out.println(Integer.parseInt(s1));
         } catch (Exception e) {
             System.out.println("Impossibile trasformare la stringa in numero");
         }
 
-        //3
+        //3 - TRASFORMA LA STRINGA IN NUMERO DECIMALE
         try {
             System.out.println(Double.parseDouble(s1));
         } catch (Exception e) {
             System.out.println("Impossibile trasformare la stringa in numero");
         }
 
-        //4
+        //4 - DIVIDE LE PAROLE DELLA STRINGA IN PIù RIGHE
         int k=0; //indice d'inizio della subString
 
         System.out.println("La stringa divisa in righe");
@@ -58,7 +58,7 @@ public class ES_B {
 
         System.out.println(s1.substring(k, s1.length()));
 
-        //5
+        //5 - SCRIVE LE PRIME 5 LETTERE
         if(s1.length()>4)
         {
             System.out.println("Le prime 5 lettere: " + s1.substring(0, 5));
@@ -68,7 +68,7 @@ public class ES_B {
             System.out.println("Impossibile stampare le prime 5 lettere, parola troppo corta");
         }
 
-        //6
+        //6 - SCRIVE LE ULTIME 5 LETTERE
         if(s1.length()>4)
         {
             System.out.println("Le ultime 5 lettere: " + s1.substring(s1.length()-5, s1.length()));
@@ -78,7 +78,7 @@ public class ES_B {
             System.out.println("Impossibile stampare le ultime 5 lettere, parola troppo corta");
         }
 
-        //7
+        //7 - LA PAROLA PIù LUNGA
         k=0;    
         int d=0; //vediamo se il ciclo viene effetuato una volta
                  //cosi da vedere se la stringa è formata da una parola o da tante
@@ -115,9 +115,28 @@ public class ES_B {
             System.out.println("La stringa è formata da una sola parola: " + s1);
         }
 
-        //8
+        //8 - ACRONIMO?
+        d=0;
+        char[] car = s1.toCharArray();
 
-        //9
+        for (char c : car) {
+            if(Character.isLowerCase(c)) //generalmente gli acronimi sono formati da solo lettere maiuscole
+            {
+                d=1;
+                break;
+            }
+        }
+
+        if(d==0)
+        {
+            System.out.println("La parola è un acronimo");
+        }
+        else
+        {
+            System.out.println("La parola non è un acronimo");
+        }
+
+        //9 - STRINGHE ANAGRAMMI
         int nc1=0, nc2=0;
 
         if(s1.length()==s2.length())
@@ -143,7 +162,7 @@ public class ES_B {
                         }
                     }
 
-                    if(nc1!=nc2)
+                    if(nc1!=nc2) //controlla se il numero di una certa lettere è lo stesso
                     {
                         d=0;
                         break;
