@@ -13,6 +13,7 @@ public class ES_C {
         System.out.print("Inserire una parola: ");
         s = scanner.nextLine();
 
+        //rimpiazza tutti gli spazi con dei vuoti
         s=s.replaceAll(" ", "");
 
         //1 - NUMERO FISSO ITALIANO
@@ -53,7 +54,7 @@ public class ES_C {
         //2 - EMAIL
         int n;
 
-        if((n=s.indexOf('@'))!=-1) 
+        if((n=s.indexOf('@'))!=-1) //controlla se presente la chiocciola
         {
             if(s.indexOf('.', n)!=-1) //controlla se c'è un punto dopo la @ ES.: @gmail.com
             {
@@ -70,6 +71,8 @@ public class ES_C {
         }
 
         //3 - URL
+
+        //cerca se ha come prefisso l'HTTP
         if(s.startsWith("http://") || s.startsWith("https://"))
         {
             System.out.println("L'URL è valido");
@@ -89,7 +92,7 @@ public class ES_C {
                 n++;
         }
 
-        if(n==3) //ES.: 192.168.1.0
+        if(n==3) //ES.: 192.168.1.0 ha 3 punti
         {
             for (int i = 0; i < s.length() && d==0; i++) 
             {
@@ -101,7 +104,7 @@ public class ES_C {
                         continue;
                     }
 
-                    k=i;
+                    k=i; //si sposta al nuovo indice dove viene trovato il .
 
                     //controllare se il numero tra i punti è compreso tra 0 e 255
                     if(Integer.parseInt(s.substring(j, k))<0 && Integer.parseInt(s.substring(j, k))>255) 
@@ -132,10 +135,11 @@ public class ES_C {
         //5 - CODICE FISCALE
         d=0;
 
-        if(s.length()==16)
+        if(s.length()==16) //formato da 16 caratteri, 9 lettere e 7 numeri
         {
             s=s.toUpperCase();
 
+            //controllo uno ad uno la formattazione del codice fiscale
             for (int i = 0; i < 6 && d==0; i++) 
             {
                 if(s.charAt(i)<'A' && s.charAt(i)>'Z')
@@ -198,7 +202,7 @@ public class ES_C {
         }
 
         //6 - IBAN
-        if(s.length()==27 && s.startsWith("IT"))
+        if(s.length()==27 && s.startsWith("IT")) //l'IBAN in italia è formato da 27 caratteri e ha suffiso "IT"
         {
             System.out.println("Il codice IBAN è valido");
         }
@@ -210,11 +214,11 @@ public class ES_C {
         //7 - ISBN-13
         d=0;
 
-        if(s.length()==13)
+        if(s.length()==13) //formato da 13 caratteri, solo numeri
         {
             for(int i=0; i<s.length(); i++)
             {
-                if(s.charAt(i)<'0' && s.charAt(i)>'9') //esso è formato solo da numeri
+                if(s.charAt(i)<'0' && s.charAt(i)>'9')
                 {
                     d=1;
                     break;
