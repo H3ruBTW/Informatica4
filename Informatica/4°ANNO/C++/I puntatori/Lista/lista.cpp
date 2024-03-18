@@ -11,6 +11,7 @@ struct s_nodo
 class Lista {
 private:
     s_nodo *p, *l;
+    int size=0;
 public:
     Lista()
     {
@@ -18,11 +19,15 @@ public:
         l->next = NULL;
         l->info = NULL;
 
+        size++;
+
         for(int i=1; i<5; i++)
         {
             p = new s_nodo;
             p->next = l;
             p->info = NULL;
+
+            size++;
 
             l = p;
         }
@@ -49,7 +54,10 @@ public:
         if(l != NULL)
         {
             s_nodo *pp = l;
-            free pp;
+            l = l->next;
+            free(pp);
+
+            size--;
 
             cout << "Elemento eliminato" << endl;
         }
@@ -68,6 +76,46 @@ public:
         else
         {
             cout << "ERR 03 - IL PUNTATORE SI TROVA NEL NULLA, LISTA VUOTA" << endl;
+        }
+    }
+
+    void aggiungiInLista (int pos=0)
+    {
+        s_nodo *pp = l;
+
+        if(size == 0)
+        {
+            l = new s_nodo;
+
+            l->next = NULL;
+            l->info = NULL;
+            size=1;
+        }
+        else if(pos > 0 && pos < size)
+        {
+            if(pos==0)
+            {
+                p = new s_nodo;
+
+                p->next = l;
+                p->info = NULL;
+
+                l = p;
+
+            }
+            else
+            {
+                for(int i=0; i<pos-1; i++)
+                {
+                    pp = pp->next;
+                }                      
+
+                p = new s_nodo;
+
+                p->next = pp->next;
+                pp->next = p;
+            }
+            
         }
     }
 
