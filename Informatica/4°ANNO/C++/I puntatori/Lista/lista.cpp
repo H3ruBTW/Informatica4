@@ -35,7 +35,7 @@ public:
 
     void push(int info)
     {
-        if(p != NULL)
+        if(size != 0 && p != NULL)
         {
             p->info = info;
 
@@ -95,13 +95,14 @@ public:
         {
             if(pos==0)
             {
-                p = new s_nodo;
+                s_nodo *pp = new s_nodo;
 
-                p->next = l;
-                p->info = NULL;
+                pp->next = l;
+                pp->info = NULL;
 
-                l = p;
+                l = pp;
 
+                size++;
             }
             else
             {
@@ -110,11 +111,14 @@ public:
                     pp = pp->next;
                 }                      
 
-                p = new s_nodo;
+                s_nodo *ppp = new s_nodo;
 
-                p->next = pp->next;
-                pp->next = p;
+                ppp->next = pp->next;
+                pp->next = ppp;
+
+                size++;
             }
+            
             
         }
     }
@@ -145,15 +149,89 @@ public:
             pp = pp->next;
         }
     }
+
+    int getSize()
+    {
+        return size;
+    }
 };
+
+int menu(Lista);
 
 int main(){
 
     Lista l1;
 
-    /*l1.caricaListaRand();
-    cout << endl;
-    l1.stampaLista();*/
+    int d, n;
+
+    do
+    {
+        switch (menu(l1))
+        {
+        case 1:
+            cout << endl
+                 << "Inserire il numero con cui fare push: ";
+            cin >> n;
+            l1.push(n);
+            break;
+        
+        case 2:
+            l1.pop();
+            break;
+        
+        case 3:
+            l1.top();
+            break;
+
+        case 4:
+            if(l1.getSize()==0)
+            {
+                l1.aggiungiInLista();
+            }
+            else
+            {
+                cout << endl 
+                     << "Scegli la posizione in cui mettere il nuovo nodo: ";
+                cin >> n;
+                l1.aggiungiInLista(n);
+            }
+            
+            break;
+        
+        case 5:
+            l1.stampaLista();
+            break;
+        
+        case 6:
+            l1.caricaListaRand();
+            break;
+
+        default:
+            cout << endl
+                 << "Hai inserito una scelta non esistente"
+                 << endl;
+            break;
+        }
+    } while (d!=0);
+    
 
     return 0;
+}
+
+int menu(Lista l1){
+    int sce;
+
+    cout << endl
+         << "Grandezza Lista: " << l1.getSize() << endl
+         << "1 - PUSH" << endl
+         << "2 - POP" << endl
+         << "3 - TOP" << endl
+         << "4 - Aggiungi in lista un nodo" << endl
+         << "5 - Stampa tutta la lista" << endl
+         << "6 - Carica Random la lista" << endl
+         << "Inserire la scelta: ";
+
+    cin >> sce;
+
+    return sce;
 }
