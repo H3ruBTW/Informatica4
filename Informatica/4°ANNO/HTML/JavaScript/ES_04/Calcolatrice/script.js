@@ -1,5 +1,5 @@
 const Calcolo = {
-    somma: (x,y) => {return `${x} + ${y} = ${x+y}`},
+    somma: (x,y) => {return `${x} + ${y} = ${(x*1)+(y*1)}`},
     sottrazione: (x,y) => {return `${x} - ${y} = ${x-y}`},
     moltiplicazione: (x,y) => {return `${x} * ${y} = ${x*y}`},
     divisione: (x,y) => {

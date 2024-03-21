@@ -16,4 +16,7 @@ NumeriInversi = function(x){
 let num = "";
 num = prompt("Inserire un numero");
 
-console.log(NumeriInversi(num));
+if(Number.isInteger(num))
+    console.log(NumeriInversi(num));
+else
+    console.error("L'inserimento è NaN")
