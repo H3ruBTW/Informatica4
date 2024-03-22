@@ -35,7 +35,7 @@ public:
 
     void push(int info)
     {
-        if(size != 0 && p != NULL)
+        if(l != NULL && p != NULL)
         {
             p->info = info;
 
@@ -45,7 +45,34 @@ public:
         }
         else
         {
-            cout << "ERR 01 - IL PUNTATORE SI TROVA NEL NULLA, LISTA PIENA" << endl;
+            s_nodo *pp;
+            
+
+            if(l == NULL)
+            {
+                pp = new s_nodo;
+
+                l = pp;
+                l->next = NULL;
+                l->info = NULL;
+                p = l;
+            }
+            else
+            {   
+                pp = l;
+                while(pp->next != NULL)
+                {
+                    pp = pp->next;
+                }
+                
+                p = new s_nodo;
+
+                pp->next = p;
+                p->next = NULL;
+                p->info = info;
+            }
+
+            size++;
         }
     }
 
@@ -83,7 +110,7 @@ public:
     {
         s_nodo *pp = l;
 
-        if(size == 0)
+        if(l == NULL)
         {
             l = new s_nodo;
 
@@ -91,7 +118,7 @@ public:
             l->info = NULL;
             size=1;
         }
-        else if(pos > 0 && pos < size)
+        else if(pos > 0 && pos < trovaSize())
         {
             if(pos==0)
             {
@@ -118,22 +145,25 @@ public:
 
                 size++;
             }
-            
-            
+        }
+        else
+        {
+            cout << endl
+                 << "Non è possibile inserire un nodo li'!" << endl;
         }
     }
 
     void caricaListaRand()
     {
-        s_nodo *pp = l;
+        p = l;
 
         cout << "Carica" << endl;
 
-        while(pp != NULL)
+        while(p != NULL)
         {
-            pp->info = rand()%10+1;
-            cout << "Informazione Caricata: " << pp->info << endl;
-            pp = pp->next;
+            p->info = rand()%10+1;
+            cout << "Informazione Caricata: " << p->info << endl;
+            p = p->next;
         }
     }
 
@@ -153,6 +183,21 @@ public:
     int getSize()
     {
         return size;
+    }
+
+    int trovaSize()
+    {
+        s_nodo *pp = new s_nodo;
+        pp = l;
+        int SIZE = 0;
+
+        while (pp != NULL)
+        {
+            SIZE++;
+            pp = pp->next;
+        }
+        
+        return SIZE;
     }
 };
 
