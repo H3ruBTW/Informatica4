@@ -58,6 +58,11 @@ int main()
                  << endl;
             system("pause");
             break;
+        case 7:
+            p1.stampa();
+            cout << endl;
+            p2.stampa();
+            break;
         default:
             cout << endl 
                  << "Hai inserito un numero non esistente nella lista" << endl;
@@ -80,6 +85,7 @@ int menu()
          << "Inserire 4 per eliminare l'ultimo elemento nella Pila2" << endl
          << "Inserire 5 per vedere l'ultimo elemento nella Pila1" << endl
          << "Inserire 6 per vedere l'ultimo elemento nella Pila2" << endl
+         << "Inserire 7 per fare la stampa delle due pile" << endl
          << "Inserire 0 per uscire" << endl
          << endl
          << "Inserimento: ";

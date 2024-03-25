@@ -55,6 +55,18 @@ int Pila::top()
     }
 }
 
+void Pila::stampa()
+{
+    cout << "ARRAY PILA:" << endl;
+
+    for(int i=0; i<N; i++)
+    {
+        cout << p[i] << " ";
+    }
+
+    cout << endl;
+}
+
 bool Pila::ifEmpty()
 {
     if(fine==0)
