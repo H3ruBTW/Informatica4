@@ -153,6 +153,40 @@ public:
         }
     }
 
+    void eliminaInLista(int pos=0)
+    {
+        if(pos>=0 && pos<=getSize()-1)
+        {
+            if(getSize()==1)
+            {
+                pop();
+            }
+            else
+            {
+                s_nodo *pp = l;
+                s_nodo *ppp = l;
+                
+                ppp = ppp->next;
+
+                for(int i=1; i<pos; i++)
+                {
+                    pp = pp->next;
+                    ppp = ppp->next;
+                }
+
+                pp->next = ppp->next;
+
+                free(ppp);
+
+                size--;
+            }  
+        }
+        else
+        {
+            cout << "ERR - La posizione non esiste" << endl;
+        }
+    }
+
     void caricaListaRand()
     {
         p = l;
@@ -251,6 +285,19 @@ int main(){
             l1.caricaListaRand();
             break;
 
+        case 7:
+            if(l1.getSize()==0)
+            {
+                l1.eliminaInLista();
+            }
+            else
+            {
+                cout << endl 
+                     << "Scegli la posizione dove vuoi rimuovere un nodo: ";
+                cin >> n;
+                l1.eliminaInLista(n);
+            }
+
         default:
             cout << endl
                  << "Hai inserito una scelta non esistente"
@@ -274,6 +321,7 @@ int menu(Lista l1){
          << "4 - Aggiungi in lista un nodo" << endl
          << "5 - Stampa tutta la lista" << endl
          << "6 - Carica Random la lista" << endl
+         << "7 - Elimina in lista un nodo" << endl
          << "Inserire la scelta: ";
 
     cin >> sce;
