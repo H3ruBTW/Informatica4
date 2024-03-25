@@ -13,7 +13,7 @@ private:
     s_nodo *p, *l;
     int size=0;
 public:
-    Lista()
+    Lista(int n=1)
     {
         l = new s_nodo;
         l->next = NULL;
@@ -21,7 +21,7 @@ public:
 
         size++;
 
-        for(int i=1; i<5; i++)
+        for(int i=1; i<n; i++)
         {
             p = new s_nodo;
             p->next = l;
