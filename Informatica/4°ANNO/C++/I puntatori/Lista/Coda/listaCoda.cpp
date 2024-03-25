@@ -8,12 +8,12 @@ struct s_nodo
 }typedef s_nodo;
 
 
-class Lista {
+class ListaCoda {
 private:
     s_nodo *p, *l;
     int size=0;
 public:
-    Lista(int n=1)
+    ListaCoda(int n=1)
     {
         l = new s_nodo;
         l->next = NULL;
@@ -90,7 +90,7 @@ public:
         }
         else
         {
-            cout << "ERR 02 - IL PUNTATORE SI TROVA NEL NULLA, LISTA VUOTA" << endl;
+            cout << "ERR 02 - IL PUNTATORE SI TROVA NEL NULLA, ListaCoda VUOTA" << endl;
         }
     }
 
@@ -102,11 +102,11 @@ public:
         }
         else
         {
-            cout << "ERR 03 - IL PUNTATORE SI TROVA NEL NULLA, LISTA VUOTA" << endl;
+            cout << "ERR 03 - IL PUNTATORE SI TROVA NEL NULLA, ListaCoda VUOTA" << endl;
         }
     }
 
-    void aggiungiInLista (int pos=0)
+    void aggiungiInListaCoda (int pos=0)
     {
         s_nodo *pp = l;
 
@@ -153,7 +153,7 @@ public:
         }
     }
 
-    void eliminaInLista(int pos=0)
+    void eliminaInListaCoda(int pos=0)
     {
         if(pos>=0 && pos<=getSize()-1)
         {
@@ -187,7 +187,7 @@ public:
         }
     }
 
-    void caricaListaRand()
+    void caricaListaCodaRand()
     {
         p = l;
 
@@ -201,7 +201,7 @@ public:
         }
     }
 
-    void stampaLista()
+    void stampaListaCoda()
     {
         s_nodo *pp = l;
 
@@ -235,11 +235,11 @@ public:
     }
 };
 
-int menu(Lista);
+int menu(ListaCoda);
 
 int main(){
 
-    Lista l1;
+    ListaCoda l1;
 
     int d, n;
 
@@ -265,37 +265,37 @@ int main(){
         case 4:
             if(l1.getSize()==0)
             {
-                l1.aggiungiInLista();
+                l1.aggiungiInListaCoda();
             }
             else
             {
                 cout << endl 
                      << "Scegli la posizione in cui mettere il nuovo nodo: ";
                 cin >> n;
-                l1.aggiungiInLista(n);
+                l1.aggiungiInListaCoda(n);
             }
             
             break;
         
         case 5:
-            l1.stampaLista();
+            l1.stampaListaCoda();
             break;
         
         case 6:
-            l1.caricaListaRand();
+            l1.caricaListaCodaRand();
             break;
 
         case 7:
             if(l1.getSize()==0)
             {
-                l1.eliminaInLista();
+                l1.eliminaInListaCoda();
             }
             else
             {
                 cout << endl 
                      << "Scegli la posizione dove vuoi rimuovere un nodo: ";
                 cin >> n;
-                l1.eliminaInLista(n);
+                l1.eliminaInListaCoda(n);
             }
 
         default:
@@ -310,18 +310,18 @@ int main(){
     return 0;
 }
 
-int menu(Lista l1){
+int menu(ListaCoda l1){
     int sce;
 
     cout << endl
-         << "Grandezza Lista: " << l1.getSize() << endl
+         << "Grandezza ListaCoda: " << l1.getSize() << endl
          << "1 - PUSH" << endl
          << "2 - POP" << endl
          << "3 - TOP" << endl
-         << "4 - Aggiungi in lista un nodo" << endl
-         << "5 - Stampa tutta la lista" << endl
-         << "6 - Carica Random la lista" << endl
-         << "7 - Elimina in lista un nodo" << endl
+         << "4 - Aggiungi in ListaCoda un nodo" << endl
+         << "5 - Stampa tutta la ListaCoda" << endl
+         << "6 - Carica Random la ListaCoda" << endl
+         << "7 - Elimina in ListaCoda un nodo" << endl
          << "Inserire la scelta: ";
 
     cin >> sce;
