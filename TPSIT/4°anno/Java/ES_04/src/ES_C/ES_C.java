@@ -21,7 +21,7 @@ public class ES_C {
         {
             if(s.length()==12) //numeri fissi
             {
-                if(s.charAt(3)=='0' && s.charAt(4)=='6') //+39 06
+                if(s.charAt(3)=='0') //+39 0
                 {
                     System.out.println("Il numero è valido");
                 }
@@ -107,7 +107,7 @@ public class ES_C {
                     k=i; //si sposta al nuovo indice dove viene trovato il .
 
                     //controllare se il numero tra i punti è compreso tra 0 e 255
-                    if(Integer.parseInt(s.substring(j, k))<0 && Integer.parseInt(s.substring(j, k))>255) 
+                    if(Integer.parseInt(s.substring(j, k))<0 || Integer.parseInt(s.substring(j, k))>255) 
                     {
                         d=1;
                         continue;
