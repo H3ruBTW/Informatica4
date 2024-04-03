@@ -118,7 +118,7 @@ public:
             l->info = NULL;
             size=1;
         }
-        else if(pos > 0 && pos < trovaSize())
+        else if(pos >= 0 && pos <= trovaSize())
         {
             if(pos==0)
             {
