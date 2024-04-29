@@ -44,10 +44,18 @@ h1 {
 }
 
 h2 {
+    margin-top: 15px;
     font-size: 30px;
 }
 
 p {
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+ol li {
+    margin-left: 25px;
+    margin-bottom: 20px;
     font-size: 15px;
     font-family: 'Courier New', Courier, monospace;
 }
@@ -58,4 +66,44 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px 0;
+}
+
+/* Stili ES C */
+.lightmode {
+    background-color: white;
+    color:black;
+}
+
+.lightmodecont {
+    background-color: white;
+    color:white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+.darkmode {
+    background-color: black;
+    color:white;
+}
+
+.redmode {
+    background-color: red;
+    color: white;
+}
+
+/* Stile Per Tabella Pitagorica */
+table, tr, td{
+    border: 3px solid black;
+    border-collapse: collapse;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+
+td {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+}
+
+.evidenziato {
+    background-color: yellow;
 }
