@@ -1,0 +1,61 @@
+/* Reset CSS */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+/* Barra di navigazione*/
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 25px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Contenuto Main */
+main {
+    padding: 20px;
+}
+
+/* Hover sui Link */
+a:hover {
+    color:royalblue;
+}
+
+/* Stile caratteri */ 
+h1 {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+p {
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
