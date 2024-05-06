@@ -68,3 +68,30 @@ footer {
     padding: 10px 0;
 }
 
+/* Esercizio A e C*/
+.clear {
+    background-color: #fff;
+    color: black;
+}
+
+/* ES A */
+.b1 {
+    background-color: blue;
+    color: white;
+}
+
+.b2 {
+    background-color: red;
+    color: white;
+}
+
+.b3 {
+    background-color: green;
+    color: white;
+}
+
+/* ES C */
+.hover {
+    background-color: black;
+    color: white;
+}

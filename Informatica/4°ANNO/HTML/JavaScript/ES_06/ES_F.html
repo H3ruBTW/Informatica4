@@ -7,6 +7,11 @@
     <script src="js/scriptF.js" defer></script>
     <link href="css/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/icon.png">
+    <style>
+        textarea{
+            resize:none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -26,6 +31,21 @@
 
     <main>
         <h2>ESERCIZIO F</h2>
+        <input id="I1" type="text" placeholder="Password">
+        <br><br>
+        <input id="I2" type="text" placeholder="Conferma Password">
+        <br><br>
+        <button id="b">Submit</button>
+        <br><br>  
+        <textarea id="tx1" cols="16" rows="1" style="background-color: red; color:white" readonly>Password Diverse</textarea>    
+        <textarea id="tx2" cols="18" rows="1" style="background-color: green; color:white" readonly>Password Corretta!</textarea>
+        <br>
+        <textarea id="tx3" cols="75" rows="5" style="background-color: red; color:white" readonly>
+La password che hai inserito non ha i giusti requisiti
+- Deve avere 8 o più caratteri
+- Almeno una lettera maiuscola
+- Almeno un numero
+- Almeno un carattere speciale tra questi (!@#$%^&*()_+\-=[]{};':"|,.<>\/?)</textarea>
     </main>
 
     <footer>
