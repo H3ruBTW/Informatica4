@@ -17,11 +17,14 @@ but.addEventListener('click', function(){
     if(inp1.value!==inp2.value)
     {
         tx1.hidden=false
+        inp1.setAttribute('class', 'rosso')
+        inp2.setAttribute('class', 'rosso')
     }
     else
     {
         tx1.hidden=true
         val++;
+        inp2.setAttribute('class', 'clear')
     }
 
     if(inp1.value.length>=8 && passwordCor(inp1.value))
@@ -32,11 +35,14 @@ but.addEventListener('click', function(){
     else
     {
         tx3.hidden=false
+        inp1.setAttribute('class', 'rosso')
     }
 
     if(val===2)
     {
         tx2.hidden=false
+        inp1.setAttribute('class', 'clear')
+        inp2.setAttribute('class', 'clear')
     }
     else
     {
