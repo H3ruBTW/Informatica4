@@ -20,7 +20,7 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin-right: 40px;
+    margin-right: 29px;
 }
 
 nav ul li a {
@@ -99,4 +99,16 @@ footer {
 /* ES F */
 .rosso {
     background-color: red;
+}
+
+.arancione {
+    background-color: orange;
+}
+
+.verde {
+    background-color: lightgreen;
+}
+
+.bianco {
+    color: white;
 }
