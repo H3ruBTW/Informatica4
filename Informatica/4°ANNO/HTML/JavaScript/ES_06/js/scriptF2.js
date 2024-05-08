@@ -33,7 +33,7 @@ inp1.addEventListener('input', function(){
 
     input1 = true
 
-    control(0)
+    control()
 })
 
 inp1.addEventListener('blur', function(){
@@ -81,8 +81,6 @@ inp2.addEventListener('input', function(){
     }
 
     input2 = true
-
-    control(1)
 })
 
 inp2.addEventListener('blur', function(){
@@ -144,7 +142,7 @@ function passwordCor(password){
     return regexMaiuscole.test(password) && regexNumeri.test(password) && regexCaratteriSpeciali.test(password);
 }
 
-function control(n){
+function control(){
     if(ver1 == true && ver2 == true)
     {
         tx2.hidden = false
@@ -164,10 +162,7 @@ function control(n){
         if(input2)
         {
             tx1.hidden=false
-            if(n==0)
-                inp2.setAttribute('class', 'rosso')
-            else
-                inp2.setAttribute('class', 'arancione')
+            inp2.setAttribute('class', 'rosso')
         }
     }
 }
