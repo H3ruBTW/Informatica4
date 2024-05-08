@@ -32,6 +32,8 @@ inp1.addEventListener('input', function(){
     }
 
     input1 = true
+
+    control(0)
 })
 
 inp1.addEventListener('blur', function(){
@@ -79,6 +81,8 @@ inp2.addEventListener('input', function(){
     }
 
     input2 = true
+
+    control(1)
 })
 
 inp2.addEventListener('blur', function(){
@@ -108,7 +112,7 @@ inp2.addEventListener('focus', function(){
     }
 })
 
-setInterval(function(){
+/*setInterval(function(){
     if(ver1 == true && ver2 == true)
     {
         tx2.hidden = false
@@ -117,9 +121,20 @@ setInterval(function(){
     {
         tx2.hidden = true
     }
-}, 10)
-    
 
+    if(inp1.value===inp2.value && inp1.value.length>=1)
+    {
+        tx1.hidden=true
+        inp2.setAttribute('class', 'verde')
+    }
+    else
+    {
+        if(input2)
+        {
+            tx1.hidden=false
+        }
+    }
+}, 50)*/
 
 function passwordCor(password){
     let regexMaiuscole = /[A-Z]/;
@@ -127,4 +142,32 @@ function passwordCor(password){
     let regexCaratteriSpeciali = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 
     return regexMaiuscole.test(password) && regexNumeri.test(password) && regexCaratteriSpeciali.test(password);
+}
+
+function control(n){
+    if(ver1 == true && ver2 == true)
+    {
+        tx2.hidden = false
+    }
+    else
+    {
+        tx2.hidden = true
+    }
+
+    if(inp1.value===inp2.value && inp1.value.length>=1)
+    {
+        tx1.hidden=true
+        inp2.setAttribute('class', 'verde')
+    }
+    else
+    {
+        if(input2)
+        {
+            tx1.hidden=false
+            if(n==0)
+                inp2.setAttribute('class', 'rosso')
+            else
+                inp2.setAttribute('class', 'arancione')
+        }
+    }
 }
