@@ -33,7 +33,8 @@ inp1.addEventListener('input', function(){
 
     input1 = true
 
-    control()
+    control1()
+    control2()
 })
 
 inp1.addEventListener('blur', function(){
@@ -81,6 +82,8 @@ inp2.addEventListener('input', function(){
     }
 
     input2 = true
+
+    control2()
 })
 
 inp2.addEventListener('blur', function(){
@@ -142,7 +145,26 @@ function passwordCor(password){
     return regexMaiuscole.test(password) && regexNumeri.test(password) && regexCaratteriSpeciali.test(password);
 }
 
-function control(){
+function control1(){
+
+    if(inp1.value===inp2.value && inp1.value.length>=1)
+    {
+        tx1.hidden=true
+        inp2.setAttribute('class', 'verde')
+        ver2 = true
+    }
+    else
+    {
+        if(input2)
+        {
+            tx1.hidden=false
+            inp2.setAttribute('class', 'rosso') 
+            ver2 = false
+        }
+    }
+}
+
+function control2(){
     if(ver1 == true && ver2 == true)
     {
         tx2.hidden = false
@@ -150,19 +172,5 @@ function control(){
     else
     {
         tx2.hidden = true
-    }
-
-    if(inp1.value===inp2.value && inp1.value.length>=1)
-    {
-        tx1.hidden=true
-        inp2.setAttribute('class', 'verde')
-    }
-    else
-    {
-        if(input2)
-        {
-            tx1.hidden=false
-            inp2.setAttribute('class', 'rosso')
-        }
     }
 }
