@@ -18,22 +18,6 @@ header {
     margin-bottom: 0;
 }
 
-/* DIV Menu */
-.menu {
-    background-color: #333;
-    color: #fff;
-    position: relative;
-    top: -20px;
-    width: fit-content;
-    margin-bottom: 0;
-    float: left;
-}
-
-hr {
-    padding: 0;
-    color: white;
-}
-
 nav ul {
     list-style-type: none;
     padding: 3%;
@@ -52,6 +36,7 @@ nav ul li a {
 
 /* DIV contenuto */
 .content{
+    padding: 1%;
     margin-left: 0;
     padding-left: 1%;
     background-color: white;
@@ -63,9 +48,21 @@ nav ul li a {
     display: flex;
 }
 
+/* DIV Menu */
+.menu {
+    background-color: #333;
+    color: #fff;
+    position: relative;
+    top: -20px;
+    width: fit-content;
+    margin-bottom: 0;
+    float: left;
+}
+
+
 /* Hover sui Link */
-a:hover {
-    color:royalblue;
+a:hover, #text:hover {
+    opacity: 50%;
 }
 
 /* Footer */
@@ -93,6 +90,23 @@ ol li {
     margin-bottom: 20px;
     font-size: 15px;
     font-family: 'Courier New', Courier, monospace;
+}
+
+/* HR */
+.hr1 {
+    border: none;
+    height: 3px;
+    /* Set the hr color */
+    color: white;  /* old IE */
+    background-color: white;  /* Modern Browsers */
+}
+
+.hr2 {
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: white;  /* old IE */
+    background-color: white;  /* Modern Browsers */
 }
 
 /* Esercizio A e C*/
@@ -143,3 +157,13 @@ ol li {
 textarea {
     resize: none;
 }
+
+/* Immagine Menu*/ 
+#img:hover {
+    opacity: 50%;
+}
+
+#image {
+    margin-left: 5%;
+}
+
