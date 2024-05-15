@@ -1,4 +1,4 @@
-let val = 0
+let ver = 0
 let input1 = false
 let input2 = false
 let ver1 = false
@@ -113,7 +113,7 @@ inp2.addEventListener('focus', function(){
     }
 })
 
-/*setInterval(function(){
+/*setInterver(function(){
     if(ver1 == true && ver2 == true)
     {
         tx2.hidden = false

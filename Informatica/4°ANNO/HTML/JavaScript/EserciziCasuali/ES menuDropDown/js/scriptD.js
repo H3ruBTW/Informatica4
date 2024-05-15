@@ -1,19 +1,19 @@
-let val = 0;
+let ver = 0;
 
-let but = document.getElementById("b")
+let pul = document.getElementById("pul")
 let tx = document.getElementById("tx")
 
-but.addEventListener('click', function(){
-    if(val===0)
+pul.addEventListener('click', function(){
+    if(ver===0)
     {
         tx.hidden = true
-        but.innerHTML = "Scopri"
-        val=1
+        pul.innerHTML = "Scopri"
+        ver=1
     }
     else
     {
         tx.hidden = false
-        but.innerHTML = "Nascondi"
-        val=0
+        pul.innerHTML = "Nascondi"
+        ver=0
     }
 })

@@ -1,29 +1,29 @@
-let but1 = document.getElementById("b1");
+let pul1 = document.getElementById("b1");
 
-but1.addEventListener('mouseover', function(){
-    but1.setAttribute('class', 'b1')
+pul1.addEventListener('mouseover', function(){
+    pul1.setAttribute('class', 'b1')
 })
 
-but1.addEventListener('mouseout', function(){
-    but1.setAttribute('class', 'clear')
+pul1.addEventListener('mouseout', function(){
+    pul1.setAttribute('class', 'clear')
 })
 
-let but2 = document.getElementById("b2");
+let pul2 = document.getElementById("b2");
 
-but2.addEventListener('mouseover', function(){
-    but2.setAttribute('class', 'b2')
+pul2.addEventListener('mouseover', function(){
+    pul2.setAttribute('class', 'b2')
 })
 
-but2.addEventListener('mouseout', function(){
-    but2.setAttribute('class', 'clear')
+pul2.addEventListener('mouseout', function(){
+    pul2.setAttribute('class', 'clear')
 })
 
-let but3 = document.getElementById("b3");
+let pul3 = document.getElementById("b3");
 
-but3.addEventListener('mouseover', function(){
-    but3.setAttribute('class', 'b3')
+pul3.addEventListener('mouseover', function(){
+    pul3.setAttribute('class', 'b3')
 })
 
-but3.addEventListener('mouseout', function(){
-    but3.setAttribute('class', 'clear')
+pul3.addEventListener('mouseout', function(){
+    pul3.setAttribute('class', 'clear')
 })

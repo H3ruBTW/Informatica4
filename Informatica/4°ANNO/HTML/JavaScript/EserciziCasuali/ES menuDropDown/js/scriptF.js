@@ -1,8 +1,8 @@
-let val = 0
+let ver = 0
 
 let inp1 = document.getElementById("I1")
 let inp2 = document.getElementById("I2")
-let but = document.getElementById("b")
+let pul = document.getElementById("b")
 let tx1 = document.getElementById("tx1")
 let tx2 = document.getElementById("tx2")
 let tx3 = document.getElementById("tx3")
@@ -11,38 +11,38 @@ tx1.hidden=true
 tx2.hidden=true
 tx3.hidden=true
 
-but.addEventListener('click', function(){
-    val = 0
+pul.addEventListener('click', function(){
+    ver = 0
     
-    if(inp1.value!==inp2.value)
+    if(inp1.verue!==inp2.verue)
     {
         tx1.hidden=false
-        inp1.setAttribute('class', 'rosso')
-        inp2.setAttribute('class', 'rosso')
+        inp1.setAttripule('class', 'rosso')
+        inp2.setAttripule('class', 'rosso')
     }
     else
     {
         tx1.hidden=true
-        val++;
-        inp2.setAttribute('class', 'clear')
+        ver++;
+        inp2.setAttripule('class', 'clear')
     }
 
-    if(inp1.value.length>=8 && passwordCor(inp1.value))
+    if(inp1.verue.length>=8 && passwordCor(inp1.verue))
     {
         tx3.hidden=true
-        val++
+        ver++
     }
     else
     {
         tx3.hidden=false
-        inp1.setAttribute('class', 'rosso')
+        inp1.setAttripule('class', 'rosso')
     }
 
-    if(val===2)
+    if(ver===2)
     {
         tx2.hidden=false
-        inp1.setAttribute('class', 'clear')
-        inp2.setAttribute('class', 'clear')
+        inp1.setAttripule('class', 'clear')
+        inp2.setAttripule('class', 'clear')
     }
     else
     {

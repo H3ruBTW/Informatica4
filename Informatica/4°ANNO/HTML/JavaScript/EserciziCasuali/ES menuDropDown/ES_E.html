@@ -5,36 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/icon.png">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
     <script src="js/scriptE.js" defer></script>
     <title>Esecizi</title>
 </head>
 <body>
-    <header><h1>ESERCIZI</h1></header>
+    <header style="display: inline-flex;">
+        <h1><img src="img/1024px-Hamburger_icon_white.svg.png" width="2%" style="margin-right: 2%;" ID="img">ESERCIZI</h1>
+    </header>
+
     <div class="divs">
-        <div class="menu">
+        <div class="menu" ID="menu">
             <nav>
                 <ul>
-                    <hr>
+                    <hr class="hr1">
                     <li><a href="index.html">HomePage</a></li>
-                    <hr>
-                    <li><a href="ES_A.html">ES A - MouseOver Pulsanti</a></li>
-                    <hr>
-                    <li><a href="ES_B.html">ES B - Maiuscolo Nella Digitazione</a></li>
-                    <hr>
-                    <li><a href="ES_C.html">ES C - Textarea Sfondo</a></li>
-                    <hr>
-                    <li><a href="ES_D.html">ES D - Nascondi Testo</a></li>
-                    <hr>
-                    <li><a href="ES_E.html">ES E - Password</a></li>
-                    <hr>
-                    <li><a href="ES_F.html">ES F - Password + Requisiti</a></li>
-                    <hr>
-                    <li><a href="ES_F2.html">ES F v2</a></li>
-                    <hr>
+                    <hr class="hr1">
+                    <li id="text">Esercizi <img id="image"></li>
+                    <hr class="hr1">
+                    <div id="menu2">
+                        <hr class="hr2">
+                        <li><a href="ES_A.html">ES A - MouseOver Pulsanti</a></li>
+                        <hr class="hr2">
+                        <hr>
+                        <li><a href="ES_B.html">ES B - Maiuscolo Nella Digitazione</a></li>
+                        <hr class="hr2">
+                        <li><a href="ES_C.html">ES C - Textarea Sfondo</a></li>
+                        <hr class="hr2">
+                        <li><a href="ES_D.html">ES D - Nascondi Testo</a></li>
+                        <hr class="hr2">
+                        <li><a href="ES_E.html">ES E - Password</a></li>
+                        <hr class="hr2">
+                        <li><a href="ES_F.html">ES F - Password + Requisiti</a></li>
+                        <hr class="hr2">
+                        <li><a href="ES_F2.html">ES F v2</a></li>
+                        <hr class="hr2">
+                    </div>
                 </ul>
             </nav>
         </div>
-        <div class="content">
+        <div class="content" ID="content">
             <h2>ESERCIZIO E</h2>
             <input id="I1" type="text" placeholder="Password">
             <br><br>
@@ -47,9 +57,6 @@
         </div>
     </div>
     
-
-    <footer>
-        <p>&copy; 2024 Buongallino Alessandro</p>
-    </footer>
+    <footer><p>&copy; 2024 Buongallino Alessandro</p></footer>
 </body>
 </html>
