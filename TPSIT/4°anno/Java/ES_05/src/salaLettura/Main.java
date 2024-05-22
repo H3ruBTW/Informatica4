@@ -5,7 +5,7 @@ import java.util.concurrent.Semaphore;
 
 public class Main {
     public static void main(String[] args) {
-        SalaLettura sala = new SalaLettura(2);
+        SalaLettura sala = new SalaLettura(3);
 
         for (int i = 0; i < 5; i++) {
             new Studente(sala).start();
