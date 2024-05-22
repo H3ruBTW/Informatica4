@@ -54,7 +54,7 @@ nav ul li a {
     color: #fff;
     position: relative;
     top: -20px;
-    width: fit-content;
+    width: 300px;
     margin-bottom: 0;
     float: left;
 }
@@ -163,8 +163,11 @@ textarea {
     opacity: 50%;
 }
 
+#img {
+    margin-right: 20px;
+}
+
 #image {
-    margin-left: 5%;
-    width: 10%;
+    margin-left: 2%;
 }
 
