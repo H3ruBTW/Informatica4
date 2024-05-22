@@ -40,7 +40,7 @@ class SalaLettura {
         try {
             semaphore.acquire();
             System.out.println(Thread.currentThread().getName() + " è entrato nella sala");
-            Thread.sleep((random.nextInt(4)+2)*1000);
+            Thread.sleep((random.nextInt(5)+1)*1000);
         } catch (Exception e) {
             e.printStackTrace();
         }
