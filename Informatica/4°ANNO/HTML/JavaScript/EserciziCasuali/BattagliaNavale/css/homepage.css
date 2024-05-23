@@ -1,0 +1,58 @@
+#button {
+    width: 200px;
+    height: 100px;
+    margin: 50px;
+    border: 5px solid black;
+    background-color: white;
+}
+
+#button:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+#button:active {
+    background-color: rgb(130, 130, 130);
+}
+
+/* DIV TIPO DI GIOCO */
+#tipo_di_gioco {
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid black;
+    background-color: rgb(255, 255, 255, 1);
+    padding: 10px;
+    left: 38.2vmax;
+    top: 135px
+}
+
+#X {
+    position: absolute;
+    left: 5px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+#X:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+#X:active {
+    background-color: rgb(130, 130, 130);
+}
+
+#button2 {
+    padding: 5px;
+    margin:5px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+#button2:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+#button2:active {
+    background-color: rgb(130, 130, 130);
+}
+
