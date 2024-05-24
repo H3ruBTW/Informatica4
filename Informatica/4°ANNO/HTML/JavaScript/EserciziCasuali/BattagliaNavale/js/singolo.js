@@ -27,7 +27,7 @@ let plays = document.querySelectorAll('#gioca')
 plays.forEach(play => {
 
     document.addEventListener("DOMContentLoaded", function(){
-        play.innerHTML = "O"
+        play.innerHTML = "◎"
 
         play.addEventListener("click", function(){
         
@@ -35,14 +35,14 @@ plays.forEach(play => {
             {
                 if(this.getAttribute("data-value") == "0")
                 {
-                    this.innerHTML = "X"
+                    this.innerHTML = "◉"
                     this.setAttribute("data-value", "1")
                     matrice[this.getAttribute("data-n")]=1
                     nNavi--
                 }
                 else
                 {
-                    this.innerHTML = "O"
+                    this.innerHTML = "◎"
                     this.setAttribute("data-value", "0")
                     matrice[this.getAttribute("data-n")]=0
                     nNavi++
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 let Confirm = document.getElementById("bottone")
 let tab2 = document.getElementById("tab2")
-tab2.hidden = true
+tab2.hidden = false
 
 Confirm.addEventListener("click", function(){
     if(nNavi==0)
