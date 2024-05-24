@@ -1,9 +1,81 @@
 #esci {
     position: absolute;
     left: 10px;
-    top: 5px;
-    width: 50px;
-    height: 30px;
+    top: 20px;
+    width: 140px;
+    height: 50px;
     border: 5px solid black;
     background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#esci:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+#esci:active {
+    background-color: rgb(130, 130, 130);
+}
+
+/* DIV CONFERMA USCIRE */
+#uscire {
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    border: 3px solid black;
+    background-color: rgb(255, 255, 255, 1);
+    padding: 10px;
+    left: 70vmin;
+    top: 135px
+}
+
+.buttons {
+    padding: 20px;
+    margin:5px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+.buttons:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+.buttons:active {
+    background-color: rgb(130, 130, 130);
+}
+
+/* TABELLA */
+table, tr, th {
+    margin:10px;
+    padding: 0;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr, th {
+    margin: 0 !important;
+    padding: 15px !important;
+}
+
+/* INTERNO TABELLA */
+#gioca:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+#gioca:active {
+    background-color: rgb(130, 130, 130);
+}
+
+/* DIV TABELLA 1 */
+#tab1 {
+    justify-content: center;
+    display: flexbox;
+}
+
+#bottone {
+    position:relative;
+    left: 26.5vmin;
+    margin-bottom: 10px;
 }
