@@ -54,9 +54,9 @@ table, tr, th {
     border-collapse: collapse;
 }
 
-tr, th {
-    margin: 0 !important;
-    padding: 13px !important;
+th {
+    height: 45px;
+    width: 45px;
 }
 
 /* INTERNO TABELLA */
@@ -71,11 +71,56 @@ tr, th {
 /* DIV TABELLA 1 */
 #tab1 {
     justify-content: center;
-    display: flexbox;
+    margin: 2px;
 }
 
 #bottone {
     position:relative;
-    left: 25vmin;
+    left: 26.5vmin;
     margin-bottom: 10px;
+    padding: 10px;
+    margin:5px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+#bottone:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+#bottone:active {
+    background-color: rgb(130, 130, 130);
+}
+
+
+/* DIV TABELLA 2 */
+#tab2 {
+    justify-content: center;
+    margin: 20px;
+}
+
+/* SCRITTE TURNI */
+#turnoGioc {
+    border: 1px solid black;
+    background-color: blue;
+    color: white;
+    padding: 2px;
+}
+
+#turnoBOT{
+    border: 1px solid black;
+    background-color: red;
+    color: white;
+    padding: 2px;
+}
+
+/* CLASSI PER TH ATTACCHI */
+.acqua {
+    background-color: blue;
+    color: white;
+}
+
+.nave {
+    background-color: red;
+    color: white;
 }
