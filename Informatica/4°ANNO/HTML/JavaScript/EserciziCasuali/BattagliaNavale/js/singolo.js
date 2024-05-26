@@ -1,6 +1,10 @@
 let div_esci = document.getElementById("uscire")
+let div_poche = document.getElementById("pocheNavi")
+let div_troppe = document.getElementById("troppeNavi")
 
 div_esci.hidden = true
+div_poche.style.opacity = 0
+div_troppe.style.opacity = 0
 
 /* USCIRE */
 let bot_esci = document.getElementById("esci")
@@ -20,7 +24,8 @@ bot_conf.addEventListener("click", function(){
 /* PRE-PARTITA */
 let inizio = true
 let matrice = [100]
-let nNavi = 5
+const predefinitoNavi = 10
+let nNavi = predefinitoNavi
 
 let plays = document.querySelectorAll('#gioca')
 
@@ -115,8 +120,14 @@ Confirm.addEventListener("click", function(){
         }
         else
         {
-            /* FARE DIV ABSOLUTE CON AVVERTIMENTO CHE SCOMPARE DOPO POCHI SECONDI */
-            alert("HAI INSERITO TROPPE O TROPPO POCHE NAVI")
+            if(nNavi > 0)
+            {
+                riavviaAnimazione(div_poche, "animazioneNavi");
+            }
+            else
+            {
+                riavviaAnimazione(div_troppe, "animazioneNavi");
+            }
         }
     }
     else
@@ -127,11 +138,23 @@ Confirm.addEventListener("click", function(){
         }
         else
         {
-            /* FARE DIV ABSOLUTE CON AVVERTIMENTO CHE SCOMPARE DOPO POCHI SECONDI */
-            alert("HAI INSERITO TROPPE O TROPPO POCHE NAVI")
+            if(nNavi > 0)
+            {
+                riavviaAnimazione(div_poche, "animazioneNavi");
+            }
+            else
+            {
+                riavviaAnimazione(div_troppe, "animazioneNavi");
+            }
         }
     }
 })
+
+function riavviaAnimazione(elemento, classeAnimazione) {
+    elemento.classList.remove(classeAnimazione);
+    void elemento.offsetWidth; // Forza il reflow per "resettare" l'animazione
+    elemento.classList.add(classeAnimazione);
+}
 
 let posis = document.querySelectorAll('#pos')
 
@@ -189,7 +212,7 @@ function aggiornaThGioc(n){
 let matriceBot = new Array(100).fill(0)
 
 function inizializzazioneBot(){
-    for(let i=0; i<5; i++)
+    for(let i=0; i<predefinitoNavi; i++)
     {
         //NUMERI CASUALI BOT
         let num = Math.floor(Math.random()*100)
@@ -235,6 +258,11 @@ function turnoGioc(){
                 h3.opacity=0
                 setTimeout(turnoBot, 1500)
             }
+            else
+            {
+                h3TurnoB.style.opacity = 0
+                h3TurnoG.style.opacity = 1
+            }
 
             nNavi = 1
             aggiornaH3()
@@ -244,16 +272,23 @@ function turnoGioc(){
     }
 }
 
-async function turnoBot(){
-    await giocoBot()
+function turnoBot(){
+    let botContinua = giocoBot()
 
-    Confirm.disabled = false
-    h3TurnoB.style.opacity = 0
-    h3TurnoG.style.opacity = 1
-    h3.opacity=1
+    if(!botContinua)
+    {
+        Confirm.disabled = false
+        h3TurnoB.style.opacity = 0
+        h3TurnoG.style.opacity = 1
+        h3.opacity=1
+    }
+    else
+    {
+        setTimeout(turnoBot, 1500)
+    }
 }
 
-async function giocoBot(){
+function giocoBot(){
 
     let ver = true
     let num = 0
@@ -276,6 +311,9 @@ async function giocoBot(){
 
     if(posis[num].getAttribute("data-value")==3)
     {
-        setTimeout(giocoBot, 1500)
+        return true
     }
+    else
+        return false
 }
+
