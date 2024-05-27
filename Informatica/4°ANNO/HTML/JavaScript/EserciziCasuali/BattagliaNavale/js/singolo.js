@@ -260,6 +260,8 @@ function turnoGioc(){
             }
             else
             {
+                nNaviGioc--
+                controlloDiGioco()
                 h3TurnoB.style.opacity = 0
                 h3TurnoG.style.opacity = 1
             }
@@ -311,9 +313,35 @@ function giocoBot(){
 
     if(posis[num].getAttribute("data-value")==3)
     {
+        nNaviBot--
+        controlloDiGioco()
         return true
     }
     else
         return false
 }
 
+let div_perso = document.getElementById("perso")
+let div_vinto = document.getElementById("vinto")
+div_perso.hidden = true
+div_vinto.hidden = true
+let nNaviGioc = predefinitoNavi
+let nNaviBot = predefinitoNavi
+
+function controlloDiGioco(){
+
+    if(nNaviGioc==0)
+    {
+        setTimeout(function(){
+            div_vinto.hidden = false
+            body.setAttribute("class", "sfocato")
+        },1000)
+    }
+    else if(nNaviBot==0)
+    {
+        setTimeout(function(){
+            div_perso.hidden = false
+            body.setAttribute("class", "sfocato")
+        },1000)
+    }
+}

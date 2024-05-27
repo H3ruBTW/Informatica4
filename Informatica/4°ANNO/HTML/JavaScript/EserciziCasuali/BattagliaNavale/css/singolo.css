@@ -197,3 +197,26 @@ th {
         opacity: 0;
     }
 }
+
+/* DIV VITTORIA E SCONFITTA */
+#vinto{
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    border: 3px solid black;
+    background-color: rgb(255, 255, 255, 1);
+    padding: 10px;
+    left: 41.5%;
+    top: 135px
+}
+
+#perso{
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    border: 3px solid black;
+    background-color: rgb(255, 255, 255, 1);
+    padding: 10px;
+    left: 41.5%;
+    top: 135px
+}
