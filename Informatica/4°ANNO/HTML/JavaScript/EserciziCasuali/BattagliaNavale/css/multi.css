@@ -71,6 +71,10 @@ th {
     background-color: rgb(130, 130, 130);
 }
 
+#disabled {
+    background-color: #333;
+}
+
 /* DIV GIOCATORI */
 #g1 {
     justify-content: center;
@@ -107,11 +111,121 @@ th {
 
 /* CLASSI PER TH ATTACCHI */
 .acqua {
-    background-color: blue;
-    color: white;
+    background-color: blue !important; 
+    color: white !important;
 }
 
 .nave {
-    background-color: red;
+    background-color: red !important;
+    color: white !important;
+}
+
+/* CLASSE TURNO AVVERSARIO */
+.turnoAvv {
+    background-color: #333;
+}
+
+.turnoAvv table, .turnoAvv table tr, .turnoAvv table tr th {
     color: white;
+    border: 1px solid white;
+}
+
+.none {
+    text-decoration: none;
+}
+
+/* DIV MESSAGGI NAVI */
+#pocheNavi {
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    border: 3px solid black;
+    background-color: rgb(255, 255, 255, 1);
+    padding: 10px;
+    left: 41%;
+    top: 100px
+}
+
+#troppeNavi {
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    border: 3px solid black;
+    background-color: rgb(255, 255, 255, 1);
+    padding: 10px;
+    left: 43%;
+    top: 100px
+}
+
+.animazioneNavi {
+    animation: Navi 3s;
+}
+
+@keyframes Navi {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    60%{
+        opacity: 0.8;
+    }
+
+    65%{
+        opacity: 0.7;
+    }
+
+    70%{
+        opacity: 0.6;
+    }
+
+    75%{
+        opacity: 0.5;
+    }
+
+    80%{
+        opacity: 0.4;
+    }
+
+    85%{
+        opacity: 0.3;
+    }
+
+    90%{
+        opacity: 0.2;
+    }
+
+    95%{
+        opacity: 0.1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+
+/* DIV VITTORIA E SCONFITTA */
+#vinto{
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    border: 3px solid black;
+    background-color: rgb(255, 255, 255, 1);
+    padding: 10px;
+    left: 41.5%;
+    top: 135px
+}
+
+#perso{
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    border: 3px solid black;
+    background-color: rgb(255, 255, 255, 1);
+    padding: 10px;
+    left: 41.5%;
+    top: 135px
 }
