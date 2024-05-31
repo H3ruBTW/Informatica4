@@ -484,14 +484,14 @@ div_vinto.hidden = true
 
 function controlloDiGioco(){
 
-    if(nNavi==0)
+    if(nNaviG1==0)
     {
         setTimeout(function(){
             div_vinto.hidden = false
             body.setAttribute("class", "sfocato")
         },2000)
     }
-    else if(nNavi2==0)
+    else if(nNaviG2==0)
     {
         setTimeout(function(){
             div_perso.hidden = false
