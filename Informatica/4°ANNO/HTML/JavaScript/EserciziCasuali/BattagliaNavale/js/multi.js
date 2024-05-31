@@ -446,7 +446,7 @@ function turnoGioco(){
                 else
                 {
                     controlloDiGioco()
-                    nNavi2--
+                    nNaviG2--
                     return false
                 }
             }
@@ -467,7 +467,7 @@ function turnoGioco(){
                 }
                 else
                 {
-                    nNavi--
+                    nNaviG1--
                     controlloDiGioco()
                     return false
                 }
