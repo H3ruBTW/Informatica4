@@ -82,13 +82,13 @@ function aggiornaTh(n){
                 case "2":
                     thG1[n].setAttribute("class", "acqua")
                     thG1[n].innerHTML = "~"
-                    thG1[n].removeEventListener("click", funzione)
+                    thG1[n].removeEventListener("click", funzioneG1)
                     thG1[n].setAttribute("id", "disabled")
                     break
                 case "3":
                     thG1[n].setAttribute("class", "nave")
                     thG1[n].innerHTML = "X"
-                    thG1[n].removeEventListener("click", funzione)
+                    thG1[n].removeEventListener("click", funzioneG1)
                     thG1[n].setAttribute("id", "disabled")
                     break
             }
@@ -105,13 +105,13 @@ function aggiornaTh(n){
                 case "2":
                     thG2[n].setAttribute("class", "acqua")
                     thG2[n].innerHTML = "~"
-                    thG2[n].removeEventListener("click", funzione)
+                    thG2[n].removeEventListener("click", funzioneG2)
                     thG2[n].setAttribute("id", "disabled")
                     break
                 case "3":
                     thG2[n].setAttribute("class", "nave")
                     thG2[n].innerHTML = "X"
-                    thG2[n].removeEventListener("click", funzione)
+                    thG2[n].removeEventListener("click", funzioneG2)
                     thG2[n].setAttribute("id", "disabled")
                     break
             }
