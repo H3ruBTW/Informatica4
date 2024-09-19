@@ -18,6 +18,12 @@
         </nav>
     </header>
 
+    <main>
+        <center>
+            <img src="img/images.png" width="50%">
+        </center>
+    </main>
+
     <footer>
         <p>&copy; 2024-2025 Buongallino Alessandro</p>
     </footer>
