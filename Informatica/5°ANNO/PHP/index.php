@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ES A alla F - HomePage</title>
-    <link href="css/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Esecizi</title>
 </head>
 <body>
-    <header>
-        <h1>NAVIGAZIONE ESERCIZI</h1>
-        <nav>    
-            <ul>
-                <li><a href="index.php">HomePage</a></li>
-                <li><a href="ES_01/index.php">ES_01 - BASI PHP</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <center>
-            <img src="img/images.png" width="50%">
-        </center>
-    </main>
+    <header><h1>ESERCIZI PHP</h1></header>
+    <div class="divs">
+        <div class="menu">
+            <nav>
+                <ul>
+                    <hr>
+                    <li><a href="index.php">HomePage PHP</a></li>
+                    <hr>
+                    <li><a href="ES_01/index.php">HomePage ES_01</a></li>
+                    <hr>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <center>
+                <img src="img/images.png" width="50%">
+            </center>    
+        </div>
+    </div>
+    
 
     <footer>
-        <p>&copy; 2024-2025 Buongallino Alessandro</p>
+        <p>&copy; 2024 Buongallino Alessandro</p>
     </footer>
 </body>
 </html>

@@ -3,13 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INDEX</title>
+    <link rel="shortcut icon" href="img/icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Esecizi</title>
 </head>
 <body>
-    <h1>Pagina Base</h1>
-    <?php 
-        echo "<br><h2>HELLO WORLD!<h2>";
-        phpinfo();
-    ?>
+    <header><h1>ESERCIZI PHP</h1></header>
+    <div class="divs">
+        <div class="menu">
+            <nav>
+                <ul>
+                    <hr>
+                    <li><a href="../index.php">HomePage PHP</a></li>
+                    <hr>
+                    <li><a href="index.php">HomePage ES_01</a></li>
+                    <hr>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <center>
+                <img src="../img/images.png" width="50%">
+            </center>
+        </div>
+    </div>
+    
+
+    <footer>
+        <p>&copy; 2024 Buongallino Alessandro</p>
+    </footer>
 </body>
 </html>
