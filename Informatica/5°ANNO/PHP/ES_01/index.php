@@ -14,9 +14,9 @@
             <nav>
                 <ul>
                     <hr>
-                    <li><a href="../index.php">HomePage PHP</a></li>
+                    <li><a href="../index.php"><b>HomePage PHP</b></a></li>
                     <hr>
-                    <li><a href="index.php">HomePage ES_01</a></li>
+                    <li><a href="index.php"><u>HomePage ES_01</u></a></li>
                     <hr>
                     <li><a href="ES_A.php">ES_A</a></li>
                     <hr>
