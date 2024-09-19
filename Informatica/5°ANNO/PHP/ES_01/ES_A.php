@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styleA.css">
+    <title>Esecizi</title>
+</head>
+<body>
+    <header><h1>ESERCIZI PHP</h1></header>
+    <div class="divs">
+        <div class="menu">
+            <nav>
+                <ul>
+                    <hr>
+                    <li><a href="../index.php">HomePage PHP</a></li>
+                    <hr>
+                    <li><a href="index.php">HomePage ES_01</a></li>
+                    <hr>
+                    <li><a href="ES_A.php">ES_A</a></li>
+                    <hr>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <?php 
+                echo "<table>";
+                for($i=1;$i<=10;$i++){
+                    echo "<tr>";
+                    for($j=1;$j<=10;$j++){
+                        $ris = $i*$j;
+                        echo "<th>$ris</th>";
+                    }
+                    echo "</tr>";
+                }
+                echo "</table>";
+            ?>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Buongallino Alessandro</p>
+    </footer>
+</body>
+</html>

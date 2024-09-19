@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/icon.png">
+    <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
     <title>Esecizi</title>
 </head>
@@ -18,6 +18,8 @@
                     <hr>
                     <li><a href="index.php">HomePage ES_01</a></li>
                     <hr>
+                    <li><a href="ES_A.php">ES_A</a></li>
+                    <hr>
                 </ul>
             </nav>
         </div>
@@ -27,7 +29,6 @@
             </center>
         </div>
     </div>
-    
 
     <footer>
         <p>&copy; 2024 Buongallino Alessandro</p>
