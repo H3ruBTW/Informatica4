@@ -29,7 +29,7 @@
         <div class="content">
             <?php 
                 $orario = new DateTime("now", new DateTimeZone('Europe/Rome'));
-                $ora = $orario->format('h');
+                $ora = $orario->format('H');
                 if($ora>=8 && $ora<=12){
                     echo "<h3>Buongiorno";
                 } else if($ora>=12 && $ora<=20) {
