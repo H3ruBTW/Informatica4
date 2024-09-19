@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styleB.css">
     <title>Esecizi</title>
 </head>
 <body>
@@ -26,9 +27,22 @@
             </nav>
         </div>
         <div class="content">
-            <center>
-                <img src="../img/images.png" width="50%">
-            </center>
+            <?php 
+                $orario = new DateTime("now", new DateTimeZone('Europe/Rome'));
+                $ora = $orario->format('h');
+                if($ora>=8 && $ora<=12){
+                    echo "<h3>Buongiorno";
+                } else if($ora>=12 && $ora<=20) {
+                    echo "<h3>Buonasera";
+                } else if(($ora>=20 && $ora<=23) || ($ora>=0 && $ora<=7)){
+                    echo "<h3>Buonanotte";
+                }
+                $nome = "Paolo";
+                echo " $nome, questa è la mia prima pagina PHP!</h3><br>";
+
+                $user_agent = $_SERVER['HTTP_USER_AGENT'];
+                echo "<h3>Stai usando il browser: <b>$user_agent</b></h3>"
+            ?>
         </div>
     </div>
 

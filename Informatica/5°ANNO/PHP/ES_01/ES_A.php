@@ -21,6 +21,8 @@
                     <hr>
                     <li><a href="ES_A.php">ES_A</a></li>
                     <hr>
+                    <li><a href="ES_B.php">ES_B</a></li>
+                    <hr>
                 </ul>
             </nav>
         </div>
