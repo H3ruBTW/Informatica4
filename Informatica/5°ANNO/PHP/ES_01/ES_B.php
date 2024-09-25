@@ -23,6 +23,8 @@
                     <hr>
                     <li><a href="ES_B.php">ES_B</a></li>
                     <hr>
+                    <li><a href="ES_C.php">ES_C</a></li>
+                    <hr>
                 </ul>
             </nav>
         </div>
