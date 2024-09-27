@@ -29,13 +29,27 @@
             </nav>
         </div>
         <div class="content">
-            <form action="ES_A_login.php" method="POST"> 
-                <br><label>Username:</label><br>
-                <input type="text" name="username"><br>
-                <label>Password:</label><br>
-                <input type="text" name="password"><br>
-                <input id="button" type="submit" value="Accedi">
-            </form>
+            <h4>Controllo Credenziali Login</h4>
+            <?php 
+                try {
+                    $user = $_POST['username'];
+                } catch (\Throwable $th) {
+                    $user = "$th";
+                }
+                
+                try {
+                    $psw = $_POST['password'];
+                } catch (\Throwable $th) {
+                    $psw = "$th";
+                }
+
+                if($user == "admin" && $psw == "pass123"){
+                    echo "<p>Login avvenuto con successo.<br>Benvenuto $user nella pagina privata.</p>";
+                } else {
+                    echo "<p>Login fallito.<br>Credenziali errate.</p>";
+                }
+                
+            ?>
         </div>
     </div>
 
