@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/styleA.css">
     <title>Esecizi</title>
 </head>
 <body>
@@ -17,30 +16,21 @@
                     <hr>
                     <li><a href="../index.php"><b>HomePage PHP</b></a></li>
                     <hr>
-                    <li><a href="index.php"><u>HomePage ES_01</u></a></li>
+                    <li><a href="index.php"><u>HomePage ES_02</u></a></li>
                     <hr>
-                    <li><a href="ES_A.php"><b>ES_A</b></a></li>
+                    <li><a href="ES_A.php">ES_A</a></li>
                     <hr>
                     <li><a href="ES_B.php">ES_B</a></li>
                     <hr>
-                    <li><a href="ES_C.php">ES_C</a></li>
+                    <li><a href="ES_C.php"><b>ES_C</b></a></li>
                     <hr>
                 </ul>
             </nav>
         </div>
         <div class="content">
-            <?php 
-                echo "<table>";
-                for($i=1;$i<=10;$i++){
-                    echo "<tr>";
-                    for($j=1;$j<=10;$j++){
-                        $ris = $i*$j;
-                        echo "<th>$ris</th>";
-                    }
-                    echo "</tr>";
-                }
-                echo "</table>";
-            ?>
+            <center>
+                <img src="../img/images.png" width="50%">
+            </center>
         </div>
     </div>
 

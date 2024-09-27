@@ -68,6 +68,10 @@ a:hover {
     color:royalblue;
 }
 
+a:active {
+    color:royalblue;
+}
+
 /* Footer */
 footer {
     background-color: #333;
@@ -94,8 +98,4 @@ ol li {
     margin-bottom: 20px;
     font-size: 15px;
     font-family: 'Courier New', Courier, monospace;
-}
-
-h3 {
-    font-size: 12px;
 }

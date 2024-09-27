@@ -18,6 +18,8 @@
                     <hr>
                     <li><a href="ES_01/index.php"><u>HomePage ES_01</u></a></li>
                     <hr>
+                    <li><a href="ES_02/index.php"><u>HomePage ES_02</u></a></li>
+                    <hr>
                 </ul>
             </nav>
         </div>
