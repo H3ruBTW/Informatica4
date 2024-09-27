@@ -48,8 +48,8 @@
                 } else {
                     echo "<p>Login fallito.<br>Credenziali errate.</p>";
                 }
-                
             ?>
+            <a href="ES_A.php"><button id="button">Torna alla home</button></a>
         </div>
     </div>
 
