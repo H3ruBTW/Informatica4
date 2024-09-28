@@ -31,17 +31,9 @@
         <div class="content">
             <h4>Controllo Credenziali Login</h4>
             <?php 
-                try {
-                    $user = $_POST['username'];
-                } catch (\Throwable $th) {
-                    $user = "$th";
-                }
+                $user = $_POST['username'];
+                $psw = $_POST['password'];
                 
-                try {
-                    $psw = $_POST['password'];
-                } catch (\Throwable $th) {
-                    $psw = "$th";
-                }
 
                 if($user == "admin" && $psw == "pass123"){
                     echo "<p>Login avvenuto con successo.<br>Benvenuto $user nella pagina privata.</p>";
