@@ -31,9 +31,9 @@
         <div class="content">
             <form action="ES_A_login.php" method="POST"> 
                 <br><label>Username:</label><br>
-                <input type="text" name="username"><br>
+                <input type="text" name="username" required><br>
                 <label>Password:</label><br>
-                <input type="text" name="password"><br>
+                <input type="text" name="password" required><br>
                 <input id="button" type="submit" value="Accedi">
             </form>
         </div>

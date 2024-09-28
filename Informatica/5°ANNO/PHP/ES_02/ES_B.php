@@ -28,9 +28,26 @@
             </nav>
         </div>
         <div class="content">
-            <center>
-                <img src="../img/images.png" width="50%">
-            </center>
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST"> 
+                <br><label>Username:</label><br>
+                <input type="text" name="username" required><br>
+                <label>Password:</label><br>
+                <input type="text" name="password" required><br>
+                <input id="button" type="submit" value="Accedi">
+            </form>
+
+            <?php 
+                if($_SERVER['REQUEST_METHOD'] == "POST"){
+                    $user = $_POST['username'];
+                    $psw = $_POST['password'];
+
+                    if($user == "admin" && $psw == "pass123"){
+                        echo "<br><h4>Accesso venuto con successo con account: $user</h4>";
+                    } else {
+                        echo "<br><h4>Accesso fallito, credeziali errate</h4>";
+                    }
+                }
+            ?>
         </div>
     </div>
 

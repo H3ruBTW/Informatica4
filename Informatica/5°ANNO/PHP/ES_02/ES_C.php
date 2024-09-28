@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/styleC.css">
     <title>Esecizi</title>
 </head>
 <body>
@@ -28,9 +30,29 @@
             </nav>
         </div>
         <div class="content">
-            <center>
-                <img src="../img/images.png" width="50%">
-            </center>
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST"> 
+                <br><label>Mostra i numeri fino a:</label><br>
+                <input type="number" name="num" min="1" max="10" value="1" required>
+                <br>
+                <input id="button" type="submit" value="Crea Tabella">
+            </form>
+            <br>
+            <?php 
+                if($_SERVER['REQUEST_METHOD'] == "POST"){
+
+                    $num = $_POST['num'];
+                    
+                    echo "<table><tr><th>Numero</th><th>Quadrato</th><th>Cubo</th></tr>";
+                    for($i=1; $i<=$num; $i++){
+                        $quad = pow($i, 2);
+                        $cub = pow($i, 3);
+
+                        echo "<tr><th>$i</th><th>$quad</th><th>$cub</th></tr>";
+                    }
+                    echo "</table>";
+    
+                }
+            ?>
         </div>
     </div>
 
