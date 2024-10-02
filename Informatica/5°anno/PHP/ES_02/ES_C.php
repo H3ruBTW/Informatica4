@@ -50,7 +50,6 @@
                         echo "<tr><th>$i</th><th>$quad</th><th>$cub</th></tr>";
                     }
                     echo "</table>";
-    
                 }
             ?>
         </div>
