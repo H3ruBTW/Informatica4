@@ -13,7 +13,7 @@ public class BufferReader {
 
         String st;
 
-        while (st = br.readLine() != null) {
+        while ((st = br.readLine()) != null) {
             System.out.println(st);
         }
 
