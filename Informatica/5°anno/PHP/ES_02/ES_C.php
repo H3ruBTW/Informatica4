@@ -30,17 +30,14 @@
             </nav>
         </div>
         <div class="content">
-            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST"> 
-                <br><label>Mostra i numeri fino a:</label><br>
-                <input type="number" name="num" min="1" max="10" value="1" required>
-                <br>
-                <input id="button" type="submit" value="Crea Tabella">
-            </form>
+            
             <br>
             <?php 
                 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
                     $num = $_POST['num'];
+
+                    echo "<h4>Ecco la tabella dei quadrati e dei cubi fino a $num:";
                     
                     echo "<table><tr><th>Numero</th><th>Quadrato</th><th>Cubo</th></tr>";
                     for($i=1; $i<=$num; $i++){
@@ -50,6 +47,15 @@
                         echo "<tr><th>$i</th><th>$quad</th><th>$cub</th></tr>";
                     }
                     echo "</table>";
+                } else {
+                    echo<<<end
+                        <form action="<?php echo \$_SERVER['PHP_SELF'] ?>" method="POST"> 
+                            <br><label>Mostra i numeri fino a (max: 10):</label><br>
+                            <input type="number" name="num" min="1" max="10" value="1" required>
+                            <br>
+                            <input id="button" type="submit" value="Crea Tabella">
+                        </form>
+                    end;
                 }
             ?>
         </div>
