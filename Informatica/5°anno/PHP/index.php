@@ -16,6 +16,8 @@
                     <hr>
                     <li><a href="index.php"><b>HomePage PHP</b></a></li>
                     <hr>
+                    <li><a href="prova/index.php"><u>HomePage prova</u></a></li>
+                    <hr>
                     <li><a href="ES_01/index.php"><u>HomePage ES_01</u></a></li>
                     <hr>
                     <li><a href="ES_02/index.php"><u>HomePage ES_02</u></a></li>
@@ -25,7 +27,7 @@
         </div>
         <div class="content">
             <center>
-                <img src="img/images.png" width="50%">
+                <a href="phpinfo.php"><img src="img/images.png" width="50%"></a>
             </center>    
         </div>
     </div>
