@@ -1,4 +1,4 @@
-package InputOutput;
+package ES_02;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,9 +7,9 @@ import java.util.Scanner;
 public class LetturaFile {
     public static void main(String[] args) throws IOException{
         //Percorso WSL (UBUNTU)
-        File doc = new File("/mnt/c/Users/aless/Desktop/Codice/Informatica4/TPSIT/5°anno/Java/InputOutput/src/InputOutput/testo/lettura.txt");
+        File doc = new File("/mnt/c/Users/aless/Desktop/Codice/Informatica4/TPSIT/5°anno/Java/InputOutput/src/ES_02/testo/lettura.txt");
         //Percorso Windows
-        //File doc = new File("C:\\Users\\aless\\Desktop\\Codice\\Informatica4\\TPSIT\\5°anno\\Java\\InputOutput\\src\\InputOutput\\testo\\lettura.txt");
+        //File doc = new File("C:\\Users\\aless\\Desktop\\Codice\\Informatica4\\TPSIT\\5°anno\\Java\\InputOutput\\src\\ES_02\\testo\\lettura.txt");
         Scanner sc = new Scanner(doc);
 
         System.out.println("Metodo scanner:");
