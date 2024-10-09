@@ -9,7 +9,7 @@ public class Principale {
         try(Scanner scanner = new Scanner(System.in)){
             System.out.print("Scrivere il raggio: ");
             raggio = scanner.nextFloat();
-            System.out.print("\nScrivere l'altezza: ");
+            System.out.print("Scrivere l'altezza: ");
             altezza = scanner.nextFloat();
         }
 
@@ -18,7 +18,7 @@ public class Principale {
         VolumeSfera ObjSfera = new VolumeSfera(raggio);
 
         try {
-            System.out.println("Calcolo...");
+            System.out.println("\nCalcolo...");
             System.out.println("\nArea del cerchio:    " + ObjCerchio.Area(raggio));
             System.out.println("Volume del Cilindro: " + ObjCilindro.Volume(raggio, altezza));
             System.out.println("Volume della sfera:  " + ObjSfera.Volume(raggio));
