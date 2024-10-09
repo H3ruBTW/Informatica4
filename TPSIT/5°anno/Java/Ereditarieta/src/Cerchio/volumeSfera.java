@@ -1,10 +1,13 @@
 package Cerchio;
 
-public class volumeSfera extends areaCerchio {
-    float altezza;
-
-    volumeSfera(float raggio, float altezza){
-        areaCerchio(raggio);
-        this.altezza = altezza;
+public class VolumeSfera extends AreaCerchio {
+    
+    public VolumeSfera(float raggio) {
+        super(raggio);
+    }
+    
+    float Volume(float raggio){
+        float ris = 4/3 * (float)Math.PI * (float)Math.pow(raggio, 3);
+        return ris;
     }
 }
