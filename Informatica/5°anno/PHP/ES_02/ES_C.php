@@ -1,30 +1,28 @@
 <?php 
-    $html;
+    $html = <<<COD
+        <form action="ES_C.php" method="POST"> 
+            <br><label>Mostra i numeri fino a (max: 10):</label><br>
+            <input type="number" name="num" min="1" max="10" value="1" required>
+            <br>
+            <input id="button" type="submit" value="Crea Tabella">
+        </form><br>
+    COD;
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         $num = $_POST['num'];
 
         $html = "<h4>Ecco la tabella dei quadrati e dei cubi fino a $num:</h4><br>";
-        $html = "" . "<table><tr><th>Numero</th><th>Quadrato</th><th>Cubo</th></tr>";
+        $html = $html . "<table><tr><th>Numero</th><th>Quadrato</th><th>Cubo</th></tr>" ;
 
         for($i=1; $i<=$num; $i++){
             $quad = pow($i, 2);
             $cub = pow($i, 3);
 
-            $html = "" . "<tr><th>$i</th><th>$quad</th><th>$cub</th></tr>";
+            $html = $html . "<tr><th>$i</th><th>$quad</th><th>$cub</th></tr>";
         }
 
-        $html = "" . "</table><br>";
-    } else {
-        $html = <<<COD
-            <form action="ES_C.php" method="POST"> 
-                <br><label>Mostra i numeri fino a (max: 10):</label><br>
-                <input type="number" name="num" min="1" max="10" value="1" required>
-                <br>
-                <input id="button" type="submit" value="Crea Tabella">
-            </form><br>
-        COD;
+        $html = $html . "</table><br>";
     }
 ?>
 
