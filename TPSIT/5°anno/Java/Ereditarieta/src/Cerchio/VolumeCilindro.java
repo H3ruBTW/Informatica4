@@ -5,6 +5,7 @@ public class VolumeCilindro extends AreaCerchio {
 
     public VolumeCilindro(float raggio, float altezza) {
         super(raggio);
+        this.altezza = altezza;
     }
 
     public void SetAltezza(float altezza) {
