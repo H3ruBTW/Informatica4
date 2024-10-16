@@ -7,7 +7,7 @@ public class CalendarioMetodi1 {
         GregorianCalendar Cal = new GregorianCalendar();
 
         int giorno = Cal.get(Calendar.DAY_OF_MONTH);
-        int mese = Cal.get(Calendar.MONTH)+1;
+        int mese = Cal.get(Calendar.MONTH)+1; //Perchè gennaio è uguale a 0
         int anno = Cal.get(Calendar.YEAR);
         int H = Cal.get(Calendar.HOUR_OF_DAY);
         int m = Cal.get(Calendar.MINUTE);
