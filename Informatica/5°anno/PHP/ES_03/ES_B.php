@@ -92,9 +92,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     <hr>
                     <li><a href="index.php"><u>HomePage ES_03</u></a></li>
                     <hr>
-                    <li><a href="ES_A.php"><b>ES_A</b></a></li>
+                    <li><a href="ES_A.php">ES_A</a></li>
                     <hr>
-                    <li><a href="ES_B.php">ES_B</a></li>
+                    <li><a href="ES_B.php"><b>ES_B</b></a></li>
                     <hr>
                 </ul>
             </nav>
