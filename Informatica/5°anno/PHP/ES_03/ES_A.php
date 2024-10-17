@@ -2,43 +2,58 @@
 $html = <<<COD
 <form action="" method="post">
 <h4>Dati Personali</h4>
-<label for="name">Nome:</label>
-<input type="text" name="name" placeholder="Mario" required>
-<label for="surname" >Cognome:</label>
-<input type="text" name="surname" placeholder="Rossi" required>
-<br><br>
-<label for="dob">Data di nascita:</label>
-<input type="date" name="date" required>
-<label for="fiscale">Codice fiscale:</label>
-<input type="text" name="codicefis" placeholder="MRIRSS..." pattern="[a-zA-Z]{6}[\d]{2}[a-zA-Z][\d]{2}[a-zA-Z][\d]{3}[a-zA-Z]" title=" \nFormato del codice fiscale errato">
-<br><br>
-<label for="mail">E-mail:</label>
-<input type="text" name="mail" placeholder="mario.rossi@mail.*" pattern="[a-zA-Z0-9\.\-_]{1,}[@][a-zA-Z0-9]{1,}[\.][a-zA-Z]{2,}" required title=" \nSi prega di inserire una mail valida">
-<label for="cellnumber" >Numero di cellulare:</label>
-<input type="tel" name="tel" placeholder="39 333 333 3333" pattern="[0-9]{11,12}" required title=" \nNumero di telefono non valido\nInserire anche il prefisso">
+<div class="box">
+    <label for="name">Nome:</label>
+    <input type="text" name="name" placeholder="Mario" required>
+    <br><br>
+    <label for="dob">Data di nascita:</label>
+    <input type="date" name="date" required>
+    <br><br>
+    <label for="mail">E-mail:</label>
+    <input type="text" name="mail" placeholder="mario.rossi@mail.*" pattern="[a-zA-Z0-9\.\-_]{1,}[@][a-zA-Z0-9]{1,}[\.][a-zA-Z]{2,}" required title=" \nSi prega di inserire una mail valida">
+</div>
+<div class="box2">
+    <label for="surname" >Cognome:</label>
+    <input type="text" name="surname" placeholder="Rossi" required>
+    <br><br>
+    <label for="fiscale">Codice fiscale:</label>
+    <input type="text" name="codicefis" placeholder="MRIRSS..." pattern="[a-zA-Z]{6}[\d]{2}[a-zA-Z][\d]{2}[a-zA-Z][\d]{3}[a-zA-Z]" title=" \nFormato del codice fiscale errato">
+    <br><br>
+    <label for="cellnumber" >Numero di cellulare:</label>
+    <input type="tel" name="tel" placeholder="39 333 333 3333" pattern="[0-9]{11,12}" required title=" \nNumero di telefono non valido\nInserire anche il prefisso">
+</div>
 
 <h4>Indirizzo</h4>
-<label for="tipo">Tipo di strada:</label>
-<select name="tipo">
-    <option value="Via">Via</option>
-    <option value="Viale">Viale</option>
-    <option value="Vicolo">Vicolo</option>
-    <option value="Corso">Corso</option>
-</select>
+<div class="box">
+    <label for="tipo">Tipo di strada:</label>
+    <select name="tipo">
+        <option value="Via">Via</option>
+        <option value="Viale">Viale</option>
+        <option value="Vicolo">Vicolo</option>
+        <option value="Corso">Corso</option>
+    </select>
+    <br><br>
+    <label for="prov">Provincia:</label>
+    <input type="text" name="prov" placeholder="MI" pattern="[a-zA-Z]{2}" required title=" \nScrivere l'ABBREVIAZIONE della provincia">
+</div>
+<div class="box2">
+    <label for="nomevia">Nome Via:</label>
+    <input type="text" name="via" placeholder="Vittorio Emanuele III" required>
+    <br><br>
+    <label for="comune">Comune:</label>
+    <input type="text" name="comune" placeholder="Bollate" required>
+</div>
 
-<label for="nomevia">Nome Via:</label>
-<input type="text" name="via" placeholder="Vittorio Emanuele III" required>
-<br><br>
-<label for="prov">Provincia:</label>
-<input type="text" name="prov" placeholder="MI" pattern="[a-zA-Z]{2}" required title=" \nScrivere l'ABBREVIAZIONE della provincia">
-<label for="comune">Comune:</label>
-<input type="text" name="comune" placeholder="Bollate" required>
 
 <h4>Account</h4>
+<div class="box">
 <label for="username">Username:</label>
 <input type="text" name="user" pattern=".{4,}" required title=" \nL'username deve essere di minimo 4 caratteri">
+</div>
+<div class="box2">
 <label for="password">Password:</label>
 <input type="text" name="password" placeholder="min 8 car./1 spec./1 maiu." pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&\-_+=?]).{8,}" required title=" \nNon hai inserito una o più delle seguenti cose\nUna maiuscola, Un Carattere Speciale, La password è più corta di 8 caratteri">
+</div>
 <br><br>
 <input id="button" type="submit" value="Crea Account">
 </form>
@@ -79,6 +94,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/gestione.css">
     <title>Esecizi</title>
 </head>
 <body>

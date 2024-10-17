@@ -10,12 +10,12 @@ $html = <<<COD
 <label for="dob">Data di nascita:</label>
 <input type="date" name="date" required>
 <label for="fiscale">Codice fiscale:</label>
-<input type="text" name="codicefis" placeholder="MRIRSS..." pattern="[a-zA-Z]{6}[\d]{2}[a-zA-Z][\d]{2}[a-zA-Z][\d]{3}[a-zA-Z]" title=" \nFormato del codice fiscale errato">
+<input type="text" name="codicefis" placeholder="MRIRSS...">
 <br><br>
 <label for="mail">E-mail:</label>
-<input type="text" name="mail" placeholder="mario.rossi@mail.*" pattern="[a-zA-Z0-9\.\-_]{1,}[@][a-zA-Z0-9]{1,}[\.][a-zA-Z]{2,}" required title=" \nSi prega di inserire una mail valida">
+<input type="text" name="mail" placeholder="mario.rossi@mail.*" required>
 <label for="cellnumber" >Numero di cellulare:</label>
-<input type="tel" name="tel" placeholder="39 333 333 3333" pattern="[0-9]{11,12}" required title=" \nNumero di telefono non valido\nInserire anche il prefisso">
+<input type="text" name="tel" placeholder="39 333 333 3333" required>
 
 <h4>Indirizzo</h4>
 <label for="tipo">Tipo di strada:</label>
@@ -30,15 +30,15 @@ $html = <<<COD
 <input type="text" name="via" placeholder="Vittorio Emanuele III" required>
 <br><br>
 <label for="prov">Provincia:</label>
-<input type="text" name="prov" placeholder="MI" pattern="[a-zA-Z]{2}" required title=" \nScrivere l'ABBREVIAZIONE della provincia">
+<input type="text" name="prov" placeholder="MI" required>
 <label for="comune">Comune:</label>
 <input type="text" name="comune" placeholder="Bollate" required>
 
 <h4>Account</h4>
 <label for="username">Username:</label>
-<input type="text" name="user" pattern=".{4,}" required title=" \nL'username deve essere di minimo 4 caratteri">
+<input type="text" name="user" required>
 <label for="password">Password:</label>
-<input type="text" name="password" placeholder="min 8 car./1 spec./1 maiu." pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&\-_+=?]).{8,}" required title=" \nNon hai inserito una o più delle seguenti cose\nUna maiuscola, Un Carattere Speciale, La password è più corta di 8 caratteri">
+<input type="text" name="password" placeholder="min 8 car./1 spec./1 maiu.">
 <br><br>
 <input id="button" type="submit" value="Crea Account">
 </form>
@@ -51,23 +51,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $codfis = ($_POST["codicefis"] != null) ? strtoupper($_POST["codicefis"]) : "";
     $mail = $_POST["mail"];
     $tel = $_POST["tel"];
-    $ind = $_POST["tipo"] . " " . $_POST["via"] . ", " . strtoupper($_POST["prov"]) . " " . $_POST["comune"];
+    $tipo = $_POST["tipo"];
+    $vian = $_POST["via"];
+    $prov = strtoupper($_POST["prov"]);
+    $com= $_POST["comune"]; 
     $user = $_POST["user"];
     $pass = $_POST["password"];
-
-    $html = "<h3>Dati Inseriti</h3>\n";
-    $html = $html . "<h4>Dati Personali</h4><br>\n";
-    $html = $html . "<p>Nome e Cognome: $nome $cog<br>\n";
-    $html = $html . "Nato il: $data<br>\n";
-    if($_POST["codicefis"] != null){
-        $html = $html . "Codice Fiscale: $codfis<br>\n";
-    }
-    $html = $html . "Mail Personale: $mail<br>\n";
-    $html = $html . "Telefono Personale: $tel<br>\n";
-    $html = $html . "Indirizzo Completo: $ind</p><br>\n";
-    $html = $html . "<h4>Dati D'Accesso</h4>\n";  
-    $html = $html . "<p>Username: $user<br>\n";
-    $html = $html . "<p>Password: $pass<br>\n";
 }
 ?>
 

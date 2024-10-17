@@ -1,0 +1,21 @@
+/* DIV box */
+.box {
+    position: relative;
+    width: 300px;
+    margin-bottom: 0;
+    float: left;
+}
+
+/* DIV box2 */
+.box2{
+    margin-left: 0;
+    padding-bottom: 10px;
+    padding-left: 1%;
+    background-color: white;
+    width: 100%;
+    float: none;
+}
+
+input{
+    width: 160px;
+}
