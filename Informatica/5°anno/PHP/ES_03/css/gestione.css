@@ -16,6 +16,24 @@
     float: none;
 }
 
-input{
-    width: 160px;
+input, select{
+    width: 250px;
+}
+
+select {
+    background-color: white;
+    border: 1px solid black;
+}
+
+select:hover {
+    background-color: lightgrey;
+}
+
+select:active {
+    background-color: gray;
+}
+
+input.rosso {
+    border: 1px solid red;
+    color: red;
 }
