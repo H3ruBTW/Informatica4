@@ -18,6 +18,7 @@
                     <li><a href="../index.php"><b>HomePage PHP</b></a></li>
                     <hr>
                     <li><a href="prova/index.php"><u>HomePage prova</u></a></li>
+                    <hr>
                 </ul>
             </nav>
         </div>
