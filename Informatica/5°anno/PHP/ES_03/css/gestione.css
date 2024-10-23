@@ -39,3 +39,7 @@ input.rosso {
     border: 1px solid red;
     color: red;
 }
+
+footer{
+    top: 0px !important;
+}
