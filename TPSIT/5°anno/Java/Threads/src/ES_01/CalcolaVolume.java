@@ -32,5 +32,7 @@ public class CalcolaVolume {
         System.out.println("\nVolume del cubo: " + cubo.getVolume());
         System.out.println("Volume della sfera: " + sfera.getVolume());
         System.out.println("Volume del tetraedo: " + tetraedro.getVolume());
+
+        scanner.close();
     }
 }

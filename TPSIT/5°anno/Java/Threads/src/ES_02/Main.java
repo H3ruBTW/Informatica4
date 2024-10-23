@@ -19,5 +19,7 @@ public class Main {
         System.out.println("Perimetro della faccia triangolare: " + piramide.perimetroTriangolo()); 
         System.out.println("\nArea superficiale della piramide: " + piramide.superficiePiramide()); 
         System.out.println("Volume della piramide: " + piramide.volumePiramide());
+
+        scanner.close();
     }
 }
