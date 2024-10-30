@@ -27,11 +27,11 @@ public class EchoClient extends ClientServer {
 			System.out.println("SERVER: " + servStr);
 			String userStr = "";
 			do {
-				userStr = in.readLine(); // legge l�input
+				userStr = in.readLine(); // legge l'input
 				writeToSocket(socket, userStr + "\n"); // lo scrive sul socket per inviare il messaggio al server
 				servStr = readFromSocket(socket); // legge la risposta ricdevuta dal server
 				System.out.println("SERVER: " + servStr);// e la visualizza
-			} while (!userStr.toLowerCase().equals("goodbye")); //se riceve un �goodbye� chiude la comunicazione
+			} while (!userStr.toLowerCase().equals("goodbye")); //se riceve un "goodbye" chiude la comunicazione
 		}   //IF
 	}  //requestAService()
 }
