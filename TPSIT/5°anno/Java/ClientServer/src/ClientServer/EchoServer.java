@@ -17,14 +17,13 @@ public class EchoServer extends ClientServer {
 			try {
 		socket = port.accept();
 		System.out.println("Accettata la connessione da " + socket.getInetAddress());
-           //ESTRAE L�INDIRIZZO DEL CLIENT
+           //ESTRAE L'INDIRIZZO DEL CLIENT
 
 				provideAService(socket);
 
 				socket.close(); 
 				System.out.println("Connessione chiusa \n");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -43,7 +42,7 @@ public class EchoServer extends ClientServer {
 			else {
 				System.out.println("CLIENT: " + str);
 				String servStr;
-		servStr = sv.readLine(); // legge l�input da console	  
+		servStr = sv.readLine(); // legge l'input da console	  
          writeToSocket(socket, "SERVER" + servStr + "\n");//LO INVIA AL CLIENT
 			}
 		} while (!str.toLowerCase().equals("goodbye"));

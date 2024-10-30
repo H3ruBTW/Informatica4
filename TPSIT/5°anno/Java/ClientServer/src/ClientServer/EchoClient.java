@@ -1,8 +1,7 @@
 package ClientServer;
 
-import java.net.*;
 import java.io.*;
-import java.io.BufferedReader;
+import java.net.*;
 
 public class EchoClient extends ClientServer {
 	protected Socket socket;
@@ -18,7 +17,6 @@ public class EchoClient extends ClientServer {
 			requestAService(socket);
 			socket.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();		
 		}
 	} // run()
