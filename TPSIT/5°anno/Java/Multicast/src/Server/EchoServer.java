@@ -3,7 +3,6 @@ package Server;
 import java.io.*;
 import java.net.*;
 
-// MODIFICARE INOLTRE LA ECHOSERVER ELIMINANDO IL METODO PROVIDEASERVICE E MODIFICANDO IL METODO RUN() ALL'INTERNO, AVENDO TOLTO PROVIDEASERVICE(); SOCKET.CLOSE()
 public class EchoServer extends ClientServer  {
 
     private ServerSocket port;
