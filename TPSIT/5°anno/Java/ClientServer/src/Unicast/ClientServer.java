@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-public class ClientServer extends Thread{//si noti l�estensione con i thread
+public class ClientServer extends Thread{//si noti l'estensione con i thread
 	protected InputStream iStream; // i due flussi legati al socket
 	protected OutputStream oStream;
 
