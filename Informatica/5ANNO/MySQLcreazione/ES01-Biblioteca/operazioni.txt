@@ -1,0 +1,53 @@
+mysql> drop database biblioteca;
+Query OK, 3 rows affected (0.05 sec)
+
+mysql> show databases;
++--------------------+
+| Database       	|
++--------------------+
+| information_schema |
+| mysql          	|
+| performance_schema |
+| sys            	|
++--------------------+
+4 rows in set (0.00 sec)
+
+root@LaptopHeru:/mnt/c/Users/aless/Desktop/Codice/Informatica4/Informatica/5ANNO/MySQLbackup# mysql -u root biblioteca < /mnt/c/Users/aless/Desktop/Codice/Informatica4/Informatica/5ANNO/MySQLbackup/biblioteca_V1_301024.sql;
+
+mysql> show databases;
++--------------------+
+| Database       	|
++--------------------+
+| biblioteca     	|
+| information_schema |
+| mysql          	|
+| performance_schema |
+| sys            	|
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use biblioteca;
+
+mysql> show tables
+	-> ;
++----------------------+
+| Tables_in_biblioteca |
++----------------------+
+| autori           	|
+| categorie        	|
+| libri            	|
++----------------------+
+3 rows in set (0.00 sec)
+
+//esempio su autori
+mysql> desc autori;
++--------------+-------------+------+-----+---------+----------------+
+| Field    	| Type    	| Null | Key | Default | Extra      	|
++--------------+-------------+------+-----+---------+----------------+
+| id_autore	| int     	| NO   | PRI | NULL	| auto_increment |
+| nome_autore  | varchar(50) | NO   | 	| NULL	|            	|
+| nazionalita  | varchar(50) | YES  | 	| NULL	|            	|
+| data_nascita | date    	| YES  | 	| NULL	|            	|
+| data_morte   | date    	| YES  | 	| NULL	|            	|
++--------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
