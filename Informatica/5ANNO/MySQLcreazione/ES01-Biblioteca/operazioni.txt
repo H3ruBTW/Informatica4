@@ -1,3 +1,89 @@
+ES B
+---------------------------------------------------------------------------------------------
+mysql> -- Verifico il corretto inserimento dei dati
+mysql> SELECT * FROM autori;
++-----------+---------------+-------------+--------------+------------+
+| id_autore | nome_autore   | nazionalita | data_nascita | data_morte |
++-----------+---------------+-------------+--------------+------------+
+|     	1    | Jane Austen   | Inglese 	 | 1775-12-16   | 1817-07-18 |
+|     	2    | George Orwell | Inglese 	 | 1903-06-25   | 1950-01-21 |
+|     	3    | Harper Lee	 | Americana   | 1926-04-28   | 2016-02-19 |
++-----------+---------------+-------------+--------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> -- Verifico il corretto inserimento dei dati
+mysql> SELECT * FROM categorie ;
++--------------+----------------+
+| id_categoria | nome_categoria |
++--------------+----------------+
+|        	1 | Romanzo    	|
+|        	2 | Saggio     	|
+|        	3 | Fantascienza   |
+|        	4 | Mistero    	|
++--------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> -- Verifico il corretto inserimento dei dati
+mysql> SELECT * FROM libri;
+SHOW TABLES;
++----------+------------------------+-----------+--------------+--------------------+
+| id_libro | titolo             	| id_autore | id_categoria | anno_pubblicazione |
++----------+------------------------+-----------+--------------+--------------------+
+|    	1 | Orgoglio e pregiudizio  |     	1   |        	1 |           	1813 |
+|    	2 | 1984               	    |     	2   |        	3 |           	1949 |
+|    	3 | Il buio oltre la siepe  |     	3   |        	1 |           	1960 |
+|    	4 | Guerra e pace      	    |     	1   |        	1 |           	1869 |
++----------+------------------------+-----------+--------------+--------------------+
+4 rows in set (0.00 sec)
+
+mysql> SHOW TABLES;
++----------------------+
+| Tables_in_biblioteca |
++----------------------+
+| autori           	|
+| categorie        	|
+| libri            	|
++----------------------+
+3 rows in set (0.00 sec)
+
+mysql> desc autori
+	-> ;
++--------------+-------------+------+-----+---------+----------------+
+| Field    	   | Type    	 | Null | Key | Default | Extra      	|
++--------------+-------------+------+-----+---------+----------------+
+| id_autore    | int     	   | NO   | PRI | NULL	| auto_increment |
+| nome_autore  | varchar(50)   | NO   | 	| NULL	|            	|
+| nazionalita  | varchar(50)   | YES  | 	| NULL	|            	|
+| data_nascita | date    	   | YES  | 	| NULL	|            	|
+| data_morte   | date    	   | YES  | 	| NULL	|            	|
++--------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> desc categorie;
++----------------+-------------+------+-----+---------+----------------+
+| Field      	 | Type    	   | Null | Key | Default | Extra      	   |
++----------------+-------------+------+-----+---------+----------------+
+| id_categoria   | int         | NO   | PRI | NULL	| auto_increment   |
+| nome_categoria | varchar(50) | NO   | 	| NULL	|            	   |
++----------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.01 sec)
+
+mysql> desc libri
+	-> ;
++--------------------+--------------+------+-----+---------+----------------+
+| Field          	 | Type     	| Null | Key | Default | Extra      	|
++--------------------+--------------+------+-----+---------+----------------+
+| id_libro       	 | int      	| NO   | PRI | NULL	| auto_increment    |
+| titolo         	 | varchar(100) | NO   | 	 | NULL	|            	    |
+| id_autore      	 | int      	| YES  | MUL | NULL	|            	    |
+| id_categoria   	 | int      	| YES  | MUL | NULL	|            	    |
+| anno_pubblicazione | int      	| YES  | 	 | NULL	|            	    |
++--------------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+---------------------------------------------------------------------------------------------
+ES_C
+---------------------------------------------------------------------------------------------
 mysql> drop database biblioteca;
 Query OK, 3 rows affected (0.05 sec)
 
@@ -42,12 +128,12 @@ mysql> show tables
 //esempio su autori
 mysql> desc autori;
 +--------------+-------------+------+-----+---------+----------------+
-| Field    	| Type    	| Null | Key | Default | Extra      	|
+| Field    	   | Type    	 | Null | Key | Default | Extra      	|
 +--------------+-------------+------+-----+---------+----------------+
-| id_autore	| int     	| NO   | PRI | NULL	| auto_increment |
-| nome_autore  | varchar(50) | NO   | 	| NULL	|            	|
-| nazionalita  | varchar(50) | YES  | 	| NULL	|            	|
-| data_nascita | date    	| YES  | 	| NULL	|            	|
-| data_morte   | date    	| YES  | 	| NULL	|            	|
+| id_autore	   | int     	 | NO   | PRI | NULL	| auto_increment |
+| nome_autore  | varchar(50) | NO   | 	  | NULL	|            	|
+| nazionalita  | varchar(50) | YES  | 	  | NULL	|            	|
+| data_nascita | date    	 | YES  | 	  | NULL	|            	|
+| data_morte   | date    	 | YES  | 	  | NULL	|            	|
 +--------------+-------------+------+-----+---------+----------------+
 5 rows in set (0.01 sec)
