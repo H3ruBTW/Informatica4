@@ -117,6 +117,6 @@ insert into cliente (nome, cognome, data_nascita) values
     ("antonio", "rossi", "1982-05-14"),
     ("mario", "sturniolo", "1998-11-8");
 
-insert into nazionalita_autori (id_cliente, id_libro, data_inizio, data_fine) values 
+insert into prestiti (id_cliente, id_libro, data_inizio, data_fine) values 
     (1, 2, "2024-11-11", "2024-12-11"),
     (2, 4, "2024-11-11", "2024-12-11");

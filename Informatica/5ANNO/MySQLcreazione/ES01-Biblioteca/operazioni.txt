@@ -73,11 +73,11 @@ mysql> desc libri
 +--------------------+--------------+------+-----+---------+----------------+
 | Field          	 | Type     	| Null | Key | Default | Extra      	|
 +--------------------+--------------+------+-----+---------+----------------+
-| id_libro       	 | int      	| NO   | PRI | NULL	| auto_increment    |
-| titolo         	 | varchar(100) | NO   | 	 | NULL	|            	    |
-| id_autore      	 | int      	| YES  | MUL | NULL	|            	    |
-| id_categoria   	 | int      	| YES  | MUL | NULL	|            	    |
-| anno_pubblicazione | int      	| YES  | 	 | NULL	|            	    |
+| id_libro       	 | int      	| NO   | PRI | NULL	   | auto_increment |
+| titolo         	 | varchar(100) | NO   | 	 | NULL	   |            	|
+| id_autore      	 | int      	| YES  | MUL | NULL	   |            	    |
+| id_categoria   	 | int      	| YES  | MUL | NULL	   |            	    |
+| anno_pubblicazione | int      	| YES  | 	 | NULL	   |            	    |
 +--------------------+--------------+------+-----+---------+----------------+
 5 rows in set (0.01 sec)
 
@@ -89,12 +89,12 @@ Query OK, 3 rows affected (0.05 sec)
 
 mysql> show databases;
 +--------------------+
-| Database       	|
+| Database       	 |
 +--------------------+
 | information_schema |
-| mysql          	|
+| mysql          	 |
 | performance_schema |
-| sys            	|
+| sys            	 |
 +--------------------+
 4 rows in set (0.00 sec)
 
@@ -102,13 +102,13 @@ root@LaptopHeru:/mnt/c/Users/aless/Desktop/Codice/Informatica4/Informatica/5ANNO
 
 mysql> show databases;
 +--------------------+
-| Database       	|
+| Database       	 |
 +--------------------+
-| biblioteca     	|
+| biblioteca     	 |
 | information_schema |
-| mysql          	|
+| mysql          	 |
 | performance_schema |
-| sys            	|
+| sys            	 |
 +--------------------+
 5 rows in set (0.00 sec)
 
@@ -119,21 +119,82 @@ mysql> show tables
 +----------------------+
 | Tables_in_biblioteca |
 +----------------------+
-| autori           	|
-| categorie        	|
-| libri            	|
+| autori           	   |
+| categorie        	   |
+| libri            	   |
 +----------------------+
 3 rows in set (0.00 sec)
 
 //esempio su autori
 mysql> desc autori;
 +--------------+-------------+------+-----+---------+----------------+
-| Field    	   | Type    	 | Null | Key | Default | Extra      	|
+| Field    	   | Type    	 | Null | Key | Default | Extra      	 |
 +--------------+-------------+------+-----+---------+----------------+
 | id_autore	   | int     	 | NO   | PRI | NULL	| auto_increment |
-| nome_autore  | varchar(50) | NO   | 	  | NULL	|            	|
-| nazionalita  | varchar(50) | YES  | 	  | NULL	|            	|
-| data_nascita | date    	 | YES  | 	  | NULL	|            	|
-| data_morte   | date    	 | YES  | 	  | NULL	|            	|
+| nome_autore  | varchar(50) | NO   | 	  | NULL	|            	 |
+| nazionalita  | varchar(50) | YES  | 	  | NULL	|            	 |
+| data_nascita | date    	 | YES  | 	  | NULL	|            	 |
+| data_morte   | date    	 | YES  | 	  | NULL	|            	 |
 +--------------+-------------+------+-----+---------+----------------+
 5 rows in set (0.01 sec)
+
+---------------------------------------------------------------------------------------------
+ES_D
+---------------------------------------------------------------------------------------------
+mysql> use biblioteca;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++----------------------+
+| Tables_in_biblioteca |
++----------------------+
+| autori               |
+| categorie            |
+| cliente              |
+| libri                |
+| nazionalita          |
+| nazionalita_autori   |
+| prestiti             |
++----------------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from nazionalita;
++----------------+-----------------+
+| id_nazionalita | str_nazionalita |
++----------------+-----------------+
+|              1 | inglese         |
+|              2 | americano/a     |
++----------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from cliente
+    -> ;
++------------+---------+-----------+-----------------+
+| id_cliente | nome    | cognome   | data_di_nascita |
++------------+---------+-----------+-----------------+
+|          1 | antonio | rossi     | 1982-05-14      |
+|          2 | mario   | sturniolo | 1998-11-08      |
++------------+---------+-----------+-----------------+
+2 rows in set (0.03 sec)
+
+mysql> select * from prestiti;
++-------------+------------+----------+-------------+------------+
+| id_prestito | id_cliente | id_libro | data_inizio | data_fine  |
++-------------+------------+----------+-------------+------------+
+|           1 |          1 |        2 | 2024-11-11  | 2024-12-11 |
+|           2 |          2 |        4 | 2024-11-11  | 2024-12-11 |
++-------------+------------+----------+-------------+------------+
+2 rows in set (0.03 sec)
+
+mysql> select * from libri;
++----------+------------------------+-----------+--------------+--------------------+
+| id_libro | titolo                 | id_autore | id_categoria | anno_pubblicazione |
++----------+------------------------+-----------+--------------+--------------------+
+|        1 | Orgoglio e pregiudizio |         1 |            1 |               1813 |
+|        2 | 1984                   |         2 |            3 |               1949 |
+|        3 | Il buio oltre la siepe |         3 |            1 |               1960 |
+|        4 | Guerra e pace          |         1 |            1 |               1869 |
++----------+------------------------+-----------+--------------+--------------------+
+4 rows in set (0.03 sec)
