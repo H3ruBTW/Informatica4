@@ -63,3 +63,60 @@ SELECT * FROM libri;
 SHOW TABLES;
 
 -- CON LA MODIFICA CON BIBLIOTECA v2
+
+-- Rimuovo "nazionalita" da "autori" poichè non serve più
+alter table autori drop column nazionalita;
+
+-- Creo le tabelle "nazionalita-autori" e "nazionalita"
+create table nazionalita (
+    id_nazionalita int(11) auto_increment not null,
+    str_nazionalita varchar(30) not null,
+    primary key(id_nazionalita)
+);
+
+create table nazionalita_autori (
+    id_nazionalita_autori int(11) auto_increment not null,
+    id_nazionalita int(11) not null,
+    id_autore int(11) not null,
+    primary key(id_nazionalita_autori),
+    foreign key(id_nazionalita) references nazionalita(id_nazionalita),
+    foreign key(id_autore) references autori(id_autore)
+);
+
+-- Adesso gestiamo i prestiti creando prima l'entità forte "cliente" e dopo la tabella dei "prestiti"
+create table cliente (
+    id_cliente int(11) auto_increment not null,
+    nome varchar(40) not null,
+    cognome varchar(40) not null,
+    data_nascita date not null,
+    primary key(id_cliente)
+);
+
+create table prestiti(
+    id_prestito int(11) auto_increment not null,
+    id_cliente int(11)  not null,
+    id_libro int(11) not null,
+    data_inizio date not null,
+    data_fine date not null,
+    primary key(id_prestito),
+    foreign key(id_cliente) references cliente(id_cliente),
+    foreign key(id_libro) references libri(id_libro)
+);
+
+-- INSERISCO DATI NELLE TABELLE
+insert into nazionalita (str_nazionalita) values 
+    ("inglese"),
+    ("americano");
+
+insert into nazionalita_autori (id_autore, id_nazionalita) values 
+    (1, 1),
+    (2, 1),
+    (3, 2);
+
+insert into cliente (nome, cognome, data_nascita) values 
+    ("antonio", "rossi", "1982-05-14"),
+    ("mario", "sturniolo", "1998-11-8");
+
+insert into nazionalita_autori (id_cliente, id_libro, data_inizio, data_fine) values 
+    (1, 2, "2024-11-11", "2024-12-11"),
+    (2, 4, "2024-11-11", "2024-12-11");
