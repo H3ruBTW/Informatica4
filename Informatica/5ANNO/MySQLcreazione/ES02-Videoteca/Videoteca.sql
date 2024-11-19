@@ -1,5 +1,5 @@
 -- CREARE IL DATABASE
-create database Videoteca if not exists;
+create database IF not exists Videoteca;
 use Videoteca;
 
 -- CREO L'ENTITA FORTE FORMATO FISICO COSI DA POI CREARE VIDEOCASSETTE
@@ -80,13 +80,13 @@ create table Cliente (
     cognome varchar(30) not null,
     data_nascita date not null,
     primary key (id_tessera) 
-)
+);
 
 -- CREO I PRESTITI
 create table Prestito (
     id_prestito int not null auto_increment,
-    id_tessera int null, -- IN CASO DI CANCELLAZIONE DEL CLIENTE SI VUOLE TENERE IL PRESTITO PRECEDENTE (SET NULL)
-    id_videocassetta int null,
+    id_tessera int, -- IN CASO DI CANCELLAZIONE DEL CLIENTE SI VUOLE TENERE IL PRESTITO PRECEDENTE (SET NULL)
+    id_videocassetta int,
     data_inizio date not null,
     data_fine date not null,
     primary key (id_prestito),
