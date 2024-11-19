@@ -25,3 +25,20 @@ insert into Attori_Videocassette (id_attore, id_videocassetta, personaggio) valu
     (2, 1, "Albert Einstein"),
     (3, 2, "Joseph Cooper"),
     (4, 2, "Amelia Brand");
+
+insert into Genere (nome_genere) values
+    ("biografico"), 
+    ("drammatico"), 
+    ("thriller"), 
+    ("storico"),
+    ("fantascienza"), 
+    ("avventura");
+
+insert into Generi_Videocassette (id_videocassetta, id_genere) values
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (1, 4),
+    (2, 5),
+    (2, 6),
+    (2, 2);
