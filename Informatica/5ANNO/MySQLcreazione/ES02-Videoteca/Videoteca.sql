@@ -32,6 +32,7 @@ create table Attori_Videocassette (
     id_attori_videocassette int not null auto_increment,
     id_attore int not null,
     id_videocassetta int not null,
+    personaggio varchar(50) not null,
     primary key (id_attori_videocassette),
     foreign key (id_attore) references Attore(id_attore) on delete no action, -- L'ATTORE NON PUO' ESSERE CANCELLATO FINCHE' CI SONO
                                                                               -- ALTRE VIDEOCASSETTE CON EGLI CHE PARTECIPA
