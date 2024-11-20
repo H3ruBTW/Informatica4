@@ -42,3 +42,15 @@ insert into Generi_Videocassette (id_videocassetta, id_genere) values
     (2, 5),
     (2, 6),
     (2, 2);
+
+insert into Cliente (nome, cognome, data_nascita) values
+    ("Mario", "Rossi", "1987-09-11"),
+    ("Daniele", "Voda", "1965-02-01");
+
+insert into Prestito (id_tessera, id_videocassetta, data_inizio, data_fine) values
+    (1, 2, "2024-11-20", "2025-01-20"),
+    (2, 1, "2024-11-20", "2024-12-20");
+
+insert into Pagamento (id_prestito, prezzo) values
+    (1, "5,79€"),
+    (2, "3,00€");
