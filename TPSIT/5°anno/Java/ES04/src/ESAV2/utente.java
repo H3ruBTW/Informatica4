@@ -49,7 +49,7 @@ public class utente {
                             //Stampo a schermo info e dati ricevuti
                             System.out.println(message);
                             // Se il messaggio è "exit" termina il programma
-                            if(message.contains("exit"))
+                            if(message.substring(message.indexOf(":")+1).equalsIgnoreCase("exit"))
                                 break;
                         }
                     } catch (Exception e) {
@@ -73,7 +73,7 @@ public class utente {
                             // Invio del pacchetto
                             socket.send(packet);
                             // Se il messaggio è "exit" termina il programma
-                            if(msg.replaceAll(" ", "").compareToIgnoreCase("exit")==0){
+                            if(msg.replaceAll(" ", "").equalsIgnoreCase("exit")){
                                 scanner.close();
                                 break;
                             }     
