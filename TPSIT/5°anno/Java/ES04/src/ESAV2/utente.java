@@ -49,7 +49,7 @@ public class utente {
                             //Stampo a schermo info e dati ricevuti
                             System.out.println(message);
                             // Se il messaggio è "exit" termina il programma
-                            if(message.substring(message.indexOf(":")+1).equalsIgnoreCase("exit"))
+                            if(message.substring(message.indexOf(":")+1).replaceAll(" ", "").equalsIgnoreCase("exit"))
                                 break;
                         }
                     } catch (Exception e) {
