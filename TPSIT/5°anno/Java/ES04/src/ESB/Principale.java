@@ -3,6 +3,9 @@ package ESB;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.util.Scanner;
 
 public class Principale {
     private static int ordinazione = 1;
@@ -30,12 +33,15 @@ public class Principale {
 
                             //Receives a datagram packet from this socket
                             socket.receive(packet);
-                            System.out.println("Ricevuta richiesta da: " + packet.getAddress());
+                            System.out.println("\nRicevuta richiesta da: " + packet.getAddress() + "\nGli è stato assegnato il numero: " + ordinazioneMAX);
                             
-                            String message = ordinazioneMAX + "";
+                            String message = ordinazioneMAX + " " + ordinazione;
                             DatagramPacket sendPacket = new DatagramPacket(message.getBytes(), message.length(), packet.getAddress(), PORT);
                             ordinazioneMAX++;
+
+                            socket.send(sendPacket);
                         }
+                        
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -48,7 +54,21 @@ public class Principale {
                 @Override
                 public void run(){
                     try{
+                        MulticastSocket socket = new MulticastSocket();
+                        InetAddress group = InetAddress.getByName(MULTICAST_IP);
+                        socket.setInterface(InetAddress.getByName(LOCAL_IP));
+                        socket.joinGroup(group);
 
+                        while (true) { 
+                            System.out.print("Premi Invio per chiamare il cliente N°" + ordinazione);
+                            Scanner scanner = new Scanner(System.in);
+                            scanner.nextLine();
+                            
+                            String message = "E' stato chiamato il numero: " + ordinazione;
+                            DatagramPacket packet = new DatagramPacket(message.getBytes(), message.length(), group, MULTICAST_PORT);
+                            socket.send(packet);
+                            ordinazione++;
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
