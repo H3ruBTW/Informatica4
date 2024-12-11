@@ -13,48 +13,48 @@
     const ctx = canvas.getContext('2d')
     let width = canvas.getAttribute("width")
     let height = canvas.getAttribute("height")
-let temp = 7
+let temp = 38
 
     ctx.beginPath();
-    ctx.arc(width/2, 300, 25, 0, 2 * Math.PI);
+    ctx.arc(width/2-50, 300, 25, 0, 2 * Math.PI);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(width/2, 60, 15, 0, 2 * Math.PI);
+    ctx.arc(width/2-50, 60, 15, 0, 2 * Math.PI);
     ctx.stroke();
 
     ctx.fillStyle = "white"
-    ctx.fillRect(width/2-15, 59, 30, 250)
+    ctx.fillRect(width/2-15-50, 59, 30, 250)
 
     ctx.beginPath()
-    ctx.moveTo(width/2-15, 60)
-    ctx.lineTo(width/2-15, 280)
+    ctx.moveTo(width/2-15-50, 60)
+    ctx.lineTo(width/2-15-50, 280)
     ctx.stroke()
 
     ctx.beginPath()
-    ctx.moveTo(width/2+15, 60)
-    ctx.lineTo(width/2+15, 280)
+    ctx.moveTo(width/2+15-50, 60)
+    ctx.lineTo(width/2+15-50, 280)
     ctx.stroke()
 
     ctx.beginPath();
-    ctx.arc(width/2, 300, 10, 0, 2 * Math.PI);
+    ctx.arc(width/2-50, 300, 10, 0, 2 * Math.PI);
     ctx.fillStyle = "red"
     ctx.fill()
 
     ctx.lineWidth = 6
     ctx.strokeStyle = "red"
     ctx.beginPath()
-    ctx.moveTo(width/2, 300)
-    ctx.lineTo(width/2, 280)
+    ctx.moveTo(width/2-50, 300)
+    ctx.lineTo(width/2-50, 280)
     ctx.stroke()
 
     ctx.beginPath()
-    ctx.moveTo(width/2, 280)
-    ctx.lineTo(width/2, 280-(5*temp))
+    ctx.moveTo(width/2-50, 280)
+    ctx.lineTo(width/2-50, 280-(5*temp))
     ctx.stroke()
 
     ctx.beginPath();
-    ctx.arc(width/2, 280-(5*temp), 3, 0, 2 * Math.PI);
+    ctx.arc(width/2-50, 280-(5*temp), 3, 0, 2 * Math.PI);
     ctx.fillStyle = "red"
     ctx.fill()
 
@@ -62,23 +62,35 @@ let temp = 7
     ctx.strokeStyle = "black"
 
     ctx.beginPath()
-    ctx.moveTo(width/2+10, 280)
-    ctx.lineTo(width/2+20, 280)
+    ctx.moveTo(width/2+10-50, 280)
+    ctx.lineTo(width/2+20-50, 280)
     ctx.stroke()
 
     ctx.font = "10px arial"
     ctx.fillStyle = "black"
-    ctx.fillText("0°", width/2+27, 283)
+    ctx.fillText("0°", width/2+27-50, 283)
 
     for(let i=10; i<=40; i+=10){
         ctx.beginPath()
-        ctx.moveTo(width/2+10, 280-(50*i/10))
-        ctx.lineTo(width/2+20, 280-(50*i/10))
+        ctx.moveTo(width/2+10-50, 280-(50*i/10))
+        ctx.lineTo(width/2+20-50, 280-(50*i/10))
         ctx.stroke()
 
-        ctx.fillText(i + "°", width/2+27, 280-(50*i/10)+3)
+        ctx.fillText(i + "°", width/2+27-50, 280-(50*i/10)+3)
+    }
+
+    for(let i=5; i<=45; i+=10){
+        ctx.beginPath()
+        ctx.moveTo(width/2+13-50, 280-(50*i/10))
+        ctx.lineTo(width/2+17-50, 280-(50*i/10))
+        ctx.stroke()
+
+        ctx.fillText(i + "°", width/2+27-50, 280-(50*i/10)+3)
     }
     
+    ctx.font = "50px arial"
+    ctx.fillText(temp + "°", 120, height/2+20)
+
     setInterval(function(){
         location.reload()
     }, 5000)

@@ -19,7 +19,7 @@ public class modifyserver {
 
                     if(riga.contains("let temp =")){
                         int n = random.nextInt(2);
-                        int n2 = random.nextInt(5);
+                        int n2 = random.nextInt(3);
 
                         if(n==0){
                             temp = temp + n2;
