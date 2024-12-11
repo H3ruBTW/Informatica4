@@ -29,30 +29,37 @@ class server{
 				DataOutputStream outStream = new DataOutputStream(clientSocket.getOutputStream());	
 				BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
+				String contenuto = "";
+				String percorsoFile = "Termometro/Termometro.html";
+				String percorsoFile2 = "Termometro/termo.png";
+
 				//Invio dei dati su stream di rete al client
 				clientMsg = "HTTP/1.1 200 OK\r\n";
 				//clientMsg += "Connection: close\r\n";
-				clientMsg += "Content-Type: text/html\r\n";
-				clientMsg += "\r\n";
+				while ((clientMsg=inStream.readLine()).length() != 0) {
+					if(clientMsg.contains("GET /favicon.ico")){
+						clientMsg += "Content-Type: image/x-icon\r\n";
+						clientMsg += "\r\n";
+						contenuto = new String(Files.readAllBytes(Paths.get(percorsoFile2)));
+					} else {
+						clientMsg += "Content-Type: text/html\r\n";
+						clientMsg += "\r\n";			
 
-				String percorsoFile = "Termometro/Termometro.html";
+						try {
+							// Legge tutto il contenuto del file in una stringa
+							contenuto = new String(Files.readAllBytes(Paths.get(percorsoFile)));
 
-				// Variabile per memorizzare il contenuto del file
-				String contenuto = "";
-
-				try {
-					// Legge tutto il contenuto del file in una stringa
-					contenuto = new String(Files.readAllBytes(Paths.get(percorsoFile)));
-
-					// Stampa il contenuto
-					System.out.println("Contenuto del file:");
-					System.out.println(contenuto);
-				} catch (IOException e) {
-					// Gestisce eventuali errori di lettura
-					System.err.println("Errore durante la lettura del file: " + e.getMessage());
+							// Stampa il contenuto
+							System.out.println("Contenuto del file:");
+							System.out.println(contenuto);
+						} catch (IOException e) {
+							// Gestisce eventuali errori di lettura
+							System.err.println("Errore durante la lettura del file: " + e.getMessage());
+						}
+					}
+					clientMsg+=contenuto;
+					break;
 				}
-
-				clientMsg+=contenuto;
 				
 				outStream.write(clientMsg.getBytes());
 				outStream.flush();
