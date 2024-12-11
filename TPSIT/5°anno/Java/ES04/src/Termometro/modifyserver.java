@@ -27,6 +27,11 @@ public class modifyserver {
                             temp = temp - n2;
                         }
 
+                        if(temp>45)
+                            temp = 45;
+                        if(temp<0)
+                            temp = 0;
+
                         righe.set(i, "let temp = " + temp);
 
                         break;
