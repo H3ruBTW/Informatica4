@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Termometro</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         /* Reset CSS */
         body, html {
@@ -31,7 +32,7 @@
     const ctx = canvas.getContext('2d')
     let width = canvas.getAttribute("width")
     let height = canvas.getAttribute("height")
-let temp = 38
+let temp = 18
 
     ctx.beginPath();
     ctx.arc(width/2-50, 300, 25, 0, 2 * Math.PI);

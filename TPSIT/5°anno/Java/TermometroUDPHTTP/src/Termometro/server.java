@@ -29,15 +29,19 @@ class server{
 				DataOutputStream outStream = new DataOutputStream(clientSocket.getOutputStream());	
 				BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
+				String InputString;
+
 				String contenuto = "";
 				String percorsoFile = "Termometro/Termometro.html";
-				String percorsoFile2 = "Termometro/termo.png";
+				String percorsoFile2 = "Termometro/termo.ico";
 
 				//Invio dei dati su stream di rete al client
 				clientMsg = "HTTP/1.1 200 OK\r\n";
 				//clientMsg += "Connection: close\r\n";
-				while ((clientMsg=inStream.readLine()).length() != 0) {
-					if(clientMsg.contains("GET /favicon.ico")){
+				while ((InputString=inStream.readLine()).length() != 0) {
+					
+					if(InputString.contains("GET /favicon.ico")){
+						System.out.println("Richiesta per favicon ricevuta!"); 
 						clientMsg += "Content-Type: image/x-icon\r\n";
 						clientMsg += "\r\n";
 						contenuto = new String(Files.readAllBytes(Paths.get(percorsoFile2)));
