@@ -219,7 +219,7 @@
 +--------------------------------------------------------------------------------------
 | ES 16
 | Libri pubblicati dagli autori con id (1, 5 e 6)
-| mysql> select * from Libri where Autore = 1 or Autore = 5 or Autore = 6;
+| mysql> select * from Libri where Autore in (1, 5, 6);
 | +---------------+--------------------------------------+--------+-------------------+---------------------+
 | | ISBN          | Titolo                               | Autore | AnnoPubblicazione | QuantitaInMagazzino |
 | +---------------+--------------------------------------+--------+-------------------+---------------------+
