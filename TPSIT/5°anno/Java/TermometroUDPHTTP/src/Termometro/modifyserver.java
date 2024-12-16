@@ -1,49 +1,70 @@
 package Termometro;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
 
 public class modifyserver {
+    private static final int PORT = 8765;
     public static void main(String[] args) throws InterruptedException {
-        int temp = 20;
+        float temp = 20;
         String percorsoFile = "Termometro/Termometro.html";
         Random random = new Random();
 
-        do { 
-            try {
-                List<String> righe = Files.readAllLines(Paths.get(percorsoFile));
-                for (int i = 0; i < righe.size(); i++) {
-                    String riga = righe.get(i);
+        try {
+            //Opens a datagram socket on the specified port
+            DatagramSocket socket = new DatagramSocket(PORT);
 
-                    if(riga.contains("let temp =")){
-                        int n = random.nextInt(2);
-                        int n2 = random.nextInt(3);
+            while (true) { 
+                //Constructs a datagram packet for receiving the packets of specified length
+                byte[] buf = new byte[1024];
+                DatagramPacket packet = new DatagramPacket(buf, 1024);
 
-                        if(n==0){
-                            temp = temp + n2;
-                        } else {
-                            temp = temp - n2;
+                //Receives a datagram packet from this socket
+                socket.receive(packet);            
+
+                String msg = new String(packet.getData(), 0, packet.getLength());
+                temp = Float.parseFloat(msg);
+
+                try {
+                    List<String> righe = Files.readAllLines(Paths.get(percorsoFile));
+                    for (int i = 0; i < righe.size(); i++) {
+                        String riga = righe.get(i);
+    
+                        if(riga.contains("let temp =")){                               
+                            righe.set(i, "let temp = " + temp);
+                            break;
                         }
-
-                        if(temp>45)
-                            temp = 45;
-                        if(temp<0)
-                            temp = 0;
-
-                        righe.set(i, "let temp = " + temp);
-
-                        break;
                     }
+    
+                    Files.write(Paths.get(percorsoFile), righe);
+    
+                    System.out.println("Scrittura avvenuta con successo");
+                } catch (IOException e) {
+                    System.out.println("Errore...");
                 }
-
-                Files.write(Paths.get(percorsoFile), righe);
-
-                System.out.println("Scrittura avvenuta con successo");
-            } catch (Exception e) {
-                System.out.println("Errore...");
             }
+            
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+
+
+
+
+
+        do { 
+           
             Thread.sleep(5000);
         } while (true);
         
