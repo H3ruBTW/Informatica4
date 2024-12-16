@@ -30,13 +30,14 @@ public class modifyserver {
                 String msg = new String(packet.getData(), 0, packet.getLength());
                 temp = Float.parseFloat(msg);
 
+                //prende le righe del file html è le piazza in una lista che poi controlla per poi riscrivere il file
                 try {
                     List<String> righe = Files.readAllLines(Paths.get(percorsoFile));
                     for (int i = 0; i < righe.size(); i++) {
                         String riga = righe.get(i);
     
                         if(riga.contains("let temp =")){                               
-                            righe.set(i, "let temp = " + temp);
+                            righe.set(i, "    let temp = " + temp);
                             break;
                         }
                     }
@@ -51,22 +52,6 @@ public class modifyserver {
             
         } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
-        }
-
-
-
-
-
-
-
-
-
-
-
-        do { 
-           
-            Thread.sleep(5000);
-        } while (true);
-        
+        }        
     }
 }

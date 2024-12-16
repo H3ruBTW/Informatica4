@@ -1,86 +1,77 @@
 package Termometro;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-class server{
+class server {
     public static void main(String[] args) {
-        final int SERVER_PORT=8765;
-		String clientMsg = "";
-		
-		try {			 
-			// Creazione del socket sul server e ascolto sulla porta
-			ServerSocket serverSocket = new ServerSocket(SERVER_PORT);
-			System.out.println("Server: in ascolto sulla porta " + SERVER_PORT);
+        final int SERVER_PORT = 8765;
 
-			boolean endConn=false;
-			while(!endConn) {
-				// Attesa della connessione con il client
-				System.out.println("Attesa ricezione dati dal client ....................... \n");
-				Socket clientSocket = serverSocket.accept();
-				
-				// Create output stream to write data and input stream to read data from socket
-				DataOutputStream outStream = new DataOutputStream(clientSocket.getOutputStream());	
-				BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {
+            System.out.println("Server: in ascolto sulla porta " + SERVER_PORT);
 
-				String InputString;
+            while (true) {
+                System.out.println("Attesa ricezione dati dal client...");
+                try (Socket clientSocket = serverSocket.accept();
+                     DataOutputStream outStream = new DataOutputStream(clientSocket.getOutputStream());
+                     BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
 
-				String contenuto = "";
-				String percorsoFile = "Termometro/Termometro.html";
-				String percorsoFile2 = "Termometro/termo.ico";
+                    String InputString;
+                    String contenuto = "";
+                    String percorsoFile = "Termometro/Termometro.html";
+                    String percorsoFile2 = "Termometro/favicon.ico";
 
-				//Invio dei dati su stream di rete al client
-				clientMsg = "HTTP/1.1 200 OK\r\n";
-				//clientMsg += "Connection: close\r\n";
-				while ((InputString=inStream.readLine()).length() != 0) {
-					
-					if(InputString.contains("GET /favicon.ico")){
-						System.out.println("Richiesta per favicon ricevuta!"); 
-						clientMsg += "Content-Type: image/x-icon\r\n";
-						clientMsg += "\r\n";
-						contenuto = new String(Files.readAllBytes(Paths.get(percorsoFile2)));
-					} else {
-						clientMsg += "Content-Type: text/html\r\n";
-						clientMsg += "\r\n";			
+                    boolean isFaviconRequest = false;
 
-						try {
-							// Legge tutto il contenuto del file in una stringa
-							contenuto = new String(Files.readAllBytes(Paths.get(percorsoFile)));
+                    // Lettura della richiesta HTTP
+                    while ((InputString = inStream.readLine()) != null && InputString.length() != 0) {
+                        if (InputString.contains("GET /favicon.ico")) {
+                            isFaviconRequest = true;
+                        }
+                        System.out.println("Richiesta ricevuta: " + InputString);
+                    }
 
-							// Stampa il contenuto
-							System.out.println("Contenuto del file:");
-							System.out.println(contenuto);
-						} catch (IOException e) {
-							// Gestisce eventuali errori di lettura
-							System.err.println("Errore durante la lettura del file: " + e.getMessage());
-						}
-					}
-					clientMsg+=contenuto;
-					break;
-				}
-				
-				outStream.write(clientMsg.getBytes());
-				outStream.flush();
+                    // Composizione della risposta HTTP
+                    String clientMsg = "HTTP/1.1 200 OK\r\n";
+                    
+                    //comunicazione della favicon
+                    if (isFaviconRequest) {
+                        if (Files.exists(Paths.get(percorsoFile2))) {
+                            byte[] icoContent = Files.readAllBytes(Paths.get(percorsoFile2));
+                            clientMsg += "Content-Type: image/x-icon\r\n";
+                            clientMsg += "Content-Length: " + icoContent.length + "\r\n";
+                            clientMsg += "\r\n";
+                            outStream.write(clientMsg.getBytes());
+                            outStream.write(icoContent);
+                        } else {
+                            clientMsg += "Content-Type: text/plain\r\n";
+                            clientMsg += "\r\nFile favicon.ico non trovato";
+                            outStream.write(clientMsg.getBytes());
+                        }
+                    //comunicazione del file html
+                    } else {
+                        if (Files.exists(Paths.get(percorsoFile))) {
+                            contenuto = new String(Files.readAllBytes(Paths.get(percorsoFile)));
+                        } else {
+                            contenuto = "<html><body><h1>File non trovato</h1></body></html>";
+                        }
+                        clientMsg += "Content-Type: text/html\r\n";
+                        clientMsg += "Content-Length: " + contenuto.length() + "\r\n";
+                        clientMsg += "\r\n" + contenuto;
+                        outStream.write(clientMsg.getBytes());
+                    }
 
-				System.out.println("\n....................... Fine ricezione dati\n");
-				// Close resources
-				clientSocket.close();
-				inStream.close();
-				outStream.close();
-			}
-
-			// Close resources
-			serverSocket.close();
-
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	
+                    outStream.flush();
+                    System.out.println("Risposta inviata al client.");
+                } catch (Exception e) {
+                    System.err.println("Errore durante la gestione della connessione: " + e.getMessage());
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Errore nell'avvio del server: " + e.getMessage());
+        }
     }
 }
