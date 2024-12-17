@@ -1,3 +1,46 @@
+<?php 
+$servername = "localhost"; // O l'indirizzo del server (ad esempio, 'LaptopHeru')
+$username = "root"; // Nome utente di MySQL (per default su XAMPP è 'root')
+$password = ""; // Password di MySQL (per default su XAMPP è vuota)
+$dbname = "studenti"; // Nome del database
+
+// Crea la connessione
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verifica la connessione
+if ($conn->connect_error) {
+    die("Connessione fallita: " . $conn->connect_error);
+}
+
+$html = "";
+
+$sql = "SELECT studente.ID, studente.cognome, voto.voto
+        FROM studente
+        LEFT JOIN voto ON studente.ID = voto.id_stud
+        ORDER BY studente.ID";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Iterazione sui dati e costruzione della stringa HTML
+    $currentStudentID = null;
+    
+    while($row = $result->fetch_assoc()) {
+        // Se l'ID studente cambia, aggiungiamo il nome dello studente
+        if ($currentStudentID != $row['ID']) {
+            $currentStudentID = $row['ID'];
+            $html .= "<h3>Studente: " . $row["cognome"] . " (ID: " . $row["ID"] . ")</h3>";
+        }
+        
+        // Aggiungi il voto per questo studente
+        $html .= "<p>Voto: " . ($row["voto"] ? $row["voto"] : 'Nessun voto') . "</p>";
+    }
+} else {
+    $html .= "<div class='no-results'>0 risultati</div>";
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,70 +66,7 @@
             </nav>
         </div>
         <div class="content">
-        <?php
-        // Imposta i parametri di connessione ODBC
-        $dsn = 'AccessDB'; // Il nome del DSN
-        $user = '';        // Nome utente, se necessario (di solito vuoto per Access)
-        $password = '';    // Password, se necessaria (di solito vuoto per Access)
-
-        // Prova a stabilire la connessione ODBC
-        $conn = odbc_connect($dsn, $user, $password);
-
-        if (!$conn) {
-            // Gestisci l'errore di connessione
-            die("Connessione ODBC fallita: " . odbc_errormsg());
-        }
-
-        // Costruisci la query per selezionare tutti i record dalla tabella
-        $sql = "SELECT * FROM TabellaStudenti ORDER BY ID"; 
-
-        // Esegui la query
-        $result = odbc_exec($conn, $sql);
-
-        if (!$result) {
-            // Gestisci l'errore durante l'esecuzione della query
-            die("Errore durante l'esecuzione della query: " . odbc_errormsg($conn));
-        }
-
-        // Supponiamo che tu abbia già ottenuto i dati dalla tabella
-        if (odbc_fetch_row($result)) {
-            echo "<h4>Lista dei record</h4>";
-            echo "<table>";
-            echo "<tr>";
-
-            // Ottieni i nomi delle colonne
-            $num_fields = odbc_num_fields($result);
-            for ($i = 1; $i <= $num_fields; $i++) {
-                $col_name = odbc_field_name($result, $i);
-                echo "<th>" . htmlspecialchars($col_name) . "</th>";
-            }
-            echo "</tr>";
-
-            // Recupera e stampa tutte le righe
-            do {
-                echo "<tr>";
-                for ($i = 1; $i <= $num_fields; $i++) {
-                    $col_name = odbc_field_name($result, $i); // Ottieni il nome della colonna in ogni iterazione
-                    $cell = odbc_result($result, $i);
-
-                    // Controlla se la colonna è per il campo DSA
-                    if ($col_name === 'DSA') { 
-                        echo "<td>" . htmlspecialchars($cell ? "SI" : "NO") . "</td>";
-                    } else {
-                        echo "<td>" . htmlspecialchars($cell) . "</td>";
-                    }
-                }
-                echo "</tr>";
-            } while (odbc_fetch_row($result));
-
-            echo "</table>";
-        } else {
-            echo "Nessun record trovato.";
-        }
-
-        // Chiudi la connessione
-        odbc_close($conn);
-        ?>
+            <?php echo $html; ?>
         </div>
     </div>
     
