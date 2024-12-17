@@ -14,29 +14,67 @@ if ($conn->connect_error) {
 
 $html = "";
 
-$sql = "SELECT studente.ID, studente.cognome, voto.voto
+$sql = "SELECT studente.ID, studente.cognome, materia.codice AS materia, voto.voto
         FROM studente
         LEFT JOIN voto ON studente.ID = voto.id_stud
-        ORDER BY studente.ID";
+        LEFT JOIN materia ON materia.ID = voto.id_materia
+        ORDER BY studente.ID, materia.codice";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    // Iterazione sui dati e costruzione della stringa HTML
+if ($result && $result->num_rows > 0) {
     $currentStudentID = null;
-    
-    while($row = $result->fetch_assoc()) {
-        // Se l'ID studente cambia, aggiungiamo il nome dello studente
-        if ($currentStudentID != $row['ID']) {
-            $currentStudentID = $row['ID'];
-            $html .= "<h3>Studente: " . $row["cognome"] . " (ID: " . $row["ID"] . ")</h3>";
+    $studentData = []; // Array per organizzare i dati per studente
+
+    // Organizza i dati
+    while ($row = $result->fetch_assoc()) {
+        $studentID = $row['ID'];
+        $studentName = $row['cognome'];
+        $materia = $row['materia'] ?? "N/A";
+        $voto = $row['voto'];
+
+        if (!isset($studentData[$studentID])) {
+            $studentData[$studentID] = [
+                'name' => $studentName,
+                'materie' => []
+            ];
         }
-        
-        // Aggiungi il voto per questo studente
-        $html .= "<p>Voto: " . ($row["voto"] ? $row["voto"] : 'Nessun voto') . "</p>";
+
+        if (!isset($studentData[$studentID]['materie'][$materia])) {
+            $studentData[$studentID]['materie'][$materia] = [];
+        }
+
+        // Aggiungi i voti (anche se vuoti)
+        $studentData[$studentID]['materie'][$materia][] = $voto;
+    }
+
+    // Genera l'HTML
+    foreach ($studentData as $studentID => $data) {
+        $html .= "<h3>Studente: " . htmlspecialchars($data['name']) . " (ID: $studentID)</h3>";
+        $html .= "<table class='styled-table'>";
+
+        // Intestazione con i nomi delle materie
+        $html .= "<thead><tr>";
+        foreach ($data['materie'] as $materia => $voti) {
+            $html .= "<th>" . htmlspecialchars($materia) . "</th>";
+        }
+        $html .= "</tr></thead><tbody><tr>";
+
+        // Righe con i voti verticali
+        $maxRows = max(array_map('count', $data['materie'])); // Trova il numero massimo di voti
+        for ($i = 0; $i < $maxRows; $i++) {
+            $html .= "<tr>";
+            foreach ($data['materie'] as $materia => $voti) {
+                $html .= "<td>" . (isset($voti[$i]) ? htmlspecialchars($voti[$i]) : "") . "</td>";
+            }
+            $html .= "</tr>";
+        }
+
+        $html .= "</tbody></table>";
     }
 } else {
     $html .= "<div class='no-results'>0 risultati</div>";
 }
+
 
 $conn->close();
 ?>
