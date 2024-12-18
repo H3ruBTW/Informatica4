@@ -4,7 +4,7 @@ import time
 
 # Client
 def udp_client():
-    server_address = ('localhost', 8765)  # Cambia 'localhost' con l'indirizzo del server Java, se diverso.
+    server_address = ('LaptopHeru', 8765)  # Cambia 'localhost' con l'indirizzo del server Java, se diverso.
 
     while True:
         # Creazione del socket UDP

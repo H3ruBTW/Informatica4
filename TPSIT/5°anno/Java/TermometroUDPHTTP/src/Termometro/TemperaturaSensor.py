@@ -7,7 +7,7 @@ DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4  # GPIO a cui è collegato il pin DATA del DHT11 (modifica se necessario)
 
 # Configurazione del client UDP
-UDP_IP = "127.0.0.1"  # Loopback (localhost), usa "LaptopHeru" se hai configurato il nome host
+UDP_IP = "LaptopHeru"  # Loopback (localhost), usa "LaptopHeru" se hai configurato il nome host
 UDP_PORT = 8765       # Porta del server
 
 # Creazione del socket UDP
