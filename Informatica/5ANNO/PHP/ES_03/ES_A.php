@@ -111,8 +111,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     <hr>
                     <li><a href="ES_A.php"><b>ES_A</b></a></li>
                     <hr>
-                    <li><a href="ES_B.php">ES_B</a></li>
-                    <hr>
                 </ul>
             </nav>
         </div>
