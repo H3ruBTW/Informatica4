@@ -6,14 +6,12 @@ import java.net.DatagramSocket;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Random;
 
 public class modifyserver {
     private static final int PORT = 8766;
     public static void main(String[] args) throws InterruptedException {
         float temp = 20;
         String percorsoFile = "Termometro/Termometro.html";
-        Random random = new Random();
 
         try {
             //Opens a datagram socket on the specified port
@@ -25,7 +23,8 @@ public class modifyserver {
                 DatagramPacket packet = new DatagramPacket(buf, 1024);
 
                 //Receives a datagram packet from this socket
-                socket.receive(packet);            
+                socket.receive(packet);  
+                System.out.println("Ricevuto pacchetto da: " + packet.getAddress().getHostAddress());          
 
                 String msg = new String(packet.getData(), 0, packet.getLength());
                 temp = Float.parseFloat(msg);
