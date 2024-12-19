@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 public class modifyserver {
-    private static final int PORT = 8765;
+    private static final int PORT = 8766;
     public static void main(String[] args) throws InterruptedException {
         float temp = 20;
         String percorsoFile = "Termometro/Termometro.html";

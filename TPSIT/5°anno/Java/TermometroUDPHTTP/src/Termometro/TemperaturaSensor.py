@@ -8,7 +8,7 @@ DHT_PIN = 4  # GPIO a cui è collegato il pin DATA del DHT11 (modifica se necess
 
 # Configurazione del client UDP
 UDP_IP = "LaptopHeru"  # Loopback (localhost), usa "LaptopHeru" se hai configurato il nome host
-UDP_PORT = 8765       # Porta del server
+UDP_PORT = 8766       # Porta del server
 
 # Creazione del socket UDP
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
