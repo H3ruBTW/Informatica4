@@ -1,6 +1,7 @@
 package Termometro;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.file.Files;
@@ -10,7 +11,7 @@ class server {
     public static void main(String[] args) {
         final int SERVER_PORT = 8765;
 
-        try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {
+        try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT, 50, InetAddress.getByName("0.0.0.0"))) {
             System.out.println("Server: in ascolto sulla porta " + SERVER_PORT);
 
             while (true) {
