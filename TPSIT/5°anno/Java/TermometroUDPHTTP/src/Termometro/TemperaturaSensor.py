@@ -3,12 +3,12 @@ import socket
 import time
 
 # Configurazione del sensore (DHT11)
-DHT_SENSOR = Adafruit_DHT.DHT11
+DHT_SENSOR = Adafruit_DHT.DHT22
 DHT_PIN = 4  # GPIO a cui è collegato il pin DATA del DHT11 (modifica se necessario)
 
 # Configurazione del client TCP
 SERVER_IP = "LaptopHeru"  # Usa il nome host configurato per il server
-SERVER_PORT = 8766       # Porta del server
+SERVER_PORT = 60000     # Porta del server
 
 # Creazione del socket TCP
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
