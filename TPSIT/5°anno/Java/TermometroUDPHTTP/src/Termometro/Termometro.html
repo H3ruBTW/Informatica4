@@ -303,18 +303,26 @@
 
     ctx2.beginPath();
     ctx2.strokeRect(25,25,100,100)
-    
-    ctx2.beginPath();
-    ctx2.ellipse(50, 125-(100*(humid/100)), 25, 5, 0, 0, 2 * Math.PI);
-    ctx2.fill();
 
-    ctx2.beginPath();
-    ctx2.fillStyle = "white"
-    ctx2.ellipse(100, 125-(100*(humid/100)), 25, 5, 0, 0, 2 * Math.PI);
-    ctx2.fill();
+    if(humid > 5 && humid <93){
+        ctx2.beginPath();
+        ctx2.ellipse(50, 125-(100*(humid/100)), 25, 5, 0, 0, 2 * Math.PI);
+        ctx2.fill();
 
+        ctx2.beginPath();
+        ctx2.fillStyle = "white"
+        ctx2.ellipse(100, 125-(100*(humid/100)), 25, 5, 0, 0, 2 * Math.PI);
+        ctx2.fill();
 
-    
+        ctx2.beginPath();
+        ctx2.fillStyle = "blue"
+        ctx2.moveTo(50, 125-(100*(humid/100))-5)
+        ctx2.lineTo(85, 125-(100*(humid/100))-7)
+        ctx2.lineTo(80, 125-(100*(humid/100))-4)
+        ctx2.lineTo(70, 125-(100*(humid/100)))
+        ctx2.fill();
+    }
+
     setInterval(function(){
         location.reload()
     }, 10000)
