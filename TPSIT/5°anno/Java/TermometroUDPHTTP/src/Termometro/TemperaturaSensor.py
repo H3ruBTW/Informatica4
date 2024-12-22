@@ -26,7 +26,7 @@ try:
 
         if temperature is not None and humidity is not None:
             # Crea il messaggio con la temperatura e l'umidità come float
-            message = f"{temperature:.1f} {humidity:.1f}"
+            message = f"{temperature:.1f}_{humidity:.1f}"
             print(f"Messaggio inviato: {message}")
 
             # Invia il messaggio al server (temperatura e umidità)

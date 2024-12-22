@@ -34,11 +34,13 @@ public class modifyserver {
                                 continue;
                             }
 
+                            System.out.println("Messaggio ricevuto: " + msg);
+
                             try {
                                 // Converte il messaggio in un numero e aggiorna la temperatura
                                 temp = Float.parseFloat(msg.substring(0, msg.indexOf(".")+1));
                                 System.out.println("Temperatura ricevuta: " + temp);
-                                hum = Float.parseFloat(msg.substring(msg.indexOf(".")+3));
+                                hum = Float.parseFloat(msg.substring(msg.indexOf("_")+1));
                                 System.out.println("Umidità ricevuta: " + hum);
 
                                 // Legge il file HTML e aggiorna il valore della temperatura
