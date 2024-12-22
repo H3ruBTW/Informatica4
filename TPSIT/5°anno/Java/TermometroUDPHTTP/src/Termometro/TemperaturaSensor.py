@@ -24,12 +24,12 @@ try:
         # Leggi i dati dal sensore
         humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
 
-        if temperature is not None:
-            # Crea il messaggio con solo la temperatura come float
-            message = f"{temperature:.1f}"
-            print(f"Temperatura inviata: {message}")
+        if temperature is not None and humidity is not None:
+            # Crea il messaggio con la temperatura e l'umidità come float
+            message = f"{temperature:.1f} {humidity:.1f}"
+            print(f"Messaggio inviato: {message}")
 
-            # Invia il messaggio al server (solo il valore float della temperatura)
+            # Invia il messaggio al server (temperatura e umidità)
             sock.sendall(message.encode())
         else:
             print("Errore nella lettura del sensore. Riprovo...")

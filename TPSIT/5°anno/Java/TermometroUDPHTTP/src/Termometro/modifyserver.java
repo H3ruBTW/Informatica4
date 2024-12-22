@@ -11,7 +11,8 @@ public class modifyserver {
     private static final int PORT = 60000;
 
     public static void main(String[] args) throws InterruptedException {
-        float temp = 20;
+        float temp;
+        float hum;
         String percorsoFile = "Termometro\\Termometro.html";
 
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
@@ -33,8 +34,10 @@ public class modifyserver {
 
                         try {
                             // Converte il messaggio in un numero e aggiorna la temperatura
-                            temp = Float.parseFloat(msg);
+                            temp = Float.parseFloat(msg.substring(0, msg.indexOf(".")+1));
                             System.out.println("Temperatura ricevuta: " + temp);
+                            hum = Float.parseFloat(msg.substring(msg.indexOf(".")+3));
+                            System.out.println("Umidità ricevuta: " + hum);
 
                             // Legge il file HTML e aggiorna il valore della temperatura
                             try {
@@ -47,7 +50,11 @@ public class modifyserver {
                                     if (riga.contains("let temp =")) {
                                         righe.set(i, "    let temp = " + temp); // Aggiorna il valore della temperatura
                                         updated = true;
-                                        break;
+                                    }
+
+                                    if (riga.contains("let humid =")) {
+                                        righe.set(i, "    let humid = " + hum); // Aggiorna il valore della temperatura
+                                        updated = true;
                                     }
                                 }
 
