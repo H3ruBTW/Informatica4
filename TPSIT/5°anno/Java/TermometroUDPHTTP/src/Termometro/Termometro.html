@@ -297,6 +297,8 @@
     h2 = document.getElementById("humid")
     h2.innerHTML = humid + "%"
 
+    let animation = true
+
     ctx2.beginPath();
     ctx2.fillStyle = "blue"
     ctx2.fillRect(25,125-(100*(humid/100)),100, 100*(humid/100))
@@ -322,6 +324,84 @@
         ctx2.lineTo(70, 125-(100*(humid/100)))
         ctx2.fill();
     }
+
+    setInterval(function(){
+
+        ctx2.fillStyle = "white"
+        ctx2.fillRect(0,0,width,height)
+
+        if(animation){
+            ctx2.beginPath();
+            ctx2.fillStyle = "blue"
+            ctx2.fillRect(25,125-(100*(humid/100)),100, 100*(humid/100))
+
+            ctx2.beginPath();
+            ctx2.strokeRect(25,25,100,100)
+
+            if(humid > 5 && humid <93){
+                ctx2.beginPath();
+                ctx2.ellipse(50, 125-(100*(humid/100)), 25, 5, 0, 0, 2 * Math.PI);
+                ctx2.fill();
+
+                ctx2.beginPath();
+                ctx2.fillStyle = "white"
+                ctx2.ellipse(100, 125-(100*(humid/100)), 25, 5, 0, 0, 2 * Math.PI);
+                ctx2.fill();
+
+                ctx2.beginPath();
+                ctx2.fillStyle = "blue"
+                ctx2.moveTo(50, 125-(100*(humid/100))-5)
+                ctx2.lineTo(85, 125-(100*(humid/100))-7)
+                ctx2.lineTo(80, 125-(100*(humid/100))-4)
+                ctx2.lineTo(70, 125-(100*(humid/100)))
+                ctx2.fill();
+            }
+
+            animation = false
+        } else {
+            ctx2.beginPath();
+            ctx2.fillStyle = "blue"
+            ctx2.fillRect(25,125-(100*(humid/100)),100, 100*(humid/100))
+
+            ctx2.beginPath();
+            ctx2.strokeRect(25,25,100,100)
+
+            if(humid > 5 && humid <93){
+                ctx2.beginPath();
+                ctx2.ellipse(100, 125-(100*(humid/100)), 25, 5, 0, 0, 2 * Math.PI);
+                ctx2.fill();
+
+                ctx2.beginPath();
+                ctx2.fillStyle = "white"
+                ctx2.ellipse(50, 125-(100*(humid/100)), 25, 5, 0, 0, 2 * Math.PI);
+                ctx2.fill();
+
+                ctx2.beginPath();
+                ctx2.fillStyle = "blue"
+                ctx2.moveTo(100, 125-(100*(humid/100))-5)
+                ctx2.lineTo(125, 125-(100*(humid/100))-7)
+                ctx2.lineTo(125, 125-(100*(humid/100))-4)
+                ctx2.lineTo(120, 125-(100*(humid/100)))
+                ctx2.fill();
+
+                ctx2.beginPath();
+                ctx2.fillStyle = "white"
+                ctx2.moveTo(120, 125-(100*(humid/100))-1)
+                ctx2.lineTo(125, 125-(100*(humid/100))-3)
+                ctx2.lineTo(125, 125-(100*(humid/100))+3)
+                ctx2.lineTo(123, 125-(100*(humid/100))+2)
+                ctx2.lineTo(121, 125-(100*(humid/100))+1)
+                ctx2.lineTo(120, 125-(100*(humid/100)))
+                ctx2.lineTo(118, 125-(100*(humid/100))-1)
+                ctx2.fill();
+            }
+
+            animation = true
+        }
+
+    }, 2000)
+
+    
 
     setInterval(function(){
         location.reload()
