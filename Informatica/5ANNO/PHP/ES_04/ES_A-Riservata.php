@@ -8,7 +8,8 @@
             $_SESSION['username']=$user;
             $_SESSION['password']=$psw;
             $html = <<<COD
-            <p>Hai effettuato l'accesso con successo <b>$user</b> con metodo POST</p>
+            <p>Hai effettuato l'accesso con successo <b>$user</b> con metodo POST</p><br><br>
+            Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
             COD;
         } else {
             $html = <<<COD
@@ -27,11 +28,10 @@
         } else {
             $user = $_SESSION['username'];
             $psw = $_SESSION['password'];
-            if($user == "Aless" && $psw == "123"){
-                $html = <<<COD
-                <p>Hai effettuato l'accesso con successo <b>$user</b> usando la sessione</p>
-                COD;
-            }
+            $html = <<<COD
+            <p>Hai effettuato l'accesso con successo <b>$user</b> usando la sessione<br><br>
+            Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
+            COD;  
         }
     }
 ?>
