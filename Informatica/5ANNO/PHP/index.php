@@ -24,6 +24,8 @@
                     <hr>
                     <li><a href="ES_03/index.php"><u>HomePage ES_03</u></a></li>
                     <hr>
+                    <li><a href="ES_04/index.php"><u>HomePage ES_04</u></a></li>
+                    <hr>
                 </ul>
             </nav>
         </div>
