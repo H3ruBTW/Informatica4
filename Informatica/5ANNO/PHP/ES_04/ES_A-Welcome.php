@@ -22,6 +22,11 @@
                     <li><a href="ES_A-Welcome.php"><b>ES_A - Welcome</b></a></li>
                     <hr>                    
                     <li><a href="ES_A-Riservata.php"><u>ES_A - Riservata</u></a></li>
+                    <hr>
+                    <hr> 
+                    <li><a href="ES_B-Welcome.php"><u>ES_B - Welcome</u></a></li>
+                    <hr> 
+                    <li><a href="ES_B-Riservata.php"><u>ES_B - Riservata</u></a></li>
                     <hr> 
                 </ul>
             </nav>

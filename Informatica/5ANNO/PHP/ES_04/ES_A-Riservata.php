@@ -61,6 +61,11 @@
                     <hr>     
                     <li><a href="ES_A-Riservata.php"><b>ES_A - Riservata</b></a></li>
                     <hr>
+                    <hr> 
+                    <li><a href="ES_B-Welcome.php"><u>ES_B - Welcome</u></a></li>
+                    <hr> 
+                    <li><a href="ES_B-Riservata.php"><u>ES_B - Riservata</u></a></li>
+                    <hr>
                 </ul>
             </nav>
         </div>
