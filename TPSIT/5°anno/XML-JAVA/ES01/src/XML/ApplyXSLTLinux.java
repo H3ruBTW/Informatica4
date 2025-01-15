@@ -7,7 +7,7 @@ import javax.xml.transform.*;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-public class ApplyXSLT {
+public class ApplyXSLTLinux {
     public static void main(String[] args) {
         try {
             TransformerFactory factory = TransformerFactory.newInstance();
@@ -19,7 +19,9 @@ public class ApplyXSLT {
             try {
                 File xmlFile = new File("/mnt/c/Users/aless/Desktop/Codice/Informatica4/TPSIT/5°anno/XML-JAVA/ES01/src/XML/output.html");
                 if (xmlFile.exists() && Desktop.isDesktopSupported()) {
-                    Desktop.getDesktop().open(xmlFile);
+                    Desktop d = Desktop.getDesktop();
+                    d.open(xmlFile);
+
                 }
             } catch (IOException e) {
                 e.printStackTrace();
