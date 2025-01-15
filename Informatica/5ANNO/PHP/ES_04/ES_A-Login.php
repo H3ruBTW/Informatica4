@@ -29,9 +29,9 @@
         <div class="content">
             <form action="ES_A-Riservata.php" method="POST"> 
                 <br><label>Username:</label><br>
-                <input type="text" name="username" required><br>
+                <input type="text" name="usernameA" required><br>
                 <label>Password:</label><br>
-                <input type="text" name="password" required><br>
+                <input type="text" name="passwordA" required><br>
                 <input id="button" type="submit" value="Accedi">
             </form>
         </div>

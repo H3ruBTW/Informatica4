@@ -2,13 +2,13 @@
     $html = "";
     session_start();
     if($_SERVER['REQUEST_METHOD']=="POST"){
-        $user = $_POST['username'];
-        $psw = $_POST['password'];
+        $user = $_POST['usernameA'];
+        $psw = $_POST['passwordA'];
         if($user == "Aless" && $psw == "123"){
-            $_SESSION['username']=$user;
-            $_SESSION['password']=$psw;
+            $_SESSION['usernameA']=$user;
+            $_SESSION['passwordA']=$psw;
             $html = <<<COD
-            <p>Hai effettuato l'accesso con successo <b>$user</b> con metodo POST</p><br><br>
+            <p>Hai effettuato l'accesso con successo <b>$user</b> con metodo POST<br><br>
             Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
             COD;
         } else {
@@ -19,15 +19,15 @@
         }
         
     } else {
-        if(!isset($_SESSION['username']) || !isset($_SESSION['password'])){
+        if(!isset($_SESSION['usernameA']) || !isset($_SESSION['passwordA'])){
             $html = <<<COD
             <p style="color:red">ERRORE NELLA RICEZIONE DELLA SESSIONE<br>
             PROVA AD EFFETTUARE IL LOGIN</p>
             <a href="ES_A-Login.php"><button id="button">LOGIN</button></a>
             COD;
         } else {
-            $user = $_SESSION['username'];
-            $psw = $_SESSION['password'];
+            $user = $_SESSION['usernameA'];
+            $psw = $_SESSION['passwordA'];
             $html = <<<COD
             <p>Hai effettuato l'accesso con successo <b>$user</b> usando la sessione<br><br>
             Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
