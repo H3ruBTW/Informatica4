@@ -1,0 +1,31 @@
+package XML;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import javax.xml.transform.*;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+
+public class ApplyXSLT {
+    public static void main(String[] args) {
+        try {
+            TransformerFactory factory = TransformerFactory.newInstance();
+            Source xslt = new StreamSource(new File("/mnt/c/Users/aless/Desktop/Codice/Informatica4/TPSIT/5°anno/XML-JAVA/ES01/src/XML/maestri.xsl"));
+            Transformer transformer = factory.newTransformer(xslt);
+
+            Source xml = new StreamSource(new File("/mnt/c/Users/aless/Desktop/Codice/Informatica4/TPSIT/5°anno/XML-JAVA/ES01/src/XML/maestri.xml"));
+            transformer.transform(xml, new StreamResult(new File("/mnt/c/Users/aless/Desktop/Codice/Informatica4/TPSIT/5°anno/XML-JAVA/ES01/src/XML/output.html")));
+            try {
+                File xmlFile = new File("/mnt/c/Users/aless/Desktop/Codice/Informatica4/TPSIT/5°anno/XML-JAVA/ES01/src/XML/output.html");
+                if (xmlFile.exists() && Desktop.isDesktopSupported()) {
+                    Desktop.getDesktop().open(xmlFile);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
