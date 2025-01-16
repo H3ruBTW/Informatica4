@@ -8,18 +8,18 @@ CREATE TABLE Corsi (
     nome_corso VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Materia (
+CREATE TABLE Materie (
     codice_materia INT PRIMARY KEY AUTO_INCREMENT,
     nome_materia VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Studente (
+CREATE TABLE Studenti (
     matricola INT PRIMARY KEY AUTO_INCREMENT,
     cognome VARCHAR(50) NOT NULL,
     data_nascita DATE NOT NULL,
     codice_corso INT,
     capogruppo int NOT NULL,
-    FOREIGN KEY (codice_corso) REFERENCES Corsi(codice_corso) ON DELETE SET NULL
+    FOREIGN KEY (codice_corso) REFERENCES Corsi(codice_corso) ON DELETE NO ACTION ON UPDATE CASCADE
 );
 
 CREATE TABLE Valutazioni (
@@ -28,8 +28,8 @@ CREATE TABLE Valutazioni (
     codice_materia INT,
     voto INT NOT NULL,
     commento VARCHAR(255),
-    FOREIGN KEY (matricola) REFERENCES Studente(matricola) ON DELETE CASCADE,
-    FOREIGN KEY (codice_materia) REFERENCES Materia(codice_materia) ON DELETE CASCADE
+    FOREIGN KEY (matricola) REFERENCES Studenti(matricola) ON DELETE NO ACTION ON UPDATE CASCADE,
+    FOREIGN KEY (codice_materia) REFERENCES Materie(codice_materia) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Inserimento dei dati
@@ -39,13 +39,13 @@ INSERT INTO Corsi (nome_corso) values (
     "Telecomunicazioni"
 );
 
-INSERT INTO Materia (nome_materia) values (
+INSERT INTO Materie (nome_materia) values (
     "Matematica",
     "Italiano",
     "Informatica"
 );
 
-INSERT INTO Studente (cognome, data_nascita, codice_corso, capogruppo) values (
+INSERT INTO Studenti (cognome, data_nascita, codice_corso, capogruppo) values (
     "Angelico", "2006-01-01", 1, 1,
     "Baglì", "2006-02-02", 1, 1,
     "Buongallino", "2006-03-03", 1, 2,
