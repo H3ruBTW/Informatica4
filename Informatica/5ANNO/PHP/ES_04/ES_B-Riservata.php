@@ -12,7 +12,7 @@
             Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
             COD;
         } else {
-            $url = 'login.php?error=Credenziali errate&from=';
+            $url = 'ES_B-Login.php?error=Credenziali errate&from=';
             $url .= basename($_SERVER['PHP_SELF']);
             header("Location: $url");
             exit;
@@ -20,7 +20,7 @@
         
     } else {
         if(!isset($_SESSION['usernameB']) || !isset($_SESSION['passwordB'])){
-            $url = 'login.php?error=Per accedere alla pagina bisogna fare prima l\'accesso&from=';
+            $url = 'ES_B-Login.php?error=Per accedere alla pagina bisogna fare prima l\'accesso&from=';
             $url .= basename($_SERVER['PHP_SELF']);
             header("Location: $url");
             exit;            

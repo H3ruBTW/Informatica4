@@ -1,4 +1,5 @@
 <?php
+    $html = "";
     session_start();
     if(isset($_SESSION["usernameB"])){
         header('Location: ES_B-Riservata.php');
@@ -45,7 +46,7 @@
         <div class="content">
             <?php echo $html; ?>
             <form action="ES_B-Riservata.php" method="POST"> 
-                <br><label>Username:</label><br>
+                <label>Username:</label><br>
                 <input type="text" name="usernameB" required><br>
                 <label>Password:</label><br>
                 <input type="text" name="passwordB" required><br>
