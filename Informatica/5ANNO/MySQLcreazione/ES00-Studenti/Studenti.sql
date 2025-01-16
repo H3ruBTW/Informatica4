@@ -4,32 +4,32 @@ USE Studenti;
 
 -- Creazione delle tabelle
 CREATE TABLE Corsi (
-    codice_corso INT PRIMARY KEY,
+    codice_corso INT PRIMARY KEY AUTO_INCREMENT,
     nome_corso VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Materia (
-    codice_materia INT PRIMARY KEY,
+    codice_materia INT PRIMARY KEY AUTO_INCREMENT,
     nome_materia VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Studente (
-    matricola INT PRIMARY KEY,
+    matricola INT PRIMARY KEY AUTO_INCREMENT,
     cognome VARCHAR(50) NOT NULL,
     data_nascita DATE NOT NULL,
     codice_corso INT,
     capogruppo int NOT NULL,
-    FOREIGN KEY (codice_corso) REFERENCES Corsi(codice_corso)
+    FOREIGN KEY (codice_corso) REFERENCES Corsi(codice_corso) ON DELETE SET NULL
 );
 
 CREATE TABLE Valutazioni (
+    codice_valutazione INT PRIMARY KEY AUTO_INCREMENT,
     matricola INT,
     codice_materia INT,
     voto INT NOT NULL,
     commento VARCHAR(255),
-    PRIMARY KEY (matricola, codice_materia),
-    FOREIGN KEY (matricola) REFERENCES Studente(matricola),
-    FOREIGN KEY (codice_materia) REFERENCES Materia(codice_materia)
+    FOREIGN KEY (matricola) REFERENCES Studente(matricola) ON DELETE CASCADE,
+    FOREIGN KEY (codice_materia) REFERENCES Materia(codice_materia) ON DELETE CASCADE
 );
 
 -- Inserimento dei dati
