@@ -3,6 +3,12 @@
     if(isset($_SESSION["usernameB"])){
         header('Location: ES_B-Riservata.php');
     }
+
+    if($_SERVER['REQUEST_METHOD']=="GET"){
+        if(isset($_GET['error'])){
+            $html = "<p style=\"color:red\">" . $_GET['error'] . "</p>";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +43,7 @@
             </nav>
         </div>
         <div class="content">
+            <?php echo $html; ?>
             <form action="ES_B-Riservata.php" method="POST"> 
                 <br><label>Username:</label><br>
                 <input type="text" name="usernameB" required><br>

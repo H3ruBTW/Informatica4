@@ -12,19 +12,18 @@
             Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
             COD;
         } else {
-            $html = <<<COD
-            <p>Accesso fallito</p>
-            <a href="ES_A-Login.php"><button id="button">LOGIN</button></a>
-            COD;
+            $url = 'login.php?error=Credenziali errate&from=';
+            $url .= basename($_SERVER['PHP_SELF']);
+            header("Location: $url");
+            exit;
         }
         
     } else {
         if(!isset($_SESSION['usernameB']) || !isset($_SESSION['passwordB'])){
-            $html = <<<COD
-            <p style="color:red">ERRORE NELLA RICEZIONE DELLA SESSIONE<br>
-            PROVA AD EFFETTUARE IL LOGIN</p>
-            <a href="ES_A-Login.php"><button id="button">LOGIN</button></a>
-            COD;
+            $url = 'login.php?error=Per accedere alla pagina bisogna fare prima l\'accesso&from=';
+            $url .= basename($_SERVER['PHP_SELF']);
+            header("Location: $url");
+            exit;            
         } else {
             $user = $_SESSION['usernameB'];
             $psw = $_SESSION['passwordB'];
