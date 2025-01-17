@@ -1,3 +1,16 @@
+<?php
+    $html = "";
+    session_start();
+    if(isset($_SESSION["usernameB"])){
+        header('Location: ES_B-Riservata.php');
+    }
+
+    if($_SERVER['REQUEST_METHOD']=="GET"){
+        if(isset($_GET['error'])){
+            $html = "<p style=\"color:red\">" . $_GET['error'] . "</p>";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css">
     <title>Esecizi</title>
 </head>
 <body>
@@ -19,7 +33,7 @@
                     <li><a href="index.php"><u>HomePage ES_04</u></a></li>
                     <hr>
                     <li><a href="ES_A-Welcome.php"><u>ES_A - Welcome</u></a></li>
-                    <hr> 
+                    <hr>     
                     <li><a href="ES_A-Riservata.php"><u>ES_A - Riservata</u></a></li>
                     <hr> 
                     <li><a href="ES_B-Welcome.php"><u>ES_B - Welcome</u></a></li>
@@ -29,14 +43,19 @@
                     <li><a href="ES_C-Welcome.php"><u>ES_B - Welcome</u></a></li>
                     <hr> 
                     <li><a href="ES_C-Riservata.php"><u>ES_B - Riservata</u></a></li>
-                    <hr>                  
+                    <hr>                
                 </ul>
             </nav>
         </div>
         <div class="content">
-            <center>
-                <img src="../img/images.png" width="50%">
-            </center>
+            <?php echo $html; ?>
+            <form action="ES_C-Riservata.php" method="POST"> 
+                <label>Username:</label><br>
+                <input type="text" name="usernameB" required><br>
+                <label>Password:</label><br>
+                <input type="text" name="passwordB" required><br>
+                <input id="button" type="submit" value="Accedi">
+            </form>
         </div>
     </div>
 
