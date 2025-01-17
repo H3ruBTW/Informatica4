@@ -26,9 +26,9 @@
                     <hr> 
                     <li><a href="ES_B-Riservata.php"><u>ES_B - Riservata</u></a></li>
                     <hr>  
-                    <li><a href="ES_C-Welcome.php"><u>ES_B - Welcome</u></a></li>
+                    <li><a href="ES_C-Welcome.php"><u>ES_C - Welcome</u></a></li>
                     <hr> 
-                    <li><a href="ES_C-Riservata.php"><u>ES_B - Riservata</u></a></li>
+                    <li><a href="ES_C-Riservata.php"><u>ES_C - Riservata</u></a></li>
                     <hr>                  
                 </ul>
             </nav>

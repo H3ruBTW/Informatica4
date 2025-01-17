@@ -2,31 +2,31 @@
     $html = "";
     session_start();
     if($_SERVER['REQUEST_METHOD']=="POST"){
-        $user = $_POST['usernameB'];
-        $psw = $_POST['passwordB'];
+        $user = $_POST['usernameC'];
+        $psw = $_POST['passwordC'];
         if($user == "Aless" && $psw == "123"){
-            $_SESSION['usernameB']=$user;
-            $_SESSION['passwordB']=$psw;
+            $_SESSION['usernameC']=$user;
+            $_SESSION['passwordC']=$psw;
             $html = <<<COD
             <p>Hai effettuato l'accesso con successo <b>$user</b> con metodo POST<br><br>
             Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
             COD;
         } else {
-            $url = 'ES_B-Login.php?error=Credenziali errate&from=';
+            $url = 'ES_C-Login.php?error=Credenziali errate&from=';
             $url .= basename($_SERVER['PHP_SELF']);
             header("Location: $url");
             exit;
         }
         
     } else {
-        if(!isset($_SESSION['usernameB']) || !isset($_SESSION['passwordB'])){
-            $url = 'ES_B-Login.php?error=Per accedere alla pagina bisogna fare prima l\'accesso&from=';
+        if(!isset($_SESSION['usernameC']) || !isset($_SESSION['passwordC'])){
+            $url = 'ES_C-Login.php?error=Per accedere alla pagina bisogna fare prima l\'accesso&from=';
             $url .= basename($_SERVER['PHP_SELF']);
             header("Location: $url");
             exit;            
         } else {
-            $user = $_SESSION['usernameB'];
-            $psw = $_SESSION['passwordB'];
+            $user = $_SESSION['usernameC'];
+            $psw = $_SESSION['passwordC'];
             $html = <<<COD
             <p>Hai effettuato l'accesso con successo <b>$user</b> usando la sessione<br><br>
             Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
@@ -64,9 +64,9 @@
                     <hr> 
                     <li><a href="ES_B-Riservata.php"><u>ES_B - Riservata</u></a></li>
                     <hr>
-                    <li><a href="ES_C-Welcome.php"><u>ES_B - Welcome</u></a></li>
+                    <li><a href="ES_C-Welcome.php"><u>ES_C - Welcome</u></a></li>
                     <hr> 
-                    <li><a href="ES_C-Riservata.php"><b>ES_B - Riservata</b></a></li>
+                    <li><a href="ES_C-Riservata.php"><b>ES_C - Riservata</b></a></li>
                     <hr> 
                 </ul>
             </nav>

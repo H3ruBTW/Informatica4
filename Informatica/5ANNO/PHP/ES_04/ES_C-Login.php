@@ -1,15 +1,10 @@
 <?php
-    $html = "";
-    session_start();
-    if(isset($_SESSION["usernameB"])){
-        header('Location: ES_B-Riservata.php');
-    }
+    require("ES_C-Funzioni.php");
 
-    if($_SERVER['REQUEST_METHOD']=="GET"){
-        if(isset($_GET['error'])){
-            $html = "<p style=\"color:red\">" . $_GET['error'] . "</p>";
-        }
-    }
+    session_start();
+    CheckSession();
+
+    $html = DisplayError();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,9 +35,9 @@
                     <hr> 
                     <li><a href="ES_B-Riservata.php"><u>ES_B - Riservata</u></a></li>
                     <hr>  
-                    <li><a href="ES_C-Welcome.php"><u>ES_B - Welcome</u></a></li>
+                    <li><a href="ES_C-Welcome.php"><u>ES_C - Welcome</u></a></li>
                     <hr> 
-                    <li><a href="ES_C-Riservata.php"><u>ES_B - Riservata</u></a></li>
+                    <li><a href="ES_C-Riservata.php"><u>ES_C - Riservata</u></a></li>
                     <hr>                
                 </ul>
             </nav>
@@ -51,9 +46,9 @@
             <?php echo $html; ?>
             <form action="ES_C-Riservata.php" method="POST"> 
                 <label>Username:</label><br>
-                <input type="text" name="usernameB" required><br>
+                <input type="text" name="usernameC" required><br>
                 <label>Password:</label><br>
-                <input type="text" name="passwordB" required><br>
+                <input type="text" name="passwordC" required><br>
                 <input id="button" type="submit" value="Accedi">
             </form>
         </div>
