@@ -9,7 +9,7 @@
             $_SESSION['passwordB']=$psw;
             $html = <<<COD
             <p>Hai effettuato l'accesso con successo <b>$user</b> con metodo POST<br><br>
-            Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
+            Se vuoi effettuare il logout, <a href="ES_B-Logout.php"><button id="button">PREMI QUI</button></a></p>
             COD;
         } else {
             $url = 'ES_B-Login.php?error=Credenziali errate&from=';
@@ -29,7 +29,7 @@
             $psw = $_SESSION['passwordB'];
             $html = <<<COD
             <p>Hai effettuato l'accesso con successo <b>$user</b> usando la sessione<br><br>
-            Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
+            Se vuoi effettuare il logout, <a href="ES_B-Logout.php"><button id="button">PREMI QUI</button></a></p>
             COD;  
         }
     }

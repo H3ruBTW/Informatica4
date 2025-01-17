@@ -17,5 +17,46 @@ function DisplayError(){
     return "";
 }
 
+function PasswordControl(){
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        $user = $_POST['usernameC'];
+        $psw = $_POST['passwordC'];
+        if($user == "Aless" && $psw == "123"){
+            $_SESSION['usernameC']=$user;
+            $_SESSION['passwordC']=$psw;
+            $html = <<<COD
+            <p>Hai effettuato l'accesso con successo <b>$user</b> con metodo POST<br><br>
+            Se vuoi effettuare il logout, <a href="ES_C-Logout.php"><button id="button">PREMI QUI</button></a></p>
+            COD;
+            return $html;
+        } else {
+            $url = 'ES_C-Login.php?error=Credenziali errate&from=';
+            $url .= basename($_SERVER['PHP_SELF']);
+            header("Location: $url");
+            exit;
+        }
+        
+    } else {
+        if(!isset($_SESSION['usernameC']) || !isset($_SESSION['passwordC'])){
+            $url = 'ES_C-Login.php?error=Per accedere alla pagina bisogna fare prima l\'accesso&from=';
+            $url .= basename($_SERVER['PHP_SELF']);
+            header("Location: $url");
+            exit;            
+        } else {
+            $user = $_SESSION['usernameC'];
+            $psw = $_SESSION['passwordC'];
+            $html = <<<COD
+            <p>Hai effettuato l'accesso con successo <b>$user</b> usando la sessione<br><br>
+            Se vuoi effettuare il logout, <a href="ES_C-Logout.php"><button id="button">PREMI QUI</button></a></p>
+            COD;  
+            return $html;
+        }
+    }
+}
 
+function Logout(){
+    session_destroy();
+    header('Location: ES_C-Welcome.php');
+    exit;
+}
 ?>
