@@ -1,5 +1,6 @@
-<?php 
-$html="";
+<?php
+apcu_store('test', 'APCu funziona!');
+$html = apcu_fetch('test');
 ?>
 
 <!DOCTYPE html>
