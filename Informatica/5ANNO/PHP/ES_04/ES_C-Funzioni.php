@@ -74,10 +74,17 @@ function PasswordControl2(){
 
                 $Attemps = 3 - $Attemps;
 
-                $url = "ES_C-Login.php?error=Credenziali errate. Tentativi Rimasti: $Attemps&from=";
-                $url .= basename($_SERVER['PHP_SELF']);
-                header("Location: $url");
-                exit;
+                if($Attemps == 0){
+                    $url = 'ES_C-Login.php?error=Troppi accessi all\'account. ACCOUNT BLOCCATO&from=';
+                    $url .= basename($_SERVER['PHP_SELF']);
+                    header("Location: $url");
+                    exit; 
+                } else{
+                    $url = "ES_C-Login.php?error=Credenziali errate. Tentativi Rimasti: $Attemps&from=";
+                    $url .= basename($_SERVER['PHP_SELF']);
+                    header("Location: $url");
+                    exit;
+                }
             }
         } else {
             $url = 'ES_C-Login.php?error=Troppi accessi all\'account. ACCOUNT BLOCCATO&from=';
