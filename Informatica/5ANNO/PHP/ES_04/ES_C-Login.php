@@ -3,7 +3,7 @@
 
     session_start();
     CheckSession();
-
+    $html = "";
     $html = DisplayError();
 ?>
 <!DOCTYPE html>
