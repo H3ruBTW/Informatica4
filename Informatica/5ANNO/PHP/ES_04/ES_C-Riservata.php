@@ -1,7 +1,7 @@
 <?php 
     require("ES_C-Funzioni.php");
     session_start();
-    $html = PasswordControl();
+    $html = PasswordControl2();
 ?>
 
 <!DOCTYPE html>
