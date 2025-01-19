@@ -13,7 +13,7 @@ function DisplayError(){
         }       
     }
 
-    return "";
+    return "<br>";
 }
 
 function PasswordControl(){

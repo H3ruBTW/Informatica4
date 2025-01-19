@@ -1,5 +1,5 @@
 <?php
-    $html = "";
+    $html = "<br>";
     session_start();
     if(isset($_SESSION["usernameB"])){
         header('Location: ES_B-Riservata.php');
