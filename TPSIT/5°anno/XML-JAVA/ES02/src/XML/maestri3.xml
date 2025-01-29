@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<maestri>
+    <artisti tipo="pittura">
+        <creatore nome="Leonardo da Vinci">
+            <capolavoro anno="1483" tecnica="olio su tela">Vergine delle Rocce</capolavoro>
+            <capolavoro anno="1488" tecnica="olio su tavola">Dama con ermellino</capolavoro>
+            <capolavoro anno="1494" tecnica="olio su parete">Ultima cena</capolavoro>
+        </creatore>
+        <creatore nome="Michelangelo">
+            <capolavoro anno="1497" tecnica="scultura">Pieta vaticana</capolavoro>
+            <capolavoro anno="1506" tecnica="tempera">Tondo Doni</capolavoro>
+            <capolavoro anno="1513" tecnica="scultura">Mose</capolavoro>
+            <capolavoro anno="1537" tecnica="affresco">Giudizio universale</capolavoro>
+        </creatore>
+    </artisti>
+    <artisti tipo="musica">
+        <creatore nome="Giuseppe Verdi">
+            <capolavoro anno="1871" atti="4">Aida</capolavoro>
+            <capolavoro anno="1851" atti="3">Rigoletto</capolavoro>
+            <capolavoro anno="1857" atti="3" prologo="1">Simon Boccanegra</capolavoro>
+        </creatore>
+        <creatore nome="Giacomo Puccini">
+            <capolavoro anno="1896" atti="4">La boheme</capolavoro>
+            <capolavoro anno="1887" atti="3">Tosca</capolavoro>
+            <capolavoro anno="1926" atti="3">Turandot</capolavoro>
+        </creatore>
+    </artisti>
+</maestri>
