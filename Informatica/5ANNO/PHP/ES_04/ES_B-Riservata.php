@@ -1,35 +1,16 @@
 <?php 
-    $html = "";
     session_start();
-    if($_SERVER['REQUEST_METHOD']=="POST"){
-        $user = $_POST['usernameB'];
-        $psw = $_POST['passwordB'];
-        if($user == "Aless" && $psw == "123"){
-            $_SESSION['usernameB']=$user;
-            $html = <<<COD
-            <p>Hai effettuato l'accesso con successo <b>$user</b> con metodo POST<br><br>
-            Se vuoi effettuare il logout, <a href="ES_B-Logout.php"><button id="button">PREMI QUI</button></a></p>
-            COD;
-        } else {
-            $url = 'ES_B-Login.php?error=Credenziali errate&from=';
-            $url .= basename($_SERVER['PHP_SELF']);
-            header("Location: $url");
-            exit;
-        }
-        
+    $html = "";
+    
+    if(isset($_SESSION["usernameB"])){
+        $html = <<<COD
+        <p>Hai effettuato l'accesso con successo <b>$user</b><br><br>
+        Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
+        COD; 
     } else {
-        if(!isset($_SESSION['usernameB'])){
-            $url = 'ES_B-Login.php?error=Per accedere alla pagina bisogna fare prima l\'accesso&from=';
-            $url .= basename($_SERVER['PHP_SELF']);
-            header("Location: $url");
-            exit;            
-        } else {
-            $user = $_SESSION['usernameB'];
-            $html = <<<COD
-            <p>Hai effettuato l'accesso con successo <b>$user</b> usando la sessione<br><br>
-            Se vuoi effettuare il logout, <a href="ES_B-Logout.php"><button id="button">PREMI QUI</button></a></p>
-            COD;  
-        }
+        $url = "ES_B-Login.php?error=Non è stato possibile la ricezione della sessione&from" . basename($_SERVER['PHP_SELF']);
+        header("Location: $url");
+        exit;
     }
 ?>
 

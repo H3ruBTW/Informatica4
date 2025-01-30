@@ -1,28 +1,3 @@
-<?php 
-/**
- * @brief Controlla la sessione, in caso viene trovata da che l'accesso è stato effettuato con successo
- * invece se no da errore e visualizza un tasto per andare a Login.php
- */
-    session_start();
-
-    $html = "";
-
-    if(!isset($_SESSION['usernameA'])){
-        $html = <<<COD
-        <p style="color:red">ERRORE NELLA RICEZIONE DELLA SESSIONE<br>
-        PROVA AD EFFETTUARE IL LOGIN</p>
-        <a href="ES_A-Login.php"><button id="button">LOGIN</button></a>
-        COD;
-    } else {
-        $user = $_SESSION['usernameA'];
-        $html = <<<COD
-        <p>Hai effettuato l'accesso con successo <b>$user</b> usando la sessione<br><br>
-        Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
-        COD;  
-    }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,21 +21,28 @@
                     <hr>
                     <li><a href="ES_A-Welcome.php"><u>ES_A - Welcome</u></a></li>
                     <hr>     
-                    <li><a href="ES_A-Riservata.php"><b>ES_A - Riservata</b></a></li>
-                    <hr>
+                    <li><a href="ES_A-Riservata.php"><u>ES_A - Riservata</u></a></li>
+                    <hr>  
                     <li><a href="ES_B-Welcome.php"><u>ES_B - Welcome</u></a></li>
                     <hr> 
                     <li><a href="ES_B-Riservata.php"><u>ES_B - Riservata</u></a></li>
-                    <hr>
+                    <hr>  
                     <li><a href="ES_C-Welcome.php"><u>ES_C - Welcome</u></a></li>
                     <hr> 
                     <li><a href="ES_C-Riservata.php"><u>ES_C - Riservata</u></a></li>
-                    <hr> 
+                    <hr>                
                 </ul>
             </nav>
         </div>
         <div class="content">
-            <?php echo $html?>
+            <br>
+            <form action="ES_A-Riservata.php" method="POST"> 
+                <label>Username:</label><br>
+                <input type="text" name="usernameA" required><br>
+                <label>Password:</label><br>
+                <input type="text" name="passwordA" required><br>
+                <input id="button" type="submit" value="Accedi">
+            </form>
         </div>
     </div>
 

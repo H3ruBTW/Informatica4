@@ -1,3 +1,32 @@
+<?php
+/**
+ * @brief Si ricerca il POST è poi si controlla se la passeord è giusta
+ * in caso salva nella sessione l'username e reindirizza alla riservata
+ * nell'altro rimanda alla login con l'errore
+ */
+    session_start();
+    $html = "";
+
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        $user = $_POST['usernameA'];
+        $psw = $_POST['passwordA'];
+        if($user == "Aless" && $psw == "123"){
+            $_SESSION['usernameA']=$user;
+            header("Location: ES_A-Riservata.php");
+            exit;
+        } else {
+            $url = 'ES_A-Login.php?error=Per accedere alla pagina bisogna fare prima l\'accesso';
+            header("Location: $url");
+            exit; 
+        }
+        
+    } else {
+        if(isset($_GET['error'])){
+            $error = "<p style=\"color:red\">" . $_GET['error'] . "</p>";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +65,8 @@
         </div>
         <div class="content">
             <br>
-            <form action="ES_A-Riservata.php" method="POST"> 
+            <?php echo $error ?>
+            <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
                 <label>Username:</label><br>
                 <input type="text" name="usernameA" required><br>
                 <label>Password:</label><br>

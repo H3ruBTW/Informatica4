@@ -1,13 +1,33 @@
 <?php
     $html = "<br>";
     session_start();
-    if(isset($_SESSION["usernameB"])){
-        header('Location: ES_B-Riservata.php');
-    }
+    
 
-    if($_SERVER['REQUEST_METHOD']=="GET"){
-        if(isset($_GET['error'])){
-            $html = "<p style=\"color:red\">" . $_GET['error'] . "</p>";
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        $user = $_POST['usernameB'];
+        $psw = $_POST['passwordB'];
+        if($user == "Aless" && $psw == "123"){
+            $_SESSION['usernameB']=$user;
+            $url = 'ES_B-Riservata.php';
+            header("Location: $url");
+            exit;
+        } else {
+            $url = 'ES_B-Login.php?error=Credenziali errate&from=';
+            $url .= basename($_SERVER['PHP_SELF']);
+            header("Location: $url");
+            exit;
+        }
+        
+    } else {
+        if(isset($_SESSION["usernameB"])){
+            header('Location: ES_B-Riservata.php');
+            exit;
+        }
+    
+        if($_SERVER['REQUEST_METHOD']=="GET"){
+            if(isset($_GET['error'])){
+                $html = "<p style=\"color:red\">" . $_GET['error'] . "</p>";
+            }
         }
     }
 ?>
@@ -49,7 +69,7 @@
         </div>
         <div class="content">
             <?php echo $html; ?>
-            <form action="ES_B-Riservata.php" method="POST"> 
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST"> 
                 <label>Username:</label><br>
                 <input type="text" name="usernameB" required><br>
                 <label>Password:</label><br>
