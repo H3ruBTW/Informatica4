@@ -1,7 +1,4 @@
 <?php 
-/** 
- * @brief 
- */
     session_start();
 
     $html = "";
@@ -25,7 +22,7 @@
         }
         
     } else {
-        if(!isset($_SESSION['usernameA']) || !isset($_SESSION['passwordA'])){
+        if(!isset($_SESSION['usernameA'])){
             $html = <<<COD
             <p style="color:red">ERRORE NELLA RICEZIONE DELLA SESSIONE<br>
             PROVA AD EFFETTUARE IL LOGIN</p>
