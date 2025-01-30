@@ -1,7 +1,14 @@
 <?php 
     require("ES_C-Funzioni.php");
+
     session_start();
-    $html = PasswordControl2();
+    if(CheckSessionInPages()){
+        $user = $_SESSION['usernameC'];
+        $html = <<<COD
+        <p>Hai effettuato l'accesso con successo <b>$user</b><br><br>
+        Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
+        COD; 
+    }
 ?>
 
 <!DOCTYPE html>

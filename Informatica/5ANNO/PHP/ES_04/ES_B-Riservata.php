@@ -3,12 +3,13 @@
     $html = "";
     
     if(isset($_SESSION["usernameB"])){
+        $user = $_SESSION["usernameB"];
         $html = <<<COD
         <p>Hai effettuato l'accesso con successo <b>$user</b><br><br>
         Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
         COD; 
     } else {
-        $url = "ES_B-Login.php?error=Non è stato possibile la ricezione della sessione&from" . basename($_SERVER['PHP_SELF']);
+        $url = "ES_B-Login.php?error=Non è stata possibile la ricezione della sessione&from=" . basename($_SERVER['PHP_SELF']);
         header("Location: $url");
         exit;
     }

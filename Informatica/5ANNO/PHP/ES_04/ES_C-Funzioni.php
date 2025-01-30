@@ -1,8 +1,19 @@
 <?php
-function CheckSession(){
+function CheckSessionInLogin(){
     if(isset($_SESSION['usernameC'])){
         header('Location: ES_C-Riservata.php');
+        exit;
     } 
+}
+
+function CheckSessionInPages(){
+    if(!isset($_SESSION['usernameC'])){
+        $url = "ES_C-Login.php?error=Non è stata possibile la ricezione della sessione&from=" . basename($_SERVER['PHP_SELF']);
+        header("Location: $url");
+        exit;
+    } else {
+        return true;
+    }
 }
 
 function DisplayError(){
@@ -20,51 +31,12 @@ function PasswordControl(){
     if($_SERVER['REQUEST_METHOD']=="POST"){
         $user = $_POST['usernameC'];
         $psw = $_POST['passwordC'];
-        if($user == "Aless" && $psw == "123"){
-            $_SESSION['usernameC']=$user;
-            $html = <<<COD
-            <p>Hai effettuato l'accesso con successo <b>$user</b> con metodo POST<br><br>
-            Se vuoi effettuare il logout, <a href="ES_C-Logout.php"><button id="button">PREMI QUI</button></a></p>
-            COD;
-            return $html;
-        } else {
-            $url = 'ES_C-Login.php?error=Credenziali errate&from=';
-            $url .= basename($_SERVER['PHP_SELF']);
-            header("Location: $url");
-            exit;
-        }
-        
-    } else {
-        if(!isset($_SESSION['usernameC'])){
-            $url = 'ES_C-Login.php?error=Per accedere alla pagina bisogna fare prima l\'accesso&from=';
-            $url .= basename($_SERVER['PHP_SELF']);
-            header("Location: $url");
-            exit;            
-        } else {
-            $user = $_SESSION['usernameC'];
-            $html = <<<COD
-            <p>Hai effettuato l'accesso con successo <b>$user</b> usando la sessione<br><br>
-            Se vuoi effettuare il logout, <a href="ES_C-Logout.php"><button id="button">PREMI QUI</button></a></p>
-            COD;  
-            return $html;
-        }
-    }
-}
-
-function PasswordControl2(){
-    if($_SERVER['REQUEST_METHOD']=="POST"){
-        $user = $_POST['usernameC'];
-        $psw = $_POST['passwordC'];
         if(AttempsControl($user)){
             if($user == "Aless" && $psw == "123"){
                 $_SESSION['usernameC']=$user;
-                $_SESSION['passwordC']=$psw;
-                $html = <<<COD
-                <p>Hai effettuato l'accesso con successo <b>$user</b> con metodo POST<br><br>
-                Se vuoi effettuare il logout, <a href="ES_C-Logout.php"><button id="button">PREMI QUI</button></a></p>
-                COD;
                 apcu_store("failed_attempts_$user", 0, 0);
-                return $html;
+                header('Location: ES_C-Riservata.php');
+                exit;
             } else {
                 $Attemps = apcu_fetch("failed_attempts_$user") ?: 0;
                 $Attemps++;
@@ -77,39 +49,21 @@ function PasswordControl2(){
                 $Attemps = 3 - $Attemps;
 
                 if($Attemps == 0){
-                    $url = 'ES_C-Login.php?error=Troppi accessi all\'account. ACCOUNT BLOCCATO&from=';
-                    $url .= basename($_SERVER['PHP_SELF']);
+                    $url = 'ES_C-Login.php?error=Troppi accessi all\'account. ACCOUNT BLOCCATO';
                     header("Location: $url");
                     exit; 
                 } else{
-                    $url = "ES_C-Login.php?error=Credenziali errate. Tentativi Rimasti: $Attemps&from=";
-                    $url .= basename($_SERVER['PHP_SELF']);
+                    $url = "ES_C-Login.php?error=Credenziali errate. Tentativi Rimasti: $Attemps";
                     header("Location: $url");
                     exit;
                 }
             }
         } else {
-            $url = 'ES_C-Login.php?error=Troppi accessi all\'account. ACCOUNT BLOCCATO&from=';
-            $url .= basename($_SERVER['PHP_SELF']);
+            $url = 'ES_C-Login.php?error=Troppi accessi all\'account. ACCOUNT BLOCCATO';
             header("Location: $url");
             exit; 
         }
-    } else {
-        if(!isset($_SESSION['usernameC']) || !isset($_SESSION['passwordC'])){
-            $url = 'ES_C-Login.php?error=Per accedere alla pagina bisogna fare prima l\'accesso&from=';
-            $url .= basename($_SERVER['PHP_SELF']);
-            header("Location: $url");
-            exit;            
-        } else {
-            $user = $_SESSION['usernameC'];
-            $psw = $_SESSION['passwordC'];
-            $html = <<<COD
-            <p>Hai effettuato l'accesso con successo <b>$user</b> usando la sessione<br><br>
-            Se vuoi effettuare il logout, <a href="ES_C-Logout.php"><button id="button">PREMI QUI</button></a></p>
-            COD;  
-            return $html;
-        }
-    }
+    } 
 }
 
 function AttempsControl($userattempt){

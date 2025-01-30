@@ -2,7 +2,8 @@
     require("ES_C-Funzioni.php");
 
     session_start();
-    CheckSession();
+    CheckSessionInLogin();
+    PasswordControl();
     $html = DisplayError();
 ?>
 <!DOCTYPE html>
