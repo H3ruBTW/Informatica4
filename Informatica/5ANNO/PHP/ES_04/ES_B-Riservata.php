@@ -25,7 +25,6 @@
             exit;            
         } else {
             $user = $_SESSION['usernameB'];
-            $psw = $_SESSION['passwordB'];
             $html = <<<COD
             <p>Hai effettuato l'accesso con successo <b>$user</b> usando la sessione<br><br>
             Se vuoi effettuare il logout, <a href="ES_B-Logout.php"><button id="button">PREMI QUI</button></a></p>
