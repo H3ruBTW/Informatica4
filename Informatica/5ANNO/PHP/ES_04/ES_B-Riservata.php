@@ -6,7 +6,6 @@
         $psw = $_POST['passwordB'];
         if($user == "Aless" && $psw == "123"){
             $_SESSION['usernameB']=$user;
-            $_SESSION['passwordB']=$psw;
             $html = <<<COD
             <p>Hai effettuato l'accesso con successo <b>$user</b> con metodo POST<br><br>
             Se vuoi effettuare il logout, <a href="ES_B-Logout.php"><button id="button">PREMI QUI</button></a></p>
@@ -19,7 +18,7 @@
         }
         
     } else {
-        if(!isset($_SESSION['usernameB']) || !isset($_SESSION['passwordB'])){
+        if(!isset($_SESSION['usernameB'])){
             $url = 'ES_B-Login.php?error=Per accedere alla pagina bisogna fare prima l\'accesso&from=';
             $url .= basename($_SERVER['PHP_SELF']);
             header("Location: $url");

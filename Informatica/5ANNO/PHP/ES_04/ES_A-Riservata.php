@@ -1,12 +1,18 @@
 <?php 
-    $html = "";
+/** 
+ * @brief 
+ */
     session_start();
+
+    $html = "";
+
+
     if($_SERVER['REQUEST_METHOD']=="POST"){
         $user = $_POST['usernameA'];
         $psw = $_POST['passwordA'];
         if($user == "Aless" && $psw == "123"){
             $_SESSION['usernameA']=$user;
-            $_SESSION['passwordA']=$psw;
+            
             $html = <<<COD
             <p>Hai effettuato l'accesso con successo <b>$user</b> con metodo POST<br><br>
             Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
@@ -27,7 +33,6 @@
             COD;
         } else {
             $user = $_SESSION['usernameA'];
-            $psw = $_SESSION['passwordA'];
             $html = <<<COD
             <p>Hai effettuato l'accesso con successo <b>$user</b> usando la sessione<br><br>
             Se vuoi effettuare il logout, <a href="ES_A-Logout.php"><button id="button">PREMI QUI</button></a></p>
