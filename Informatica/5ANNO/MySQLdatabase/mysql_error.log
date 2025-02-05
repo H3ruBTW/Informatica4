@@ -975,3 +975,4 @@ Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribut
 2025-02-05 16:09:03 0 [Note] Added new Master_info '' to hash table
 2025-02-05 16:09:03 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
 Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2025-02-05 16:20:59 33 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
