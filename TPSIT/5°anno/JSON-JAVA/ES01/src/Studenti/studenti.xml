@@ -1,0 +1,29 @@
+<?xml version="1.0" ?> 
+<scuola> 
+<studente ID="01">
+<nominativo> 
+<nome>Mario</nome> 
+<cognome>Rossi</cognome> 
+</nominativo> 
+<indirizzo>via Verdi 15</indirizzo> 
+<citta>Genova</citta> 
+<telefono>339.1223344</telefono> 
+</studente>
+<studente ID="02">
+<nominativo>
+<nome>Paolo</nome> 
+<cognome>Verdi</cognome> 
+</nominativo> 
+<indirizzo>via Roma, 22</indirizzo> 
+<citta>Genova</citta> 
+<telefono>339.1223344</telefono> 
+</studente>
+<studente ID="03">
+<nominativo> 
+<nome>Ciro</nome>
+<cognome>Meo</cognome> 
+</nominativo> 
+<indirizzo>via Milano 1</indirizzo> 
+<citta>Napoli</citta> 
+</studente> 
+</scuola>
