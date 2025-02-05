@@ -9,7 +9,7 @@ import javax.tools.JavaFileObject;
 public class FirstJsonWin {
     public static void main(String[] args) throws IOException {
         // TODO Auto-generated method stub
-        String nomeFile = "C:\\Users\\aless\\Desktop\\Codice\\Informatica4\\TPSIT\\5°anno\\JSON-JAVA\\ES01\\src\\Studenti\\huitebe_.json";
+        String nomeFile = "Studenti\\huitebe_.json";
         JSONObject mioOggetto = new JSONObject();
         mioOggetto.put("cognome", "Verdi");
         mioOggetto.put("nome", "Pino");

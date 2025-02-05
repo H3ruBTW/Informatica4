@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class SecondJsonWin {
     public static void main(String[] args) throws Exception {
-        String nomeFile = "C:\\Users\\aless\\Desktop\\Codice\\Informatica4\\TPSIT\\5°anno\\JSON-JAVA\\ES01\\src\\Studenti\\huitebe_.json";
+        String nomeFile = "Studenti\\huitebe_.json";
         JSONObject oggettoJSon = (JSONObject) leggiFileJSON(nomeFile);
         System.out.println("Contenuto intero oggetto:");
         System.out.println(oggettoJSon);
