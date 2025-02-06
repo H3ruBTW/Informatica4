@@ -2,17 +2,15 @@
 $html="";
 
 define("HOST", "localhost");
-define("USER", "Aless");
+define("USER", "USERS");
 define("PSW", "123");
 define("DB", "es05");
 
 try {
     $conn = mysqli_connect(HOST, USER, PSW, DB);
 
-    $user = USER;
-
     if($conn){
-        $html = "<p>Connessione al DB con successo con $user</p>";
+        $html = "<p>Connessione al DB con successo con" . USER . "</p>";
     } else {
         $html = "<p>Connessione fallita.</p>";
     }

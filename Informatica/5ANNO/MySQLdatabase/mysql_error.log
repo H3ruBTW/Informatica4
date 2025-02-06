@@ -1022,3 +1022,20 @@ Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribut
 2025-02-06  9:43:52 11 [Warning] Access denied for user 'root'@'localhost' (using password: NO)
 2025-02-06  9:45:49 12 [Warning] Aborted connection 12 to db: 'mysql' user: 'root' host: 'localhost' (Got an error reading communication packets)
 2025-02-06  9:47:49 54 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
+2025-02-06 14:19:32 101 [Warning] Access denied for user 'aless'@'localhost' (using password: NO)
+2025-02-06 14:19:35 102 [Warning] Access denied for user 'aless'@'localhost' (using password: NO)
+2025-02-06 14:20:49 105 [Warning] Access denied for user 'root'@'localhost' (using password: NO)
+2025-02-06 14:20:52 107 [Warning] Access denied for user 'root'@'localhost' (using password: NO)
+2025-02-06 14:21:45 108 [Warning] Access denied for user 'root'@'localhost' (using password: NO)
+2025-02-06 14:22:12 109 [Warning] Aborted connection 109 to db: 'unconnected' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2025-02-06 14:23:49 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2025-02-06 14:23:49 0 [Note] Event Scheduler: Purging the queue. 0 events
+2025-02-06 14:23:49 0 [Note] InnoDB: FTS optimize thread exiting.
+2025-02-06 14:23:50 0 [Note] InnoDB: Starting shutdown...
+2025-02-06 14:23:50 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2025-02-06 14:23:50 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2025-02-06 14:23:50 0 [Note] InnoDB: Buffer pool(s) dump completed at 250206 14:23:50
+2025-02-06 14:23:50 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2025-02-06 14:23:50 0 [Note] InnoDB: Shutdown completed; log sequence number 200594; transaction id 283
+2025-02-06 14:23:50 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
