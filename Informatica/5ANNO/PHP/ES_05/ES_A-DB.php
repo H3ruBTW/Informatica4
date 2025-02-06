@@ -10,7 +10,7 @@ try {
     $conn = mysqli_connect(HOST, USER, PSW, DB);
 
     if($conn){
-        $html = "<p>Connessione al DB con successo con" . USER . "</p>";
+        $html = "<p>Connessione al DB con successo con " . USER . "</p>";
     } else {
         $html = "<p>Connessione fallita.</p>";
     }
