@@ -1,3 +1,32 @@
+<?php
+$html="";
+
+define("HOST", "localhost");
+define("USER", "Aless");
+define("PSW", "123");
+define("DB", "es05");
+
+try {
+    $conn = mysqli_connect(HOST, USER, PSW, DB);
+
+    $user = USER;
+
+    if($conn){
+        $html = "<p>Connessione al DB con successo con $user</p>";
+    } else {
+        $html = "<p>Connessione fallita.</p>";
+    }
+} catch (\Throwable $th) {
+    $err = mysqli_connect_error();
+
+    $html = <<<COD
+    <p>Si è verificato un errore nella connessione al DB.<br>
+    Riprovare più tardi.<br>
+    Errore: $err</p>
+    COD;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +54,7 @@
             </nav>
         </div>
         <div class="content">
-            
+            <?= $html ?>
         </div>
     </div>
 
