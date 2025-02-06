@@ -46,7 +46,7 @@ try {
                     <hr>
                     <li><a href="index.php"><u>HomePage ES_05</u></a></li>
                     <hr>
-                    <li><a href="ES_A_B-DB.php"><b>ES_A e B - Accesso DB</b></a></li>
+                    <li><a href="ES_A_B-DB.php"><b>ES_AB - Accesso DB</b></a></li>
                     <hr>                  
                 </ul>
             </nav>

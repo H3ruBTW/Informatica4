@@ -18,7 +18,7 @@
                     <hr>
                     <li><a href="index.php"><u>HomePage ES_05</u></a></li>
                     <hr>
-                    <li><a href="ES_A_B-DB.php"><u>ES_A e B - Accesso DB</u></a></li>
+                    <li><a href="ES_A_B-DB.php"><u>ES_AB - Accesso DB</u></a></li>
                     <hr>                 
                 </ul>
             </nav>
