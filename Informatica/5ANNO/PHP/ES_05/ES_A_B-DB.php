@@ -49,6 +49,10 @@ mysqli_close($conn);
                     <li><a href="index.php"><u>HomePage ES_05</u></a></li>
                     <hr>
                     <li><a href="ES_A_B-DB.php"><b>ES_AB - Accesso DB</b></a></li>
+                    <hr>  
+                    <li><a href="ES_C-Welcome.php"><u>ES_C - Welcome</u></a></li>
+                    <hr>
+                    <li><a href="ES_C-Riservata.php"><u>ES_C - Riservata</u></a></li>
                     <hr>                  
                 </ul>
             </nav>

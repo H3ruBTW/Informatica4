@@ -1,40 +1,19 @@
 <?php
+require("ES_C-Funzioni.php");
 session_start();
-$error = "";
+
+$error = DisplayError();
 
 if(isset($_SESSION['username'])){
     header("Location: ES_C-Riservata.php");
     exit;
 }
 
-if($_SERVER['REQUEST_METHOD']=="post"){
+if($_SERVER['REQUEST_METHOD']=="POST"){
     $user = (isset($_POST["username"])) ? $_POST['username'] : "";
     $pass = (isset($_POST['password'])) ? $_POST['password'] : "";
 
-    $status = Login($user, $pass);
-
-    switch ($status) {
-        case '0':
-            $_SESSION['username'] = $user;
-            header("Location: ES_C-Riservata.php");
-            break;
-
-        //ERRORI
-        case '-1':
-            $error = "<p style=\"color: red\">CREDENZIALI ERRATE</p>";
-            break;
-        
-        case '-2':
-            $error = "<p style=\"color: red\">ERRORE DI CONNESSIONE AL DB. RIPROVARE PIU' TARDI</p>";
-            break;
-        
-        case '-3':
-            $error = "<p style=\"color: red\">ERRORE NELLA RICERCA NEL DATABASE</p>";
-            break;
-
-        default:
-            break;
-    }
+    Login($user, $pass);
 }
 ?>
 
@@ -69,7 +48,6 @@ if($_SERVER['REQUEST_METHOD']=="post"){
             </nav>
         </div>
         <div class="content">
-            <br>
             <?php echo $error ?>
             <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
                 <label>Username:</label><br>

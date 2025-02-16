@@ -1,3 +1,17 @@
+<?php
+require("ES_C-Funzioni.php");
+session_start();
+$html = "";
+
+if(CheckSessionRis()){
+    $user = $_SESSION['username'];
+    $html = <<<COD
+    <p>LOGIN EFFETTUATO CON SUCCESSO con <b>$user</b><br><br>
+    Se vuoi effettuare il logout, <a href="ES_C-Logout.php"><button id="button">PREMI QUI</button></a></p>
+    COD;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +35,9 @@
                     <hr>
                     <li><a href="ES_A_B-DB.php"><u>ES_AB - Accesso DB</u></a></li>
                     <hr>  
-                    <li><a href="ES_C-Welcome.php"><b>ES_C - Welcome</b></a></li>
+                    <li><a href="ES_C-Welcome.php"><u>ES_C - Welcome</u></a></li>
                     <hr>
-                    <li><a href="ES_C-Riservata.php"><u>ES_C - Riservata</u></a></li>
+                    <li><a href="ES_C-Riservata.php"><b>ES_C - Riservata</b></a></li>
                     <hr>                                      
                 </ul>
             </nav>
