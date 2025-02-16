@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css">
     <title>Esecizi</title>
 </head>
 <body>
@@ -20,17 +21,15 @@
                     <hr>
                     <li><a href="ES_A_B-DB.php"><u>ES_AB - Accesso DB</u></a></li>
                     <hr>  
-                    <li><a href="ES_C-Welcome.php"><u>ES_C - Welcome</u></a></li>
-                    <hr> 
-                    <li><a href="ES_C-Riservata.php"><b>ES_C - Riservata</b></a></li>
-                    <hr>               
+                    <li><a href="ES_C-Welcome.php"><b>ES_C - Welcome</b></a></li>
+                    <hr>
+                    <li><a href="ES_C-Riservata.php"><u>ES_C - Riservata</u></a></li>
+                    <hr>                                      
                 </ul>
             </nav>
         </div>
         <div class="content">
-            <center>
-                <img src="../img/images.png" width="50%">
-            </center>
+            <?= $html ?>
         </div>
     </div>
 
@@ -39,3 +38,4 @@
     </footer>
 </body>
 </html>
+

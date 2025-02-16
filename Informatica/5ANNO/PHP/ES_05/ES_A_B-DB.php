@@ -23,6 +23,8 @@ try {
     Errore: $err</p>
     COD;
 }
+
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
