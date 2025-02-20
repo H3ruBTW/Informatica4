@@ -5,10 +5,18 @@ $html = "";
 
 if(CheckSessionRis()){
     $user = $_SESSION['username'];
-    $html = <<<COD
-    <p>LOGIN EFFETTUATO CON SUCCESSO con <b>$user</b><br><br>
-    Se vuoi effettuare il logout, <a href="ES_C-Logout.php"><button id="button">PREMI QUI</button></a></p>
-    COD;
+    if(isset($_COOKIE['user'])){
+        $html = <<<COD
+        <p>LOGIN EFFETTUATO CON SUCCESSO con <b>$user</b><br><br>
+        Se vuoi effettuare il logout, <button id="button">PREMI QUI</button></p>
+        COD;
+    } else {
+        $html = <<<COD
+        <p>LOGIN EFFETTUATO CON SUCCESSO con <b>$user</b><br><br>
+        Se vuoi effettuare il logout, <a href="ES_D-Logout.php"><button id="button">PREMI QUI</button></a></p>
+        COD;
+    }
+    
 }
 ?>
 
@@ -20,6 +28,7 @@ if(CheckSessionRis()){
     <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/base.css">
+    <script src="js/script.js" defer></script>
     <title>Esecizi</title>
 </head>
 <body>
@@ -48,7 +57,13 @@ if(CheckSessionRis()){
         </div>
         <div class="content">
             <?= $html ?>
-            
+            <div id="box">
+                <form action="ES_D-Logout.php" method="post">
+                    <p>Vuoi rimuovere anche i cookies?</p>
+                    <input type="checkbox" name="cookies"><br><br>
+                    <input id="button2" type="submit" value="Conferma">
+                </form>  
+            </div>
         </div>
     </div>
     <footer>

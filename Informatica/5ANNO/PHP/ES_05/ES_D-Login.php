@@ -3,17 +3,24 @@ require("ES_D-Funzioni.php");
 session_start();
 
 $error = DisplayError();
+$cookies = "";
 
 if(isset($_SESSION['username'])){
     header("Location: ES_D-Riservata.php");
     exit;
 }
 
+//controlla la presenza di cookie
+if(isset($_COOKIE['user'])){
+    $cookies = $_COOKIE['user'];
+}
+
 if($_SERVER['REQUEST_METHOD']=="POST"){
     $user = (isset($_POST["username"])) ? $_POST['username'] : "";
     $pass = (isset($_POST['password'])) ? $_POST['password'] : "";
+    $cookies = (isset($_POST['cookies'])) ? $_POST['cookies'] : false; 
 
-    Login($user, $pass);
+    Login($user, $pass, $cookies);
 }
 ?>
 
@@ -52,12 +59,14 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             </nav>
         </div>
         <div class="content">
-            <?php echo $error ?>
+            <?= $error ?>
             <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
                 <label>Username:</label><br>
-                <input type="text" name="username" required><br>
+                <input type="text" name="username" required value="<?= $cookies ?>"><br>
                 <label>Password:</label><br>
-                <input type="text" name="password" required><br>
+                <input type="text" name="password" required><br><br>
+                <label>Vuoi salvare il username?</label>
+                <input type="checkbox" name="cookies"><br><br>
                 <input id="button" type="submit" value="Accedi">
             </form>
         </div>

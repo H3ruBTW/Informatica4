@@ -1,6 +1,13 @@
 <?php
 session_start();
 session_destroy();
-header("Location: ES_C-Welcome.php");
+
+if($_SERVER['REQUEST_METHOD']=="POST"){
+    //faccio scadere il cookie, eliminandolo
+    if($_POST['cookies'])
+        setcookie("user", "" , time() - 1, "/");
+}
+
+header("Location: ES_D-Welcome.php");
 exit;
 ?>

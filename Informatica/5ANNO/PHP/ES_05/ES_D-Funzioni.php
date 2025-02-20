@@ -1,5 +1,5 @@
 <?php
-function Login($usr, $psw){
+function Login($usr, $psw, $cookies){
     define("HOST", "localhost");
     define("USER", "USERS");
     define("PASS", "123");
@@ -23,6 +23,11 @@ function Login($usr, $psw){
 
                 if($acc['Password'] == $psw){
                     $_SESSION['username'] = $usr;
+
+                    //cookies ma viene mantenuto solo per la prossima ora
+                    if($cookies)
+                        setcookie("user", $usr , time() + 3600, "/");
+
                     header("Location: ES_D-Riservata.php");
                     exit;
                 } else {
