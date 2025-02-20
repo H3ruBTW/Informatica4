@@ -6,6 +6,7 @@ $error = DisplayError();
 $cookies = "";
 
 if(isset($_SESSION['username'])){
+    setUltimoAccesso();
     header("Location: ES_D-Riservata.php");
     exit;
 }
@@ -20,7 +21,18 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     $pass = (isset($_POST['password'])) ? $_POST['password'] : "";
     $cookies = (isset($_POST['cookies'])) ? $_POST['cookies'] : false; 
 
-    Login($user, $pass, $cookies);
+    $captcha = $_POST['g-recaptcha-response'];
+    $secretKey = "6Lftjt0qAAAAAP4d_OhBwClGleD53NDXOqlRIXP7"; // Sostituisci con la tua chiave segreta
+
+    $verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$captcha");
+    $responseData = json_decode($verifyResponse);
+
+    if ($responseData->success) {
+        Login($user, $pass, $cookies);
+    } else {
+        header("Location: ES_D-Login.php?error=Non hai risolto il Captcha");
+        exit;
+    }
 }
 ?>
 
@@ -32,6 +44,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/base.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Esecizi</title>
 </head>
 <body>
@@ -67,7 +80,10 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                 <input type="text" name="password" required><br><br>
                 <label>Vuoi salvare il username?</label>
                 <input type="checkbox" name="cookies"><br><br>
-                <input id="button" type="submit" value="Accedi">
+                <!-- Google reCAPTCHA -->
+                <div class="g-recaptcha" data-sitekey="6Lftjt0qAAAAAB41wvUFgRvl5MiGUuuywu-zRZaV"></div>
+                <br>
+                <input id="button" type="submit" value="Accedi"><br><br><br>
             </form>
         </div>
     </div>

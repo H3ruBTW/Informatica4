@@ -1,9 +1,10 @@
 <?php
+define("HOST", "localhost");
+define("USER", "USERS");
+define("PASS", "123");
+define("DB", "es05");
+
 function Login($usr, $psw, $cookies){
-    define("HOST", "localhost");
-    define("USER", "USERS");
-    define("PASS", "123");
-    define("DB", "es05");
 
     $conn = mysqli_connect(HOST, USER, PASS, DB);
 
@@ -42,7 +43,7 @@ function Login($usr, $psw, $cookies){
                         setcookie("user", $usr , time() + 3600, "/");
 
                     $user = $acc['Username'];
-                    $query = "update utente set Errori = 0 where Username = '$user'";
+                    $query = "update utente set Errori = 0, Ultimo_Accesso = CURRENT_TIMESTAMP() where Username = '$user'";
                     mysqli_query($conn, $query);
 
                     header("Location: ES_D-Riservata.php");
@@ -94,5 +95,56 @@ function DisplayError(){
     }
 
     return "<br>";
+}
+
+function getUltimoAccesso(){
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
+    $usr = $_SESSION['username'];
+
+    //ERRORE CONNESSIONE
+    if(!$conn){
+        return "ERROR";
+    }
+
+    $query = "select * from utente where Username = \"$usr\"";
+    try {
+        $ris = mysqli_query($conn, $query);
+
+        if($ris){
+            if(mysqli_num_rows($ris)>0){
+                $acc = mysqli_fetch_assoc($ris);
+
+                return $acc['Ultimo_Accesso'];
+
+            } 
+        } 
+    } catch (\Throwable $th) {
+        header("Location: ES_D-Login.php?error=Errore DB: " . mysqli_error($conn));
+    }  
+}
+
+function setUltimoAccesso(){
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
+    $usr = $_SESSION['username'];
+
+    //ERRORE CONNESSIONE
+    if(!$conn){
+        exit;
+    }
+
+    $query = "select * from utente where Username = \"$usr\"";
+    try {
+        $ris = mysqli_query($conn, $query);
+
+        if($ris){
+            if(mysqli_num_rows($ris)>0){
+                $query = "update utente set Ultimo_Accesso = CURRENT_TIMESTAMP() where Username = '$usr'";
+                mysqli_query($conn, $query);
+
+            } 
+        } 
+    } catch (\Throwable $th) {
+        header("Location: ES_D-Login.php?error=Errore DB: " . mysqli_error($conn));
+    }  
 }
 ?>
