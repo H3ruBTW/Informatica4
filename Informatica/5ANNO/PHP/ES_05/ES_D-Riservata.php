@@ -10,13 +10,13 @@ if(CheckSessionRis()){
         $html = <<<COD
         <p>LOGIN EFFETTUATO CON SUCCESSO con <b>$user</b><br><br>
         Ultimo Accesso: $access<br><br>
-        Se vuoi effettuare il logout, <button id="button">PREMI QUI</button></p>
+        Se vuoi effettuare il logout, <button id="button" data-b="button">PREMI QUI</button></p>
         COD;
     } else {
         $html = <<<COD
-        <p>LOGIN EFFETTUATO CON SUCCESSO con <b>$user</b><br>
+        <p>LOGIN EFFETTUATO CON SUCCESSO con <b>$user</b><br><br>
         Ultimo Accesso: $access<br><br>
-        Se vuoi effettuare il logout, <a href="ES_D-Logout.php"><button id="button">PREMI QUI</button></a></p>
+        Se vuoi effettuare il logout, <a href="ES_D-Logout.php"><button id="button" data-b="none">PREMI QUI</button></a></p>
         COD;
     }
     
