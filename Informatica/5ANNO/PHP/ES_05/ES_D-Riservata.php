@@ -1,19 +1,14 @@
 <?php
-require("ES_C-Funzioni.php");
+require("ES_D-Funzioni.php");
 session_start();
+$html = "";
 
-$error = DisplayError();
-
-if(isset($_SESSION['username'])){
-    header("Location: ES_C-Riservata.php");
-    exit;
-}
-
-if($_SERVER['REQUEST_METHOD']=="POST"){
-    $user = (isset($_POST["username"])) ? $_POST['username'] : "";
-    $pass = (isset($_POST['password'])) ? $_POST['password'] : "";
-
-    Login($user, $pass);
+if(CheckSessionRis()){
+    $user = $_SESSION['username'];
+    $html = <<<COD
+    <p>LOGIN EFFETTUATO CON SUCCESSO con <b>$user</b><br><br>
+    Se vuoi effettuare il logout, <a href="ES_C-Logout.php"><button id="button">PREMI QUI</button></a></p>
+    COD;
 }
 ?>
 
@@ -41,30 +36,24 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                     <li><a href="ES_A_B-DB.php"><u>ES_AB - Accesso DB</u></a></li>
                     <hr>  
                     <li><a href="ES_C-Welcome.php"><u>ES_C - Welcome</u></a></li>
-                    <hr>    
+                    <hr>
                     <li><a href="ES_C-Riservata.php"><u>ES_C - Riservata</u></a></li>
-                    <hr>  
+                    <hr> 
                     <li><a href="ES_D-Welcome.php"><u>ES_D - Welcome</u></a></li>
                     <hr>
-                    <li><a href="ES_D-Riservata.php"><u>ES_D - Riservata</u></a></li>
-                    <hr>           
+                    <li><a href="ES_D-Riservata.php"><b>ES_D - Riservata</b></a></li>
+                    <hr>                                       
                 </ul>
             </nav>
         </div>
         <div class="content">
-            <?php echo $error ?>
-            <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
-                <label>Username:</label><br>
-                <input type="text" name="username" required><br>
-                <label>Password:</label><br>
-                <input type="text" name="password" required><br>
-                <input id="button" type="submit" value="Accedi">
-            </form>
+            <?= $html ?>
+            
         </div>
     </div>
-
     <footer>
         <p>&copy; 2025 Buongallino Alessandro</p>
     </footer>
 </body>
 </html>
+

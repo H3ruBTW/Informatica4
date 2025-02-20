@@ -1,19 +1,11 @@
 <?php
-require("ES_C-Funzioni.php");
 session_start();
 
-$error = DisplayError();
-
 if(isset($_SESSION['username'])){
-    header("Location: ES_C-Riservata.php");
-    exit;
-}
-
-if($_SERVER['REQUEST_METHOD']=="POST"){
-    $user = (isset($_POST["username"])) ? $_POST['username'] : "";
-    $pass = (isset($_POST['password'])) ? $_POST['password'] : "";
-
-    Login($user, $pass);
+    $user = $_SESSION['username'];
+    $html = "<h2>Effettua il login nella pagina, $user.</h2>";
+} else {
+    $html = "<h2>Devi effettuare il login, sei in modalità ospite.</h2>";
 }
 ?>
 
@@ -41,25 +33,19 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                     <li><a href="ES_A_B-DB.php"><u>ES_AB - Accesso DB</u></a></li>
                     <hr>  
                     <li><a href="ES_C-Welcome.php"><u>ES_C - Welcome</u></a></li>
-                    <hr>    
+                    <hr>
                     <li><a href="ES_C-Riservata.php"><u>ES_C - Riservata</u></a></li>
-                    <hr>  
-                    <li><a href="ES_D-Welcome.php"><u>ES_D - Welcome</u></a></li>
+                    <hr>    
+                    <li><a href="ES_D-Welcome.php"><b>ES_D - Welcome</b></a></li>
                     <hr>
                     <li><a href="ES_D-Riservata.php"><u>ES_D - Riservata</u></a></li>
-                    <hr>           
+                    <hr>                                   
                 </ul>
             </nav>
         </div>
         <div class="content">
-            <?php echo $error ?>
-            <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
-                <label>Username:</label><br>
-                <input type="text" name="username" required><br>
-                <label>Password:</label><br>
-                <input type="text" name="password" required><br>
-                <input id="button" type="submit" value="Accedi">
-            </form>
+            <?= $html ?>
+            <a href="ES_C-Login.php"><button id="button">LOGIN</button></a>
         </div>
     </div>
 

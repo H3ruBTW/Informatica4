@@ -1,11 +1,11 @@
 <?php
-require("ES_C-Funzioni.php");
+require("ES_D-Funzioni.php");
 session_start();
 
 $error = DisplayError();
 
 if(isset($_SESSION['username'])){
-    header("Location: ES_C-Riservata.php");
+    header("Location: ES_D-Riservata.php");
     exit;
 }
 
@@ -43,11 +43,11 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                     <li><a href="ES_C-Welcome.php"><u>ES_C - Welcome</u></a></li>
                     <hr>    
                     <li><a href="ES_C-Riservata.php"><u>ES_C - Riservata</u></a></li>
-                    <hr>  
+                    <hr>      
                     <li><a href="ES_D-Welcome.php"><u>ES_D - Welcome</u></a></li>
                     <hr>
                     <li><a href="ES_D-Riservata.php"><u>ES_D - Riservata</u></a></li>
-                    <hr>           
+                    <hr>       
                 </ul>
             </nav>
         </div>

@@ -35,7 +35,11 @@ if(isset($_SESSION['username'])){
                     <li><a href="ES_C-Welcome.php"><b>ES_C - Welcome</b></a></li>
                     <hr>
                     <li><a href="ES_C-Riservata.php"><u>ES_C - Riservata</u></a></li>
-                    <hr>                                      
+                    <hr> 
+                    <li><a href="ES_D-Welcome.php"><u>ES_D - Welcome</u></a></li>
+                    <hr>
+                    <li><a href="ES_D-Riservata.php"><u>ES_D - Riservata</u></a></li>
+                    <hr>                                       
                 </ul>
             </nav>
         </div>
