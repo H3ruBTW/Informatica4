@@ -61,8 +61,9 @@ if(CheckSessionRis()){
                 <form action="ES_D-Logout.php" method="post">
                     <p>Vuoi rimuovere anche i cookies?</p>
                     <input type="checkbox" name="cookies"><br><br>
-                    <input id="button2" type="submit" value="Conferma">
-                </form>  
+                    <input id="button2" type="submit" value="Conferma" style="display: inline;">
+                    <button type="button" id="button3">Annulla</button>
+                </form>   
             </div>
         </div>
     </div>
