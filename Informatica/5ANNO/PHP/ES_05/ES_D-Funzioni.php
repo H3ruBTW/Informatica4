@@ -22,7 +22,7 @@ function Login($usr, $psw, $cookies){
                 $acc = mysqli_fetch_assoc($ris);
                 
                 //Se gli errori sono 5 e non sono passati 30 min dall'ultimo errore
-                //non continua
+                //non continua se sono passati 30 min annulla gli errori
                 if($acc['Errori'] == 5){
                     if((time()-$acc['Ultimo_Errore'])/60 < 30){
                         header("Location: ES_D-Login.php?error=Troppi accessi riprova fra circa 30 minuti");
