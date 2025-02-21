@@ -4,10 +4,7 @@ session_start();
 
 $error = DisplayError();
 
-if(isset($_SESSION['username'])){
-    header("Location: ES_C-Riservata.php");
-    exit;
-}
+CheckSession();
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
     $user = (isset($_POST["username"])) ? $_POST['username'] : "";

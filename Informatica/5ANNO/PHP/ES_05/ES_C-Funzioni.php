@@ -56,6 +56,13 @@ function CheckSessionRis(){
     return true;
 }
 
+function CheckSession(){
+    if(isset($_SESSION['username'])){
+        header("Location: ES_C-Riservata.php");
+        exit;
+    } 
+}
+
 function DisplayError(){
     if($_SERVER['REQUEST_METHOD']=="GET"){
         if(isset($_GET['error'])){
