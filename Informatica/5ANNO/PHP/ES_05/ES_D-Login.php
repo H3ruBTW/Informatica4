@@ -5,11 +5,7 @@ session_start();
 $error = DisplayError();
 $cookies = "";
 
-if(isset($_SESSION['username'])){
-    setUltimoAccesso();
-    header("Location: ES_D-Riservata.php");
-    exit;
-}
+CheckSession();
 
 //controlla la presenza di cookie
 if(isset($_COOKIE['user'])){

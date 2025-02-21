@@ -86,6 +86,14 @@ function CheckSessionRis(){
     return true;
 }
 
+function CheckSession(){
+    if(isset($_SESSION['username'])){
+        setUltimoAccesso();
+        header("Location: ES_D-Riservata.php");
+        exit;
+    }    
+}
+
 function DisplayError(){
     if($_SERVER['REQUEST_METHOD']=="GET"){
         if(isset($_GET['error'])){
