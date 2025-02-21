@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     $cookies = (isset($_POST['cookies'])) ? $_POST['cookies'] : false; 
 
     $captcha = $_POST['g-recaptcha-response'];
-    $secretKey = "6Lftjt0qAAAAAP4d_OhBwClGleD53NDXOqlRIXP7"; // Sostituisci con la tua chiave segreta
+    $secretKey = "6Lftjt0qAAAAAP4d_OhBwClGleD53NDXOqlRIXP7"; 
 
     $verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$captcha");
     $responseData = json_decode($verifyResponse);
