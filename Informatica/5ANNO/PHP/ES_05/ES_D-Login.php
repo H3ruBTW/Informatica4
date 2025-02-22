@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     if ($responseData->success) {
         Login($user, $pass, $cookies);
     } else {
-        header("Location: ES_D-Login.php?error=Non hai risolto il Captcha");
+        header("Location: ES_D-Login.php?error=Il captcha non è stato risolto correttamente");
         exit;
     }
 }
