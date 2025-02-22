@@ -17,6 +17,7 @@ if(isset($_SESSION['username'])){
     <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/base.css">
+    <script src="js/scriptcookie.js" defer></script>
     <title>Esecizi</title>
 </head>
 <body>
@@ -46,6 +47,11 @@ if(isset($_SESSION['username'])){
         <div class="content">
             <?= $html ?>
             <a href="ES_D-Login.php"><button id="button">LOGIN</button></a>
+
+            <div id="cookie">
+                Questo sito utilizza solo cookie tecnici per la gestione della sessione utente. Nessun tracciamento viene effettuato.
+                <button id="button2">OK</button>
+            </div>
         </div>
     </div>
 

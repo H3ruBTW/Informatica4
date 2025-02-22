@@ -25,7 +25,9 @@ function Login($usr, $psw, $cookies){
                 //Se gli errori sono 5 e non sono passati 30 min dall'ultimo errore
                 //non continua se sono passati 30 min annulla gli errori
                 if($acc['Errori'] == 5){
-                    if((time()-$acc['Ultimo_Errore'])/60 < 30){
+                    $ultimo_errore = strtotime($acc['Ultimo_Errore']);
+
+                    if((time()-$ultimo_errore)/60 < 30){
                         header("Location: ES_D-Login.php?error=Troppi accessi riprova fra circa 30 minuti");
                         exit;
                     } else {

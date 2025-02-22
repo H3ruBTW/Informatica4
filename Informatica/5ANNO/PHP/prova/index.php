@@ -1,5 +1,17 @@
 <?php 
-$html="";
+define("HOST", "localhost");
+define("USER", "USERS");
+define("PASS", "123");
+define("DB", "es05");
+
+$conn = mysqli_connect(HOST, USER, PASS, DB);
+$query = "select * from utente where Username = \"aless\"";
+$ris = mysqli_query($conn, $query);
+$acc = mysqli_fetch_assoc($ris);
+$ultimo_errore = strtotime($acc['Ultimo_Errore']);
+
+$html = $acc['Errori'] . " " . $acc['Ultimo_Errore'] . " " . $ultimo_errore . " " . time() . " " . time()-$ultimo_errore;
+
 ?>
 
 <!DOCTYPE html>

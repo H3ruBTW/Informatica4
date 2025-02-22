@@ -4,12 +4,15 @@ session_start();
 
 $error = DisplayError();
 $cookies = "";
+$remeberUser = "";
 
 CheckSession();
 
 //controlla la presenza di cookie
 if(isset($_COOKIE['user'])){
     $cookies = $_COOKIE['user'];
+} else {
+    $remeberUser="<label>Vuoi salvare il username?</label>\n<input type=\"checkbox\" name=\"cookies\"><br><br>";
 }
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
@@ -74,8 +77,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                 <input type="text" name="username" required value="<?= $cookies ?>"><br>
                 <label>Password:</label><br>
                 <input type="text" name="password" required><br><br>
-                <label>Vuoi salvare il username?</label>
-                <input type="checkbox" name="cookies"><br><br>
+                <?= $remeberUser ?>
                 <!-- Google reCAPTCHA -->
                 <div class="g-recaptcha" data-sitekey="6Lftjt0qAAAAAB41wvUFgRvl5MiGUuuywu-zRZaV"></div>
                 <br>

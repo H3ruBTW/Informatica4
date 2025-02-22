@@ -48,3 +48,30 @@ h4{
     margin-top: 20px;
     margin-bottom: 10px;
 }
+
+/* Cookie welcome */
+#cookie {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+#cookie button {
+    margin-left: 10px;
+    padding: 6px 12px;
+    background: #444; 
+    color: #ddd; 
+    font-weight: bold;
+    border-radius: 5px;
+}
+#cookie button:hover {
+    background: #666; 
+    color: #fff; 
+}
+
