@@ -75,8 +75,9 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                 <!-- Google reCAPTCHA -->
                 <div class="g-recaptcha" data-sitekey="6Lftjt0qAAAAAB41wvUFgRvl5MiGUuuywu-zRZaV"></div>
                 <br>
-                <input id="button" type="submit" value="Accedi"><br><br><br>
+                <input id="button" type="submit" value="Accedi">
             </form>
+            <p><a href="Registrazione.php">Non hai un account?</a></p><br>
         </div>
     </div>
 

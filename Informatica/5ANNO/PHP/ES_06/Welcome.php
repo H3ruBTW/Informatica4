@@ -31,22 +31,16 @@ if(isset($_SESSION['username'])){
                     <hr>
                     <li><a href="index.php"><u>HomePage ES_05</u></a></li>
                     <hr>
-                    <li><a href="ES_A_B-DB.php"><u>ES_AB - Accesso DB</u></a></li>
-                    <hr>  
-                    <li><a href="ES_C-Welcome.php"><u>ES_C - Welcome</u></a></li>
+                    <li><a href="Welcome.php"><u>Welcome</u></a></li>
                     <hr>
-                    <li><a href="ES_C-Riservata.php"><u>ES_C - Riservata</u></a></li>
-                    <hr>    
-                    <li><a href="ES_D-Welcome.php"><b>ES_D - Welcome</b></a></li>
-                    <hr>
-                    <li><a href="ES_D-Riservata.php"><u>ES_D - Riservata</u></a></li>
-                    <hr>                                   
+                    <li><a href="Riservata.php"><u>Riservata</u></a></li>
+                    <hr>                
                 </ul>
             </nav>
         </div>
         <div class="content">
             <?= $html ?>
-            <a href="ES_D-Login.php"><button id="button">LOGIN</button></a>
+            <a href="Login.php"><button id="button">LOGIN</button></a>
 
             <div id="cookie">
                 Questo sito utilizza solo cookie tecnici per la gestione della sessione utente. Nessun tracciamento viene effettuato.

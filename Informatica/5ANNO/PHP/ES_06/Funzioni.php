@@ -2,7 +2,7 @@
 define("HOST", "localhost");
 define("USER", "USERS");
 define("PASS", "123");
-define("DB", "es05");
+define("DB", "es06");
 
 function Login($usr, $psw, $cookies){
 
