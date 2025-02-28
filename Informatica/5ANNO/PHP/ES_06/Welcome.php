@@ -29,7 +29,7 @@ if(isset($_SESSION['username'])){
                     <hr>
                     <li><a href="../index.php"><b>HomePage PHP</b></a></li>
                     <hr>
-                    <li><a href="index.php"><u>HomePage ES_05</u></a></li>
+                    <li><a href="index.php"><u>HomePage ES_06</u></a></li>
                     <hr>
                     <li><a href="Welcome.php"><u>Welcome</u></a></li>
                     <hr>
