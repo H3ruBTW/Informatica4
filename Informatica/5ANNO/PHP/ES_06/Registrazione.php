@@ -1,3 +1,13 @@
+<?php
+require("Funzioni.php");
+
+$error = DisplayError();
+
+if($_SERVER['REQUEST_METHOD']=="POST"){
+    Registration();   
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +39,7 @@
             </nav>
         </div>
         <div class="content">
+            <?= $error ?>
             <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post" id="form">
             <h4>Dati Personali</h4>
                 <div class="dati">
@@ -43,17 +54,17 @@
                     <input type="text" name="surname" placeholder="Rossi" required>
                     <br><br>
                     <label for="mail">E-mail:</label><br>
-                    <input type="text" name="mail" placeholder="mario.rossi@mail.*" pattern="[a-zA-Z0-9\.\-_]{1,}[@][a-zA-Z0-9]{1,}[\.][a-zA-Z]{2,}" required title=" \nSi prega di inserire una mail valida">
+                    <input type="text" name="mail" placeholder="mario.rossi@mail.*" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
                 </div>
 
                 <h4>Account</h4>
                 <div class="dati">
                     <label for="username">Username:</label>
-                    <input type="text" name="user" pattern=".{4,}" required title=" \nL'username deve essere di minimo 4 caratteri">
+                    <input type="text" name="user" pattern=".{4,}" required>
                 </div>
                 <div class="dati2">
                     <label for="password">Password:</label><br>
-                    <input type="text" name="password" placeholder="min 8 car./1 spec./1 maiu." pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&\-_+=?]).{8,}" required title=" \nNon hai inserito una o più delle seguenti cose\nUna maiuscola, Un Carattere Speciale, La password è più corta di 8 caratteri">
+                    <input type="text" name="password" placeholder="min 8 car./1 spec./1 maiu." pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&\-_+=?]).{8,}" required>
                 </div>
                 <br>
                 <input id="button" type="submit" value="Crea Account">

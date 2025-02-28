@@ -3,6 +3,7 @@ require("Funzioni.php");
 session_start();
 
 $error = DisplayError();
+$succ = DisplaySuccess();
 $cookies = "";
 $remeberUser = "";
 
@@ -66,6 +67,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         </div>
         <div class="content">
             <?= $error ?>
+            <?= $succ ?>
             <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
                 <label>Username:</label><br>
                 <input type="text" name="username" required value="<?= $cookies ?>"><br>
@@ -77,7 +79,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                 <br>
                 <input id="button" type="submit" value="Accedi">
             </form>
-            <p><a href="Registrazione.php">Non hai un account?</a></p><br>
+            <p><a href="Registrazione.php">Non hai un account? Crealo!</a></p><br>
         </div>
     </div>
 
