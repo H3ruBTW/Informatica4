@@ -169,7 +169,7 @@ function DisplayError(){
         }       
     }
 
-    return "<br>";
+    return "";
 }
 
 function DisplaySuccess(){

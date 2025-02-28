@@ -2,8 +2,13 @@
 require("Funzioni.php");
 session_start();
 
-$error = DisplayError();
+
 $succ = DisplaySuccess();
+$error = DisplayError();
+
+if(!isset($succ) && !isset($error)){
+    $succ = "<br>";
+}
 $cookies = "";
 $remeberUser = "";
 
