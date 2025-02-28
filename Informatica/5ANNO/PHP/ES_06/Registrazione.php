@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                 <h4>Account</h4>
                 <div class="dati">
                     <label for="username">Username:</label>
-                    <input type="text" name="user" pattern=".{4,}" required>
+                    <input type="text" name="username" pattern=".{4,}" required>
                 </div>
                 <div class="dati2">
                     <label for="password">Password:</label><br>
