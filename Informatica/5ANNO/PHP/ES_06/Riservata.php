@@ -2,6 +2,7 @@
 require("Funzioni.php");
 session_start();
 $html = "";
+$error = DisplayError();
 
 if(CheckSessionRis()){
     $user = $_SESSION['username'];
@@ -54,6 +55,7 @@ if(CheckSessionRis()){
         </div>
         <div class="content">
             <h2>PAGINA ACCOUNT</h2>
+            <?= $error ?>
             <?= $html ?>
             <h2>GESTIONE ACCOUNT</h2>
             <a href="Cancella.php"><button id="button">Cancellazione Account</button></a><br>

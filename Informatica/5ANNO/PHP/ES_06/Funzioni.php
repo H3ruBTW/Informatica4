@@ -233,4 +233,23 @@ function setUltimoAccesso(){
         header("Location: Login.php?error=Errore DB: " . mysqli_error($conn));
     }  
 }
+
+function Cancel(){
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
+    $usr = $_SESSION['username'];
+
+    if(!$conn){
+        header("Location: Riservata.php?error=Non è stato possibile eliminare l'account");
+        exit;
+    }
+
+    $query = "DELETE FROM utente WHERE Username = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $usr);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    header("Location: Login.php?succ=Cancellazione avvenuta con successo");
+    exit;
+}
 ?>

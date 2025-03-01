@@ -4,8 +4,9 @@ session_start();
 $html = "";
 
 if(CheckSessionRis()){
-    
-    
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        Cancel();
+    }
 }
 ?>
 
