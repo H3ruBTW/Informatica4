@@ -169,7 +169,7 @@ function DisplayError(){
         }       
     }
 
-    return "";
+    return null;
 }
 
 function DisplaySuccess(){
@@ -180,7 +180,7 @@ function DisplaySuccess(){
         }       
     }
 
-    return "";
+    return null;
 }
 
 function getUltimoAccesso(){

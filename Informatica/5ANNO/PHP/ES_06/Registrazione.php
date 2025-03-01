@@ -68,6 +68,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                 </div>
                 <br>
                 <input id="button" type="submit" value="Crea Account">
+                <a href="Login.php"><button type="button" id="button">Indietro</button></a>
             </form>
             <br>
         </div>
