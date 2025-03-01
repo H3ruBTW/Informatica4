@@ -47,13 +47,16 @@ if(CheckSessionRis()){
                     <hr>
                     <li><a href="Welcome.php"><u>Welcome</u></a></li>
                     <hr>
-                    <li><a href="Riservata.php"><u>Riservata</u></a></li>
+                    <li><a href="Riservata.php"><b>Riservata</b></a></li>
                     <hr>                
                 </ul>
             </nav>
         </div>
         <div class="content">
+            <h2>PAGINA ACCOUNT</h2>
             <?= $html ?>
+            <h2>GESTIONE ACCOUNT</h2>
+            <a href="Cancella.php"><button id="button">Cancellazione Account</button></a><br>
             <div id="box">
                 <form action="Logout.php" method="post">
                     <p>Vuoi rimuovere anche i cookies?</p>
@@ -62,6 +65,8 @@ if(CheckSessionRis()){
                     <button type="button" id="button3">Annulla</button>
                 </form>   
             </div>
+            <br>
+            <br>
         </div>
     </div>
     <footer>
