@@ -4,7 +4,7 @@ session_start();
 
 if(CheckSessionRis()){
     $acc = fetch_all();
-    if($_SERVER['REQUEST_METHOD']){
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
         ChangePData($_POST['name'], $_POST['surname'], $_POST['date']);
     }
 }
@@ -55,7 +55,7 @@ if(CheckSessionRis()){
                     <input type="text" name="surname" placeholder="Rossi" value="<?= $acc['Cognome'] ?>" required>
                     <br><br><br><br>
                 </div> 
-                
+                <br>
                 <input class="button" type="submit" value="Modifica">
                 <a href="Riservata.php"><button type="button" class="button">Indietro</button></a>
             </form>

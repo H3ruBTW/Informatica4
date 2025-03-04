@@ -60,11 +60,11 @@ if(CheckSessionRis()){
             <?= $error ?>
             <?= $html ?>
             <div id="box">
-                <form action="Logout.php" method="post">
+                <form action="Logout.php" method="post" style="justify-content: center; text-align:center">
                     <p>Vuoi rimuovere anche i cookies?</p>
                     <input type="checkbox" name="cookies"><br><br>
-                    <input class="button" type="submit" value="Conferma" style="display: inline;">
-                    <button id="cancel" type="button" class="button">Annulla</button>
+                    <input class="button" type="submit" value="Logout" style="display: inline; width: 147px">
+                    <button id="cancel" type="button" class="button" style="width: 148px">Annulla</button>
                 </form>   
             </div>
             <h2>GESTIONE ACCOUNT</h2>
@@ -72,7 +72,7 @@ if(CheckSessionRis()){
                 <a href="C_User.php"><button class="button">Cambia Username</button></a>
                 <a href="C_Psw.php"><button class="button">Cambia Password</button></a>
                 <br>
-                <a href="C_Mail.php"><button class="button">Cambia E-Mail</button></a>
+                <a href="C_Mail.php"><button class="button">Cambia E-mail</button></a>
                 <a href="C_Dati.php"><button class="button">Cambia Dati Personali</button></a>
             </div>
             <br><br>

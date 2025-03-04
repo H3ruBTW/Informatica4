@@ -39,6 +39,7 @@ if(CheckSessionRis()){
             </nav>
         </div>
         <div class="content">
+            <br>
             <form action="<?= $_SERVER['PHP_SELF']?>" method="post">
                 <div class="dati">
                     <label>Password:</label><br>
