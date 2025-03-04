@@ -66,7 +66,7 @@ if(CheckSessionRis()){
                 </form>   
             </div>
             <h2>GESTIONE ACCOUNT</h2>
-            <a href="Cancella.php"><button class="button">Cancellazione Account</button></a><br>
+            <a href="Cancella.php"><button class="rbutton">Cancellazione Account</button></a><br>
             <br><br><br><br>
         </div>
     </div>

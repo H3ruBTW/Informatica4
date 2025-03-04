@@ -42,7 +42,7 @@ if(CheckSessionRis()){
             <p><b>SEI SICURO DI CANCELLARE L'ACCOUNT?</b></p>
             <form action=" <?= $_SERVER['PHP_SELF'] ?>" method="post">
                 <input class="confirm" type="submit" value="CANCELLA DEFINITIVAMENTE">
-                <a href="Riservata.php"><button type="button" class="button">ANNULLA</button></a>
+                <a href="Riservata.php"><button type="button" class="rbutton">ANNULLA</button></a>
             </form>
         </div>
     </div>
