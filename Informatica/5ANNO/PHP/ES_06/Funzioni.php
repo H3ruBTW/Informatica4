@@ -249,6 +249,8 @@ function Cancel(){
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
+    session_destroy();
+
     header("Location: Login.php?succ=Cancellazione avvenuta con successo");
     exit;
 }
