@@ -17,7 +17,7 @@
 }
 
 input{
-    width: 250px;
+    width: 250px !important;
 }
 
 select {
@@ -38,6 +38,10 @@ select:active {
 input.rosso {
     border: 1px solid red;
     color: red;
+}
+
+input.button{
+    margin-right: 45px;
 }
 
 footer{

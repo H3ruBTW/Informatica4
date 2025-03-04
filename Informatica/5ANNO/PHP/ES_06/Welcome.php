@@ -40,11 +40,11 @@ if(isset($_SESSION['username'])){
         </div>
         <div class="content">
             <?= $html ?>
-            <a href="Login.php"><button id="button">LOGIN</button></a>
+            <a href="Login.php"><button class="button">LOGIN</button></a>
 
             <div id="cookie">
                 Questo sito utilizza solo cookie tecnici per la gestione della sessione utente. Nessun tracciamento viene effettuato.
-                <button id="button2">OK</button>
+                <button id="button">OK</button>
             </div>
         </div>
     </div>

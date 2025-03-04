@@ -1,4 +1,4 @@
-let button = document.getElementById("button2")
+let button = document.getElementById("button")
 
 button.addEventListener("click", function() {
     document.getElementById("cookie").hidden = true;

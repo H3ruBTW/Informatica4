@@ -11,13 +11,13 @@ if(CheckSessionRis()){
         $html = <<<COD
         <p>LOGIN EFFETTUATO CON SUCCESSO con <b>$user</b><br><br>
         Ultimo Accesso: $access<br><br>
-        Se vuoi effettuare il logout, <button id="button" data-b="button">PREMI QUI</button></p>
+        Se vuoi effettuare il logout, <button id="button" class="button">PREMI QUI</button></p>
         COD;
     } else {
         $html = <<<COD
         <p>LOGIN EFFETTUATO CON SUCCESSO con <b>$user</b><br><br>
         Ultimo Accesso: $access<br><br>
-        Se vuoi effettuare il logout, <a href="Logout.php"><button id="button" data-b="none">PREMI QUI</button></a></p>
+        Se vuoi effettuare il logout, <a href="Logout.php"><button class="button">PREMI QUI</button></a></p>
         COD;
     }
     
@@ -57,18 +57,17 @@ if(CheckSessionRis()){
             <h2>PAGINA ACCOUNT</h2>
             <?= $error ?>
             <?= $html ?>
-            <h2>GESTIONE ACCOUNT</h2>
-            <a href="Cancella.php"><button id="button">Cancellazione Account</button></a><br>
             <div id="box">
                 <form action="Logout.php" method="post">
                     <p>Vuoi rimuovere anche i cookies?</p>
                     <input type="checkbox" name="cookies"><br><br>
-                    <input id="button2" type="submit" value="Conferma" style="display: inline;">
-                    <button type="button" id="button3">Annulla</button>
+                    <input class="button" type="submit" value="Conferma" style="display: inline;">
+                    <button id="cancel" type="button" class="button">Annulla</button>
                 </form>   
             </div>
-            <br>
-            <br>
+            <h2>GESTIONE ACCOUNT</h2>
+            <a href="Cancella.php"><button class="button">Cancellazione Account</button></a><br>
+            <br><br><br><br>
         </div>
     </div>
     <footer>

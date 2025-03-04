@@ -67,8 +67,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                     <input type="text" name="password" placeholder="min 8 car./1 spec./1 maiu." pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&\-_+=?]).{8,}" required>
                 </div>
                 <br>
-                <input id="button" type="submit" value="Crea Account">
-                <a href="Login.php"><button type="button" id="button">Indietro</button></a>
+                <input class="button" type="submit" value="Crea Account">
+                <a href="Login.php"><button type="button" class="button">Indietro</button></a>
             </form>
             <br>
         </div>

@@ -66,11 +66,11 @@ nav ul li a {
 }
 
 /* Hover sui Link */
-a:hover {
+nav ul li a:hover {
     color:royalblue;
 }
 
-a:active {
+nav ul li a:active {
     color:royalblue;
 }
 
@@ -102,38 +102,5 @@ ol li {
     font-family: 'Courier New', Courier, monospace;
 }
 
-/* BOX Cookies */
-#box{
-    position: absolute;
-    width: 300px;
-    height: 120px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid black;
-    padding: 10px;
-}
 
-/* Cookie welcome */
-#cookie {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    width: 100%;
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-}
 
-#cookie button {
-    margin-left: 10px;
-    padding: 6px 12px;
-    background: #444; 
-    color: #ddd; 
-    font-weight: bold;
-    border-radius: 5px;
-}
-#cookie button:hover {
-    background: #666; 
-    color: #fff; 
-}
