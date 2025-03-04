@@ -2,6 +2,8 @@
 require("Funzioni.php");
 session_start();
 
+$error = DisplayError();
+
 if(CheckSessionRis()){
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         ChangeUser($_POST['username']);
@@ -39,6 +41,7 @@ if(CheckSessionRis()){
             </nav>
         </div>
         <div class="content">
+            <?= $error ?>
             <form action="<?= $_SERVER['PHP_SELF']?>" method="post">
                 <div class="dati">
                     <label>Username:</label><br>

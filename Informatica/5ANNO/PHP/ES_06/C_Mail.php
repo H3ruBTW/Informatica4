@@ -2,6 +2,8 @@
 require("Funzioni.php");
 session_start();
 
+$error = DisplayError();
+
 if(CheckSessionRis()){
     $acc = fetch_all();
     if($_SERVER['REQUEST_METHOD']=="POST"){
@@ -41,6 +43,7 @@ if(CheckSessionRis()){
             </nav>
         </div>
         <div class="content">
+            <?= $error ?>
             <form action="<?= $_SERVER['PHP_SELF']?>" method="post">
                 <div class="dati">
                     <label>E-mail:</label><br>

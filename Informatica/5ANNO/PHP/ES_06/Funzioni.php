@@ -86,7 +86,7 @@ function Registration(){
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $date = $_POST['date'];
-    $email = $_POST['mail'];
+    $email = strtolower($_POST['mail']);
     $user = $_POST['username'];
     $psw = password_hash(trim($_POST['password']), PASSWORD_BCRYPT);
 
@@ -243,6 +243,20 @@ function ChangeUser($new_usr){
         exit;
     }
 
+    //STATEMENT PER EVITARE SQL INJECTION - Verifica se lo username esiste già
+    $query = "SELECT COUNT(*) FROM utente WHERE Username = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $count);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+
+    if ($count > 0) {
+        header("Location: C_User.php?error=Username già in uso!");
+        exit;
+    }
+
     $query = "UPDATE utente SET Username = ? WHERE Username = ?";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "ss", $new_usr, $usr);
@@ -269,12 +283,10 @@ function ChangePsw($old_psw, $new_psw){
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "s", $usr);
     mysqli_stmt_execute($stmt);
-    $ris = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_bind_result($stmt, $pass);
     mysqli_stmt_close($stmt);
 
-    $acc = mysqli_fetch_assoc($ris);
-
-    if(!password_verify($acc['Password'], $old_psw)){
+    if(!password_verify($pass, $old_psw)){
         header("Location: C_Psw.php?error=Password errata");
         exit;
     }
@@ -298,9 +310,23 @@ function ChangeMail($mail){
         exit;
     }
 
+    //STATEMENT PER EVITARE SQL INJECTION - Verifica se l'email esiste già
+    $query = "SELECT COUNT(*) FROM utente WHERE Email = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $mail);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $count);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+
+    if ($count > 0) {
+        header("Location: C_Mail.php?error=Email già registrata!");
+        exit;
+    }
+
     $query = "UPDATE utente SET Email = ? WHERE Username = ?";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "ss", $mail, $usr);
+    mysqli_stmt_bind_param($stmt, "ss", strtolower($mail), $usr);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
