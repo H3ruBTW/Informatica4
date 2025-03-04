@@ -1,10 +1,12 @@
 <?php
 require("Funzioni.php");
+session_start();
 
-$error = DisplayError();
-
-if($_SERVER['REQUEST_METHOD']=="POST"){
-    Registration();   
+if(CheckSessionRis()){
+    $acc = fetch_all();
+    if($_SERVER['REQUEST_METHOD']){
+        ChangePData($_POST['name'], $_POST['surname'], $_POST['date']);
+    }
 }
 ?>
 
@@ -17,7 +19,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/gestione.css">
-    <script src="js/form.js" defer></script>
     <title>Esecizi</title>
 </head>
 <body>
@@ -39,39 +40,25 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             </nav>
         </div>
         <div class="content">
-            <?= $error ?>
-            <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post" id="form">
-            <h4>Dati Personali</h4>
+            <br>
+            <form action="<?= $_SERVER['PHP_SELF']?>" method="post">
                 <div class="dati">
                     <label>Nome:</label>
-                    <input type="text" name="name" placeholder="Mario" required>
+                    <input type="text" name="name" placeholder="Mario" value="<?= $acc['Nome'] ?>" required>
                     <br><br>
                     <label>Data di nascita:</label>
                     <!-- IL MASSIMO CHE VIENE ACCETTATO E' LA DATA DI OGGI -->
-                    <input type="date" name="date" max="<?= date('Y-m-d') ?>" required>                    
+                    <input type="date" name="date" max="<?= date('Y-m-d') ?>" value="<?= $acc['Data_Nascita'] ?>" required> 
                 </div>
                 <div class="dati2">
                     <label>Cognome:</label><br>
-                    <input type="text" name="surname" placeholder="Rossi" required>
-                    <br><br>
-                    <label>E-mail:</label><br>
-                    <input type="text" name="mail" placeholder="mario.rossi@mail.*" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
-                </div>
-
-                <h4>Account</h4>
-                <div class="dati">
-                    <label>Username:</label>
-                    <input type="text" name="username" pattern=".{4, 50}" required>
-                </div>
-                <div class="dati2">
-                    <label>Password:</label><br>
-                    <input type="text" name="password" placeholder="min 8 car./1 spec./1 maiu." pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&\-_+=?]).{8, 72}" required>
-                </div>
-                <br>
-                <input class="button" type="submit" value="Crea Account">
-                <a href="Login.php"><button type="button" class="button">Indietro</button></a>
+                    <input type="text" name="surname" placeholder="Rossi" value="<?= $acc['Cognome'] ?>" required>
+                    <br><br><br><br>
+                </div> 
+                
+                <input class="button" type="submit" value="Modifica">
+                <a href="Riservata.php"><button type="button" class="button">Indietro</button></a>
             </form>
-            <br>
         </div>
     </div>
 

@@ -1,11 +1,11 @@
 <?php
+require("Funzioni.php");
 session_start();
 
-if(isset($_SESSION['username'])){
-    $user = $_SESSION['username'];
-    $html = "<h2>Effettua il login nella pagina, $user.</h2>";
-} else {
-    $html = "<h2>Devi effettuare il login, sei in modalità ospite.</h2>";
+if(CheckSessionRis()){
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        ChangeUser($_POST['username']);
+    }
 }
 ?>
 
@@ -17,7 +17,7 @@ if(isset($_SESSION['username'])){
     <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/base.css">
-    <script src="js/scriptcookie.js" defer></script>
+    <link rel="stylesheet" href="css/gestione.css">
     <title>Esecizi</title>
 </head>
 <body>
@@ -31,7 +31,7 @@ if(isset($_SESSION['username'])){
                     <hr>
                     <li><a href="index.php"><u>HomePage ES_06</u></a></li>
                     <hr>
-                    <li><a href="Welcome.php"><b>Welcome</b></a></li>
+                    <li><a href="Welcome.php"><u>Welcome</u></a></li>
                     <hr>
                     <li><a href="Riservata.php"><u>Riservata</u></a></li>
                     <hr>                
@@ -39,13 +39,18 @@ if(isset($_SESSION['username'])){
             </nav>
         </div>
         <div class="content">
-            <?= $html ?>
-            <a href="Login.php"><button class="button">LOGIN</button></a>
-
-            <div id="cookie">
-                Questo sito utilizza solo cookie tecnici per la gestione della sessione utente. Nessun tracciamento viene effettuato.
-                <button id="button">OK</button>
-            </div>
+            <form action="<?= $_SERVER['PHP_SELF']?>" method="post">
+                <div class="dati">
+                    <label>Username:</label><br>
+                    <input type="text" name="username" pattern=".{4, 64}" required>
+                </div>
+                <div class="dati2">
+                    <p>Username In Utilizzo: <?= $_SESSION['username'] ?></p>
+                </div> 
+                <br>
+                <input class="button" type="submit" value="Modifica">
+                <a href="Riservata.php"><button type="button" class="button">Indietro</button></a>
+            </form>
         </div>
     </div>
 

@@ -234,18 +234,98 @@ function setUltimoAccesso(){
     }  
 }
 
-function ChangeUser(){
+function ChangeUser($new_usr){
+    $conn = mysqli_connect(HOST, USER, PSW, DB);
+    $usr = $_SESSION['username'];
 
+    if(!$conn){
+        header("Location: Riservata.php?error=Non è stato possibile collegarsi, riprovare più tardi");
+        exit;
+    }
+
+    $query = "UPDATE utente SET Username = ? WHERE Username = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "ss", $new_usr, $usr);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    $_SESSION['username'] = $new_usr;
+
+    header("Location: Riservata.php?succ=Username cambiato con successo");
+    exit;
 }
 
-function ChangePsw(){
+function ChangePsw($old_psw, $new_psw){
+    $conn = mysqli_connect(HOST, USER, PSW, DB);
+    $usr = $_SESSION['username'];
+    $new_psw = password_hash(trim($new_psw), PASSWORD_BCRYPT);
 
+    if(!$conn){
+        header("Location: Riservata.php?error=Non è stato possibile collegarsi, riprovare più tardi");
+        exit;
+    }
+
+    $query = "SELECT * FROM utente WHERE Username = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $usr);
+    mysqli_stmt_execute($stmt);
+    $ris = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_close($stmt);
+
+    $acc = mysqli_fetch_assoc($ris);
+
+    if(!password_verify($acc['Password'], $old_psw)){
+        header("Location: C_Psw.php?error=Password errata");
+        exit;
+    }
+
+    $query = "UPDATE utente SET Password = ? WHERE Username = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "ss", $new_psw, $usr);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    header("Location: Riservata.php?succ=Password cambiata con successo");
+    exit;
 }
 
-function ChangeMail(){
+function ChangeMail($mail){
+    $conn = mysqli_connect(HOST, USER, PSW, DB);
+    $usr = $_SESSION['username'];
 
+    if(!$conn){
+        header("Location: Riservata.php?error=Non è stato possibile collegarsi, riprovare più tardi");
+        exit;
+    }
+
+    $query = "UPDATE utente SET Email = ? WHERE Username = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "ss", $mail, $usr);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    header("Location: Riservata.php?succ=E-mail cambiata con successo");
+    exit;
 }
 
+function ChangePData($nome, $cog, $dob){
+    $conn = mysqli_connect(HOST, USER, PSW, DB);
+    $usr = $_SESSION['username'];
+
+    if(!$conn){
+        header("Location: Riservata.php?error=Non è stato possibile collegarsi, riprovare più tardi");
+        exit;
+    }
+
+    $query = "UPDATE utente SET Nome = ?, Cognome = ?, Data_Nascita = ? WHERE Username = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "sss", $nome, $cog, $dob, $usr);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    header("Location: Riservata.php?succ=Dati cambiati con successo");
+    exit;
+}
 
 function Cancel(){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
@@ -266,5 +346,24 @@ function Cancel(){
 
     header("Location: Login.php?succ=Cancellazione avvenuta con successo");
     exit;
+}
+
+function fetch_all(){
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
+    $usr = $_SESSION['username'];
+
+    if(!$conn){
+        header("Location: Riservata.php?error=Non è stato possibile collegarsi, riprovare più tardi");
+        exit;
+    }
+
+    $query = "SELECT * FROM utente WHERE Username = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $usr);
+    mysqli_stmt_execute($stmt);
+    $ris = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_close($stmt);
+
+    return mysqli_fetch_assoc($ris);
 }
 ?>
