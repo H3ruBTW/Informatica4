@@ -64,7 +64,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                 </div>
                 <div class="dati2">
                     <label for="password">Password:</label><br>
-                    <input type="text" name="password" placeholder="min 8 car./1 spec./1 maiu." pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&\-_+=?]).{8,}" required>
+                    <input type="text" name="password" placeholder="min 8 car./1 spec./1 maiu." pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&\-_+=?]).{8, 72}" required>
                 </div>
                 <br>
                 <input class="button" type="submit" value="Crea Account">
