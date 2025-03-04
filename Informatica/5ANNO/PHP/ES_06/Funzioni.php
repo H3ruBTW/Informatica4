@@ -234,6 +234,19 @@ function setUltimoAccesso(){
     }  
 }
 
+function ChangeUser(){
+
+}
+
+function ChangePsw(){
+
+}
+
+function ChangeMail(){
+
+}
+
+
 function Cancel(){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];

@@ -47,7 +47,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                     <input type="text" name="name" placeholder="Mario" required>
                     <br><br>
                     <label for="dob">Data di nascita:</label>
-                    <input type="date" name="date" required>                    
+                    <!-- IL MASSIMO CHE VIENE ACCETTATO E' LA DATA DI OGGI -->
+                    <input type="date" name="date" max="<?= date('Y-m-d') ?>" required>                    
                 </div>
                 <div class="dati2">
                     <label for="surname" >Cognome:</label><br>

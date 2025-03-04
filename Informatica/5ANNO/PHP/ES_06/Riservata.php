@@ -3,6 +3,7 @@ require("Funzioni.php");
 session_start();
 $html = "";
 $error = DisplayError();
+$succ = DisplaySuccess();
 
 if(CheckSessionRis()){
     $user = $_SESSION['username'];
@@ -55,6 +56,7 @@ if(CheckSessionRis()){
         </div>
         <div class="content">
             <h2>PAGINA ACCOUNT</h2>
+            <?= $succ ?>
             <?= $error ?>
             <?= $html ?>
             <div id="box">
@@ -66,6 +68,14 @@ if(CheckSessionRis()){
                 </form>   
             </div>
             <h2>GESTIONE ACCOUNT</h2>
+            <div id="manage_box">
+                <a href="C_User.php"><button class="button">Cambia Username</button></a>
+                <a href="C_Psw.php"><button class="button">Cambia Password</button></a>
+                <br>
+                <a href="C_Mail.php"><button class="button">Cambia E-Mail</button></a>
+                <a href="C_Dati.php"><button class="button">Cambia Dati Personali</button></a>
+            </div>
+            <br><br>
             <a href="Cancella.php"><button class="rbutton">Cancellazione Account</button></a><br>
             <br><br><br><br>
         </div>
