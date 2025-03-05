@@ -42,11 +42,11 @@ if(CheckSessionRis()){
             <br>
             <form action="<?= $_SERVER['PHP_SELF']?>" method="post">
                 <div class="dati">
-                    <label>Password:</label><br>
+                    <label>Vecchia Password:</label><br>
                     <input type="text" name="old_psw" required>
                 </div>
                 <div class="dati2">
-                    <label>Password:</label><br>
+                    <label>Nuova Password:</label><br>
                     <input type="text" name="new_psw" placeholder="min 8 car./1 spec./1 maiu." pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%&\-_+=?]).{8, 72}" required>
                 </div>
                 <br>
