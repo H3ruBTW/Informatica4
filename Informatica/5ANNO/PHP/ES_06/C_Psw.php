@@ -2,6 +2,11 @@
 require("Funzioni.php");
 session_start();
 
+$error = DisplayError();
+
+if(!isset($error))
+    $error = "<br>";
+
 if(CheckSessionRis()){
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         ChangePsw($_POST['old_psw'], $_POST['new_psw']);
@@ -39,7 +44,7 @@ if(CheckSessionRis()){
             </nav>
         </div>
         <div class="content">
-            <br>
+            <?= $error ?>
             <form action="<?= $_SERVER['PHP_SELF']?>" method="post">
                 <div class="dati">
                     <label>Vecchia Password:</label><br>

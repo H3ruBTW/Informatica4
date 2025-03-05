@@ -5,8 +5,6 @@ define("PASS", "123");
 define("DB", "es06");
 
 function Login($usr, $psw, $cookies) {
-    session_start(); // Assicura che la sessione sia avviata
-
     $conn = mysqli_connect(HOST, USER, PASS, DB);
 
     // ERRORE CONNESSIONE
@@ -235,7 +233,7 @@ function setUltimoAccesso(){
 }
 
 function ChangeUser($new_usr){
-    $conn = mysqli_connect(HOST, USER, PSW, DB);
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];
 
     if(!$conn){
@@ -246,7 +244,7 @@ function ChangeUser($new_usr){
     //STATEMENT PER EVITARE SQL INJECTION - Verifica se lo username esiste già
     $query = "SELECT COUNT(*) FROM utente WHERE Username = ?";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_bind_param($stmt, "s", $new_usr);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_bind_result($stmt, $count);
     mysqli_stmt_fetch($stmt);
@@ -270,7 +268,7 @@ function ChangeUser($new_usr){
 }
 
 function ChangePsw($old_psw, $new_psw){
-    $conn = mysqli_connect(HOST, USER, PSW, DB);
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];
     $new_psw = password_hash(trim($new_psw), PASSWORD_BCRYPT);
 
@@ -279,14 +277,15 @@ function ChangePsw($old_psw, $new_psw){
         exit;
     }
 
-    $query = "SELECT * FROM utente WHERE Username = ?";
+    $query = "SELECT Password FROM utente WHERE Username = ?";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "s", $usr);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_bind_result($stmt, $pass);
+    mysqli_stmt_fetch($stmt);
     mysqli_stmt_close($stmt);
 
-    if(!password_verify($pass, $old_psw)){
+    if(!password_verify($old_psw, $pass)){
         header("Location: C_Psw.php?error=Password errata");
         exit;
     }
@@ -302,7 +301,7 @@ function ChangePsw($old_psw, $new_psw){
 }
 
 function ChangeMail($mail){
-    $conn = mysqli_connect(HOST, USER, PSW, DB);
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];
 
     if(!$conn){
@@ -335,7 +334,7 @@ function ChangeMail($mail){
 }
 
 function ChangePData($nome, $cog, $dob){
-    $conn = mysqli_connect(HOST, USER, PSW, DB);
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];
 
     if(!$conn){
@@ -345,7 +344,7 @@ function ChangePData($nome, $cog, $dob){
 
     $query = "UPDATE utente SET Nome = ?, Cognome = ?, Data_Nascita = ? WHERE Username = ?";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sss", $nome, $cog, $dob, $usr);
+    mysqli_stmt_bind_param($stmt, "ssss", $nome, $cog, $dob, $usr);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 

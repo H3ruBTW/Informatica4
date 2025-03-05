@@ -1159,3 +1159,4 @@ Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribut
 2025-02-16 15:32:49 27 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
 2025-02-16 17:08:44 83 [Warning] Access denied for user 'root'@'localhost' (using password: YES)
 2025-02-28 22:15:44 1719 [Warning] Access denied for user 'USERS'@'%' to database 'es06'
+2025-03-05 17:13:52 2141 [Warning] Aborted connection 2141 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
