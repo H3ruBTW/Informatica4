@@ -1,4 +1,5 @@
 <?php
+require "config.php";
 require __DIR__ . '/vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -14,13 +15,13 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com'; // Usa l'SMTP del tuo provider (Gmail, Outlook, Yahoo, ecc.)
     $mail->SMTPAuth = true;
-    $mail->Username = getenv("EMAIL_SMTP"); // Sostituisci con la tua email
-    $mail->Password = getenv("PASS_SMTP"); // Usa una "Password per le App" se usi Gmail
+    $mail->Username = EMAIL_SMTP; // Sostituisci con la tua email
+    $mail->Password = PASS_SMTP; // Usa una "Password per le App" se usi Gmail
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
     // Configura il mittente e il destinatario
-    $mail->setFrom(getenv("EMAIL_SMTP"), 'Buongallino da PHP');
-    $mail->addAddress(getenv("MAIL_BASE"), 'Destinatario');
+    $mail->setFrom(EMAIL_SMTP, 'Buongallino da PHP');
+    $mail->addAddress(MAIL_BASE, 'Destinatario');
     // Imposta il contenuto dell'email
     $mail->Subject = 'Email di Test con PHPMailer';
     $mail->Body = 'Esatto, una mail di testing.';
