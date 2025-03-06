@@ -37,6 +37,8 @@ $html = $acc['Errori'] . " " . $acc['Ultimo_Errore'] . " " . $ultimo_errore . " 
                     <hr>
                     <li><a href="APCu.php"><u>Prova APCu</u></a></li>
                     <hr>
+                    <li><a href="PHPMailer.php"><u>PHPMailer</u></a></li>
+                    <hr>
                 </ul>
             </nav>
         </div>

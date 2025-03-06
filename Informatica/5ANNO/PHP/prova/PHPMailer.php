@@ -8,7 +8,6 @@ require 'vendor/autoload.php';
 
 $mail = new PHPMailer(true);
 
-
 try {
 
     // Configura SMTP
@@ -34,8 +33,9 @@ try {
     $html = "Errore nell'invio dell'email: {$mail->ErrorInfo}";
 }
 
-
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,6 +59,8 @@ try {
                     <li><a href="index.php"><u>HomePage prova</u></a></li>
                     <hr>
                     <li><a href="APCu.php"><u>Prova APCu</u></a></li>
+                    <hr>
+                    <li><a href="PHPMailer.php"><u>PHPMailer</u></a></li>
                     <hr>
                 </ul>
             </nav>
