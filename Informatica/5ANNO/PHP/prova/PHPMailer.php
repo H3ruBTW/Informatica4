@@ -5,35 +5,102 @@ require __DIR__ . '/vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';
-
 $mail = new PHPMailer(true);
 
 try {
-
     // Configura SMTP
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com'; // Usa l'SMTP del tuo provider (Gmail, Outlook, Yahoo, ecc.)
+    $mail->Host = 'smtp.gmail.com'; // SMTP del provider
     $mail->SMTPAuth = true;
-    $mail->Username = EMAIL_SMTP; // Sostituisci con la tua email
-    $mail->Password = PASS_SMTP; // Usa una "Password per le App" se usi Gmail
+    $mail->Username = EMAIL_SMTP; // Tua email
+    $mail->Password = PASS_SMTP;  // Password per le app se usi Gmail
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
-    // Configura il mittente e il destinatario
+
+    // Configura mittente e destinatario
     $mail->setFrom(EMAIL_SMTP, 'Buongallino da PHP');
     $mail->addAddress(MAIL_BASE, 'Destinatario');
-    // Imposta il contenuto dell'email
+
+    // Oggetto dell'email
     $mail->Subject = 'Email di Test con PHPMailer';
-    $mail->Body = 'Esatto, una mail di testing.';
+
+    // Imposta il contenuto dell'email con HTML interno
     $mail->isHTML(true);
+    $mail->Body = '
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Conferma Email</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                max-width: 600px;
+                margin: 20px auto;
+                background: #ffffff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .header {
+                background: #007bff;
+                color: #ffffff;
+                padding: 10px;
+                text-align: center;
+                font-size: 24px;
+                border-radius: 8px 8px 0 0;
+            }
+            .content {
+                padding: 20px;
+                text-align: center;
+            }
+            .button {
+                display: inline-block;
+                padding: 10px 20px;
+                margin-top: 20px;
+                background: #007bff;
+                color: #ffffff;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+            .footer {
+                margin-top: 20px;
+                font-size: 12px;
+                color: #666666;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">Conferma la tua Email</div>
+            <div class="content">
+                <p>Ciao,</p>
+                <p>Grazie per esserti registrato! Clicca sul pulsante qui sotto per confermare il tuo indirizzo email.</p>
+                <a href="https://www.google.com" class="button">Conferma Email</a>
+            </div>
+            <div class="footer">
+                Se non hai richiesto questa email, ignora questo messaggio.<br>
+                &copy; 2025 Il Tuo Sito. Tutti i diritti riservati.
+            </div>
+        </div>
+    </body>
+    </html>
+    ';
+
     // Invia l'email
     $mail->send();
 
-    $html = 'Email inviata con successo!';
+    echo 'Email inviata con successo!';
 } catch (Exception $e) {
-    $html = "Errore nell'invio dell'email: {$mail->ErrorInfo}";
+    echo "Errore nell'invio dell'email: {$mail->ErrorInfo}";
 }
-
 ?>
 
 
