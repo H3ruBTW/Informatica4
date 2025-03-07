@@ -4,10 +4,6 @@ session_start();
 
 $error = DisplayError();
 
-if(!isset($error)){
-    $error = "<br>";
-}
-
 if(!isset($_SESSION['mail'])){
     header("Location: Login.php?error=Entrata in pagina riservata non autorizzata");
     exit;
@@ -67,6 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <input class="button" type="submit" value="Conferma">
                 <a href="Token.php"><button type="button" class="button">Invia Codice Nuovamente</button></a>
             </form>
+            <br>
         </div>
     </div>
 

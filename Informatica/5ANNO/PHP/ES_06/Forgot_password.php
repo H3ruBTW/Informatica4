@@ -11,16 +11,29 @@ if(!isset($error)){
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     $mail = $_POST['mail'];
 
-    if(CheckMail($mail)){
-        $_SESSION['mail'] = $mail;
-        SetToken();
+    $captcha = $_POST['g-recaptcha-response'];
+    $secretKey = "6Lftjt0qAAAAAP4d_OhBwClGleD53NDXOqlRIXP7"; 
 
-        header("Location: Token.php");
-        exit;
+    $verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$captcha");
+    $responseData = json_decode($verifyResponse);
+
+    if ($responseData->success) {
+        if(CheckMail($mail)){
+            $_SESSION['mail'] = $mail;
+            SetToken();
+    
+            header("Location: Token.php");
+            exit;
+        } else {
+            header("Location: " . $_SERVER['PHP_SELF'] . "?error=Email non identificabile ad un account");
+            exit;
+        }
     } else {
-        header("Location: " . $_SERVER['PHP_SELF'] . "?error=Email non identificabile ad un account");
+        header("Location:" . $_SERVER['PHP_SELF'] . "?error=Il captcha non è stato risolto correttamente");
         exit;
     }
+
+    
 }
 ?>
 
@@ -33,6 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/gestione.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Esecizi</title>
 </head>
 <body>
@@ -59,14 +73,22 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <div class="dati">
                     <label>E-mail:</label><br>
                     <input type="text" name="mail" placeholder="mario.rossi@mail.*" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+                    <br><br>
+                    <!-- Google reCAPTCHA -->
+                    <div class="g-recaptcha" data-sitekey="6Lftjt0qAAAAAB41wvUFgRvl5MiGUuuywu-zRZaV"></div>
                 </div>
                 <div class="dati2">
                     <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                 </div> 
-                <br><br>
+                <br><br><br>
                 <input class="button" type="submit" value="Conferma">
                 <a href="Login.php"><button type="button" class="button">Indietro</button></a>
             </form>
+            <br>
         </div>
     </div>
 

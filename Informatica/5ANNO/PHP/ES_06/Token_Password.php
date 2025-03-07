@@ -51,7 +51,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         </div>
         <div class="content">
             <?= $error ?>
-            <?= $send ?>
             <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
                 <div class="dati">
                 <label>Nuova Password:</label><br>
