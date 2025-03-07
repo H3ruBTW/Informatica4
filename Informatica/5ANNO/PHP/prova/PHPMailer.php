@@ -49,7 +49,8 @@ try {
                 height: 100vh;
             }
             .container {
-                width: 50%;
+                width: 90%;
+                max-width: 500px;
                 background: white;
                 color: black;
                 padding: 20px;
