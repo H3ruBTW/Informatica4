@@ -13,7 +13,7 @@ try {
     $mail->Host = 'smtp.gmail.com'; // SMTP del provider
     $mail->SMTPAuth = true;
     $mail->Username = EMAIL_SMTP; // Tua email
-    $mail->Password = PASS_SMTP;  // Password per le app se usi Gmail
+    $mail->Password = PASS_SMTP;  // Password per le app (se usi Gmail)
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
@@ -22,17 +22,20 @@ try {
     $mail->addAddress(MAIL_BASE, 'Destinatario');
 
     // Oggetto dell'email
-    $mail->Subject = 'Email di Test con PHPMailer';
+    $mail->Subject = 'Il tuo codice di verifica';
 
-    // Imposta il contenuto dell'email con HTML interno
+    // Genera un codice di verifica a 6 cifre
+    $codice_verifica = rand(100000, 999999);
+
+    // Contenuto HTML dell'email
     $mail->isHTML(true);
-    $mail->Body = '
+    $mail->Body = "
     <!DOCTYPE html>
     <html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Conferma Email</title>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Codice di Verifica</title>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -47,61 +50,64 @@ try {
                 padding: 20px;
                 border-radius: 8px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                text-align: center;
             }
             .header {
                 background: #007bff;
                 color: #ffffff;
                 padding: 10px;
-                text-align: center;
                 font-size: 24px;
                 border-radius: 8px 8px 0 0;
             }
             .content {
                 padding: 20px;
-                text-align: center;
+                font-size: 18px;
+                color: #333333;
             }
-            .button {
+            .code-box {
                 display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+                background: #f8f9fa;
                 padding: 10px 20px;
-                margin-top: 20px;
-                background: #007bff;
-                color: #ffffff;
-                text-decoration: none;
+                border: 2px dashed #007bff;
                 border-radius: 5px;
+                margin-top: 10px;
             }
             .footer {
                 margin-top: 20px;
                 font-size: 12px;
                 color: #666666;
-                text-align: center;
             }
         </style>
     </head>
     <body>
-        <div class="container">
-            <div class="header">Conferma la tua Email</div>
-            <div class="content">
+        <div class='container'>
+            <div class='header'>Codice di Verifica</div>
+            <div class='content'>
                 <p>Ciao,</p>
-                <p>Grazie per esserti registrato! Clicca sul pulsante qui sotto per confermare il tuo indirizzo email.</p>
-                <a href="https://www.google.com" class="button">Conferma Email</a>
+                <p>Utilizza il codice qui sotto per completare la tua registrazione:</p>
+                <div class='code-box'>$codice_verifica</div>
+                <p>Se non hai richiesto questo codice, ignora questa email.</p>
             </div>
-            <div class="footer">
-                Se non hai richiesto questa email, ignora questo messaggio.<br>
-                &copy; 2025 Il Tuo Sito. Tutti i diritti riservati.
+            <div class='footer'>
+                &copy; 2025 Esercizi PHP. Tutti i diritti riservati.
             </div>
         </div>
     </body>
     </html>
-    ';
+    ";
 
     // Invia l'email
     $mail->send();
 
-    echo 'Email inviata con successo!';
+    // Messaggio di conferma da mostrare nella pagina
+    $html = 'Email inviata con successo!';
 } catch (Exception $e) {
-    echo "Errore nell'invio dell'email: {$mail->ErrorInfo}";
+    $html = "Errore nell'invio dell'email: {$mail->ErrorInfo}";
 }
 ?>
+
 
 
 
