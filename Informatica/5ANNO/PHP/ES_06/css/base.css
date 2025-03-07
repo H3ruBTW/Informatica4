@@ -14,17 +14,17 @@
     background-color: gray;
 }
 
-/* PULSANTE CREAZIONE ACCOUNT */
-.create {
+/* PULSANTE LINK ACCOUNT */
+.link {
     color: #4039ff !important;
     text-decoration: none;
 }
 
-.create:hover {
+.link:hover {
     color: rgb(23, 17, 186) !important;
 }
 
-.create:active {
+.link:active {
     color: #0c0283 !important;
 }
 

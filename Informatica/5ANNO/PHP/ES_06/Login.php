@@ -77,14 +77,15 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                 <label>Username:</label><br>
                 <input type="text" name="username" required value="<?= $cookies ?>"><br>
                 <label>Password:</label><br>
-                <input type="text" name="password" required><br><br>
+                <input type="text" name="password" required>
+                <p><a class="link" href="Forgot_password.php">Password Dimenticata?</a></p>
                 <?= $remeberUser ?>
                 <!-- Google reCAPTCHA -->
                 <div class="g-recaptcha" data-sitekey="6Lftjt0qAAAAAB41wvUFgRvl5MiGUuuywu-zRZaV"></div>
                 <br>
                 <input class="button" type="submit" value="Accedi">
             </form>
-            <p><a class="create" href="Registrazione.php">Non hai un account? Crealo!</a></p><br>
+            <p><a class="link" href="Registrazione.php">Non hai un account? Crealo!</a></p><br>
         </div>
     </div>
 

@@ -1,4 +1,10 @@
 <?php
+require "config.php";
+require __DIR__ . '/Mail/vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 define("HOST", "localhost");
 define("USER", "USERS");
 define("PASS", "123");
@@ -390,5 +396,216 @@ function fetch_all(){
     mysqli_stmt_close($stmt);
 
     return mysqli_fetch_assoc($ris);
+}
+
+function fetch_all_mail(){
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
+    $mail = $_SESSION['mail'];
+
+    if(!$conn){
+        header("Location: Login.php?error=Non è stato possibile collegarsi, riprovare più tardi");
+        exit;
+    }
+
+    $query = "SELECT * FROM utente WHERE EMAIL = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $mail);
+    mysqli_stmt_execute($stmt);
+    $ris = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_close($stmt);
+
+    return mysqli_fetch_assoc($ris);
+}
+
+function CheckMail($mail){
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
+
+    if(!$conn){
+        header("Location: Forgot_password.php?error=Non è stato possibile collegarsi, riprovare più tardi");
+        exit;
+    }
+
+    $query = "SELECT COUNT(*) FROM utente WHERE EMAIL = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $mail);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $count);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+
+    if($count > 0)
+        return true;
+    else
+        return false;
+}
+
+function SetToken(){
+    $mail = $_SESSION['mail'];
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
+
+    if(!$conn){
+        header("Location: Forgot_password.php?error=Non è stato possibile collegarsi, riprovare più tardi");
+        exit;
+    }
+
+    $token = rand(100000, 999999);
+
+    $query = "UPDATE utente SET Token = ?, Token_Creation = CURRENT_TIMESTAMP() WHERE Email = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "ss", $token, $mail);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
+
+function SendTokenMail(){  
+    $mail = new PHPMailer(true);
+
+    $acc = fetch_all_mail();
+    
+    try {
+        // Configura SMTP
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; // SMTP del provider
+        $mail->SMTPAuth = true;
+        $mail->Username = EMAIL_SMTP; // Tua email
+        $mail->Password = PASS_SMTP;  // Password per le app (se usi Gmail)
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+    
+        // Configura mittente e destinatario
+        $mail->setFrom(EMAIL_SMTP, 'Buongallino da PHP');
+        $mail->addAddress($_SESSION['mail'], 'Destinatario');
+    
+        // Oggetto dell'email
+        $mail->Subject = 'Il tuo codice di verifica';
+    
+        // Contenuto HTML dell'email
+        $mail->isHTML(true);
+        $mail->Body = <<<COD
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset='UTF-8'>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+            <title>Codice di Verifica</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #333;
+                    color: white;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                }
+                .container {
+                    width: 90%;
+                    max-width: 500px;
+                    background: white;
+                    color: black;
+                    padding: 20px;
+                    border-radius: 5px;
+                    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+                    text-align: center;
+                }
+                .header {
+                    font-size: 24px;
+                    font-weight: bold;
+                    margin-bottom: 20px;
+                }
+                .content {
+                    font-size: 16px;
+                    margin-bottom: 20px;
+                }
+                .code-box {
+                    display: inline-block;
+                    font-size: 20px;
+                    font-weight: bold;
+                    background: #ddd;
+                    padding: 10px 15px;
+                    border: 2px dashed #000;
+                    border-radius: 5px;
+                    margin-top: 10px;
+                }
+                .footer {
+                    font-size: 12px;
+                    text-align: center;
+                    margin-top: 20px;
+                }
+                a {
+                    color: blue;
+                    text-decoration: none;
+                }
+                a:hover {
+                    text-decoration: underline;
+                }
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>Codice di Verifica</div>
+                <div class='content'>
+                    <p>Ciao {$acc['Username']},</p>
+                    <p>Utilizza il codice qui sotto per confermare la tua identità:</p>
+                    <div class='code-box'>{$acc['Token']}</div>
+                    <p>Se non hai richiesto questo codice, ignora questa email.</p>
+                </div>
+                <div class='footer'>
+                    &copy; 2025 Buongallino Alessandro. Tutti i diritti riservati.
+                </div>
+            </div>
+        </body>
+        </html>"
+        COD;
+    
+        // Invia l'email
+        $mail->send();
+    } catch (Exception $e) {
+        header("Location: Forgot_password.php?error=Non è stato possibile recapitare la mail, riprovare più tardi");
+        exit;
+    }
+}
+
+function verify_token($token){
+    $acc = fetch_all_mail();
+
+    if($token == $acc['Token']){
+        $token_creation = strtotime($acc['Token_Creation']);
+
+        if((time() - $token_creation) / 60 < 5){
+            header("Location: Token_Password.php");
+            exit;
+        } else {
+            header("Location: Forgot_password.php?error=Il codice d'autenticazione è scaduto");
+            exit;
+        }
+    } else {
+        header("Location: Token.php?error=Il codice d'autenticazione è errato");
+        exit;
+    }
+}
+
+function setPassword($pass){
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
+    $mail = $_SESSION['mail'];
+    $new_psw = password_hash(trim($pass), PASSWORD_BCRYPT);
+
+    if(!$conn){
+        header("Location: Riservata.php?error=Non è stato possibile collegarsi, riprovare più tardi");
+        exit;
+    }
+
+    $query = "UPDATE utente SET Password = ? WHERE EMAIL = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "ss", $new_psw, $mail);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    session_destroy();
+
+    header("Location: Login.php?succ=Password cambiata con successo");
+    exit;
 }
 ?>
