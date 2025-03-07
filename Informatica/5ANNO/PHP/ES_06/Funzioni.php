@@ -10,6 +10,15 @@ define("USER", "USERS");
 define("PASS", "123");
 define("DB", "es06");
 
+/**
+ * @brief Effettua il login di un utente.
+ * Questa funzione verifica le credenziali dell'utente e gestisce il processo di login.
+ * Se le credenziali sono corrette, l'utente viene reindirizzato alla pagina riservata.
+ * In caso di errori, vengono gestiti i tentativi di accesso falliti e l'utente viene avvisato.
+ * @param usr Il nome utente.
+ * @param psw La password dell'utente.
+ * @param cookies Indica se salvare l'username nei cookie.
+ */
 function Login($usr, $psw, $cookies) {
     $conn = mysqli_connect(HOST, USER, PASS, DB);
 
@@ -78,6 +87,11 @@ function Login($usr, $psw, $cookies) {
     mysqli_close($conn);
 }
 
+/**
+ * @brief Registra un nuovo utente.
+ * Questa funzione gestisce la registrazione di un nuovo utente.
+ * Verifica se l'email e lo username sono già registrati e, in caso contrario, crea un nuovo account.
+ */
 function Registration(){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
 
@@ -141,6 +155,13 @@ function Registration(){
     mysqli_close($conn);
 }
 
+/**
+ * @brief Incrementa il contatore di errori di login per un utente.
+ * Questa funzione aggiorna il contatore di errori di login per un utente specifico.
+ * Viene chiamata quando un tentativo di login fallisce.
+ * @param conn La connessione al database.
+ * @param acc I dati dell'account dell'utente.
+ */
 function setError($conn, $acc){
     $user = $acc['Username'];
     $error = $acc['Errori']+1;
@@ -148,6 +169,12 @@ function setError($conn, $acc){
     mysqli_query($conn, $query);
 }
 
+/**
+ * @brief Controlla se la sessione è valida per accedere alla pagina riservata.
+ * Questa funzione verifica se l'utente ha una sessione valida per accedere a una pagina riservata.
+ * Se la sessione non è valida, l'utente viene reindirizzato alla pagina di login.
+ * @return true se la sessione è valida, altrimenti reindirizza alla pagina di login.
+ */
 function CheckSessionRis(){
     if(!isset($_SESSION['username'])){
         header("Location: Login.php?error=Entrata in pagina riservata non autorizzata");
@@ -157,6 +184,11 @@ function CheckSessionRis(){
     return true;
 }
 
+/**
+ * @brief Controlla se la sessione è valida.
+ * Questa funzione verifica se l'utente ha una sessione valida.
+ * Se la sessione è valida, l'utente viene reindirizzato alla pagina riservata.
+ */
 function CheckSession(){
     if(isset($_SESSION['username'])){
         setUltimoAccesso();
@@ -165,6 +197,11 @@ function CheckSession(){
     }    
 }
 
+/**
+ * @brief Visualizza un messaggio di errore.
+ * Questa funzione restituisce un messaggio di errore se presente nella richiesta GET.
+ * @return Il messaggio di errore se presente, altrimenti null.
+ */
 function DisplayError(){
     if($_SERVER['REQUEST_METHOD']=="GET"){
         if(isset($_GET['error'])){
@@ -176,6 +213,11 @@ function DisplayError(){
     return null;
 }
 
+/**
+ * @brief Visualizza un messaggio di successo.
+ * Questa funzione restituisce un messaggio di successo se presente nella richiesta GET.
+ * @return Il messaggio di successo se presente, altrimenti null.
+ */
 function DisplaySuccess(){
     if($_SERVER['REQUEST_METHOD']=="GET"){
         if(isset($_GET['succ'])){
@@ -187,6 +229,11 @@ function DisplaySuccess(){
     return null;
 }
 
+/**
+ * @brief Ottiene l'ultimo accesso dell'utente.
+ * Questa funzione restituisce la data e l'ora dell'ultimo accesso dell'utente.
+ * @return La data e l'ora dell'ultimo accesso.
+ */
 function getUltimoAccesso(){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];
@@ -213,6 +260,10 @@ function getUltimoAccesso(){
     }  
 }
 
+/**
+ * @brief Imposta l'ultimo accesso dell'utente all'ora corrente.
+ * Questa funzione aggiorna l'ultimo accesso dell'utente all'ora corrente nel database.
+ */
 function setUltimoAccesso(){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];
@@ -238,6 +289,12 @@ function setUltimoAccesso(){
     }  
 }
 
+/**
+ * @brief Cambia il nome utente.
+ * Questa funzione aggiorna il nome utente nel database.
+ * Verifica se il nuovo nome utente è già in uso e, in caso contrario, lo aggiorna.
+ * @param new_usr Il nuovo nome utente.
+ */
 function ChangeUser($new_usr){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];
@@ -273,6 +330,13 @@ function ChangeUser($new_usr){
     exit;
 }
 
+/**
+ * @brief Cambia la password dell'utente.
+ * Questa funzione aggiorna la password dell'utente nel database.
+ * Verifica se la vecchia password è corretta e, in caso affermativo, la aggiorna con la nuova password.
+ * @param old_psw La vecchia password.
+ * @param new_psw La nuova password.
+ */
 function ChangePsw($old_psw, $new_psw){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];
@@ -306,6 +370,12 @@ function ChangePsw($old_psw, $new_psw){
     exit;
 }
 
+/**
+ * @brief Cambia l'email dell'utente.
+ * Questa funzione aggiorna l'email dell'utente nel database.
+ * Verifica se la nuova email è già registrata e, in caso contrario, la aggiorna.
+ * @param mail La nuova email.
+ */
 function ChangeMail($mail){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];
@@ -339,6 +409,13 @@ function ChangeMail($mail){
     exit;
 }
 
+/**
+ * @brief Cambia i dati personali dell'utente.
+ * Questa funzione aggiorna i dati personali dell'utente nel database.
+ * @param nome Il nuovo nome.
+ * @param cog Il nuovo cognome.
+ * @param dob La nuova data di nascita.
+ */
 function ChangePData($nome, $cog, $dob){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];
@@ -358,6 +435,11 @@ function ChangePData($nome, $cog, $dob){
     exit;
 }
 
+/**
+ * @brief Cancella l'account dell'utente.
+ * Questa funzione elimina l'account dell'utente dal database.
+ * Dopo l'eliminazione, la sessione viene distrutta e l'utente viene reindirizzato alla pagina di login.
+ */
 function Cancel(){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];
@@ -379,6 +461,11 @@ function Cancel(){
     exit;
 }
 
+/**
+ * @brief Recupera tutti i dati dell'utente.
+ * Questa funzione restituisce tutti i dati dell'utente come un array associativo.
+ * @return Un array associativo con i dati dell'utente.
+ */
 function fetch_all(){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
     $usr = $_SESSION['username'];
@@ -398,6 +485,11 @@ function fetch_all(){
     return mysqli_fetch_assoc($ris);
 }
 
+/**
+ * @brief Recupera tutti i dati dell'utente tramite email.
+ * Questa funzione restituisce tutti i dati dell'utente come un array associativo utilizzando l'email.
+ * @return Un array associativo con i dati dell'utente.
+ */
 function fetch_all_mail(){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
     $mail = $_SESSION['mail'];
@@ -417,6 +509,12 @@ function fetch_all_mail(){
     return mysqli_fetch_assoc($ris);
 }
 
+/**
+ * @brief Controlla se l'email esiste nel database.
+ * Questa funzione verifica se un'email esiste nel database.
+ * @param mail L'email da controllare.
+ * @return true se l'email esiste, altrimenti false.
+ */
 function CheckMail($mail){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
 
@@ -439,6 +537,10 @@ function CheckMail($mail){
         return false;
 }
 
+/**
+ * @brief Imposta un token di verifica per l'utente.
+ * Questa funzione genera e imposta un token di verifica per l'utente nel database.
+ */
 function SetToken(){
     $mail = $_SESSION['mail'];
     $conn = mysqli_connect(HOST, USER, PASS, DB);
@@ -457,6 +559,10 @@ function SetToken(){
     mysqli_stmt_close($stmt);
 }
 
+/**
+ * @brief Invia un'email con il token di verifica.
+ * Questa funzione invia un'email contenente il token di verifica all'utente.
+ */
 function SendTokenMail(){  
     $mail = new PHPMailer(true);
 
@@ -568,6 +674,11 @@ function SendTokenMail(){
     }
 }
 
+/**
+ * @brief Verifica il token di autenticazione.
+ * Questa funzione verifica se il token di autenticazione fornito è valido (combinazione e scadenza).
+ * @param token Il token di autenticazione da verificare.
+ */
 function verify_token($token){
     $acc = fetch_all_mail();
 
@@ -587,6 +698,11 @@ function verify_token($token){
     }
 }
 
+/**
+ * @brief Imposta una nuova password per l'utente.
+ * Questa funzione aggiorna la password dell'utente nel database.
+ * @param pass La nuova password da impostare.
+ */
 function setPassword($pass){
     $conn = mysqli_connect(HOST, USER, PASS, DB);
     $mail = $_SESSION['mail'];
