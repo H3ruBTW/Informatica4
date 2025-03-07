@@ -39,45 +39,54 @@ try {
         <style>
             body {
                 font-family: Arial, sans-serif;
-                background-color: #f4f4f4;
+                background-color: #333;
+                color: white;
                 margin: 0;
                 padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
             }
             .container {
-                max-width: 600px;
-                margin: 20px auto;
-                background: #ffffff;
+                width: 50%;
+                background: white;
+                color: black;
                 padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 5px;
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
                 text-align: center;
             }
             .header {
-                background: #007bff;
-                color: #ffffff;
-                padding: 10px;
                 font-size: 24px;
-                border-radius: 8px 8px 0 0;
+                font-weight: bold;
+                margin-bottom: 20px;
             }
             .content {
-                padding: 20px;
-                font-size: 18px;
-                color: #333333;
+                font-size: 16px;
+                margin-bottom: 20px;
             }
             .code-box {
                 display: inline-block;
-                font-size: 24px;
+                font-size: 20px;
                 font-weight: bold;
-                background: #f8f9fa;
-                padding: 10px 20px;
-                border: 2px dashed #007bff;
+                background: #ddd;
+                padding: 10px 15px;
+                border: 2px dashed #000;
                 border-radius: 5px;
                 margin-top: 10px;
             }
             .footer {
-                margin-top: 20px;
                 font-size: 12px;
-                color: #666666;
+                text-align: center;
+                margin-top: 20px;
+            }
+            a {
+                color: blue;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
             }
         </style>
     </head>
@@ -85,8 +94,8 @@ try {
         <div class='container'>
             <div class='header'>Codice di Verifica</div>
             <div class='content'>
-                <p>Ciao,</p>
-                <p>Utilizza il codice qui sotto per completare la tua registrazione:</p>
+                <p>Ciao $user,</p>
+                <p>Utilizza il codice qui sotto per confermare la tua identità:</p>
                 <div class='code-box'>$codice_verifica</div>
                 <p>Se non hai richiesto questo codice, ignora questa email.</p>
             </div>
@@ -95,8 +104,7 @@ try {
             </div>
         </div>
     </body>
-    </html>
-    ";
+    </html>";
 
     // Invia l'email
     $mail->send();
