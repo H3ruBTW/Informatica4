@@ -1188,3 +1188,4 @@ recovered pages: 0% 28% 56% 84% 95% 100% (0.0 seconds); tables to flush: 2 1 0
 2025-03-07 17:53:04 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
 Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
 2025-03-07 17:54:33 8 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
+2025-03-07 21:19:35 12 [Warning] Aborted connection 12 to db: 'es06' user: 'root' host: 'localhost' (Got an error reading communication packets)
