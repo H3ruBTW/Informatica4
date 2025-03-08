@@ -653,7 +653,7 @@ function SendTokenMail(){
             <div class='container'>
                 <div class='header'>Codice di Verifica</div>
                 <div class='content'>
-                    <p>Ciao {$acc['Username']},</p>
+                    <p>Ciao {$acc['Nome']},</p>
                     <p>Utilizza il codice qui sotto per confermare la tua identità:</p>
                     <div class='code-box'>{$acc['Token']}</div>
                     <p>Se non hai richiesto questo codice, ignora questa email.</p>
