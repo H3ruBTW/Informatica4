@@ -13,11 +13,16 @@ if(!isset($_SESSION['mail'])){
     exit;
 }
 
-if($_SERVER['REQUEST_METHOD'] == "POST"){
+$token = (isset($_POST['token'])) ? $_POST['token'] : "";
+
+if(isset($_POST['psw'])){
     $pass = $_POST['psw'];
 
     setPassword($pass);
-} 
+}
+
+verify_token($token);
+
 ?>
 
 <!DOCTYPE html>

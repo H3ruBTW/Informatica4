@@ -686,8 +686,7 @@ function verify_token($token){
         $token_creation = strtotime($acc['Token_Creation']);
 
         if((time() - $token_creation) / 60 < 5){
-            header("Location: Token_Password.php");
-            exit;
+            return true;
         } else {
             header("Location: Forgot_password.php?error=Il codice d'autenticazione è scaduto");
             exit;

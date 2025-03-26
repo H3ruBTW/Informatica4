@@ -9,12 +9,8 @@ if(!isset($_SESSION['mail'])){
     exit;
 }
 
-if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $token = $_POST['token'];
-    verify_token($token);
-} else {
-    SendTokenMail();
-}
+SendTokenMail();
+
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <?= $error ?>
             <p>Ti è stato mandato un codice a 6 cifre alla seguente mail: <?= $_SESSION['mail']?><br>
             Il codice scadrà in <span style="color: red">5 minuti</span> dalla richiesta iniziale</p><br>
-            <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+            <form action="Token_Password.php" method="post">
                 <div class="dati">
                     <label>Token d'autenticazione</label><br>
                     <input type="text" name="token" pattern="[0-9]{6,6}" required>
