@@ -30,32 +30,39 @@ function start(){
             $html .= "<th>" . $chiavi[$i] . "</th>";
         }
 
+        $html .= "<th>Modifica</th>";
+
         $html .= "</tr>";
     }
 
-    $html .= "<tr>";
+    $html .= "<tr id=\"0\">";
     
     foreach ($acc as $key => $value) {
         $html .= "<th>" . $value . "</th>";
     }
 
-    $html .= "<th>Modifica</th>";
+    $html .= "<th><button class=\"button\" id=\"0\">UPDATE</button></th>";
 
     $html .= "</tr>";
+
+    //Numero riga estratta
+    $n = 1;
 
     //@RETURN mysqli_fetch_assoc array|false|null
     while(($acc = mysqli_fetch_assoc($ris)) != NULL){
         if(!$acc){
             $html .= "</table><br><p style=\"color=red\">Errore di fetching dei dati</p>";
-        }
-
-        $html .= "<tr>";
+        } else {
+            $html .= "<tr id=\"$n\">";
     
-        foreach ($acc as $key => $value) {
-            $html .= "<th>" . $value . "</th>";
-        }
-        $html .= "<th>NULL</th>";
-        $html .= "</tr>";
+            foreach ($acc as $key => $value) {
+                $html .= "<th>" . $value . "</th>";
+            }
+            $html .= "<th><button class=\"button\" id=\"$n\">UPDATE</button></th>";
+            $html .= "</tr>";
+
+            $n += 1;
+        }       
     }
     $html .= "</table>";
 
