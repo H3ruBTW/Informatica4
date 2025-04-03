@@ -1,3 +1,10 @@
+<?php
+require "Fnz_pannello.php";
+session_start();
+
+$html = start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/table.css">
     <title>Esecizi</title>
 </head>
 <body>
@@ -22,15 +31,15 @@
                     <hr>
                     <li><a href="Riservata.php"><u>Riservata</u></a></li>
                     <hr> 
-                    <li><a href="Pannello.php"><u>Pannello</u></a></li>
+                    <li><a href="Pannello.php"><b>Pannello</b></a></li>
                     <hr>                  
                 </ul>
             </nav>
         </div>
         <div class="content">
-            <center>
-                <img src="../img/images.png" width="50%">
-            </center>
+            <h2>Tabella utenti</h2>
+            <?= $html?>
+            <br><br>
         </div>
     </div>
 
