@@ -2,7 +2,22 @@
 require "Fnz_pannello.php";
 session_start();
 
-$html = start();
+$id = $_GET['id'] ?? "";
+
+switch ($id) {
+    case '1':
+        $html = start1();
+        break;
+    
+    case '2':
+        $html = start2();
+        break;
+    
+    default:
+        $html = start1();
+        break;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -12,8 +27,14 @@ $html = start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/table.css">
     <title>Esecizi</title>
+    <script>
+        //oggetto globale per il browser
+        window.tab = <?= $id ?>;
+    </script>
+    <script src="js/tabelle.js" defer></script>
 </head>
 <body>
     <header><h1>ESERCIZI PHP</h1></header>
@@ -36,7 +57,13 @@ $html = start();
             </nav>
         </div>
         <div class="content">
-            <h2>Tabella utenti</h2>
+            <div style="display:inline">
+                <p><span style="font-size: 40px; font-weight:bold;">Tabella utenti</span>
+                <a href="Pannello.php?id=1" class="link">Tabella 1</a> | 
+                <a href="Pannello.php?id=2" class="link">Tabella 2</a>
+                </p>
+            </div>
+            <br>
             <?= $html?>
             <br><br>
         </div>
