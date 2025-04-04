@@ -4,8 +4,8 @@ session_start();
 
 $error = DisplayError();
 
-$orderby = $_GET['orderby'] ?? "";
-$di = $_GET['di'] ?? "";
+$orderby = $_GET['orderby'] ?? "null";
+$di = $_GET['di'] ?? "null";
 
 if(!isset($error))
     $error = "<br>";
@@ -45,8 +45,8 @@ switch ($id) {
     <script>
         //oggetto globale per il browser per capire in che tabella si è nel .JS
         window.tab = <?= $id ?>;
-        window.orderby = <?= $orderby ?>;
-        window.di = <?= $di ?>;
+        window.orderby = "<?= $orderby ?>";
+        window.di = "<?= $di ?>";
     </script>
     <script src="js/tabelle.js" defer></script>
 </head>
@@ -74,7 +74,7 @@ switch ($id) {
             <div style="display:inline">
                 <p><span style="font-size: 40px; font-weight:bold;">Tabella utenti</span>
                 <a href="Pannello.php?id=1" class="link">Tabella 1</a> | 
-                <a href="Pannello.php?id=2" class="link">Tabella 2</a>
+                <a href="Pannello.php?id=2&orderby=UserID&di=i" class="link">Tabella 2</a>
                 </p>
             </div>
             <?= $error ?>
