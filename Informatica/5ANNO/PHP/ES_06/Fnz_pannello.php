@@ -65,6 +65,7 @@ function start1(){
     return $html;
 }
 
+/*
 //tabella con possibiltà di modificare
 function start2(){
     $html = "<table>";
@@ -78,6 +79,98 @@ function start2(){
     }
 
     $query = "SELECT * from utente";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_execute($stmt);
+    $ris = mysqli_stmt_get_result($stmt);
+
+    //ESTRAE LE CHIAVI
+    if(($acc = mysqli_fetch_assoc($ris)) != NULL || !$acc){
+        $chiavi = array_keys($acc);
+        
+        $html .= "<tr id=\"keys\">";
+
+        for($i=0; isset($chiavi[$i]); $i++){
+            $html .= "<th>" . $chiavi[$i] . "</th>";
+        }
+
+        $html .= "<th>Modifica</th>";
+
+        $html .= "</tr>";
+    }
+
+    $html .= "<tr id=\"0\">";
+    
+    foreach ($acc as $key => $value) {
+        $html .= "<td>" . $value . "</td>";
+    }
+
+    $html .= "<td><form id=\"mod0\" action=\"Pannello.php?id=2#0\" method=\"post\">";
+
+    foreach ($acc as $key => $value) {
+        if($key != "Password")
+            $html .= "<input type=\"text\" name=\"" . $key . "\" value=\"" . $value . "\" hidden>";
+    }
+
+    $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
+
+    $html .= "<button class=\"button\" type=\"button\" id=\"0\">UPDATE</button></form></td>";
+
+    $html .= "</tr>";
+
+    //Numero riga estratta
+    $n = 1;
+
+    //@RETURN mysqli_fetch_assoc array|false|null
+    while(($acc = mysqli_fetch_assoc($ris)) != NULL){
+        if(!$acc){
+            $html .= "</table><br><p style=\"color=red\">Errore di fetching dei dati</p>";
+        } else {
+            $html .= "<tr id=\"$n\">";
+    
+            foreach ($acc as $key => $value) {
+                $html .= "<td>" . $value . "</td>";
+            }
+
+            $html .= "<td><form id=\"mod$n\" action=\"Pannello.php?id=2#$n\" method=\"post\">";
+
+            foreach ($acc as $key => $value) {
+                if($key != "Password")
+                    $html .= "<input type=\"text\" name=\"" . $key . "\" value=\"" . $value . "\" hidden>";
+            }
+
+            $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
+
+            $html .= "<button class=\"button\" type=\"button\" id=\"$n\">UPDATE</button></form></td>";
+            $html .= "</tr>";
+
+            $n += 1;
+        }       
+    }
+    $html .= "</table>";
+
+    return $html;
+}*/
+
+function start2(){
+    $html = "<table>";
+
+    $conn = mysqli_connect(HOST, USER, PASS, DB);
+
+    // ERRORE CONNESSIONE
+    if (!$conn) {
+        header("Location: Pannello.php?id=2&error=Errore di connessione al DB. Riprovare più tardi.");
+        exit;
+    }
+
+    $query = "SELECT * FROM utente ORDER BY " . $_GET['orderby'];
+    if($_GET['di'] == "i"){
+        $query .= " " . "asc";
+    } else {
+        $query .= " " . "desc";
+    }
+
+    
+
     $stmt = mysqli_prepare($conn, $query);
     mysqli_execute($stmt);
     $ris = mysqli_stmt_get_result($stmt);

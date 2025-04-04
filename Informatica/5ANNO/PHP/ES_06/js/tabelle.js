@@ -43,24 +43,28 @@ if(window.tab == 2){
                
         })
     });
+
+    let keys = document.querySelectorAll("tr#keys th")
+
+    keys.forEach (key => {
+        if(key.innerHTML != "Modifica"){
+            key.addEventListener("click", function(){
+                let url
+
+                
+                
+                if(window.di == "i" && window.orderby == key.innerHTML){
+                    url = "Pannello.php?id=2&orderby=" + key.innerHTML + "&di=d"               
+                } else {
+                    url = "Pannello.php?id=2&orderby=" + key.innerHTML + "&di=i"  
+                }
+
+                window.location.href = url
+            })
+        }
+    })
 }
 
-let keys = document.querySelectorAll("tr#keys th")
 
-keys.forEach (key => {
-    if(key.innerHTML != "Modifica"){
-        key.addEventListener("click", function(){
-            let url
-
-            if(window.di == "i"){
-                url = "Pannello.php?id=2&orderby=" + key.innerHTML + "&di=d"               
-            } else {
-                url = "Pannello.php?id=2&orderby=" + key.innerHTML + "&di=i"  
-            }
-
-            window.location.href = url
-        })
-    }
-})
 
 
