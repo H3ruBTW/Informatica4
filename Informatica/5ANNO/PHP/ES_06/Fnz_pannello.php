@@ -97,7 +97,7 @@ function start2(){
         $html .= "</tr>";
     }
 
-    $html .= "<tr id=\"0\">";
+    $html .= "<tr id=\"0\"";
     
     foreach ($acc as $key => $value) {
         $html .= "<th>" . $value . "</th>";
