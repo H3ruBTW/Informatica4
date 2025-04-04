@@ -86,7 +86,7 @@ function start2(){
     if(($acc = mysqli_fetch_assoc($ris)) != NULL || !$acc){
         $chiavi = array_keys($acc);
         
-        $html .= "<tr>";
+        $html .= "<tr id=\"keys\">";
 
         for($i=0; isset($chiavi[$i]); $i++){
             $html .= "<th>" . $chiavi[$i] . "</th>";

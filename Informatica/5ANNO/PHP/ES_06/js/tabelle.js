@@ -45,4 +45,23 @@ if(window.tab == 2){
     });
 }
 
+let keys = document.querySelectorAll("tr#keys th")
+
+keys.forEach (key => {
+    if(key.innerHTML != "Modifica"){
+        key.addEventListener("click", function(){
+            if(window.orderby == null){
+                let url = "Pannello.php?id=2&orderby=" + key.innerHTML + "&di="
+
+                if(window.di = "d")
+                    url += "i"
+                else 
+                    url += "d"
+                
+                window.location.href = url
+            }
+        })
+    }
+})
+
 

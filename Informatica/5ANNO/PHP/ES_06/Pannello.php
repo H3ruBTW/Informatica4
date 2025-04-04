@@ -4,6 +4,9 @@ session_start();
 
 $error = DisplayError();
 
+$orderby = $_GET['orderby'] ?? "";
+$di = $_GET['di'] ?? "";
+
 if(!isset($error))
     $error = "<br>";
 
@@ -42,6 +45,8 @@ switch ($id) {
     <script>
         //oggetto globale per il browser per capire in che tabella si è nel .JS
         window.tab = <?= $id ?>;
+        window.orderby = <?= $orderby ?>;
+        window.di = <?= $di ?>;
     </script>
     <script src="js/tabelle.js" defer></script>
 </head>
