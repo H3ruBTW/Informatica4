@@ -1,4 +1,4 @@
-table, th, tr {
+table, th, tr, td {
     border:1px solid black;
     border-collapse: collapse;
 }
@@ -8,7 +8,7 @@ table {
     table-layout: fixed;
 }
 
-tr, th {
+tr, th, td {
     height: 30px;
     word-wrap: break-word;
     overflow: hidden;
@@ -29,3 +29,16 @@ tr, th {
 .button:active {
     background-color: gray;
 }
+
+th{
+    font-size: 12px;
+    justify-content: center;
+    text-align: center;
+}
+
+td{
+    font-size: 10px;
+    justify-content: center;
+    text-align: center;
+}
+

@@ -1,29 +1,48 @@
-let buttons = document.querySelectorAll("th button")
+/*
+* PER OGNI PULSANTE NELLA TABELLA 2 SI ASCOLTA L'EVENTO CLICK PER TRASFORMARE TUTTO IN CASELLE
+* MODIFICABILI PER POI SALVARE NEGLI HIDDEN FORM ED EFFETTUARNE IL POST
+*/
+if(window.tab == 2){
+    let buttons = document.querySelectorAll("td button");
 
-buttons.forEach(button => {
-    button.addEventListener("click", function(){
-        button.innerHTML = "CONFIRM UPDATE"
+    buttons.forEach(button => {
+        button.addEventListener("click", function Handle(event){
 
-        let id = button.getAttribute("id")
+            let index = button.id
 
-        //prende tutte le righe tranne quella col bottone
-        let row = document.querySelectorAll("tr#" + CSS.escape(id) + " th")
+            button.innerHTML = "CONFIRM UPDATE"
 
-        row.forEach(cell => {
-            //no button cells
-            let nbcells = []
+            event.target.removeEventListener("click", Handle)
 
-            if(!cell.querySelector("button")){
-                nbcells.push(cell);
+            let texts = document.querySelectorAll("tr#" + CSS.escape(index) + " td")
+
+            for(let j=0; j<texts.length-1; j++){
+                if(j==6){continue}
+
+                let text = texts[j].textContent
+
+                texts[j].innerHTML = "<textarea cols=\"12\" rows=\"5\" style=\"resize:none\">" + text + "</textarea>";
+                
             }
 
-            console.log(nbcells)
+            button.addEventListener("click", function Handle2(){
+                let texts = document.querySelectorAll("tr#" + CSS.escape(index) + " td textarea")
 
-            nbcells.forEach(nbcell => {
-                let text = nbcell.textContent
+                let inputs = document.querySelectorAll("tr#" + CSS.escape(index) + " td form input")
 
-                nbcell.innerHTML = "<input type=\"text\" >"
-            });
-        });
-    })
-});
+                for(let j=0; j<texts.length; j++){
+                    let text = texts[j].value
+    
+                    inputs[j].setAttribute("value", text)
+                }
+
+                let thisform = document.getElementById("mod" + index)
+
+                thisform.submit()
+            })
+               
+        })
+    });
+}
+
+

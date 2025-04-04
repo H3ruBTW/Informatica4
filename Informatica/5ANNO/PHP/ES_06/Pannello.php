@@ -2,6 +2,15 @@
 require "Fnz_pannello.php";
 session_start();
 
+$error = DisplayError();
+
+if(!isset($error))
+    $error = "<br>";
+
+if($_SERVER['REQUEST_METHOD']=="POST"){
+    UpdateDB();
+}
+
 $id = $_GET['id'] ?? "";
 
 switch ($id) {
@@ -31,7 +40,7 @@ switch ($id) {
     <link rel="stylesheet" href="css/table.css">
     <title>Esecizi</title>
     <script>
-        //oggetto globale per il browser
+        //oggetto globale per il browser per capire in che tabella si è nel .JS
         window.tab = <?= $id ?>;
     </script>
     <script src="js/tabelle.js" defer></script>
@@ -63,8 +72,8 @@ switch ($id) {
                 <a href="Pannello.php?id=2" class="link">Tabella 2</a>
                 </p>
             </div>
-            <br>
-            <?= $html?>
+            <?= $error ?>
+            <?= $html ?>
             <br><br>
         </div>
     </div>
