@@ -31,7 +31,7 @@ tr, th, td {
 }
 
 th{
-    font-size: 12px;
+    font-size: 11px;
     justify-content: center;
     text-align: center;
 }
@@ -40,5 +40,20 @@ td{
     font-size: 10px;
     justify-content: center;
     text-align: center;
+}
+
+th[id] {
+    /* stile per tutti i <th> che hanno un attributo id */
+    color: rgb(47, 36, 255) !important;
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+
+th[id]:hover {
+    color: rgb(30, 23, 165) !important;
+}
+
+th[id]:active {
+    color: rgb(16, 12, 88) !important;
 }
 

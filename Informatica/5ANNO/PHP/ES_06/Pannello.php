@@ -4,14 +4,25 @@ session_start();
 
 $error = DisplayError();
 
-$orderby = $_GET['orderby'] ?? "null";
-$di = $_GET['di'] ?? "null";
+$orderby = $_GET['orderby'] ?? "UserID";
+$di = $_GET['di'] ?? "i";
 
 if(!isset($error))
     $error = "<br>";
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
-    UpdateDB();
+    switch ($_POST['type']) {
+        case 'update':
+            UpdateDB();
+            break;
+
+        case 'delete':
+            
+            break;
+        
+        default:
+            break;
+    }
 }
 
 $id = $_GET['id'] ?? "";
@@ -47,11 +58,13 @@ switch ($id) {
         window.tab = <?= $id ?>;
         window.orderby = "<?= $orderby ?>";
         window.di = "<?= $di ?>";
+
+        console.log("<?= $_POST['type']?>")
     </script>
     <script src="js/tabelle.js" defer></script>
 </head>
 <body>
-    <header><h1>ESERCIZI PHP</h1></header>
+    <header id="header"><h1>ESERCIZI PHP</h1></header>
     <div class="divs">
         <div class="menu">
             <nav>

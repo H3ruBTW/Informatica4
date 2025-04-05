@@ -182,10 +182,11 @@ function start2(){
         $html .= "<tr id=\"keys\">";
 
         for($i=0; isset($chiavi[$i]); $i++){
-            $html .= "<th>" . $chiavi[$i] . "</th>";
+            $html .= "<th id=\"key\">" . $chiavi[$i] . "</th>";
         }
 
         $html .= "<th>Modifica</th>";
+        $html .= "<th>Cancella</th>";
 
         $html .= "</tr>";
     }
@@ -203,11 +204,18 @@ function start2(){
             $html .= "<input type=\"text\" name=\"" . $key . "\" value=\"" . $value . "\" hidden>";
     }
 
+    $html .= "<input type=\"text\" name=\"type\" value=\"update\" hidden>";
     $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
     $html .= "<input type=\"text\" name=\"oldMail\" value=\"" . $acc['Email'] . "\" hidden>";
     $html .= "<input type=\"text\" name=\"oldUser\" value=\"" . $acc['Username'] . "\" hidden>";
 
     $html .= "<button class=\"button\" type=\"button\" id=\"0\">UPDATE</button></form></td>";
+
+    $html .= "<td><form action=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "#header\" method=\"post\">";
+    $html .= "<input type=\"text\" name=\"type\" value=\"delete\" hidden>";
+    $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
+
+    $html .= "<input class=\"button\" type=\"button\" id=\"del\" value=\"DELETE\"></form></td>";
 
     $html .= "</tr>";
 
@@ -232,11 +240,19 @@ function start2(){
                     $html .= "<input type=\"text\" name=\"" . $key . "\" value=\"" . $value . "\" hidden>";
             }
 
+            $html .= "<input type=\"text\" name=\"type\" value=\"update\" hidden>";
             $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
             $html .= "<input type=\"text\" name=\"oldMail\" value=\"" . $acc['Email'] . "\" hidden>";
             $html .= "<input type=\"text\" name=\"oldUser\" value=\"" . $acc['Username'] . "\" hidden>";
 
             $html .= "<button class=\"button\" type=\"button\" id=\"$n\">UPDATE</button></form></td>";
+
+            $html .= "<td><form action=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "#header\" method=\"post\">";
+            $html .= "<input type=\"text\" name=\"type\" value=\"delete\" hidden>";
+            $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
+
+            $html .= "<input class=\"button\" type=\"button\" id=\"del\" value=\"DELETE\"></form></td>";
+
             $html .= "</tr>";
 
             $n += 1;
@@ -391,7 +407,7 @@ function UpdateDB(){
         mysqli_stmt_close($stmt);
 
     } catch (\Throwable $th) {
-        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=" . urlencode($th->getMessage()));
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=" . $th->getMessage() . "#header");
         exit;
     }
     

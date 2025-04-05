@@ -16,7 +16,7 @@ if(window.tab == 2){
 
             let texts = document.querySelectorAll("tr#" + CSS.escape(index) + " td")
 
-            for(let j=0; j<texts.length-1; j++){
+            for(let j=0; j<texts.length-2; j++){
                 if(j==6){continue}
 
                 let text = texts[j].textContent
@@ -44,6 +44,7 @@ if(window.tab == 2){
         })
     });
 
+    //Ordinamento
     let keys = document.querySelectorAll("tr#keys th")
 
     keys.forEach (key => {
@@ -51,8 +52,6 @@ if(window.tab == 2){
             key.addEventListener("click", function(){
                 let url
 
-                
-                
                 if(window.di == "i" && window.orderby == key.innerHTML){
                     url = "Pannello.php?id=2&orderby=" + key.innerHTML + "&di=d"               
                 } else {
@@ -63,6 +62,20 @@ if(window.tab == 2){
             })
         }
     })
+
+    let delButtons = document.querySelectorAll("td input[type^=\"button\"]")
+    
+    delButtons.forEach(dbtn => {
+        dbtn.addEventListener("click", function Handle3(event){
+            dbtn.value = "CONFIRM\nDELETE"
+
+            dbtn.setAttribute("type", "submit")
+
+            event.preventDefault()
+
+            event.target.removeEventListener("click", Handle3)
+        })
+    });
 }
 
 
