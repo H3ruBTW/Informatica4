@@ -2,13 +2,11 @@
 require "Fnz_pannello.php";
 session_start();
 
+$succ = DisplaySuccess();
 $error = DisplayError();
 
 $orderby = $_GET['orderby'] ?? "UserID";
 $di = $_GET['di'] ?? "i";
-
-if(!isset($error))
-    $error = "<br>";
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
     switch ($_POST['type']) {
@@ -54,7 +52,7 @@ switch ($id) {
     <link rel="stylesheet" href="css/table.css">
     <title>Esecizi</title>
     <script>
-        //oggetto globale per il browser per capire in che tabella si è nel .JS
+        //oggetto globale per il browser per comunicare con PHP
         window.tab = <?= $id ?>;
         window.orderby = "<?= $orderby ?>";
         window.di = "<?= $di ?>";
@@ -88,10 +86,14 @@ switch ($id) {
                 <a href="Pannello.php?id=2&orderby=UserID&di=i" class="link">Tabella 2</a>
                 </p>
             </div>
-            <?= $error ?>
+            <br>
             <?= $html ?>
             <br><br>
         </div>
+    </div>
+
+    <div id="displaybox" class="<?php if(isset($error)){echo "err";}elseif(isset($succ)){echo "succ";}?>" hidden>
+        <p><?php if(isset($error)){echo $error;}elseif(isset($succ)){echo $succ;} ?></p>
     </div>
 
     <footer>

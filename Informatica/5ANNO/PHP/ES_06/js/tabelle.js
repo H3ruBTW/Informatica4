@@ -76,6 +76,12 @@ if(window.tab == 2){
             event.target.removeEventListener("click", Handle3)
         })
     });
+
+    let displaybox = document.getElementById("displaybox")
+
+    if(displaybox.getAttribute("class") != ""){
+        displaybox.hidden = false
+    }
 }
 
 

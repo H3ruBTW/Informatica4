@@ -266,8 +266,19 @@ function start2(){
 function DisplayError(){
     if($_SERVER['REQUEST_METHOD']=="GET"){
         if(isset($_GET['error'])){
-            $err = "<p style=\"color:red\">" . $_GET['error'] . "</p>";
+            $err = $_GET['error'];
             return $err;
+        }       
+    }
+
+    return null;
+}
+
+function DisplaySuccess(){
+    if($_SERVER['REQUEST_METHOD']=="GET"){
+        if(isset($_GET['succ'])){
+            $succ = $_GET['succ'];
+            return $succ;
         }       
     }
 
@@ -309,7 +320,7 @@ function UpdateDB(){
         mysqli_stmt_close($stmt);
 
         if ($count > 0) {
-            throw new Exception("Un utente con questo ID esiste già");
+            throw new Exception("L'utente con ID:" . $id . " esiste già");
         }
 
         // CHECK nome
@@ -327,16 +338,16 @@ function UpdateDB(){
             throw new Exception("Il campo \"MAIL\" è errato");
         }
 
-        $query = "SELECT COUNT(*) FROM utente WHERE Email = ? AND Email != ?";
+        $query = "SELECT COUNT(*), UserID FROM utente WHERE Email = ? AND Email != ?";
         $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "ss", $mail, $oldMail);  // Qui si deve usare "s" per una stringa
+        mysqli_stmt_bind_param($stmt, "ss", $mail, $oldMail); 
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $count);
+        mysqli_stmt_bind_result($stmt, $count, $exist);
         mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);
 
         if ($count > 0) {
-            throw new Exception("Un utente con questa Email esiste già");
+            throw new Exception("L'utente con id:". $exist . " ha questa Email");
         }
 
         // CHECK data di nascita
@@ -350,19 +361,19 @@ function UpdateDB(){
 
         // CHECK user
         if (!preg_match("/^[a-zA-Z0-9]{4,50}$/", $user)) {
-            throw new Exception("Il campo \"Username\" è errato, minimo 4 caratteri, massimo 50");
+            throw new Exception("Il campo \"Username\" è errato, minimo 4 caratteri alfanumerici, massimo 50");
         }
 
-        $query = "SELECT COUNT(*) FROM utente WHERE Username = ? AND Username != ?";
+        $query = "SELECT COUNT(*), UserID FROM utente WHERE Username = ? AND Username != ?";
         $stmt = mysqli_prepare($conn, $query);
         mysqli_stmt_bind_param($stmt, "ss", $user, $oldUser);  // Qui si deve usare "s" per una stringa
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $count);
+        mysqli_stmt_bind_result($stmt, $count, $exist);
         mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);
 
         if ($count > 0) {
-            throw new Exception("Un utente con questo Username esiste già");
+            throw new Exception("L'utente con id:". $exist . " ha questo Username");
         }
 
         // CHECK Errori
@@ -377,12 +388,12 @@ function UpdateDB(){
 
         // CHECK Data Ultimo Errore
         if (!strtotime($derr)) {
-            throw new Exception("Il campo \"Ultimo_Errore\" è errato, usa il formato ANNO-MS-GG HH-MM-SS");
+            throw new Exception("Il campo \"Ultimo_Errore\" è errato, usa il formato ANNO-MS-GG HH:MM:SS");
         }
 
         // CHECK Data Ultimo Accesso
         if (!strtotime($dacc)) {
-            throw new Exception("Il campo \"Ultimo_Accesso\" è errato, usa il formato ANNO-MS-GG HH-MM-SS");
+            throw new Exception("Il campo \"Ultimo_Accesso\" è errato, usa il formato ANNO-MS-GG HH:MM:SS");
         }
 
         // CHECK Token
@@ -392,7 +403,7 @@ function UpdateDB(){
 
         // CHECK Data Token
         if (!strtotime($dtoken)) {
-            throw new Exception("Il campo \"Token_Creation\" è errato, usa il formato ANNO-MS-GG HH-MM-SS");
+            throw new Exception("Il campo \"Token_Creation\" è errato, usa il formato ANNO-MS-GG HH:MM:SS");
         }
 
 
@@ -406,8 +417,10 @@ function UpdateDB(){
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&succ=Utente con id: " . $oldID . " modificato con successo");
+        exit;
     } catch (\Throwable $th) {
-        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=" . $th->getMessage() . "#header");
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=" . $th->getMessage());
         exit;
     }
     
@@ -430,8 +443,11 @@ function deleteInDB(){
         mysqli_stmt_bind_param($stmt, "s", $oldID);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
+
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&succ=Utente con id: ". $oldID ." cancellato con successo#header");
+        exit;
     } catch (\Throwable $th) {
-        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=" . $th->getMessage() . "#header");
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=" . $th->getMessage());
         exit;
     }
 }
