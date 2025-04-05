@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             break;
 
         case 'delete':
-            
+            deleteInDB();
             break;
         
         default:
@@ -58,8 +58,6 @@ switch ($id) {
         window.tab = <?= $id ?>;
         window.orderby = "<?= $orderby ?>";
         window.di = "<?= $di ?>";
-
-        console.log("<?= $_POST['type']?>")
     </script>
     <script src="js/tabelle.js" defer></script>
 </head>
