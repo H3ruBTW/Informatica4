@@ -158,15 +158,15 @@ function start2(){
 
     // ERRORE CONNESSIONE
     if (!$conn) {
-        header("Location: Pannello.php?id=2&error=Errore di connessione al DB. Riprovare più tardi.");
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=Errore di connessione al DB. Riprovare più tardi.");
         exit;
     }
 
     $query = "SELECT * FROM utente ORDER BY " . $_GET['orderby'];
     if($_GET['di'] == "i"){
-        $query .= " " . "asc";
+        $query .= " asc";
     } else {
-        $query .= " " . "desc";
+        $query .= " desc";
     }
 
     
@@ -196,7 +196,7 @@ function start2(){
         $html .= "<td>" . $value . "</td>";
     }
 
-    $html .= "<td><form id=\"mod0\" action=\"Pannello.php?id=2#0\" method=\"post\">";
+    $html .= "<td><form id=\"mod0\" action=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "#0\" method=\"post\">";
 
     foreach ($acc as $key => $value) {
         if($key != "Password")
@@ -204,6 +204,8 @@ function start2(){
     }
 
     $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
+    $html .= "<input type=\"text\" name=\"oldMail\" value=\"" . $acc['Email'] . "\" hidden>";
+    $html .= "<input type=\"text\" name=\"oldUser\" value=\"" . $acc['Username'] . "\" hidden>";
 
     $html .= "<button class=\"button\" type=\"button\" id=\"0\">UPDATE</button></form></td>";
 
@@ -223,7 +225,7 @@ function start2(){
                 $html .= "<td>" . $value . "</td>";
             }
 
-            $html .= "<td><form id=\"mod$n\" action=\"Pannello.php?id=2#$n\" method=\"post\">";
+            $html .= "<td><form id=\"mod$n\" action=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "#$n\" method=\"post\">";
 
             foreach ($acc as $key => $value) {
                 if($key != "Password")
@@ -231,6 +233,8 @@ function start2(){
             }
 
             $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
+            $html .= "<input type=\"text\" name=\"oldMail\" value=\"" . $acc['Email'] . "\" hidden>";
+            $html .= "<input type=\"text\" name=\"oldUser\" value=\"" . $acc['Username'] . "\" hidden>";
 
             $html .= "<button class=\"button\" type=\"button\" id=\"$n\">UPDATE</button></form></td>";
             $html .= "</tr>";
@@ -276,16 +280,19 @@ function UpdateDB(){
         $token   = trim($_POST['Token']);
         $dtoken  = trim($_POST['Token_Creation']);
         $oldID   = trim($_POST['oldID']);
+        $oldMail  = trim($_POST['oldMail']);
+        $oldUser   = trim($_POST['oldUser']);
 
         //CHECK ID
-        $query = "SELECT COUNT(*) FROM utente WHERE UserID = ?";
+        $query = "SELECT COUNT(*) FROM utente WHERE UserID = ? AND UserID != ?";
         $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_bind_param($stmt, "ii", $id, $oldID);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_bind_result($stmt, $count);
+        mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);
 
-        if ($count == 1) {
+        if ($count > 0) {
             throw new Exception("Un utente con questo ID esiste già");
         }
 
@@ -304,14 +311,15 @@ function UpdateDB(){
             throw new Exception("Il campo \"MAIL\" è errato");
         }
 
-        $query = "SELECT COUNT(*) FROM utente WHERE Email = ?";
+        $query = "SELECT COUNT(*) FROM utente WHERE Email = ? AND Email != ?";
         $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "s", $mail);  // Qui si deve usare "s" per una stringa
+        mysqli_stmt_bind_param($stmt, "ss", $mail, $oldMail);  // Qui si deve usare "s" per una stringa
         mysqli_stmt_execute($stmt);
         mysqli_stmt_bind_result($stmt, $count);
+        mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);
 
-        if ($count == 1) {
+        if ($count > 0) {
             throw new Exception("Un utente con questa Email esiste già");
         }
 
@@ -329,14 +337,15 @@ function UpdateDB(){
             throw new Exception("Il campo \"Username\" è errato, minimo 4 caratteri, massimo 50");
         }
 
-        $query = "SELECT COUNT(*) FROM utente WHERE Username = ?";
+        $query = "SELECT COUNT(*) FROM utente WHERE Username = ? AND Username != ?";
         $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "s", $user);  // Qui si deve usare "s" per una stringa
+        mysqli_stmt_bind_param($stmt, "ss", $user, $oldUser);  // Qui si deve usare "s" per una stringa
         mysqli_stmt_execute($stmt);
         mysqli_stmt_bind_result($stmt, $count);
+        mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);
 
-        if ($count == 1) {
+        if ($count > 0) {
             throw new Exception("Un utente con questo Username esiste già");
         }
 
@@ -382,7 +391,7 @@ function UpdateDB(){
         mysqli_stmt_close($stmt);
 
     } catch (\Throwable $th) {
-        header("Location: Pannello.php?id=2&error=" . $th->getMessage());
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=" . urlencode($th->getMessage()));
         exit;
     }
     
