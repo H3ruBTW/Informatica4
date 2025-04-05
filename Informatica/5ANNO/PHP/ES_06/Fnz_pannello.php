@@ -412,4 +412,27 @@ function UpdateDB(){
     }
     
 }
+
+function deleteInDB(){
+    try {
+        $conn = mysqli_connect(HOST, USER, PASS, DB);
+
+        $oldID = trim($_POST['oldID']);
+
+        // ERRORE CONNESSIONE
+        if (!$conn) {
+            throw("Errore di connessione al DB. Riprovare più tardi.");
+        }
+
+        $query = "DELETE FROM utente WHERE UserID = ?";
+
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "s", $oldID);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    } catch (\Throwable $th) {
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=" . $th->getMessage() . "#header");
+        exit;
+    }
+}
 ?>
