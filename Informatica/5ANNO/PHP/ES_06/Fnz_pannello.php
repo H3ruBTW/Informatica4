@@ -12,8 +12,8 @@ function start1(){
 
     // ERRORE CONNESSIONE
     if (!$conn) {
-        header("Location: Pannello.php?id=1&error=Errore di connessione al DB. Riprovare più tardi.");
-        exit;
+        $html .= "</table><br><p style=\"color=red\">Errore di fetching dei dati</p>";
+        return $html;
     }
 
     $query = "SELECT * from utente";
@@ -158,8 +158,8 @@ function start2(){
 
     // ERRORE CONNESSIONE
     if (!$conn) {
-        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=Errore di connessione al DB. Riprovare più tardi.");
-        exit;
+        $html .= "</table><br><p style=\"color=red\">Errore di fetching dei dati</p>";
+        return $html;
     }
 
     $query = "SELECT * FROM utente ORDER BY " . $_GET['orderby'];
