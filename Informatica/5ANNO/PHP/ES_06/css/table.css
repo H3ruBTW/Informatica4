@@ -93,3 +93,19 @@ th[id]:active {
         opacity: 0;
     }
 }
+
+.newbutton {
+    background-color: white;
+    padding: 5px;
+    margin-top: 4px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.newbutton:hover {
+    background-color: lightgrey;
+}
+
+.newbutton:active {
+    background-color: gray;
+}

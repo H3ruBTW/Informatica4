@@ -11,7 +11,7 @@ $di = $_GET['di'] ?? "i";
 if($_SERVER['REQUEST_METHOD']=="POST"){
     switch ($_POST['type']) {
         case 'update':
-            UpdateDB();
+            UpdateTable();
             break;
 
         case 'delete':
@@ -27,15 +27,15 @@ $id = $_GET['id'] ?? "";
 
 switch ($id) {
     case '1':
-        $html = start1();
+        $html = show_table1();
         break;
     
     case '2':
-        $html = start2();
+        $html = show_table2();
         break;
     
     default:
-        $html = start1();
+        $html = show_table1();
         break;
 }
 
@@ -83,12 +83,12 @@ switch ($id) {
             <div style="display:inline">
                 <p><span style="font-size: 40px; font-weight:bold;">Tabella utenti</span>
                 <a href="Pannello.php?id=1" class="link">Tabella 1</a> | 
-                <a href="Pannello.php?id=2&orderby=UserID&di=i" class="link">Tabella 2</a>
+                <a href="Pannello.php?id=2&orderby=UserID&di=i&pag=1" class="link">Tabella 2</a>
                 </p>
             </div>
             <br>
             <?= $html ?>
-            <br><br>
+            <br><br><br>
         </div>
     </div>
 
