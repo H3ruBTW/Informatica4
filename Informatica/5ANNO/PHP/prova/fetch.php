@@ -1,17 +1,4 @@
-<?php 
-define("HOST", "localhost");
-define("USER", "USERS");
-define("PASS", "123");
-define("DB", "es05");
-
-$conn = mysqli_connect(HOST, USER, PASS, DB);
-$query = "select * from utente where Username = \"aless\"";
-$ris = mysqli_query($conn, $query);
-$acc = mysqli_fetch_assoc($ris);
-$ultimo_errore = strtotime($acc['Ultimo_Errore']);
-
-$html = $acc['Errori'] . " " . $acc['Ultimo_Errore'] . " " . $ultimo_errore . " " . time() . " " . time()-$ultimo_errore;
-
+<?php
 ?>
 
 <!DOCTYPE html>
@@ -19,9 +6,11 @@ $html = $acc['Errori'] . " " . $acc['Ultimo_Errore'] . " " . $ultimo_errore . " 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/icon.png">
+    <link rel="shortcut icon" href="../img/icon.png">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/car.css">
+    <script src="js/fetchscript.js" defer></script>
     <title>Esercizi</title>
 </head>
 <body>
@@ -39,15 +28,17 @@ $html = $acc['Errori'] . " " . $acc['Ultimo_Errore'] . " " . $ultimo_errore . " 
                     <hr>
                     <li><a href="PHPMailer.php"><u>PHPMailer</u></a></li>
                     <hr>
-                    <li><a href="fetch.php"><u>Fetch</u></a></li>
+                    <li><a href="fetch.php"><b>Fetch</b></a></li>
                     <hr>
                 </ul>
             </nav>
         </div>
-        <div class="content">
-            <?php echo $html; ?>
+        <div id="content" class="content">
+            <button id="button" class="button">Fetch</button>
         </div>
     </div>
+
+    <img src="loading.gif" id="loader">
     
     <footer>
         <p>&copy; 2024 Buongallino Alessandro</p>
