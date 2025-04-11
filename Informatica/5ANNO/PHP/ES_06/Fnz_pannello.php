@@ -362,7 +362,7 @@ function deleteInDB(){
         header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&succ=Utente con id: ". $oldID ." cancellato con successo#header");
         exit;
     } catch (\Throwable $th) {
-        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=" . $th->getMessage() . "&pag=" . $_GET['pag']);
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $_GET['pag'] . "&error=" . $th->getMessage());
         exit;
     }
 }
