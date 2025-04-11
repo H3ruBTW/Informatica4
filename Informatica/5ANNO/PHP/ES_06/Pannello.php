@@ -7,6 +7,7 @@ $error = DisplayError();
 
 $orderby = $_GET['orderby'] ?? "UserID";
 $di = $_GET['di'] ?? "i";
+$pag = $_GET['pag'] ?? "1";
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
     switch ($_POST['type']) {
@@ -56,6 +57,7 @@ switch ($id) {
         window.tab = <?= $id ?>;
         window.orderby = "<?= $orderby ?>";
         window.di = "<?= $di ?>";
+        window.pag = "<?= $pag ?>";
     </script>
     <script src="js/tabelle.js" defer></script>
 </head>

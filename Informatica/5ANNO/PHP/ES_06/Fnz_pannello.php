@@ -126,7 +126,7 @@ function show_table2(){
                 $html .= "<td>" . $value . "</td>";
             }
 
-            $html .= "<td><form id=\"mod$n\" action=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "#$n\" method=\"post\">";
+            $html .= "<td><form id=\"mod$n\" action=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=". $_GET['pag'] ."#$n\" method=\"post\">";
 
             foreach ($acc as $key => $value) {
                 if($key != "Password")
@@ -332,10 +332,10 @@ function UpdateTable(){
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&succ=Utente con id: " . $oldID . " modificato con successo");
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $_GET['pag'] . "&succ=Utente con id: " . $oldID . " modificato con successo");
         exit;
     } catch (\Throwable $th) {
-        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=" . $th->getMessage());
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $_GET['pag'] . "&error=" . $th->getMessage());
         exit;
     }
     
@@ -362,7 +362,7 @@ function deleteInDB(){
         header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&succ=Utente con id: ". $oldID ." cancellato con successo#header");
         exit;
     } catch (\Throwable $th) {
-        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=" . $th->getMessage());
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&error=" . $th->getMessage() . "&pag=" . $_GET['pag']);
         exit;
     }
 }

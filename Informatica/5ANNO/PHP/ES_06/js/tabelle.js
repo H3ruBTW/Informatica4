@@ -58,7 +58,7 @@ if(window.tab == 2){
                     url = "Pannello.php?id=2&orderby=" + key.innerHTML + "&di=i"  
                 }
 
-                window.location.href = url
+                window.location.href = url + "&pag=" + window.pag
             })
         }
     })
