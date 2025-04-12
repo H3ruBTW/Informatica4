@@ -12,7 +12,7 @@ function show_table1(){
 
     // ERRORE CONNESSIONE
     if (!$conn) {
-        $html .= "</table><br><p style=\"color=red\">Errore di fetching dei dati</p>";
+        $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
         return $html;
     }
 
@@ -48,7 +48,7 @@ function show_table1(){
     //@RETURN mysqli_fetch_assoc array|false|null
     while(($acc = mysqli_fetch_assoc($ris)) != NULL){
         if(!$acc){
-            $html .= "</table><br><p style=\"color=red\">Errore di fetching dei dati</p>";
+            $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
         } else {
             $html .= "<tr id=\"$n\">";
     
@@ -69,112 +69,229 @@ function show_table1(){
 function show_table2(){
     $html = "<table>";
 
-    $conn = mysqli_connect(HOST, USER, PASS, DB);
+    try {
+        $conn = mysqli_connect(HOST, USER, PASS, DB);
 
-    // ERRORE CONNESSIONE
-    if (!$conn) {
-        $html .= "</table><br><p style=\"color=red\">Errore di fetching dei dati</p>";
-        return $html;
-    }
-
-    $query = "SELECT * FROM utente ORDER BY " . $_GET['orderby'];
-    if($_GET['di'] == "i"){
-        $query .= " asc";
-    } else {
-        $query .= " desc";
-    }
-
-    if(isset($_GET['pag'])){
-        $query .= " LIMIT 50 OFFSET " . $_GET['pag']*50-50;
-        $pag = $_GET['pag'];
-    } else {
-        $query .= " LIMIT 50 OFFSET 0";
-        $pag = 1;
-    }
-
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_execute($stmt);
-    $ris = mysqli_stmt_get_result($stmt);
-
-    //ESTRAE LE CHIAVI
-    if(($acc = mysqli_fetch_assoc($ris)) != NULL || !$acc){
-        $chiavi = array_keys($acc);
-        
-        $html .= "<tr id=\"keys\">";
-
-        for($i=0; isset($chiavi[$i]); $i++){
-            $html .= "<th id=\"key\">" . $chiavi[$i] . "</th>";
+        // ERRORE CONNESSIONE
+        if (!$conn) {
+            $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
+            return $html;
         }
 
-        $html .= "<th>Modifica</th>";
-        $html .= "<th>Cancella</th>";
-
-        $html .= "</tr>";
-    }
-
-    //Numero riga estratta
-    $n = 0;
-
-    //@RETURN mysqli_fetch_assoc array|false|null
-    do{
-        if(!$acc){
-            $html .= "</table><br><p style=\"color=red\">Errore di fetching dei dati</p>";
+        $query = "SELECT * FROM utente ORDER BY " . $_GET['orderby'];
+        if($_GET['di'] == "i"){
+            $query .= " asc";
         } else {
-            $html .= "<tr id=\"$n\">";
-    
-            foreach ($acc as $key => $value) {
-                $html .= "<td>" . $value . "</td>";
+            $query .= " desc";
+        }
+
+        if(isset($_GET['pag'])){
+            $query .= " LIMIT 50 OFFSET " . $_GET['pag']*50-50;
+            $pag = $_GET['pag'];
+        } else {
+            $query .= " LIMIT 50 OFFSET 0";
+            $pag = 1;
+        }
+
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_execute($stmt);
+        $ris = mysqli_stmt_get_result($stmt);
+
+        //ESTRAE LE CHIAVI
+        if(($acc = mysqli_fetch_assoc($ris)) != NULL || !$acc){
+            $chiavi = array_keys($acc);
+            
+            $html .= "<tr id=\"keys\">";
+
+            for($i=0; isset($chiavi[$i]); $i++){
+                $html .= "<th id=\"key\">" . $chiavi[$i] . "</th>";
             }
 
-            $html .= "<td><form id=\"mod$n\" action=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=". $_GET['pag'] ."#$n\" method=\"post\">";
-
-            foreach ($acc as $key => $value) {
-                if($key != "Password")
-                    $html .= "<input type=\"text\" name=\"" . $key . "\" value=\"" . $value . "\" hidden>";
-            }
-
-            $html .= "<input type=\"text\" name=\"type\" value=\"update\" hidden>";
-            $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
-            $html .= "<input type=\"text\" name=\"oldMail\" value=\"" . $acc['Email'] . "\" hidden>";
-            $html .= "<input type=\"text\" name=\"oldUser\" value=\"" . $acc['Username'] . "\" hidden>";
-
-            $html .= "<button class=\"button\" type=\"button\" id=\"$n\">UPDATE</button></form></td>";
-
-            $html .= "<td><form action=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "#header\" method=\"post\">";
-            $html .= "<input type=\"text\" name=\"type\" value=\"delete\" hidden>";
-            $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
-
-            $html .= "<input class=\"button\" type=\"button\" id=\"del\" value=\"DELETE\"></form></td>";
+            $html .= "<th>Modifica</th>";
+            $html .= "<th>Cancella</th>";
 
             $html .= "</tr>";
-
-            $n += 1;
         }
-    } while(($acc = mysqli_fetch_assoc($ris)) != NULL);
+
+        //Numero riga estratta
+        $n = 0;
+
+        //@RETURN mysqli_fetch_assoc array|false|null
+        do{
+            if(!$acc){
+                $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
+            } else {
+                $html .= "<tr id=\"$n\">";
+        
+                foreach ($acc as $key => $value) {
+                    $html .= "<td>" . $value . "</td>";
+                }
+
+                $html .= "<td><form id=\"mod$n\" action=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=". $_GET['pag'] ."#$n\" method=\"post\">";
+
+                foreach ($acc as $key => $value) {
+                    if($key != "Password")
+                        $html .= "<input type=\"text\" name=\"" . $key . "\" value=\"" . $value . "\" hidden>";
+                }
+
+                $html .= "<input type=\"text\" name=\"type\" value=\"update\" hidden>";
+                $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
+                $html .= "<input type=\"text\" name=\"oldMail\" value=\"" . $acc['Email'] . "\" hidden>";
+                $html .= "<input type=\"text\" name=\"oldUser\" value=\"" . $acc['Username'] . "\" hidden>";
+
+                $html .= "<button class=\"button\" type=\"button\" id=\"$n\">UPDATE</button></form></td>";
+
+                $html .= "<td><form action=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "#header\" method=\"post\">";
+                $html .= "<input type=\"text\" name=\"type\" value=\"delete\" hidden>";
+                $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
+
+                $html .= "<input class=\"button\" type=\"button\" id=\"del\" value=\"DELETE\"></form></td>";
+
+                $html .= "</tr>";
+
+                $n += 1;
+            }
+        } while(($acc = mysqli_fetch_assoc($ris)) != NULL);
+        
+        $html .= "</table><br>";
+
+        $query = "SELECT COUNT(*) FROM utente";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_result($stmt, $count);
+        mysqli_execute($stmt);
+        mysqli_stmt_fetch($stmt);
+
+        if($pag-1 != 0){
+            $html .= " <a href=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $pag-1 . "\"><button class=\"newbutton\"><= PRECEDENTE</button></a> ";
+        }
+
+        if($pag <= $count/50){
+            $html .= " <a href=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $pag+1 . "\"><button class=\"newbutton\">SUCCESSIVO =></button></a> ";
+        }
+
+        $html .= "<br>";
+
+        for($i=0; $i<$count/50; $i++){
+            $html .= " <a href=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $i+1 . "\"><button class=\"newbutton\">" . $i+1 . "</button></a> ";
+        }
+    } catch (mysqli_sql_exception $th) {
+        $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
+    }  
+
+    return $html;
+}
+
+function show_table3(){
+    $html = "<table>";
+    try {
+        $conn = mysqli_connect(HOST, USER, PASS, DB);
+
+        // ERRORE CONNESSIONE
+        if (!$conn) {
+            $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
+            return $html;
+        }
+
+        $query = "SELECT * FROM utente ORDER BY " . $_GET['orderby'];
+        if($_GET['di'] == "i"){
+            $query .= " asc";
+        } else {
+            $query .= " desc";
+        }
+
+        if(isset($_GET['pag'])){
+            $query .= " LIMIT 50 OFFSET " . $_GET['pag']*50-50;
+            $pag = $_GET['pag'];
+        } else {
+            $query .= " LIMIT 50 OFFSET 0";
+            $pag = 1;
+        }
+
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_execute($stmt);
+        $ris = mysqli_stmt_get_result($stmt);
+
+        //ESTRAE LE CHIAVI
+        if(($acc = mysqli_fetch_assoc($ris)) != NULL || !$acc){
+            $chiavi = array_keys($acc);
+            
+            $html .= "<tr id=\"keys\">";
+
+            for($i=0; isset($chiavi[$i]); $i++){
+                $html .= "<th id=\"key\">" . $chiavi[$i] . "</th>";
+            }
+
+            $html .= "<th>Modifica</th>";
+            $html .= "<th>Cancella</th>";
+
+            $html .= "</tr>";
+        }
+
+        //Numero riga estratta
+        $n = 0;
+
+        //@RETURN mysqli_fetch_assoc array|false|null
+        do{
+            if(!$acc){
+                $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
+            } else {
+                $html .= "<tr id=\"$n\">";
+        
+                foreach ($acc as $key => $value) {
+                    $html .= "<td data-old=\"" . $value . "\">" . $value . "</td>";
+                }
+
+                $html .= "<td><form id=\"mod$n\"  method=\"post\">";
+
+                foreach ($acc as $key => $value) {
+                    if($key != "Password")
+                        $html .= "<input type=\"text\" name=\"" . $key . "\" value=\"" . $value . "\" hidden>";
+                }
+
+                $html .= "<input type=\"text\" name=\"type\" value=\"update\" hidden>";
+                $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
+                $html .= "<input type=\"text\" name=\"oldMail\" value=\"" . $acc['Email'] . "\" hidden>";
+                $html .= "<input type=\"text\" name=\"oldUser\" value=\"" . $acc['Username'] . "\" hidden>";
+
+                $html .= "<button class=\"button\" type=\"button\" id=\"$n\">UPDATE</button></form></td>";
+
+                $html .= "<td><form action=\"Pannello.php?id=3&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "#header\" method=\"post\">";
+                $html .= "<input type=\"text\" name=\"type\" value=\"delete\" hidden>";
+                $html .= "<input type=\"text\" name=\"oldID\" value=\"" . $acc['UserID'] . "\" hidden>";
+
+                $html .= "<input class=\"button\" type=\"button\" id=\"del\" value=\"DELETE\"></form></td>";
+
+                $html .= "</tr>";
+
+                $n += 1;
+            }
+        } while(($acc = mysqli_fetch_assoc($ris)) != NULL);
+        
+        $html .= "</table><br>";
+
+        $query = "SELECT COUNT(*) FROM utente";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_result($stmt, $count);
+        mysqli_execute($stmt);
+        mysqli_stmt_fetch($stmt);
+
+        if($pag-1 != 0){
+            $html .= " <a href=\"Pannello.php?id=3&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $pag-1 . "\"><button class=\"newbutton\"><= PRECEDENTE</button></a> ";
+        }
+
+        if($pag <= $count/50){
+            $html .= " <a href=\"Pannello.php?id=3&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $pag+1 . "\"><button class=\"newbutton\">SUCCESSIVO =></button></a> ";
+        }
+
+        $html .= "<br>";
+
+        for($i=0; $i<$count/50; $i++){
+            $html .= " <a href=\"Pannello.php?id=3&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $i+1 . "\"><button class=\"newbutton\">" . $i+1 . "</button></a> ";
+        }
+    } catch (mysqli_sql_exception $th) {
+        $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
+    }
     
-    $html .= "</table><br>";
-
-    $query = "SELECT COUNT(*) FROM utente";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_result($stmt, $count);
-    mysqli_execute($stmt);
-    mysqli_stmt_fetch($stmt);
-
-    if($pag-1 != 0){
-        $html .= " <a href=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $pag-1 . "\"><button class=\"newbutton\"><= PRECEDENTE</button></a> ";
-    }
-
-    if($pag <= $count/50){
-        $html .= " <a href=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $pag+1 . "\"><button class=\"newbutton\">SUCCESSIVO =></button></a> ";
-    }
-
-    $html .= "<br>";
-
-    for($i=0; $i<$count/50; $i++){
-        $html .= " <a href=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $i+1 . "\"><button class=\"newbutton\">" . $i+1 . "</button></a> ";
-    }
-    
-
     return $html;
 }
 
@@ -334,6 +451,9 @@ function UpdateTable(){
 
         header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $_GET['pag'] . "&succ=Utente con id: " . $oldID . " modificato con successo");
         exit;
+    } catch (mysqli_sql_exception $th) {
+        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $_GET['pag'] . "&error=Errore di connessione al DB");
+        exit;
     } catch (\Throwable $th) {
         header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $_GET['pag'] . "&error=" . $th->getMessage());
         exit;
@@ -344,6 +464,8 @@ function UpdateTable(){
 function deleteInDB(){
     try {
         $conn = mysqli_connect(HOST, USER, PASS, DB);
+
+        $id = $_GET['id'] ?? "2";
 
         $oldID = trim($_POST['oldID']);
 
@@ -359,10 +481,13 @@ function deleteInDB(){
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&succ=Utente con id: ". $oldID ." cancellato con successo#header");
+        header("Location: Pannello.php?id=" . $id . "&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&succ=Utente con id: ". $oldID ." cancellato con successo#header");
+        exit;
+    } catch (mysqli_sql_exception $th) {
+        header("Location: Pannello.php?id=" . $id . "&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $_GET['pag'] . "&error=Errore di connessione al DB");
         exit;
     } catch (\Throwable $th) {
-        header("Location: Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $_GET['pag'] . "&error=" . $th->getMessage());
+        header("Location: Pannello.php?id=" . $id . "&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $_GET['pag'] . "&error=" . $th->getMessage());
         exit;
     }
 }

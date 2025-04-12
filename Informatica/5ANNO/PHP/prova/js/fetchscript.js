@@ -19,7 +19,7 @@ function funcFetch(){
     })
     .catch(error => {
         document.body.classList.remove("loading");
-        document.getElementById("loader").style.display = "none";ù
+        document.getElementById("loader").style.display = "none";
 
         console.error('Errore:', error)
         document.getElementById('content').innerHTML = '<p style="color:red"><strong>Nome:</strong>Errore durante il caricamento.</p>'

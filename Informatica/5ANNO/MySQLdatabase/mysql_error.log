@@ -1631,3 +1631,254 @@ Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribut
 2025-04-11 12:02:50 322 [Warning] Aborted connection 322 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
 2025-04-11 12:03:11 323 [Warning] Aborted connection 323 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
 2025-04-11 12:03:15 324 [Warning] Aborted connection 324 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 14:19:57 0 [Note] Starting MariaDB 10.4.32-MariaDB source revision c4143f909528e3fab0677a28631d10389354c491 as process 6768
+2025-04-12 14:19:57 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2025-04-12 14:19:57 0 [Note] InnoDB: Uses event mutexes
+2025-04-12 14:19:57 0 [Note] InnoDB: Compressed tables use zlib 1.3
+2025-04-12 14:19:57 0 [Note] InnoDB: Number of pools: 1
+2025-04-12 14:19:57 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2025-04-12 14:19:57 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2025-04-12 14:19:57 0 [Note] InnoDB: Completed initialization of buffer pool
+2025-04-12 14:19:57 0 [Note] InnoDB: Starting crash recovery from checkpoint LSN=421196
+2025-04-12 14:19:57 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2025-04-12 14:19:57 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2025-04-12 14:19:57 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2025-04-12 14:19:57 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2025-04-12 14:19:57 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2025-04-12 14:19:57 0 [Note] InnoDB: Waiting for purge to start
+2025-04-12 14:19:57 0 [Note] InnoDB: 10.4.32 started; log sequence number 421205; transaction id 741
+2025-04-12 14:19:57 0 [Note] Plugin 'FEEDBACK' is disabled.
+2025-04-12 14:19:57 0 [Note] Server socket created on IP: '::'.
+2025-04-12 14:19:57 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2025-04-12 14:19:57 0 [Note] InnoDB: Buffer pool(s) load completed at 250412 14:19:57
+2025-04-12 14:19:57 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2025-04-12 14:19:57 0 [Note] Reading of all Master_info entries succeeded
+2025-04-12 14:19:57 0 [Note] Added new Master_info '' to hash table
+2025-04-12 14:19:57 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2025-04-12 16:42:05 8 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
+2025-04-12 16:42:06 9 [Warning] Aborted connection 9 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 16:54:20 10 [Warning] Aborted connection 10 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 16:54:21 11 [Warning] Aborted connection 11 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 16:54:22 12 [Warning] Aborted connection 12 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 16:54:22 13 [Warning] Aborted connection 13 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 16:54:22 14 [Warning] Aborted connection 14 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 16:54:23 15 [Warning] Aborted connection 15 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 16:54:23 16 [Warning] Aborted connection 16 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 16:54:23 17 [Warning] Aborted connection 17 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 16:54:24 18 [Warning] Aborted connection 18 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 16:54:24 19 [Warning] Aborted connection 19 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 16:54:25 20 [Warning] Aborted connection 20 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:38:49 21 [Warning] Aborted connection 21 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:38:58 22 [Warning] Aborted connection 22 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:38:59 23 [Warning] Aborted connection 23 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:39:02 24 [Warning] Aborted connection 24 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:39:03 25 [Warning] Aborted connection 25 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:39:08 26 [Warning] Aborted connection 26 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:39:16 27 [Warning] Aborted connection 27 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:39:19 28 [Warning] Aborted connection 28 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:39:43 29 [Warning] Aborted connection 29 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:39:58 30 [Warning] Aborted connection 30 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:42:05 31 [Warning] Aborted connection 31 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:45:52 32 [Warning] Aborted connection 32 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:47:04 33 [Warning] Aborted connection 33 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:49:05 35 [Warning] Aborted connection 35 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:49:37 40 [Warning] Aborted connection 40 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:50:14 42 [Warning] Aborted connection 42 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 17:59:56 45 [Warning] Aborted connection 45 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 18:00:10 47 [Warning] Aborted connection 47 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 18:00:40 48 [Warning] Aborted connection 48 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 18:01:52 50 [Warning] Aborted connection 50 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 18:02:28 51 [Warning] Aborted connection 51 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 18:08:16 52 [Warning] Aborted connection 52 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 18:09:26 63 [Warning] Aborted connection 63 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 18:09:49 65 [Warning] Aborted connection 65 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 18:10:13 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2025-04-12 18:10:13 0 [Note] Event Scheduler: Purging the queue. 0 events
+2025-04-12 18:10:13 0 [Note] InnoDB: FTS optimize thread exiting.
+2025-04-12 18:10:13 0 [Note] InnoDB: Starting shutdown...
+2025-04-12 18:10:13 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2025-04-12 18:10:13 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2025-04-12 18:10:13 0 [Note] InnoDB: Buffer pool(s) dump completed at 250412 18:10:13
+2025-04-12 18:10:14 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2025-04-12 18:10:14 0 [Note] InnoDB: Shutdown completed; log sequence number 421697; transaction id 764
+2025-04-12 18:10:14 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+2025-04-12 18:10:47 0 [Note] Starting MariaDB 10.4.32-MariaDB source revision c4143f909528e3fab0677a28631d10389354c491 as process 18004
+2025-04-12 18:10:47 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2025-04-12 18:10:47 0 [Note] InnoDB: Uses event mutexes
+2025-04-12 18:10:47 0 [Note] InnoDB: Compressed tables use zlib 1.3
+2025-04-12 18:10:47 0 [Note] InnoDB: Number of pools: 1
+2025-04-12 18:10:47 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2025-04-12 18:10:47 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2025-04-12 18:10:47 0 [Note] InnoDB: Completed initialization of buffer pool
+2025-04-12 18:10:47 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2025-04-12 18:10:47 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2025-04-12 18:10:47 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2025-04-12 18:10:47 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2025-04-12 18:10:47 0 [Note] InnoDB: Waiting for purge to start
+2025-04-12 18:10:47 0 [Note] InnoDB: 10.4.32 started; log sequence number 421697; transaction id 751
+2025-04-12 18:10:47 0 [Note] Plugin 'FEEDBACK' is disabled.
+2025-04-12 18:10:47 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2025-04-12 18:10:47 0 [Note] InnoDB: Buffer pool(s) load completed at 250412 18:10:47
+2025-04-12 18:10:47 0 [Note] Server socket created on IP: '::'.
+2025-04-12 18:10:48 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2025-04-12 18:10:48 0 [Note] Reading of all Master_info entries succeeded
+2025-04-12 18:10:48 0 [Note] Added new Master_info '' to hash table
+2025-04-12 18:10:48 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2025-04-12 18:16:21 8 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
+2025-04-12 18:16:21 8 [Warning] Aborted connection 8 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 18:16:24 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2025-04-12 18:16:24 0 [Note] Event Scheduler: Purging the queue. 0 events
+2025-04-12 18:16:24 0 [Note] InnoDB: FTS optimize thread exiting.
+2025-04-12 18:16:24 0 [Note] InnoDB: Starting shutdown...
+2025-04-12 18:16:24 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2025-04-12 18:16:24 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2025-04-12 18:16:24 0 [Note] InnoDB: Buffer pool(s) dump completed at 250412 18:16:24
+2025-04-12 18:16:26 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2025-04-12 18:16:26 0 [Note] InnoDB: Shutdown completed; log sequence number 421706; transaction id 751
+2025-04-12 18:16:26 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+2025-04-12 18:18:08 0 [Note] Starting MariaDB 10.4.32-MariaDB source revision c4143f909528e3fab0677a28631d10389354c491 as process 28104
+2025-04-12 18:18:08 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2025-04-12 18:18:08 0 [Note] InnoDB: Uses event mutexes
+2025-04-12 18:18:08 0 [Note] InnoDB: Compressed tables use zlib 1.3
+2025-04-12 18:18:08 0 [Note] InnoDB: Number of pools: 1
+2025-04-12 18:18:08 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2025-04-12 18:18:08 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2025-04-12 18:18:08 0 [Note] InnoDB: Completed initialization of buffer pool
+2025-04-12 18:18:08 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2025-04-12 18:18:08 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2025-04-12 18:18:08 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2025-04-12 18:18:08 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2025-04-12 18:18:08 0 [Note] InnoDB: Waiting for purge to start
+2025-04-12 18:18:08 0 [Note] InnoDB: 10.4.32 started; log sequence number 421706; transaction id 751
+2025-04-12 18:18:08 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2025-04-12 18:18:08 0 [Note] Plugin 'FEEDBACK' is disabled.
+2025-04-12 18:18:08 0 [Note] InnoDB: Buffer pool(s) load completed at 250412 18:18:08
+2025-04-12 18:18:08 0 [Note] Server socket created on IP: '::'.
+2025-04-12 18:18:08 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2025-04-12 18:18:08 0 [Note] Reading of all Master_info entries succeeded
+2025-04-12 18:18:08 0 [Note] Added new Master_info '' to hash table
+2025-04-12 18:18:08 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2025-04-12 18:18:36 8 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
+2025-04-12 18:18:36 8 [Warning] Aborted connection 8 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 18:18:38 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2025-04-12 18:18:38 0 [Note] Event Scheduler: Purging the queue. 0 events
+2025-04-12 18:18:38 0 [Note] InnoDB: FTS optimize thread exiting.
+2025-04-12 18:18:38 0 [Note] InnoDB: Starting shutdown...
+2025-04-12 18:18:38 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2025-04-12 18:18:38 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2025-04-12 18:18:38 0 [Note] InnoDB: Buffer pool(s) dump completed at 250412 18:18:38
+2025-04-12 18:18:39 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2025-04-12 18:18:39 0 [Note] InnoDB: Shutdown completed; log sequence number 421715; transaction id 751
+2025-04-12 18:18:39 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+2025-04-12 18:20:08 0 [Note] Starting MariaDB 10.4.32-MariaDB source revision c4143f909528e3fab0677a28631d10389354c491 as process 26736
+2025-04-12 18:20:08 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2025-04-12 18:20:08 0 [Note] InnoDB: Uses event mutexes
+2025-04-12 18:20:08 0 [Note] InnoDB: Compressed tables use zlib 1.3
+2025-04-12 18:20:08 0 [Note] InnoDB: Number of pools: 1
+2025-04-12 18:20:08 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2025-04-12 18:20:08 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2025-04-12 18:20:08 0 [Note] InnoDB: Completed initialization of buffer pool
+2025-04-12 18:20:08 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2025-04-12 18:20:08 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2025-04-12 18:20:08 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2025-04-12 18:20:08 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2025-04-12 18:20:08 0 [Note] InnoDB: Waiting for purge to start
+2025-04-12 18:20:08 0 [Note] InnoDB: 10.4.32 started; log sequence number 421715; transaction id 751
+2025-04-12 18:20:08 0 [Note] Plugin 'FEEDBACK' is disabled.
+2025-04-12 18:20:08 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2025-04-12 18:20:08 0 [Note] Server socket created on IP: '::'.
+2025-04-12 18:20:08 0 [Note] InnoDB: Buffer pool(s) load completed at 250412 18:20:08
+2025-04-12 18:20:08 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2025-04-12 18:20:08 0 [Note] Reading of all Master_info entries succeeded
+2025-04-12 18:20:08 0 [Note] Added new Master_info '' to hash table
+2025-04-12 18:20:08 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2025-04-12 18:20:11 8 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
+2025-04-12 18:20:11 8 [Warning] Aborted connection 8 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 18:20:19 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2025-04-12 18:20:19 0 [Note] Event Scheduler: Purging the queue. 0 events
+2025-04-12 18:20:19 0 [Note] InnoDB: FTS optimize thread exiting.
+2025-04-12 18:20:19 0 [Note] InnoDB: Starting shutdown...
+2025-04-12 18:20:19 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2025-04-12 18:20:19 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2025-04-12 18:20:19 0 [Note] InnoDB: Buffer pool(s) dump completed at 250412 18:20:19
+2025-04-12 18:20:20 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2025-04-12 18:20:20 0 [Note] InnoDB: Shutdown completed; log sequence number 421724; transaction id 751
+2025-04-12 18:20:20 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+2025-04-12 18:23:40 0 [Note] Starting MariaDB 10.4.32-MariaDB source revision c4143f909528e3fab0677a28631d10389354c491 as process 21036
+2025-04-12 18:23:40 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2025-04-12 18:23:40 0 [Note] InnoDB: Uses event mutexes
+2025-04-12 18:23:40 0 [Note] InnoDB: Compressed tables use zlib 1.3
+2025-04-12 18:23:40 0 [Note] InnoDB: Number of pools: 1
+2025-04-12 18:23:40 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2025-04-12 18:23:40 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2025-04-12 18:23:40 0 [Note] InnoDB: Completed initialization of buffer pool
+2025-04-12 18:23:40 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2025-04-12 18:23:40 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2025-04-12 18:23:40 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2025-04-12 18:23:40 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2025-04-12 18:23:40 0 [Note] InnoDB: Waiting for purge to start
+2025-04-12 18:23:40 0 [Note] InnoDB: 10.4.32 started; log sequence number 421724; transaction id 751
+2025-04-12 18:23:40 0 [Note] Plugin 'FEEDBACK' is disabled.
+2025-04-12 18:23:40 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2025-04-12 18:23:40 0 [Note] InnoDB: Buffer pool(s) load completed at 250412 18:23:40
+2025-04-12 18:23:40 0 [Note] Server socket created on IP: '::'.
+2025-04-12 18:23:40 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2025-04-12 18:23:40 0 [Note] Reading of all Master_info entries succeeded
+2025-04-12 18:23:40 0 [Note] Added new Master_info '' to hash table
+2025-04-12 18:23:40 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2025-04-12 18:23:41 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2025-04-12 18:23:41 0 [Note] Event Scheduler: Purging the queue. 0 events
+2025-04-12 18:23:41 0 [Note] InnoDB: FTS optimize thread exiting.
+2025-04-12 18:23:41 0 [Note] InnoDB: Starting shutdown...
+2025-04-12 18:23:41 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2025-04-12 18:23:41 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2025-04-12 18:23:41 0 [Note] InnoDB: Buffer pool(s) dump completed at 250412 18:23:41
+2025-04-12 18:23:42 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2025-04-12 18:23:42 0 [Note] InnoDB: Shutdown completed; log sequence number 421733; transaction id 751
+2025-04-12 18:23:42 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
+2025-04-12 18:40:37 0 [Note] Starting MariaDB 10.4.32-MariaDB source revision c4143f909528e3fab0677a28631d10389354c491 as process 28040
+2025-04-12 18:40:37 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2025-04-12 18:40:37 0 [Note] InnoDB: Uses event mutexes
+2025-04-12 18:40:37 0 [Note] InnoDB: Compressed tables use zlib 1.3
+2025-04-12 18:40:37 0 [Note] InnoDB: Number of pools: 1
+2025-04-12 18:40:37 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2025-04-12 18:40:37 0 [Note] InnoDB: Initializing buffer pool, total size = 16M, instances = 1, chunk size = 16M
+2025-04-12 18:40:37 0 [Note] InnoDB: Completed initialization of buffer pool
+2025-04-12 18:40:37 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2025-04-12 18:40:37 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2025-04-12 18:40:37 0 [Note] InnoDB: Setting file 'C:\xampp\mysql\data\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2025-04-12 18:40:37 0 [Note] InnoDB: File 'C:\xampp\mysql\data\ibtmp1' size is now 12 MB.
+2025-04-12 18:40:37 0 [Note] InnoDB: Waiting for purge to start
+2025-04-12 18:40:37 0 [Note] InnoDB: 10.4.32 started; log sequence number 421733; transaction id 751
+2025-04-12 18:40:37 0 [Note] Plugin 'FEEDBACK' is disabled.
+2025-04-12 18:40:37 0 [Note] InnoDB: Loading buffer pool(s) from C:\xampp\mysql\data\ib_buffer_pool
+2025-04-12 18:40:37 0 [Note] InnoDB: Buffer pool(s) load completed at 250412 18:40:37
+2025-04-12 18:40:37 0 [Note] Server socket created on IP: '::'.
+2025-04-12 18:40:37 6 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1932: Table 'mysql.gtid_slave_pos' doesn't exist in engine
+2025-04-12 18:40:37 0 [Note] Reading of all Master_info entries succeeded
+2025-04-12 18:40:37 0 [Note] Added new Master_info '' to hash table
+2025-04-12 18:40:37 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2025-04-12 18:42:52 8 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
+2025-04-12 18:42:52 8 [Warning] Aborted connection 8 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-12 18:43:08 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2025-04-12 18:43:08 0 [Note] Event Scheduler: Purging the queue. 0 events
+2025-04-12 18:43:08 0 [Note] InnoDB: FTS optimize thread exiting.
+2025-04-12 18:43:08 0 [Note] InnoDB: Starting shutdown...
+2025-04-12 18:43:08 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2025-04-12 18:43:08 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2025-04-12 18:43:08 0 [Note] InnoDB: Buffer pool(s) dump completed at 250412 18:43:08
+2025-04-12 18:43:08 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2025-04-12 18:43:08 0 [Note] InnoDB: Shutdown completed; log sequence number 421742; transaction id 751
+2025-04-12 18:43:08 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
