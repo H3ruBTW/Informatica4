@@ -8,59 +8,63 @@ define("DB", "es06");
 function show_table1(){
     $html = "<table>";
 
-    $conn = mysqli_connect(HOST, USER, PASS, DB);
+    try {
+        $conn = mysqli_connect(HOST, USER, PASS, DB);
 
-    // ERRORE CONNESSIONE
-    if (!$conn) {
-        $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
-        return $html;
-    }
+        // ERRORE CONNESSIONE
+        if (!$conn) {
+            $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
+            return $html;
+        }
 
-    $query = "SELECT * from utente";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_execute($stmt);
-    $ris = mysqli_stmt_get_result($stmt);
+        $query = "SELECT * from utente";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_execute($stmt);
+        $ris = mysqli_stmt_get_result($stmt);
 
-    //ESTRAE LE CHIAVI
-    if(($acc = mysqli_fetch_assoc($ris)) != NULL || !$acc){
-        $chiavi = array_keys($acc);
+        //ESTRAE LE CHIAVI
+        if(($acc = mysqli_fetch_assoc($ris)) != NULL || !$acc){
+            $chiavi = array_keys($acc);
+            
+            $html .= "<tr>";
+
+            for($i=0; isset($chiavi[$i]); $i++){
+                $html .= "<th>" . $chiavi[$i] . "</th>";
+            }
+
+            $html .= "</tr>";
+        }
+
+        $html .= "<tr id=\"0\">";
         
-        $html .= "<tr>";
-
-        for($i=0; isset($chiavi[$i]); $i++){
-            $html .= "<th>" . $chiavi[$i] . "</th>";
+        foreach ($acc as $key => $value) {
+            $html .= "<td>" . $value . "</td>";
         }
 
         $html .= "</tr>";
+
+        //Numero riga estratta
+        $n = 1;
+
+        //@RETURN mysqli_fetch_assoc array|false|null
+        while(($acc = mysqli_fetch_assoc($ris)) != NULL){
+            if(!$acc){
+                $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
+            } else {
+                $html .= "<tr id=\"$n\">";
+        
+                foreach ($acc as $key => $value) {
+                    $html .= "<td>" . $value . "</td>";
+                }
+                $html .= "</tr>";
+
+                $n += 1;
+            }       
+        }
+        $html .= "</table>";
+    } catch (mysqli_sql_exception $th) {
+        $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
     }
-
-    $html .= "<tr id=\"0\">";
-    
-    foreach ($acc as $key => $value) {
-        $html .= "<td>" . $value . "</td>";
-    }
-
-    $html .= "</tr>";
-
-    //Numero riga estratta
-    $n = 1;
-
-    //@RETURN mysqli_fetch_assoc array|false|null
-    while(($acc = mysqli_fetch_assoc($ris)) != NULL){
-        if(!$acc){
-            $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
-        } else {
-            $html .= "<tr id=\"$n\">";
-    
-            foreach ($acc as $key => $value) {
-                $html .= "<td>" . $value . "</td>";
-            }
-            $html .= "</tr>";
-
-            $n += 1;
-        }       
-    }
-    $html .= "</table>";
 
     return $html;
 }
