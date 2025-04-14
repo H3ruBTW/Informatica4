@@ -151,10 +151,14 @@ if(window.tab == 3){
                     for(let j=0; j<textareas.length; j++){
 
                         let text = textareas[j].value
-                        if(j<6)
+                        if(j<6){
                             texts[j].innerHTML = text
-                        else
+                            texts[j].dataset.old = text
+                        } else {
                             texts[j+1].innerHTML = text
+                            texts[j+1].dataset.old = text
+                        }
+                            
                     }
 
                 }).catch(error =>{
