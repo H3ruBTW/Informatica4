@@ -1982,3 +1982,12 @@ Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribut
 2025-04-12 18:52:10 0 [Note] C:\xampp\mysql\bin\mysqld.exe: ready for connections.
 Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
 2025-04-12 18:52:20 8 [ERROR] InnoDB: Table `mysql`.`innodb_table_stats` not found.
+2025-04-14 16:36:04 10 [Warning] Aborted connection 10 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 16:36:11 13 [Warning] Aborted connection 13 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 16:36:31 14 [Warning] Aborted connection 14 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 16:37:30 18 [Warning] Aborted connection 18 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 16:37:32 19 [Warning] Aborted connection 19 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 16:37:33 20 [Warning] Aborted connection 20 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 16:37:35 22 [Warning] Aborted connection 22 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 16:40:59 23 [Warning] Aborted connection 23 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 16:41:02 24 [Warning] Aborted connection 24 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
