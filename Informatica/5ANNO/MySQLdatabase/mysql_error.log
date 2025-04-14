@@ -1991,3 +1991,8 @@ Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribut
 2025-04-14 16:37:35 22 [Warning] Aborted connection 22 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
 2025-04-14 16:40:59 23 [Warning] Aborted connection 23 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
 2025-04-14 16:41:02 24 [Warning] Aborted connection 24 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 16:47:17 26 [Warning] Aborted connection 26 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 17:05:07 28 [Warning] Aborted connection 28 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 17:05:36 29 [Warning] Aborted connection 29 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 17:05:38 30 [Warning] Aborted connection 30 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-14 17:05:41 31 [Warning] Aborted connection 31 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)

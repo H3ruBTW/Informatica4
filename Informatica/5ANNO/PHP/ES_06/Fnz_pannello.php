@@ -1,140 +1,151 @@
 <?php
-define("HOST", "localhost");
-define("USER", "USERS");
-define("PASS", "123");
-define("DB", "es06");
+// Definizione delle costanti per la connessione al database
+define("HOST", "localhost"); // Host del database
+define("USER", "USERS");     // Nome utente per la connessione al database
+define("PASS", "123");       // Password per la connessione al database
+define("DB", "es06");        // Nome del database
 
-//tabella senza possibilità di modificare
+// Funzione per mostrare una tabella senza possibilità di modifica
 function show_table1(){
-    $html = "<table>";
+    $html = "<table>"; // Inizializzazione della tabella HTML
 
     try {
+        // Connessione al database
         $conn = mysqli_connect(HOST, USER, PASS, DB);
 
-        // ERRORE CONNESSIONE
+        // Controllo errore di connessione
         if (!$conn) {
             $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
             return $html;
         }
 
+        // Query per selezionare tutti i dati dalla tabella "utente"
         $query = "SELECT * from utente";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_execute($stmt);
-        $ris = mysqli_stmt_get_result($stmt);
+        $stmt = mysqli_prepare($conn, $query); // Preparazione della query
+        mysqli_execute($stmt); // Esecuzione della query
+        $ris = mysqli_stmt_get_result($stmt); // Ottenimento del risultato della query
 
-        //ESTRAE LE CHIAVI
+        // Estrazione delle chiavi della tabella
         if(($acc = mysqli_fetch_assoc($ris)) != NULL || !$acc){
-            $chiavi = array_keys($acc);
+            $chiavi = array_keys($acc); // Ottiene le chiavi (nomi delle colonne)
             
-            $html .= "<tr>";
+            $html .= "<tr>"; // Inizio della riga delle intestazioni
 
+            // Creazione delle intestazioni della tabella
             for($i=0; isset($chiavi[$i]); $i++){
                 $html .= "<th>" . $chiavi[$i] . "</th>";
             }
 
-            $html .= "</tr>";
+            $html .= "</tr>"; // Fine della riga delle intestazioni
         }
 
-        $html .= "<tr id=\"0\">";
+        $html .= "<tr id=\"0\">"; // Inizio della prima riga dei dati
         
+        // Aggiunta dei dati della prima riga
         foreach ($acc as $key => $value) {
             $html .= "<td>" . $value . "</td>";
         }
 
-        $html .= "</tr>";
+        $html .= "</tr>"; // Fine della prima riga
 
-        //Numero riga estratta
+        // Numero della riga estratta
         $n = 1;
 
-        //@RETURN mysqli_fetch_assoc array|false|null
+        // Ciclo per aggiungere tutte le righe successive
         while(($acc = mysqli_fetch_assoc($ris)) != NULL){
             if(!$acc){
                 $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
             } else {
-                $html .= "<tr id=\"$n\">";
+                $html .= "<tr id=\"$n\">"; // Inizio di una nuova riga
         
                 foreach ($acc as $key => $value) {
-                    $html .= "<td>" . $value . "</td>";
+                    $html .= "<td>" . $value . "</td>"; // Aggiunta dei dati alla riga
                 }
-                $html .= "</tr>";
+                $html .= "</tr>"; // Fine della riga
 
-                $n += 1;
+                $n += 1; // Incremento del numero di riga
             }       
         }
-        $html .= "</table>";
+        $html .= "</table>"; // Fine della tabella
     } catch (mysqli_sql_exception $th) {
+        // Gestione degli errori
         $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
     }
 
-    return $html;
+    return $html; // Ritorna la tabella HTML
 }
 
-
+// Funzione per mostrare una tabella con ordinamento e paginazione
 function show_table2(){
-    $html = "<table>";
+    $html = "<table>"; // Inizializzazione della tabella HTML
 
     try {
+        // Connessione al database
         $conn = mysqli_connect(HOST, USER, PASS, DB);
 
-        // ERRORE CONNESSIONE
+        // Controllo errore di connessione
         if (!$conn) {
             $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
             return $html;
         }
 
+        // Costruzione della query con ordinamento
         $query = "SELECT * FROM utente ORDER BY " . $_GET['orderby'];
-        if($_GET['di'] == "i"){
-            $query .= " asc";
+        if($_GET['di'] == "i"){ // Controllo del tipo di ordinamento
+            $query .= " asc"; // Ordinamento crescente
         } else {
-            $query .= " desc";
+            $query .= " desc"; // Ordinamento decrescente
         }
 
+        // Aggiunta della paginazione
         if(isset($_GET['pag'])){
-            $query .= " LIMIT 50 OFFSET " . $_GET['pag']*50-50;
-            $pag = $_GET['pag'];
+            $query .= " LIMIT 50 OFFSET " . $_GET['pag']*50-50; // Limita i risultati a 50 per pagina
+            $pag = $_GET['pag']; // Numero di pagina corrente
         } else {
-            $query .= " LIMIT 50 OFFSET 0";
+            $query .= " LIMIT 50 OFFSET 0"; // Prima pagina
             $pag = 1;
         }
 
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_execute($stmt);
-        $ris = mysqli_stmt_get_result($stmt);
+        $stmt = mysqli_prepare($conn, $query); // Preparazione della query
+        mysqli_execute($stmt); // Esecuzione della query
+        $ris = mysqli_stmt_get_result($stmt); // Ottenimento del risultato della query
 
-        //ESTRAE LE CHIAVI
+        // Estrazione delle chiavi della tabella
         if(($acc = mysqli_fetch_assoc($ris)) != NULL || !$acc){
-            $chiavi = array_keys($acc);
+            $chiavi = array_keys($acc); // Ottiene le chiavi (nomi delle colonne)
             
-            $html .= "<tr id=\"keys\">";
+            $html .= "<tr id=\"keys\">"; // Inizio della riga delle intestazioni
 
+            // Creazione delle intestazioni della tabella
             for($i=0; isset($chiavi[$i]); $i++){
                 $html .= "<th id=\"key\">" . $chiavi[$i] . "</th>";
             }
 
-            $html .= "<th>Modifica</th>";
-            $html .= "<th>Cancella</th>";
+            $html .= "<th>Modifica</th>"; // Colonna per i pulsanti di modifica
+            $html .= "<th>Cancella</th>"; // Colonna per i pulsanti di cancellazione
 
-            $html .= "</tr>";
+            $html .= "</tr>"; // Fine della riga delle intestazioni
         }
 
-        //Numero riga estratta
+        // Numero della riga estratta
         $n = 0;
 
-        //@RETURN mysqli_fetch_assoc array|false|null
+        // Ciclo per aggiungere tutte le righe successive
         do{
             if(!$acc){
                 $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
             } else {
-                $html .= "<tr id=\"$n\">";
+                $html .= "<tr id=\"$n\">"; // Inizio di una nuova riga
         
                 foreach ($acc as $key => $value) {
-                    $html .= "<td>" . $value . "</td>";
+                    $html .= "<td>" . $value . "</td>"; // Aggiunta dei dati alla riga
                 }
 
+                // Aggiunta dei pulsanti di modifica e cancellazione
                 $html .= "<td><form id=\"mod$n\" action=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=". $_GET['pag'] ."#$n\" method=\"post\">";
 
                 foreach ($acc as $key => $value) {
-                    if($key != "Password")
+                    if($key != "Password") // Esclude la password
                         $html .= "<input type=\"text\" name=\"" . $key . "\" value=\"" . $value . "\" hidden>";
                 }
 
@@ -151,20 +162,22 @@ function show_table2(){
 
                 $html .= "<input class=\"button\" type=\"button\" id=\"del\" value=\"DELETE\"></form></td>";
 
-                $html .= "</tr>";
+                $html .= "</tr>"; // Fine della riga
 
-                $n += 1;
+                $n += 1; // Incremento del numero di riga
             }
         } while(($acc = mysqli_fetch_assoc($ris)) != NULL);
         
-        $html .= "</table><br>";
+        $html .= "</table><br>"; // Fine della tabella
 
+        // Query per il conteggio totale delle righe
         $query = "SELECT COUNT(*) FROM utente";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_result($stmt, $count);
-        mysqli_execute($stmt);
-        mysqli_stmt_fetch($stmt);
+        $stmt = mysqli_prepare($conn, $query); // Preparazione della query
+        mysqli_stmt_bind_result($stmt, $count); // Associazione del risultato
+        mysqli_execute($stmt); // Esecuzione della query
+        mysqli_stmt_fetch($stmt); // Ottenimento del risultato
 
+        // Aggiunta dei pulsanti di navigazione per la paginazione
         if($pag-1 != 0){
             $html .= " <a href=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $pag-1 . "\"><button class=\"newbutton\"><= PRECEDENTE</button></a> ";
         }
@@ -175,14 +188,16 @@ function show_table2(){
 
         $html .= "<br>";
 
+        // Creazione dei pulsanti per ogni pagina
         for($i=0; $i<$count/50; $i++){
             $html .= " <a href=\"Pannello.php?id=2&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&pag=" . $i+1 . "\"><button class=\"newbutton\">" . $i+1 . "</button></a> ";
         }
     } catch (mysqli_sql_exception $th) {
+        // Gestione degli errori
         $html .= "</table><br><p style=\"color:red\">Errore di fetching dei dati</p>";
     }  
 
-    return $html;
+    return $html; // Ritorna la tabella HTML
 }
 
 function show_table3(){
