@@ -139,6 +139,7 @@ try {
     echo "Utente con id: " . $oldID . " modificato con successo";
 } catch (mysqli_sql_exception $th) {
     http_response_code(500);
+    //restituisco il messaggio nel formato testo
     echo "Errore di connessione al DB. Riprovare più tardi.";
 } catch (\Throwable $th) {
     http_response_code(400);

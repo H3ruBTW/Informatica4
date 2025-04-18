@@ -516,7 +516,7 @@ function deleteInDB(){
         mysqli_stmt_close($stmt);
 
         // Reindirizzamento in caso di successo
-        header("Location: Pannello.php?id=" . $id . "&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&succ=Utente con id: ". $oldID ." cancellato con successo#header");
+        header("Location: Pannello.php?id=" . $id . "&orderby=" . $_GET['orderby'] . "&di=" . $_GET['di'] . "&succ=Utente con id: ". $oldID ." cancellato con successo&pag=". $_GET['pag'] . "#header");
         exit;
     } catch (mysqli_sql_exception $th) {
         // Reindirizzamento in caso di errore di connessione
