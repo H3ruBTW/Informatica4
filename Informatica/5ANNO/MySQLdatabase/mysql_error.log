@@ -2176,3 +2176,16 @@ Version: '10.4.32-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribut
 2025-04-19  1:00:33 28 [Warning] Aborted connection 28 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
 2025-04-19  1:00:35 30 [Warning] Aborted connection 30 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
 2025-04-19  1:00:43 32 [Warning] Aborted connection 32 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-19  1:02:56 33 [Warning] Aborted connection 33 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-19  1:03:02 34 [Warning] Aborted connection 34 to db: 'es06' user: 'USERS' host: 'localhost' (Got an error reading communication packets)
+2025-04-19  1:03:35 0 [Note] C:\xampp\mysql\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2025-04-19  1:03:35 0 [Note] Event Scheduler: Purging the queue. 0 events
+2025-04-19  1:03:35 0 [Note] InnoDB: FTS optimize thread exiting.
+2025-04-19  1:03:35 0 [Note] InnoDB: Starting shutdown...
+2025-04-19  1:03:35 0 [Note] InnoDB: Dumping buffer pool(s) to C:\xampp\mysql\data\ib_buffer_pool
+2025-04-19  1:03:35 0 [Note] InnoDB: Instance 0, restricted to 250 pages due to innodb_buf_pool_dump_pct=25
+2025-04-19  1:03:35 0 [Note] InnoDB: Buffer pool(s) dump completed at 250419  1:03:35
+2025-04-19  1:03:37 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2025-04-19  1:03:37 0 [Note] InnoDB: Shutdown completed; log sequence number 425229; transaction id 775
+2025-04-19  1:03:37 0 [Note] C:\xampp\mysql\bin\mysqld.exe: Shutdown complete
+
