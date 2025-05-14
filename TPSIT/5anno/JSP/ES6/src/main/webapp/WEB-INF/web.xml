@@ -1,0 +1,14 @@
+<web-app>
+<context-param>
+<param-name>dname</param-name>
+<param-value>sun.jdbc.odbc.JdbcOdbcDriver</param-value>
+</context-param>
+<servlet>
+<servlet-name>sonoojaiswal</servlet-name>
+<jsp-file>/jsp.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+<servlet-name>sonoojaiswal</servlet-name>
+<url-pattern>/jsp</url-pattern>
+</servlet-mapping>
+</web-app>
